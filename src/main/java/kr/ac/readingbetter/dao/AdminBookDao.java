@@ -18,4 +18,9 @@ public class AdminBookDao {
 		List<BookVo> list = sqlSession.selectList("adminbook.list");
 		return list;
 	}
+	
+	public BookVo getByNo(Long no){
+		BookVo vo = sqlSession.selectOne("adminbook.getByNo", no);
+		return vo;
+	}
 }

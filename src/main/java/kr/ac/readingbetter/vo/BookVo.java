@@ -5,8 +5,8 @@ public class BookVo {
 	private String title;
 	private Integer recommend;
 	private String cover;
-	private Long publisher_no;
-	private Long author_no;
+	private Long publisherNo;
+	private Long authorNo;
 	private String authorName;
 	private String publisherTitle;
 	private String bkwd;
@@ -43,28 +43,20 @@ public class BookVo {
 		this.cover = cover;
 	}
 
-	public Long getPublisher_no() {
-		return publisher_no;
+	public Long getPublisherNo() {
+		return publisherNo;
 	}
 
-	public void setPublisher_no(Long publisher_no) {
-		this.publisher_no = publisher_no;
+	public void setPublisherNo(Long publisherNo) {
+		this.publisherNo = publisherNo;
 	}
 
-	public Long getAuthor_no() {
-		return author_no;
+	public Long getAuthorNo() {
+		return authorNo;
 	}
 
-	public void setAuthor_no(Long author_no) {
-		this.author_no = author_no;
-	}
-
-	public String getBkwd() {
-		return bkwd;
-	}
-
-	public void setBkwd(String bkwd) {
-		this.bkwd = bkwd;
+	public void setAuthorNo(Long authorNo) {
+		this.authorNo = authorNo;
 	}
 
 	public String getAuthorName() {
@@ -83,10 +75,18 @@ public class BookVo {
 		this.publisherTitle = publisherTitle;
 	}
 
+	public String getBkwd() {
+		return bkwd;
+	}
+
+	public void setBkwd(String bkwd) {
+		this.bkwd = bkwd;
+	}
+
 	@Override
 	public String toString() {
 		return "BookVo [no=" + no + ", title=" + title + ", recommend=" + recommend + ", cover=" + cover
-				+ ", publisher_no=" + publisher_no + ", author_no=" + author_no + ", authorName=" + authorName
+				+ ", publisherNo=" + publisherNo + ", authorNo=" + authorNo + ", authorName=" + authorName
 				+ ", publisherTitle=" + publisherTitle + ", bkwd=" + bkwd + "]";
 	}
 }

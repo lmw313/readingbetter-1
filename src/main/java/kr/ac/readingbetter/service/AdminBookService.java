@@ -18,4 +18,9 @@ public class AdminBookService {
 		List<BookVo> list = adminBookDao.getList();
 		return list;
 	}
+	
+	public BookVo getByNo(Long no){
+		BookVo vo = adminBookDao.getByNo(no);
+		return vo;
+	}
 }

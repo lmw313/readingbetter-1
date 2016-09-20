@@ -5,9 +5,19 @@
 
 	<select id="list" parameterType="bookvo" resultType="bookvo">
 		<![CDATA[
-			select a.no,a.title,a.recommend,a.cover,b.title as publisherTitle,c.name as authorName from book a, publisher b,author c
+			select a.no,a.title,a.recommend,a.cover,b.title as publisherTitle,
+			c.name as authorName from book a, publisher b,author c
  			where b.no=a.publisher_no 
  			and c.no=a.author_no 
+		]]>
+	</select>
+	
+	<select id="getByNo" parameterType="Long" resultType="bookvo">
+		<![CDATA[
+			select a.no,a.title,a.recommend,a.cover,b.title as publisherTitle,
+			c.name as authorName from book a, publisher b,author c
+ 			where b.no=a.publisher_no 
+ 			and c.no=a.author_no and a.no=#{no}
 		]]>
 	</select>
 	

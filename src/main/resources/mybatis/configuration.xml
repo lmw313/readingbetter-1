@@ -14,6 +14,7 @@
 		<typeAlias type="kr.ac.readingbetter.vo.CommentsVo" alias="commentsvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.AuthorVo" alias="authorvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.PublisherVo" alias="publishervo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.QuizVo" alias="quizvo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -27,7 +28,7 @@
 		<mapper resource="mybatis/mappers/admincomments.xml" />
 		<mapper resource="mybatis/mappers/adminauthor.xml" />
 		<mapper resource="mybatis/mappers/adminpublisher.xml" />
-		
+		<mapper resource="mybatis/mappers/adminquiz.xml" />
 	</mappers>
 	
 </configuration>

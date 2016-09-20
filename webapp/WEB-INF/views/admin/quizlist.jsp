@@ -17,42 +17,34 @@
 <body>
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/admin/header.jsp' />
+		<br><br>
 		<h4>퀴즈 관리</h4>
 
 		<table class="table" id="board">
 			<tr class="info">
 				<td>번호</td>
-				<td>책 제목</td>
-				<td>작성자</td>
-				<td>작성일</td>
-				<td>승인여부</td>
+				<td>제목</td>
+				<td>상태</td>
 			</tr>
-
+			<c:set var="countList" value="${fn:length(list)}"/>
+			<c:forEach var='vo' items='${list}' varStatus='s'>
 			<tr>
-				<td>1</td>
-				<td>누가 내머리에 똥쌌어?</td>
-				<td>GM미미</td>
-				<td>2016-01-01</td>
-				<td><a href="/readingbetter/admin/quizview">대기</a></td>
+				<td>${countList-s.index}</td>
+				<td>${vo.title }</td>
+				<td>
+					<a href="/readingbetter/admin/quizview/${vo.no }">
+						<c:choose>
+							<c:when test="${vo.accept == 0 }">대기</c:when>
+							<c:when test="${vo.accept == 1 }">승인</c:when>
+							<c:when test="${vo.accept == 2 }">반려</c:when>
+						</c:choose>
+					</a>				
+				</td>
 			</tr>
+			</c:forEach>
 		</table>
 
-		<!-- begin:paging -->
-		<div class="pager">
-			<ul>
-				<li>
-				<li><a href="">◀</a></li>
-				<li><a href="">1</a></li>
-				<li><a href="">2</a></li>
-				<li><a href="">3</a></li>
-				<li><a href="">4</a></li>
-				<li><a href="">5</a></li>
-				<li><a href="">▶</a></li>
-			</ul>
-		</div>
-		<!-- end:paging -->
-
-		<a class="btn btn-default" href="/readingbetter/admin/quizaddform" role="button">등록</a>
+		<a class="btn btn-default" href="/readingbetter/admin/quizaddbook" role="button">등록</a>
 
 	</div>
 </body>

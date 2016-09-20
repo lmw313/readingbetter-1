@@ -38,20 +38,4 @@ public class AdminController {
 	public String CardAddForm() {
 		return "admin/cardaddform";
 	}
-
-	// 퀴즈 관리
-	@RequestMapping("/quizlist")
-	public String QuizList() {
-		return "admin/quizlist";
-	}
-
-	@RequestMapping("/quizaddform")
-	public String QuizAddForm() {
-		return "admin/quizaddform";
-	}
-
-	@RequestMapping("/quizview")
-	public String QuizView() {
-		return "admin/quizview";
-	}
 }
