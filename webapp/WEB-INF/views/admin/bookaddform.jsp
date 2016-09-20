@@ -16,66 +16,59 @@
 <script type="text/javascript" src="/readingbetter/assets/dist/js/bootstrap.js"></script>
 </head>
 <body>
-<c:import url='/WEB-INF/views/admin/header.jsp'></c:import>
-<h4>도서 추가</h4>
-<form action="" method="post">
+	<c:import url='/WEB-INF/views/admin/header.jsp'></c:import>
+	<h4>도서 추가</h4>
 	<div id="board">
-		<table class="tbl-ex tbl-addbook">
-			<tr>
-				<th></th>
-				<th></th>
-			</tr>
-			<tr>
-				<td class="left-label">제목</td>
+		<form id="bookadd-form" method="post" action="insert">
+			<table class="tbl-ex tbl-addbook">
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr>
+					<td class="left-label">제목</td>
+						<td>
+							<label for="title"></label>
+							<input type="text" class="form-control" id="title" value="">
+						</td>
+					</tr>
+				<tr>
+					<td class="left-label">작가</td>
 					<td>
-						<label for=""></label>
-						<input type="text" class="form-control" id="" placeholder="제목">
+						<label for="author_no"></label>
+						<input type="text" class="form-control" id="author_no" value="${authorVo.name }">
+						
+						<!-- Small modal -->
+						<button id="btn_writerModal" value="" type="button" class="btn btn-primary" data-toggle="modal" data-target=".writer-modal">찾기</button>
+					</td>
+				<tr>
+					<td class="left-label">출판사</td>
+					<td>
+						<input type="text" class="form-control" id="publisher_no" value="">
+							
+						<!-- Small modal -->
+						<button id="btn_publisherModal" type="button" class="btn btn-primary" data-toggle="modal" data-target=".publisher-modal">찾기</button>
 					</td>
 				</tr>
-			<tr>
-				<td class="left-label">작가</td>
-				<td>
-					<label for=""></label>
-					<input type="text" class="form-control" id="" placeholder="작가">
-					
-					<!-- Small modal -->
-					<button id="btn_writerModal" type="button" class="btn btn-primary" data-toggle="modal" data-target=".writer-modal">찾기</button>
-				</td>
-			<tr>
-				<td class="left-label">출판사</td>
-				<td>
-					<input type="text" class="form-control" id="" placeholder="출판사">
-						
-					<!-- Small modal -->
-					<button id="btn_publisherModal" type="button" class="btn btn-primary" data-toggle="modal" data-target=".publisher-modal">찾기</button>
-				</td>
-			</tr>
-			<tr>
-				<td class="left-label">추천</td>
-				<td>
-					<select class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td class="left-label">사진</td>
-				<td>
-					<label for=""></label>
-					<input type="text" class="form-control" id="" placeholder="경로">
-				</td>
-			</tr>
-		</table>
-
-		<a href="/readingbetter/admin/booklist" class="btn btn-default">목록</a>
-		<button type="submit" class="btn btn-default">등록</button>
+				<tr>
+					<td class="left-label">추천</td>
+					<td>
+						<input type="text" class="form-control" id="recommend" value="">
+					</td>
+				</tr>
+				<tr>
+					<td class="left-label">사진</td>
+					<td>
+						<label for=""></label>
+						<input type="text" class="form-control" id="cover">
+					</td>
+				</tr>
+			</table>
+	
+			<a href="/readingbetter/admin/booklist" class="btn btn-default">목록</a>
+			<button type="submit" class="btn btn-default">등록</button>
+		</form>
 	</div>
-</form>
 </body>
 </html>
 
@@ -91,20 +84,23 @@
 				<h4 class="modal-title">작가 검색</h4>
 			</div>
 			<div class="modal-body">
-				<input type="text">
-				<button class="btn btn-default">검색</button>
+	
+		<form action="/readingbetter/admin/bookaddform" method="get">
+			<input type="text" id="kwd" name="kwd2" value="${param.kwd2 }"> 
+			<input type="submit" class="btn btn-default" value="찾기">
+		</form>
 				<select class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
+				
+				 <c:forEach var='vo' items='${authorlist}'>
+						<option>${vo.name }</option>
+				</c:forEach>
 				</select>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-primary">확인</button>
+				<button type="submit" class="btn btn-primary">확인</button>
 			</div>
+		
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -120,14 +116,14 @@
 				<h4 class="modal-title">출판사 검색</h4>
 			</div>
 			<div class="modal-body">
-				<input type="text">
-				<button class="btn btn-default">검색</button>
+		<form action="/readingbetter/admin/bookaddform/${param.kwd1 }" method="get">
+			<input type="text" id="kwd" name="kwd1" value="${param.kwd1 }"> 
+			<input type="submit" class="btn btn-default" value="찾기">
+		</form>
 				<select class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
+			 <c:forEach var='vo' items='${publisherlist}'>
+						<option>${vo.title }</option>
+				</c:forEach>
 				</select>
 			</div>
 			<div class="modal-footer">

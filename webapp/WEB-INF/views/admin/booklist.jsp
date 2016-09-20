@@ -25,17 +25,21 @@
 				<th>출판사</th>
 				<th>사진</th>
 			</tr>
-		 <c:set var="countList" value="${fn:length(list)}"/>
-	  <c:forEach var='vo' items='${list}' varStatus='s'>
-			<tr>
-				<td>${countList-s.index}</td>
-				<td>${vo.title }</td>
-				<td>${vo.authorName }</td>
-				<td>${vo.publisherTitle }</td>
-				<td><img class="img-thumbnail" src="${vo.cover }"></td>
-			</tr>
-	  </c:forEach>
+			<c:set var="countList" value="${fn:length(list)}"/>
+	  		<c:forEach var='vo' items='${list}' varStatus='s'>
+				<tr>
+					<td>${countList-s.index}</td>
+					<td>${vo.title }</td>
+					<td>${vo.authorName }</td>
+					<td>${vo.publisherTitle }</td>
+					<td><img class="img-thumbnail" src="${vo.cover }"></td>
+				</tr>
+	 		</c:forEach>
 		</table>
+		
+		<div id="button-set">
+			<a href="/readingbetter/admin/bookaddform" class="btn btn-default">추가</a>
+		</div>
 	</div>
 </body>
 </html>

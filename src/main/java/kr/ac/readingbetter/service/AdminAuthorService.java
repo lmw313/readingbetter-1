@@ -12,14 +12,14 @@ import kr.ac.readingbetter.vo.AuthorVo;
 public class AdminAuthorService {
 
 	@Autowired
-	private AdminAuthorDao authorDao;
+	private AdminAuthorDao AdminauthorDao;
 
-	public List<AuthorVo> getList() {
-		List<AuthorVo> list = authorDao.getList();
+	public List<AuthorVo> getList(AuthorVo vo) {
+		List<AuthorVo> list = AdminauthorDao.getList(vo);
 		return list;
 	}
 
 	public void insert(AuthorVo vo) {
-		authorDao.insert(vo);
+		AdminauthorDao.insert(vo);
 	}
 }

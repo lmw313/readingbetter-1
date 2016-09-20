@@ -26,8 +26,10 @@
 					</div>
 					<p class="menu-title">문제 내기</p>
 					<div id="quiz-content" class="col-lg-6">
+					<form method="post" action="../makequizlist">
+					<input type="hidden" name="no" value="${vo.no}">
 						<img id="img" class="img-thumbnail" 
-							src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/book.png"><br>
+							src="${vo.cover}"><br>
 						
 						<table class="table">
 							<tr>
@@ -47,7 +49,9 @@
 							</tr>
 						</table>
 						<br>
+					</form>
 					</div>
+					
 
 					<div class="col-lg-6">
 						<div id="radio-group">

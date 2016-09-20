@@ -14,8 +14,8 @@ public class AdminPublisherDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<PublisherVo> getList() {
-		List<PublisherVo> list = sqlSession.selectList("adminpublisher.list");
+	public List<PublisherVo> getList(PublisherVo vo) {
+		List<PublisherVo> list = sqlSession.selectList("adminpublisher.list", vo);
 		return list;
 	}
 

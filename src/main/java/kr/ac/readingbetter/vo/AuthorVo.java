@@ -4,6 +4,7 @@ public class AuthorVo {
 
 	private Long no;
 	private String name;
+	private String kwd2;
 
 	public Long getNo() {
 		return no;
@@ -21,8 +22,16 @@ public class AuthorVo {
 		this.name = name;
 	}
 
+	public String getKwd2() {
+		return kwd2;
+	}
+
+	public void setKwd2(String kwd2) {
+		this.kwd2 = kwd2;
+	}
+
 	@Override
 	public String toString() {
-		return "AuthorVo [no=" + no + ", name=" + name + "]";
+		return "AuthorVo [no=" + no + ", name=" + name + ", kwd2=" + kwd2 + "]";
 	}
 }

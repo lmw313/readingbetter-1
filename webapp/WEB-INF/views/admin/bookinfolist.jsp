@@ -5,57 +5,62 @@
 <!doctype html>
 <html>
 <head>
-<title>ReadingBetter</title>
+<title>ReadingBetter_Admin</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/admin.css" rel="stylesheet"
-	type="text/css">
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/admin/header.jsp' />
 		<div class="row asideWrap">
 			<br>
+			<br>
 			<h4>출판사/작가 관리</h4>
-			<br>
-			<br>
 			<div id="content" class="col-lg-6">
-				<h5>출판사 관리</h5>
-				<select multiple class="form-control">
-					<option>1 . 호랑이 출판사</option>
-					<option>2 . 나비출판사</option>
-				</select> <br>
 				<br>
-				<form id="search_form" action="/mysite/board" method="post">
-					<input type="text" id="kwd" name="kwd" value="${kwd }">
+				<form id="search_form" action="/readingbetter/admin/insert" method="post">
+					<input type="text" id="publisher" name="title">
 					<input type="submit" value="출판사추가">
 				</form>
 				<br>
-				<form id="search_form" action="/mysite/board" method="post">
-					<input type="text" id="kwd" name="kwd" value="${kwd }">
+				<form id="search_form" action="/readingbetter/admin/bookinfolist" method="get">
+					<input type="text" id="kwd" name="kwd1" value="${param.kwd1 }">
 					<input type="submit" value="출판사검색">
 				</form>
-			</div>
-			<div id="content" class="col-lg-6">
-				<h5>작가 관리</h5>
-				<select multiple class="form-control">
-					<option>김작가</option>
-					<option>전작가</option>
-					<option>양작가</option>
-					<option>숙작가</option>
-
-				</select> <br>
 				<br>
-				<form id="search_form" action="/mysite/board" method="post">
-					<input type="text" id="kwd" name="kwd" value="${kwd }">
+				<h5>출판사 관리</h5>
+				<c:forEach var='vo1' items='${publisherlist}' varStatus='s'>
+					<div class="radio">
+		  				<label>
+		    				<input type="radio" name="title" id="p" value=${vo1.title } >${vo1.title }
+		  				</label>
+					</div>
+				</c:forEach>	
+			</div>
+			
+			<div id="content" class="col-lg-6">
+				<br>
+				<form id="search_form" action="/readingbetter/admin/insertauthor" method="post">
+					<input type="text" id="author" name="name" >
 					<input type="submit" value="작가추가">
 				</form>
 				<br>
-				<form id="search_form" action="/mysite/board" method="post">
-					<input type="text" id="kwd" name="kwd" value="${kwd }">
+				<form id="search_form" action="/readingbetter/admin/bookinfolist" method="get">
+					<input type="text" id="kwd" name="kwd2" value="${param.kwd2 }">
 					<input type="submit" value="작가검색">
 				</form>
+								
+				<br>
+				<h5>작가 관리</h5>
+				<c:forEach var='vo' items='${authorlist}' varStatus='s'>
+					<div class="radio">
+		  				<label>
+		    				<input type="radio" name="name" id="author" value=${vo.name } >${vo.name }
+		  				</label>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 		<div class="row"></div>

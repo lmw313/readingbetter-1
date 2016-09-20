@@ -14,8 +14,8 @@ public class AdminAuthorDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<AuthorVo> getList() {
-		List<AuthorVo> list = sqlSession.selectList("adminauthor.list");
+	public List<AuthorVo> getList(AuthorVo vo) {
+		List<AuthorVo> list = sqlSession.selectList("adminauthor.list", vo);
 		return list;
 	}
 

@@ -16,7 +16,7 @@
 			select a.no,a.reason,a.reg_date as regDate,a.accept,a.mem_no as memNo,a.IDENTITY,a.key_no as keyNo,b.name as memName
 			from accusation a,member b
 			where b.no=a.mem_no
-			and a.no=1
+			and a.no=#{no}
 		]]>
 	</select>
 	

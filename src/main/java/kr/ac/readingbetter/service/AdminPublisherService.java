@@ -14,8 +14,8 @@ public class AdminPublisherService {
 	@Autowired
 	private AdminPublisherDao publisherDao;
 
-	public List<PublisherVo> getList() {
-		List<PublisherVo> list = publisherDao.getList();
+	public List<PublisherVo> getList(PublisherVo vo) {
+		List<PublisherVo> list = publisherDao.getList(vo);
 		return list;
 	}
 

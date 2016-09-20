@@ -5,7 +5,7 @@
 
 	<select id="list" parameterType="publishervo" resultType="publishervo">
 		<![CDATA[
-			select no,title from publisher order by title
+			select no,title from publisher where title like '%' || #{kwd1} || '%' order by title
 		]]>
 	</select>
 	

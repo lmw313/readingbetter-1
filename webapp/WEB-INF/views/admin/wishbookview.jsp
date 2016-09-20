@@ -63,7 +63,7 @@
 				<form action="/readingbetter/admin/wishbooklist/wishbookview?no=${param.no }" method="post">
 					<label>출판사 찾기</label>
 					<input type="hidden" name="bkwd" value="${param.bkwd }">
-					<input type="text" name="kwd" value="${param.kwd }">
+					<input type="text" name="kwd1" value="${param.kwd1 }">
 					<input type="submit" value="찾기">
 				</form>
 
@@ -74,7 +74,7 @@
 			<div class="col-lg-6">
 				<form action="/readingbetter/admin/wishbooklist/wishbookview?no=${param.no }" method="post">
 					<label>책 찾기</label>
-					<input type="hidden" name="kwd" value="${param.kwd }">
+					<input type="hidden" name="kwd1" value="${param.kwd1 }">
 					<input type="text" name="bkwd" value="${param.bkwd }">
 					<input type="submit" value="찾기">
 				</form>

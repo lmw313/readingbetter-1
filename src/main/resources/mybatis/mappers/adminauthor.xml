@@ -5,7 +5,7 @@
 
 	<select id="list" parameterType="authorvo" resultType="authorvo">
 		<![CDATA[
-			select no,name from author order by name
+			select no,name from author where name like '%' || #{kwd2} || '%' order by name
 		]]>
 	</select>
 	

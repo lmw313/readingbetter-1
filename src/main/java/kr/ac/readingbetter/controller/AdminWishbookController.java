@@ -34,8 +34,8 @@ public class AdminWishbookController {
 	public String wishBookView(Model model, WishbookVo vo, PublisherVo pVo, BookVo bVo) {
 		vo = adminWishBookService.getView(vo);
 		
-		if(pVo.getKwd() == null || pVo.getKwd().equals("")){
-			pVo.setKwd("@@@@@@@@@@@@@@@@");
+		if(pVo.getKwd1() == null || pVo.getKwd1().equals("")){
+			pVo.setKwd1("@@@@@@@@@@@@@@@@");
 		}
 		
 		if(bVo.getBkwd() == null || bVo.getBkwd().equals("")){

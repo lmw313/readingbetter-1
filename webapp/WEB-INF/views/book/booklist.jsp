@@ -25,44 +25,51 @@
 						<a href="/readingbetter/book/booklist">독서활동</a> > 책목록
 					</div>
 					<p class="menu-title">책 목록</p>
+					
 					<form id="search_form" action="/mysite/board" method="post">
 						<input type="text" id="kwd" name="kwd" value="${kwd }">
 						<input type="submit" value="찾기">
 					</form>
 					<br>
-					<table id="book-table">
-						<colgroup>
-							<col width="30%" />
-							<col width="10%" />
-							<col width="20%" />
-							<col width="40%" />
-						</colgroup>
-						<tr>
-							<td rowspan="4">
-								<img class="img-thumbnail" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/book1.jpg">
-							</td>
-							<td colspan="3">책이름</td>
-						</tr>
-						<tr>
-							<td class="table-right">작가</td>
-							<td class="table-left">?</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td class="table-right">출판사</td>
-							<td class="table-left">?</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td class="table-right">추천학년</td>
-							<td class="table-left">?</td>
-							<td>
-								<a class="btn btn-default" href="/readingbetter/book/review" role="button">리뷰보기</a>
-								<a class="btn btn-default" href="/readingbetter/book/solvequizform" role="button">문제풀기</a>
-								<a class="btn btn-default" href="/readingbetter/book/makequizform" role="button">문제내기</a>
-							</td>
-						</tr>
-					</table>
+					
+					<c:set var="countList" value="${fn:length(list)}"/>
+	  				<c:forEach var='vo' items='${list}' varStatus='s'>					
+						<table id="book-table">
+							<colgroup>
+								<col width="30%" />
+								<col width="10%" />
+								<col width="20%" />
+								<col width="40%" />
+							</colgroup>					 
+							<tr>
+								<td rowspan="4">
+									<img class="img-thumbnail" src="${vo.cover }">
+								</td>
+								<td colspan="3">${vo.title }</td>
+							</tr>
+							<tr>
+								<td class="table-right">작가</td>
+								<td class="table-left">${vo.authorName }</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="table-right">출판사</td>
+								<td class="table-left">${vo.publisherTitle }</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="table-right">추천학년</td>
+								<td class="table-left">${vo.recommend }</td>
+								<td>
+									<a class="btn btn-default" href="/readingbetter/book/review" role="button">리뷰보기</a>
+									<a class="btn btn-default" href="/readingbetter/book/solvequizform" role="button">문제풀기</a>
+									<a class="btn btn-default" href="/readingbetter/book/makequizform/${vo.no}" role="button">문제내기</a>
+								</td>
+							</tr>					
+						</table>
+						<br>
+					</c:forEach>
+					
 					<br>
 					<!-- begin:paging -->
 					<div class="pager">
