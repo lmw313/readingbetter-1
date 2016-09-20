@@ -8,32 +8,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MyPageController {
 	
 	@RequestMapping("/joinform")
-	public String JoinForm() {
+	public String joinForm() {
 		return "mypage/joinform";
 	}
 	
 	@RequestMapping("/modifyform")
-	public String ModifyForm() {
+	public String modifyForm() {
 		return "mypage/modifyform";
 	}
 	
 	@RequestMapping("/info")
-	public String Info() {
+	public String info() {
 		return "mypage/info";
 	}
 	
 	@RequestMapping("/loginform")
-	public String LoginForm() {
+	public String loginForm() {
 		return "mypage/loginform";
 	}
 	
 	@RequestMapping("/findform")
-	public String FindForm() {
+	public String findForm() {
 		return "mypage/findform";
 	}
 	
 	@RequestMapping("/history")
-	public String History() {
+	public String history() {
 		return "mypage/history";
 	}
 }

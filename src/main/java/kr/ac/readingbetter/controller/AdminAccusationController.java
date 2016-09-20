@@ -24,14 +24,14 @@ public class AdminAccusationController {
 
 	// 신고 관리
 	@RequestMapping("/accusationlist")
-	public String AccusationList(Model model) {
+	public String accusationList(Model model) {
 		List<AccusationVo> list = adminAccusationService.getList();
 		model.addAttribute("accusationlist", list);
 		return "admin/accusationlist";
 	}
 
 	@RequestMapping(value = "/accusationview/{no}", method = RequestMethod.GET)
-	public String AccusationView(@PathVariable("no") Long no, Model model) {
+	public String accusationView(@PathVariable("no") Long no, Model model) {
 		AccusationVo vo = adminAccusationService.get(no);
 		BoardVo boardvo;
 		CommentsVo commentsvo;

@@ -13,17 +13,17 @@ public class RankingController {
 	}
 	
 	@RequestMapping("/monthlygrade")
-	public String MonthlyGrade() {		
+	public String monthlyGrade() {		
 		return "ranking/monthlygrade";
 	}
 	
 	@RequestMapping("/monthlyschool")
-	public String MonthlySchool() {		
+	public String monthlySchool() {		
 		return "ranking/monthlyschool";
 	}
 	
 	@RequestMapping("/monthlytotal")
-	public String MonthlyTotal() {		
+	public String monthlyTotal() {		
 		return "ranking/monthlytotal";
 	}
 	

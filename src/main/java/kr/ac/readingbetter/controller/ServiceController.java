@@ -9,44 +9,44 @@ public class ServiceController {
 	
 	// 공지
 	@RequestMapping("/noticelist")
-	public String NoticeList() {
+	public String noticeList() {
 		return "service/noticelist";
 	}
 	
 	@RequestMapping("/noticeview")
-	public String NoticeView() {
+	public String noticeView() {
 		return "service/noticeview";
 	}
 	
 	// 문의
 	@RequestMapping("/questionlist")
-	public String QuestionList() {
+	public String questionList() {
 		return "service/questionlist";
 	}
 	
 	@RequestMapping("/questionview")
-	public String QuestionView() {
+	public String questionView() {
 		return "service/questionview";
 	}
 	
 	@RequestMapping("/questionwrite")
-	public String QuestionWrite() {
+	public String questionWrite() {
 		return "service/questionwrite";
 	}
 	
 	// 희망도서
 	@RequestMapping("/wishbooklist")
-	public String WishBookList() {
+	public String wishBookList() {
 		return "service/wishbooklist";
 	}
 	
 	@RequestMapping("/wishbookwrite")
-	public String WishBookWrite() {
+	public String wishBookWrite() {
 		return "service/wishbookwrite";
 	}
 	
 	@RequestMapping("/wishbookview")
-	public String WishBookView() {
+	public String wishBookView() {
 		return "service/wishbookview";
 	}
 }

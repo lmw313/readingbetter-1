@@ -12,30 +12,19 @@ public class AdminController {
 		return "admin/main";
 	}
 
-	// 상점 관리
-	@RequestMapping("/shoplist")
-	public String ShopList() {
-		return "admin/shoplist";
-	}
-
-	@RequestMapping("/shopaddform")
-	public String ShopAddForm() {
-		return "admin/shopaddform";
-	}
-
 	// 카드 관리
 	@RequestMapping("/cardlist")
-	public String CardList() {
+	public String cardList() {
 		return "admin/cardlist";
 	}
 
 	@RequestMapping("/cardmodifyform")
-	public String CardModifyForm() {
+	public String cardModifyForm() {
 		return "admin/cardmodifyform";
 	}
 
 	@RequestMapping("/cardaddform")
-	public String CardAddForm() {
+	public String cardAddForm() {
 		return "admin/cardaddform";
 	}
 }

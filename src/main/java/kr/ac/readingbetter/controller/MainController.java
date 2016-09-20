@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
 	@RequestMapping("")
-	public String Main() {
+	public String main() {
 		return "main/main";
 	}
 	
 	@RequestMapping("/manual")
-	public String Manual() {
+	public String manual() {
 		return "main/manual";
 	}
 	
 	@RequestMapping("/siteinfo")
-	public String SiteInfo() {
+	public String siteInfo() {
 		return "main/siteinfo";
 	}
 	
 	@RequestMapping("/sitemap")
-	public String SiteMap() {
+	public String siteMap() {
 		return "main/sitemap";
 	}
 }

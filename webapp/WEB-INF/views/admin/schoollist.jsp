@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
 <head>
-<title>ReadingBetter</title>
+<title>ReadingBetter_Admin</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css"
 	rel="stylesheet" type="text/css">

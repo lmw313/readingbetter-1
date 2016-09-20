@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>신고 글</title>
+<title>ReadingBetter_Admin</title>
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/boarddxs.css" rel="stylesheet" type="text/css">

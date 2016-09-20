@@ -29,7 +29,7 @@ public class AdminBookController {
 
 	// 도서 관리
 	@RequestMapping("/booklist")
-	public String BookList(Model model) {
+	public String bookList(Model model) {
 		List<BookVo> list = adminBookService.getList();
 		model.addAttribute("list", list);
 		return "admin/booklist";
@@ -37,7 +37,7 @@ public class AdminBookController {
 
 	// 책 저장
 	@RequestMapping("/bookaddform")
-	public String BookaddList(Model model, AuthorVo authorvo, PublisherVo publishervo) {
+	public String bookaddList(Model model, AuthorVo authorvo, PublisherVo publishervo) {
 		if (authorvo.getKwd2() == null) {
 			authorvo.setKwd2("");
 		}
