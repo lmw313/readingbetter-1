@@ -27,17 +27,16 @@
 					</div>
 					<p class="menu-title">리뷰</p>
 					<div>
-						<img id="img-book" class="img-thumbnail"
-							src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/pikachu.png">
+						<img id="img-book" class="img-thumbnail" src="${vo.cover }">
 					</div>
 
 					<div id="board">
 						<table class="tbl-ex">
 							<colgroup>
-								<col width="50%" />
+								<col width="40%" />
 								<col width="10%" />
 								<col width="10%" />
-								<col width="10%" />
+								<col width="20%" />
 								<col width="10%" />
 							</colgroup>
 							<tr>
@@ -46,29 +45,20 @@
 								<th>신고</th>
 								<th>작성일</th>
 								<th></th>
-								<th></th>
 							</tr>
+							<c:set var="countList" value="${fn:length(list)}"/>
+	  						<c:forEach var='vo' items='${reviewlist}' varStatus='s'>	
 							<tr>
-								<td>내용</td>
-								<td>글쓴이</td>
+								<td>${vo.review }</td>
+								<td>${vo.id }</td>
 								<td>
-									<a href="">
+									<a href="/readingbetter/book/accusation">
 									<img id="img-singo" src="/readingbetter/assets/images/singo.png"></a>
 								</td>
-								<td>2016-09-07</td>
-								<td><a href="">수정</a></td>
+								<td>${vo.regDate }</td>
 								<td><a href="">삭제</a></td>
 							</tr>
-							<tr>
-								<td>내용</td>
-								<td>글쓴이</td>
-								<td>
-									<a href="">
-									<img id="img-singo" src="/readingbetter/assets/images/singo.png"></a></td>
-								<td>2016-09-07</td>
-								<td><a href="">수정</a></td>
-								<td><a href="">삭제</a></td>
-							</tr>
+							</c:forEach>							
 						</table>
 
 						<!-- begin:paging -->
@@ -89,7 +79,7 @@
 						<form class="form-inline">
 							<div class="form-group">
 								<label class="sr-only">review</label>
-								<input type="text" class="form-control input-sm" id="write-review">
+								<input  name="review" type="text" class="form-control input-sm" id="write-review">
 								<button type="submit" class="btn btn-default">등록</button>
 							</div>
 						</form>

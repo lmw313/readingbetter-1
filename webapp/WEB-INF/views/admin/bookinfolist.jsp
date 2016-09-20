@@ -31,13 +31,19 @@
 				</form>
 				<br>
 				<h5>출판사 관리</h5>
-				<c:forEach var='vo1' items='${publisherlist}' varStatus='s'>
-					<div class="radio">
-		  				<label>
-		    				<input type="radio" name="title" id="p" value=${vo1.title } >${vo1.title }
-		  				</label>
-					</div>
-				</c:forEach>	
+				<table class="tbl-ex">		
+					<tr>
+						<th>번호</th>
+						<th>이름</th>
+					</tr>				
+					<c:set var="countList" value="${fn:length(publisherlist)}"/>
+			  		<c:forEach var='publisherVo' items='${publisherlist}' varStatus='s'>
+						<tr>
+							<td>${countList-s.index}</td>
+							<td>${publisherVo.title }</td>
+						</tr>
+			 		</c:forEach>
+				</table>
 			</div>
 			
 			<div id="content" class="col-lg-6">
@@ -54,13 +60,19 @@
 								
 				<br>
 				<h5>작가 관리</h5>
-				<c:forEach var='vo' items='${authorlist}' varStatus='s'>
-					<div class="radio">
-		  				<label>
-		    				<input type="radio" name="name" id="author" value=${vo.name } >${vo.name }
-		  				</label>
-					</div>
-				</c:forEach>
+				<table class="tbl-ex">		
+					<tr>
+						<th>번호</th>
+						<th>이름</th>
+					</tr>				
+					<c:set var="countList" value="${fn:length(authorlist)}"/>
+			  		<c:forEach var='authorVo' items='${authorlist}' varStatus='s'>
+						<tr>
+							<td>${countList-s.index}</td>
+							<td>${authorVo.name }</td>
+						</tr>
+			 		</c:forEach>
+				</table>
 			</div>
 		</div>
 		<div class="row"></div>

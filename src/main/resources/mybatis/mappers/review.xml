@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+
+	<select id="list" parameterType="reviewvo" resultType="reviewvo">
+		<![CDATA[
+		select a.no,a.review,a.reg_date as regDate,a.book_no as bookNo,a.member_no as memberNo,b.id from review a,member b
+		where b.no=a.member_no
+		]]>
+	</select>
+	
+</mapper>

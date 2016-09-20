@@ -12,51 +12,65 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.readingbetter.service.BookService;
 import kr.ac.readingbetter.service.QuizService;
+import kr.ac.readingbetter.service.ReviewService;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.QuizVo;
+import kr.ac.readingbetter.vo.ReviewVo;
 
 @Controller
 @RequestMapping("/book")
 public class BookController {
-	
+
 	@Autowired
 	BookService bookService;
-	
+
 	@Autowired
 	QuizService quizService;
-	
+
+	@Autowired
+	ReviewService reviewService;
+
 	@RequestMapping("/booklist")
-	public String BookList(Model model) {
+	public String bookList(Model model) {
 		List<BookVo> list = bookService.getList();
 		model.addAttribute("list", list);
 		return "book/booklist";
 	}
-	
+
 	@RequestMapping("/solvequizform")
-	public String SolveQuizForm() {		
+	public String solveQuizForm() {
 		return "book/solvequizform";
-	}	
-	
+	}
+
 	@RequestMapping(value = "/makequizform/{no}", method = RequestMethod.GET)
-	public String MakeQuizForm(@PathVariable("no") Long no, Model model) {	
+	public String makeQuizForm(@PathVariable("no") Long no, Model model) {
 		BookVo vo = bookService.getByNo(no);
-		model.addAttribute("vo",vo);
+		model.addAttribute("vo", vo);
 		return "book/makequizform";
 	}
-	
-	@RequestMapping(value = "/makequizinsert", method =RequestMethod.POST)
-	public String MakequizInsert(@ModelAttribute QuizVo vo) {
+
+	@RequestMapping(value = "/makequizinsert", method = RequestMethod.POST)
+	public String makequizInsert(@ModelAttribute QuizVo vo) {
 		quizService.quizAddUser(vo);
 		return "redirect:/book/booklist";
 	}
-	
-	@RequestMapping("/review")
-	public String Review() {		
+
+	@RequestMapping("/resultquiz")
+	public String resultQuiz() {
+		return "book/resultquiz";
+	}
+
+	@RequestMapping(value = "/review/{no}", method = RequestMethod.GET)
+	public String review(@PathVariable("no") Long no, Model model) {
+		BookVo vo = reviewService.getByNo(no);
+		List<ReviewVo> reviewlist = reviewService.getList();
+		model.addAttribute("reviewlist", reviewlist);
+		model.addAttribute("vo", vo);
 		return "book/review";
 	}
-	
-	@RequestMapping("/resultquiz")
-	public String ResultQuiz() {		
-		return "book/resultquiz";
+
+	@RequestMapping("/accusation")
+	public String accusationform() {
+		return "book/accusation";
 	}
 }
