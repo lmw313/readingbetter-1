@@ -24,7 +24,7 @@
 		<mapper resource="mybatis/mappers/school.xml" />
 		<mapper resource="mybatis/mappers/notice.xml" />		
 		<mapper resource="mybatis/mappers/book.xml" />
-		<mapper resource="mybatis/mappers/ccusation.xml" />
+		<mapper resource="mybatis/mappers/accusation.xml" />
 		<mapper resource="mybatis/mappers/board.xml" />
 		<mapper resource="mybatis/mappers/comments.xml" />
 		<mapper resource="mybatis/mappers/author.xml" />
