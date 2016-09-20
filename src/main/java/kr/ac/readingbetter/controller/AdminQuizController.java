@@ -57,8 +57,8 @@ public class AdminQuizController {
 	}
 	
 	@RequestMapping(value = "/quizadd", method = RequestMethod.POST)
-	public String quizAdd(@ModelAttribute QuizVo vo) {
-		adminQuizService.quizAdd(vo);
+	public String quizAddAdmin(@ModelAttribute QuizVo vo) {
+		adminQuizService.quizAddAdmin(vo);
 		return "redirect:/admin/quizlist";
 	}
 }

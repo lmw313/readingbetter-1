@@ -26,58 +26,49 @@
 					</div>
 					<p class="menu-title">문제 내기</p>
 					<div id="quiz-content" class="col-lg-6">
-					<form method="post" action="../makequizlist">
-					<input type="hidden" name="no" value="${vo.no}">
-						<img id="img" class="img-thumbnail" 
-							src="${vo.cover}"><br>
-						
+						<input type="hidden" name="no" value="${vo.no}">
+						<img id="img" class="img-thumbnail" src="${vo.cover}"><br>
 						<table class="table">
 							<tr>
 								<td>제목</td>
 								<br>
-								<td>누가 내머리에 똥 쌌어?</td>
+								<td>${vo.title}</td>
 							</tr>
 							<tr>
 								<td>출판사</td>
 								<br>
-								<td>두더지 나라 만세</td>
+								<td>${vo.publisherTitle }</td>
 							</tr>
 							<tr>
 								<td>추천 학년</td>
 								<br>
-								<td>6학년</td>
+								<td>${vo.recommend}</td>
 							</tr>
 						</table>
 						<br>
-					</form>
 					</div>
 					
-
 					<div class="col-lg-6">
-						<div id="radio-group">
-							<h4>문제</h4>
-							<textarea class="form-control" rows="3"></textarea><br>
-							<h6>보기1</h6>
-							<input type="text" class="form-control" placeholder="Text input"><br>
-							<h6>보기2</h6>
-							<input type="text" class="form-control" placeholder="Text input"><br>
-							<h6>보기3</h6>
-							<input type="text" class="form-control" placeholder="Text input"><br>
-							<h6>보기4</h6>
-							<input type="text" class="form-control" placeholder="Text input"><br>
-
-							<form class="form-horizontal">
-								<div class="form-group">
-									<br><label for="inputanswer" class="col-sm-2 control-label">정답</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control" id="inputanswer"
-											placeholder="Text input">
-									</div>
-								</div>
-							</form>
-						</div>
-						<a type="submit" class="btn btn-default">제출</a>
+						<form method="post" action="../makequizinsert">
+							<input type="hidden" name="bookNo" value="${vo.no}">					
+							<div id="radio-group">
+								<h4>문제</h4>
+								<textarea id="quiz" name="quiz" class="form-control" rows="3"></textarea><br>
+								<h6>보기1</h6>
+								<input id="ex1" name="ex1" type="text" class="form-control" placeholder="Text input"><br>
+								<h6>보기2</h6>
+								<input id="ex2" name="ex2" type="text" class="form-control" placeholder="Text input"><br>
+								<h6>보기3</h6>
+								<input id="ex3" name="ex3"  type="text" class="form-control" placeholder="Text input"><br>
+								<h6>보기4</h6>
+								<input id="ex4" name="ex4" type="text" class="form-control" placeholder="Text input"><br>
+								<h6>정답</h6>
+								<input id="answer" name="answer" type="text" class="form-control" placeholder="Text input"><br>
+							</div>
+							<button type="submit" class="btn btn-default">제출</button>
+						</form>	
 					</div>
+							
 				</div>
 			</div>
 		</div>

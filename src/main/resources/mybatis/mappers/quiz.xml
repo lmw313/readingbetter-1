@@ -25,10 +25,17 @@
 		]]>
 	</update>
 	
-	<insert id="insert" parameterType="quizvo">
+	<insert id="insertForAdmin" parameterType="quizvo">
 		<![CDATA[
 			insert into quiz values(seq_quiz.nextval, #{quiz}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{answer}, 1, #{bookNo})
 		]]>
 	</insert>
+	
+	<insert id="insertForUser" parameterType="quizvo">
+ 		<![CDATA[
+ 			insert into quiz values
+ 			(seq_quiz.nextval, #{quiz}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{answer}, 0, #{bookNo})
+ 		]]>
+ 	</insert>
 	
 </mapper>

@@ -28,7 +28,11 @@ public class QuizDao {
 		sqlSession.update("quiz.update", vo);
 	}
 	
-	public void quizAdd(QuizVo vo) {
-		sqlSession.insert("quiz.insert", vo);
+	public void quizAddAdmin(QuizVo vo) {
+		sqlSession.insert("quiz.insertForAdmin", vo);
+	}
+	
+	public void quizAddUser(QuizVo vo) {
+		sqlSession.insert("quiz.insertForUser", vo);
 	}
 }

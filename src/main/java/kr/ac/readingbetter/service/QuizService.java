@@ -43,7 +43,11 @@ public class QuizService {
 		return bookVo;
 	}
 	
-	public void quizAdd(QuizVo vo) {
-		quizDao.quizAdd(vo);
+	public void quizAddAdmin(QuizVo vo) {
+		quizDao.quizAddAdmin(vo);
+	}
+	
+	public void quizAddUser(QuizVo vo) {
+		quizDao.quizAddUser(vo);
 	}
 }
