@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admincomments">
+
+	<select id="list" parameterType="commentsvo" resultType="commentsvo">
+		<![CDATA[
+			select a.no,a.content,a.reg_date as regDate ,a.group_no as groupNo,a.depth,a.announce_no as announceNo,a.member_no as memberNo,b.id
+			from comments a,member b
+			where b.no=a.member_no
+		]]>
+	</select>
+	
+</mapper>

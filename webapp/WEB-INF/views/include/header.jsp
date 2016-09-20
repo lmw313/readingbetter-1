@@ -1,0 +1,28 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<div class="row">
+	<div id="header" class="col-lg-12">
+		<a href="/readingbetter/main">
+			<img id="img"
+				src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/rb_logo.png">
+		</a>
+		<ul id="headeritem1">
+			<li><a href="/readingbetter/mypage/loginform">로그인</a></li>
+			<li><a href="/readingbetter/mypage/joinform">회원가입</a></li>
+			<li><a href="/readingbetter/mypage/modifyform">회원정보수정</a></li>
+			<li><a href="">로그아웃</a></li>
+			<li>${authUser.name}님 반갑습니다 ^0^</li>
+		</ul>
+		<br> <br>
+		<div>
+			<a href="/readingbetter/book/booklist">독서활동</a>
+			<a href="/readingbetter/ranking/summary">순위</a>
+			<a href="/readingbetter/shop">상점</a>
+			<a href="/readingbetter/mypage/info">내정보</a>
+			<a href="/readingbetter/service/noticelist">고객센터</a>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminboard">
+
+	<select id="list" parameterType="boardvo" resultType="boardvo">
+		<![CDATA[
+			select a.no,a.title,a.content,a.reg_date as regDate, a.view_count as viewCount,a.group_no as groupNo,a.position,a.accept,a.member_no as memberNo,b.id from board a,member b
+    		where b.no=a.member_no
+		]]>
+	</select>
+	
+</mapper>

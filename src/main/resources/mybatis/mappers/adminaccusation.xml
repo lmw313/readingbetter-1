@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminaccusation">
+
+	<select id="list" parameterType="accusationvo" resultType="accusationvo">
+		<![CDATA[
+			select a.no,a.reason,a.reg_date as regDate,a.accept,a.mem_no as memNo,a.IDENTITY,a.key_no as keyNo,b.name as memName
+			from accusation a,member b
+			where b.no=a.mem_no
+		]]>
+	</select>
+	
+	<select id="getByNo" parameterType="accusationvo" resultType="accusationvo">
+		<![CDATA[
+			select a.no,a.reason,a.reg_date as regDate,a.accept,a.mem_no as memNo,a.IDENTITY,a.key_no as keyNo,b.name as memName
+			from accusation a,member b
+			where b.no=a.mem_no
+			and a.no=1
+		]]>
+	</select>
+	
+	<update id="update" parameterType="accusationvo">
+		<![CDATA[
+			update accusation set accept=#{accept} where no=#{no}
+		
+		]]>	
+	</update>
+	
+</mapper>

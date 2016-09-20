@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="kr.ac.readingbetter.vo.MemberVo" alias="membervo" />
+		<typeAlias type="kr.ac.readingbetter.vo.WishbookVo" alias="wishbookvo" />
+		<typeAlias type="kr.ac.readingbetter.vo.BookVo" alias="bookvo" />
+		<typeAlias type="kr.ac.readingbetter.vo.SchoolVo" alias="schoolvo" />
+		<typeAlias type="kr.ac.readingbetter.vo.NoticeVo" alias="noticevo" />
+		<typeAlias type="kr.ac.readingbetter.vo.BookVo" alias="bookvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.AccusationVo" alias="accusationvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.BoardVo" alias="boardvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.CommentsVo" alias="commentsvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.AuthorVo" alias="authorvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.PublisherVo" alias="publishervo"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mybatis/mappers/adminmember.xml" />
+		<mapper resource="mybatis/mappers/adminwishbook.xml" />
+		<mapper resource="mybatis/mappers/adminschool.xml" />
+		<mapper resource="mybatis/mappers/adminnotice.xml" />		
+		<mapper resource="mybatis/mappers/adminbook.xml" />
+		<mapper resource="mybatis/mappers/adminaccusation.xml" />
+		<mapper resource="mybatis/mappers/adminboard.xml" />
+		<mapper resource="mybatis/mappers/admincomments.xml" />
+		<mapper resource="mybatis/mappers/adminauthor.xml" />
+		<mapper resource="mybatis/mappers/adminpublisher.xml" />
+		
+	</mappers>
+	
+</configuration>
