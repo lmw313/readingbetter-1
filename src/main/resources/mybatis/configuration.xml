@@ -16,6 +16,7 @@
 		<typeAlias type="kr.ac.readingbetter.vo.PublisherVo" alias="publishervo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.QuizVo" alias="quizvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.ShopVo" alias="shopvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.CardVo" alias="cardvo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -31,6 +32,7 @@
 		<mapper resource="mybatis/mappers/publisher.xml" />
 		<mapper resource="mybatis/mappers/quiz.xml" />
 		<mapper resource="mybatis/mappers/shop.xml" />
+		<mapper resource="mybatis/mappers/card.xml" />
 	</mappers>
 	
 </configuration>

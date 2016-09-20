@@ -12,23 +12,23 @@ import kr.ac.readingbetter.vo.NoticeVo;
 public class NoticeService {
 	
 	@Autowired
-	private NoticeDao adminNoticeDao;
+	private NoticeDao noticeDao;
 	
 	public List<NoticeVo> getList(NoticeVo vo) {
-		List<NoticeVo> list = adminNoticeDao.getList(vo);
+		List<NoticeVo> list = noticeDao.getList(vo);
 		return list;
 	}
 	
 	public void noticeWrite(NoticeVo vo){
-		adminNoticeDao.noticeWrite(vo);
+		noticeDao.noticeWrite(vo);
 	}
 	
 	public NoticeVo noticeView(Long no) {
-		NoticeVo vo = adminNoticeDao.noticeView(no);
+		NoticeVo vo = noticeDao.noticeView(no);
 		return vo;
 	}
 	
 	public void noticeModify(NoticeVo vo){
-		adminNoticeDao.noticeModify(vo);
+		noticeDao.noticeModify(vo);
 	}
 }

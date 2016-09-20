@@ -14,29 +14,29 @@ import kr.ac.readingbetter.vo.CommentsVo;
 public class AccusationService {
 
 	@Autowired
-	private AccusationDao adminAccusationDao;
+	private AccusationDao accusationDao;
 
 	public List<AccusationVo> getList() {
-		List<AccusationVo> list = adminAccusationDao.getList();
+		List<AccusationVo> list = accusationDao.getList();
 		return list;
 	}
 
 	public AccusationVo getByNo(Long no) {
-		AccusationVo adminAccusation = adminAccusationDao.getByNo(no);
+		AccusationVo adminAccusation = accusationDao.getByNo(no);
 		return adminAccusation;
 	}
 
 	public BoardVo getBoardList(Long no) {
-		BoardVo adminBoard = adminAccusationDao.getBoardList(no);
+		BoardVo adminBoard = accusationDao.getBoardList(no);
 		return adminBoard;
 	}
 
 	public CommentsVo getCommentsList(Long no) {
-		CommentsVo adminComments = adminAccusationDao.getCommentsList(no);
+		CommentsVo adminComments = accusationDao.getCommentsList(no);
 		return adminComments;
 	}
 
 	public void update(AccusationVo vo) {
-		adminAccusationDao.update(vo);
+		accusationDao.update(vo);
 	}
 }

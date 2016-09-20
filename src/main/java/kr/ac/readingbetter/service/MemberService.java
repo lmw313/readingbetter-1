@@ -11,14 +11,19 @@ import kr.ac.readingbetter.vo.MemberVo;
 @Service
 public class MemberService {
 	@Autowired
-	private MemberDao adminMemberDao;
+	private MemberDao memberDao;
 	
 	public List<MemberVo> getList(MemberVo vo) {
-		List<MemberVo> list = adminMemberDao.getList(vo);
+		List<MemberVo> list = memberDao.getList(vo);
 		return list;
 	}
 	
 	public void delete(MemberVo vo){
-		adminMemberDao.delete(vo);
+		memberDao.delete(vo);
+	}
+	
+	public MemberVo selectAuthUser(MemberVo vo){
+		vo = memberDao.selectAuthUser(vo);
+		return vo;
 	}
 }

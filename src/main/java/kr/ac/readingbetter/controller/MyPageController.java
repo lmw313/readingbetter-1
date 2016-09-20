@@ -6,34 +6,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/mypage")
 public class MyPageController {
-	
-	@RequestMapping("/joinform")
-	public String joinForm() {
-		return "mypage/joinform";
-	}
-	
+
 	@RequestMapping("/modifyform")
-	public String modifyForm() {
+	public String ModifyForm() {
 		return "mypage/modifyform";
 	}
-	
+
 	@RequestMapping("/info")
-	public String info() {
+	public String Info() {
 		return "mypage/info";
 	}
-	
-	@RequestMapping("/loginform")
-	public String loginForm() {
-		return "mypage/loginform";
-	}
-	
+
 	@RequestMapping("/findform")
-	public String findForm() {
+	public String FindForm() {
 		return "mypage/findform";
 	}
-	
+
 	@RequestMapping("/history")
-	public String history() {
+	public String History() {
 		return "mypage/history";
 	}
 }

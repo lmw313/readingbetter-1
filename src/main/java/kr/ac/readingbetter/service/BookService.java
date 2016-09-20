@@ -12,15 +12,15 @@ import kr.ac.readingbetter.vo.BookVo;
 public class BookService {
 
 	@Autowired
-	private BookDao adminBookDao;
+	private BookDao bookDao;
 
 	public List<BookVo> getList() {
-		List<BookVo> list = adminBookDao.getList();
+		List<BookVo> list = bookDao.getList();
 		return list;
 	}
 	
 	public BookVo getByNo(Long no){
-		BookVo vo = adminBookDao.getByNo(no);
+		BookVo vo = bookDao.getByNo(no);
 		return vo;
 	}
 }

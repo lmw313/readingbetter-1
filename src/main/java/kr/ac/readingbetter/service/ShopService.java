@@ -11,20 +11,20 @@ import kr.ac.readingbetter.vo.ShopVo;
 @Service
 public class ShopService {
 	@Autowired
-	private ShopDao adminShopDao;
+	private ShopDao shopDao;
 
 	// 상품 리스트 출력
 	public List<ShopVo> getList(ShopVo vo) {
-		return adminShopDao.getList(vo);
+		return shopDao.getList(vo);
 	}
 
 	// 상품 추가
 	public void goodsInsert(ShopVo vo) {
-		adminShopDao.goodsInsert(vo);
+		shopDao.goodsInsert(vo);
 	}
 
 	// 상품 삭제
 	public void goodsDelete(Long no) {
-		adminShopDao.goodsDelete(no);
+		shopDao.goodsDelete(no);
 	}
 }

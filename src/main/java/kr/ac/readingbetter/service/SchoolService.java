@@ -12,15 +12,15 @@ import kr.ac.readingbetter.vo.SchoolVo;
 public class SchoolService {
 	
 	@Autowired
-	private SchoolDao adminSchoolDao;
+	private SchoolDao schoolDao;
 	
 	public List<SchoolVo> getList(String kwd){
-		List<SchoolVo> list = adminSchoolDao.getList(kwd);
+		List<SchoolVo> list = schoolDao.getList(kwd);
 		
 		return list;
 	}
 	
 	public void insertSchool(String title){
-		adminSchoolDao.insertSchool(title);
+		schoolDao.insertSchool(title);
 	}
 }

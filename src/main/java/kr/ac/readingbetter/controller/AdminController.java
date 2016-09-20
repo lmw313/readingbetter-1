@@ -11,20 +11,4 @@ public class AdminController {
 	public String main() {
 		return "admin/main";
 	}
-
-	// 카드 관리
-	@RequestMapping("/cardlist")
-	public String cardList() {
-		return "admin/cardlist";
-	}
-
-	@RequestMapping("/cardmodifyform")
-	public String cardModifyForm() {
-		return "admin/cardmodifyform";
-	}
-
-	@RequestMapping("/cardaddform")
-	public String cardAddForm() {
-		return "admin/cardaddform";
-	}
 }

@@ -12,14 +12,14 @@ import kr.ac.readingbetter.vo.PublisherVo;
 public class PublisherService {
 
 	@Autowired
-	private PublisherDao adminPublisherDao;
+	private PublisherDao publisherDao;
 
 	public List<PublisherVo> getList(PublisherVo vo) {
-		List<PublisherVo> list = adminPublisherDao.getList(vo);
+		List<PublisherVo> list = publisherDao.getList(vo);
 		return list;
 	}
 
 	public void insert(PublisherVo vo) {
-		adminPublisherDao.insert(vo);
+		publisherDao.insert(vo);
 	}
 }

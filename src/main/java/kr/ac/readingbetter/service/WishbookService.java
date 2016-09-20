@@ -13,46 +13,46 @@ import kr.ac.readingbetter.vo.WishbookVo;
 @Service
 public class WishbookService {
 	@Autowired
-	private WishbookDao adminWishbookDao;
+	private WishbookDao wishbookDao;
 	
 	public List<WishbookVo> getList(){
-		List<WishbookVo> list = adminWishbookDao.getList();
+		List<WishbookVo> list = wishbookDao.getList();
 		return list;
 	}
 	
 	public WishbookVo getView(WishbookVo vo){
-		vo = adminWishbookDao.getView(vo);
+		vo = wishbookDao.getView(vo);
 		return vo;
 	}
 	
 	public List<PublisherVo> findPublisher(PublisherVo vo){
-		List<PublisherVo> list = adminWishbookDao.findPublisher(vo);
+		List<PublisherVo> list = wishbookDao.findPublisher(vo);
 		return list;
 	}
 	
 	public List<BookVo> findBook(BookVo vo){
-		List<BookVo> list = adminWishbookDao.findBook(vo);
+		List<BookVo> list = wishbookDao.findBook(vo);
 		return list;
 	}
 	
 	public List<PublisherVo> selectPublisher(WishbookVo vo){
-		List<PublisherVo> list = adminWishbookDao.selectPublisher(vo);
+		List<PublisherVo> list = wishbookDao.selectPublisher(vo);
 		return list;
 	}
 	
 	public void insertPublisher(WishbookVo vo){
-		adminWishbookDao.insertPublisher(vo);
+		wishbookDao.insertPublisher(vo);
 	}
 	
 	public void insertBook(WishbookVo vo){
-		adminWishbookDao.insertBook(vo);
+		wishbookDao.insertBook(vo);
 	}
 	
 	public void updateAcceptToOne(WishbookVo vo){
-		adminWishbookDao.updateAcceptToOne(vo);
+		wishbookDao.updateAcceptToOne(vo);
 	}
 	
 	public void updateAcceptToTwo(WishbookVo vo){
-		adminWishbookDao.updateAcceptToTwo(vo);
+		wishbookDao.updateAcceptToTwo(vo);
 	}
 }

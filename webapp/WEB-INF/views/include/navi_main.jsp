@@ -1,41 +1,45 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="main">
 <div id="loginbox">
-	<div id="login_before">
-		<h4>
-			로그인<a href="/readingbetter/mypage/join">가입하기</a>
-		</h4>
-		<form>
-			<div class="form-group">
-				<label for="email">아이디:</label>
-				<input type="email" class="form-control input-sm" id="email">
+	<c:choose>
+		<c:when test='${empty authUser }'>
+			<div id="login_before">
+				<h4>
+					로그인<a href="/readingbetter/mypage/join">가입하기</a>
+				</h4>
+				<form action="/readingbetter/main/login" method="post">
+					<div class="form-group">
+						<label for="id">아이디:</label>
+						<input type="text" class="form-control input-sm" id="email" name="id">
+					</div>
+					<div class="form-group">
+						<label for="pwd">비밀번호:</label>
+						<input type="password" class="form-control input-sm" id="pwd" name="pw">
+					</div>
+					<!--<div class="checkbox">
+					<label><input type="checkbox"> Remember me</label></div> -->
+					<button type="submit" class="btn btn-default">로그인</button>
+				</form>
+				<a href="/readingbetter/mypage/findjoin">아이디/비밀번호 찾기</a>
 			</div>
-			<div class="form-group">
-				<label for="pwd">비밀번호:</label>
-				<input type="password" class="form-control input-sm" id="pwd">
+		</c:when>
+		
+		<c:otherwise>
+			<div id="login_after">
+				<h5>${authUser.name }님 환영합니다 !</h5>
+				<div id="myinfo_mini">
+					<p>보유 캔디 : 개</p>
+					<p>누적점수 : 점</p>
+					<p>이번 달 점수 : 점</p>
+					<p>이번 달 전체 순위 : 위</p>
+					<p>명예의 전당 순위 : 위</p>
+				</div>
 			</div>
-			<!--<div class="checkbox">
-			<label><input type="checkbox"> Remember me</label></div> -->
-			<button type="submit" class="btn btn-default">로그인</button>
-		</form>
-		<a href="/readingbetter/mypage/findjoin">아이디/비밀번호 찾기</a>
-	</div>
-
-	<div id="login_after">
-		<h5>님 환영합니다 !</h5>
-		<div id="myinfo_mini">
-			<p>보유 캔디 : 개</p>
-			<p>누적점수 : 점</p>
-			<p>이번 달 점수 : 점</p>
-			<p>이번 달 전체 순위 : 위</p>
-			<p>명예의 전당 순위 : 위</p>
-		</div>
-	</div>
+		</c:otherwise>
+	</c:choose>
 </div>
 
 <div id="search">

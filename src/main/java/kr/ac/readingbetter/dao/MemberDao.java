@@ -22,4 +22,9 @@ public class MemberDao {
 	public void delete(MemberVo vo){
 		sqlSession.delete("member.delete", vo);
 	}
+	
+	public MemberVo selectAuthUser(MemberVo vo){
+		vo = sqlSession.selectOne("member.selectAuthUser", vo);
+		return vo;
+	}
 }
