@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="author">
+
+	<select id="list" parameterType="authorvo" resultType="authorvo">
+		<![CDATA[
+			select no,name from author where name like '%' || #{kwd2} || '%' order by name
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="authorvo">
+		<![CDATA[
+		insert 
+		  into author
+		values(seq_author.nextval, #{name } ) 
+		]]>
+	</insert>
+	
+</mapper>

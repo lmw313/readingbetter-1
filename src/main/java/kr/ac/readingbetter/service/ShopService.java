@@ -1,0 +1,30 @@
+package kr.ac.readingbetter.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.ac.readingbetter.dao.ShopDao;
+import kr.ac.readingbetter.vo.ShopVo;
+
+@Service
+public class ShopService {
+	@Autowired
+	private ShopDao adminShopDao;
+
+	// 상품 리스트 출력
+	public List<ShopVo> getList(ShopVo vo) {
+		return adminShopDao.getList(vo);
+	}
+
+	// 상품 추가
+	public void goodsInsert(ShopVo vo) {
+		adminShopDao.goodsInsert(vo);
+	}
+
+	// 상품 삭제
+	public void goodsDelete(Long no) {
+		adminShopDao.goodsDelete(no);
+	}
+}

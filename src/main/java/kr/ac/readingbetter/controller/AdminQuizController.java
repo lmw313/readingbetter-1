@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.ac.readingbetter.service.AdminQuizService;
+import kr.ac.readingbetter.service.QuizService;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.QuizVo;
 
@@ -19,7 +19,7 @@ import kr.ac.readingbetter.vo.QuizVo;
 public class AdminQuizController {
 	
 	@Autowired
-	private AdminQuizService adminQuizService;
+	private QuizService adminQuizService;
 
 	// 퀴즈 관리
 	@RequestMapping(value = "/quizlist", method = RequestMethod.GET)

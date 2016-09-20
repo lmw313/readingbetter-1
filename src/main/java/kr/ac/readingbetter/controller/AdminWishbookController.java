@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.ac.readingbetter.service.AdminWishbookService;
+import kr.ac.readingbetter.service.WishbookService;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.PublisherVo;
 import kr.ac.readingbetter.vo.WishbookVo;
@@ -19,7 +19,7 @@ import kr.ac.readingbetter.vo.WishbookVo;
 public class AdminWishbookController {
 	
 	@Autowired
-	private AdminWishbookService adminWishBookService;
+	private WishbookService adminWishBookService;
 	
 	// 희망도서 관리
 	@RequestMapping("")
@@ -62,14 +62,14 @@ public class AdminWishbookController {
 		}
 		
 		adminWishBookService.insertBook(vo);
-		adminWishBookService.updateWishbookAcceptToOne(vo);
+		adminWishBookService.updateAcceptToOne(vo);
 		
 		return "redirect:/admin/wishbooklist";
 	}
 	
 	@RequestMapping("/wishbookview/refuse")
 	public String wishBookRefuse(WishbookVo vo){
-		adminWishBookService.updateWishbookAcceptToTwo(vo);
+		adminWishBookService.updateAcceptToTwo(vo);
 		
 		return "redirect:/admin/wishbooklist";
 	}

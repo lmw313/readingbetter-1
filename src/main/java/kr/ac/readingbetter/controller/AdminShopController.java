@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.ac.readingbetter.service.AdminShopService;
+import kr.ac.readingbetter.service.ShopService;
 import kr.ac.readingbetter.vo.ShopVo;
 
 @Controller
@@ -16,7 +16,7 @@ import kr.ac.readingbetter.vo.ShopVo;
 public class AdminShopController {
 
 	@Autowired
-	private AdminShopService adminShopService;
+	private ShopService adminShopService;
 
 	// 상품 리스트 폼 및 출력
 	@RequestMapping("/shoplist")
@@ -24,7 +24,7 @@ public class AdminShopController {
 		if (vo.getTitle() == null) { // 검색할 상품명이 없으면 빈 문자열로 교체
 			vo.setTitle("");
 		}
-		List<ShopVo> getGoodsList = adminShopService.getGoodsList(vo);
+		List<ShopVo> getGoodsList = adminShopService.getList(vo);
 		model.addAttribute("getGoodsList", getGoodsList);
 		return "admin/shoplist";
 	}

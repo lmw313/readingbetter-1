@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import kr.ac.readingbetter.service.AdminBookService;
-import kr.ac.readingbetter.service.AdminAuthorService;
-import kr.ac.readingbetter.service.AdminPublisherService;
+import kr.ac.readingbetter.service.BookService;
+import kr.ac.readingbetter.service.AuthorService;
+import kr.ac.readingbetter.service.PublisherService;
 import kr.ac.readingbetter.vo.AuthorVo;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.PublisherVo;
@@ -19,13 +19,13 @@ import kr.ac.readingbetter.vo.PublisherVo;
 public class AdminBookController {
 
 	@Autowired
-	AdminBookService adminBookService;
+	BookService adminBookService;
 
 	@Autowired
-	AdminAuthorService authorService;
+	AuthorService authorService;
 
 	@Autowired
-	AdminPublisherService publisherService;
+	PublisherService publisherService;
 
 	// 도서 관리
 	@RequestMapping("/booklist")

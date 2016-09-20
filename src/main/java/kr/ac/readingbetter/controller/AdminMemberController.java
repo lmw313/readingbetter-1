@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.ac.readingbetter.service.AdminMemberService;
+import kr.ac.readingbetter.service.MemberService;
 import kr.ac.readingbetter.vo.MemberVo;
 
 @Controller
@@ -18,7 +18,7 @@ import kr.ac.readingbetter.vo.MemberVo;
 public class AdminMemberController {
 	
 	@Autowired
-	AdminMemberService adminMemberService;
+	MemberService adminMemberService;
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String memberList(Model model, MemberVo vo) {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import kr.ac.readingbetter.service.AdminSchoolService;
+import kr.ac.readingbetter.service.SchoolService;
 import kr.ac.readingbetter.vo.SchoolVo;
 
 // 학교 관리
@@ -18,7 +18,7 @@ import kr.ac.readingbetter.vo.SchoolVo;
 public class AdminSchoolController {
 	
 	@Autowired
-	private AdminSchoolService adminSchoolService;
+	private SchoolService adminSchoolService;
 	
 	@RequestMapping("")
 	public String schoolList(Model model, @RequestParam(value="kwd", required=false, defaultValue="") String kwd) {
@@ -26,7 +26,7 @@ public class AdminSchoolController {
 			kwd = "";
 		}
 		
-		List<SchoolVo> list = adminSchoolService.selectList(kwd);
+		List<SchoolVo> list = adminSchoolService.getList(kwd);
 		
 		model.addAttribute("list", list);
 		

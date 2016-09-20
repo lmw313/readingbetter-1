@@ -19,18 +19,18 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="mybatis/mappers/adminmember.xml" />
-		<mapper resource="mybatis/mappers/adminwishbook.xml" />
-		<mapper resource="mybatis/mappers/adminschool.xml" />
-		<mapper resource="mybatis/mappers/adminnotice.xml" />		
-		<mapper resource="mybatis/mappers/adminbook.xml" />
-		<mapper resource="mybatis/mappers/adminaccusation.xml" />
-		<mapper resource="mybatis/mappers/adminboard.xml" />
-		<mapper resource="mybatis/mappers/admincomments.xml" />
-		<mapper resource="mybatis/mappers/adminauthor.xml" />
-		<mapper resource="mybatis/mappers/adminpublisher.xml" />
-		<mapper resource="mybatis/mappers/adminquiz.xml" />
-		<mapper resource="mybatis/mappers/adminshop.xml" />
+		<mapper resource="mybatis/mappers/member.xml" />
+		<mapper resource="mybatis/mappers/wishbook.xml" />
+		<mapper resource="mybatis/mappers/school.xml" />
+		<mapper resource="mybatis/mappers/notice.xml" />		
+		<mapper resource="mybatis/mappers/book.xml" />
+		<mapper resource="mybatis/mappers/ccusation.xml" />
+		<mapper resource="mybatis/mappers/board.xml" />
+		<mapper resource="mybatis/mappers/comments.xml" />
+		<mapper resource="mybatis/mappers/author.xml" />
+		<mapper resource="mybatis/mappers/publisher.xml" />
+		<mapper resource="mybatis/mappers/quiz.xml" />
+		<mapper resource="mybatis/mappers/shop.xml" />
 	</mappers>
 	
 </configuration>

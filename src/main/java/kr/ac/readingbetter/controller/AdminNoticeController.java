@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.ac.readingbetter.service.AdminNoticeService;
+import kr.ac.readingbetter.service.NoticeService;
 import kr.ac.readingbetter.vo.NoticeVo;
 
 @Controller
@@ -18,7 +18,7 @@ import kr.ac.readingbetter.vo.NoticeVo;
 public class AdminNoticeController {
 	
 	@Autowired
-	AdminNoticeService adminNoticeService;
+	NoticeService adminNoticeService;
 
 	// 공지 관리
 	@RequestMapping(value = "/noticelist", method = RequestMethod.GET)

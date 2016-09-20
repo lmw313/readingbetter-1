@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.ac.readingbetter.service.AdminAccusationService;
+import kr.ac.readingbetter.service.AccusationService;
 import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.BoardVo;
 import kr.ac.readingbetter.vo.CommentsVo;
@@ -20,7 +20,7 @@ import kr.ac.readingbetter.vo.CommentsVo;
 public class AdminAccusationController {
 
 	@Autowired
-	AdminAccusationService adminAccusationService;
+	AccusationService adminAccusationService;
 
 	// 신고 관리
 	@RequestMapping("/accusationlist")
@@ -32,7 +32,7 @@ public class AdminAccusationController {
 
 	@RequestMapping(value = "/accusationview/{no}", method = RequestMethod.GET)
 	public String accusationView(@PathVariable("no") Long no, Model model) {
-		AccusationVo vo = adminAccusationService.get(no);
+		AccusationVo vo = adminAccusationService.getByNo(no);
 		BoardVo boardvo;
 		CommentsVo commentsvo;
 		Long identity = vo.getIdentity();

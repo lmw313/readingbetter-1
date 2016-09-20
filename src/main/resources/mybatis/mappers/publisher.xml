@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="publisher">
+
+	<select id="list" parameterType="publishervo" resultType="publishervo">
+		<![CDATA[
+			select no,title from publisher where title like '%' || #{kwd1} || '%' order by title
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="publishervo">
+		<![CDATA[
+		insert 
+		  into publisher 
+		values(seq_publisher.nextval, #{title } ) 
+		]]>
+	</insert>
+	
+</mapper>
