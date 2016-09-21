@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.readingbetter.vo.AccusationVo;
-import kr.ac.readingbetter.vo.BoardVo;
 import kr.ac.readingbetter.vo.CommentsVo;
+import kr.ac.readingbetter.vo.ReviewVo;
 
 @Repository
 public class AccusationDao {
@@ -26,13 +26,13 @@ public class AccusationDao {
 		return vo;
 	}
 
-	public BoardVo getBoardList(Long no) {
-		BoardVo vo = sqlSession.selectOne("board.list", no);
+	public ReviewVo getReviewList(Long no) {
+		ReviewVo vo = sqlSession.selectOne("review.getByNo", no);
 		return vo;
 	}
 
 	public CommentsVo getCommentsList(Long no) {
-		CommentsVo vo = sqlSession.selectOne("comments.list", no);
+		CommentsVo vo = sqlSession.selectOne("comments.getByNo", no);
 		return vo;
 	}
 

@@ -57,67 +57,68 @@
 						<div id="radio-group">
 							<h4>문제1 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
 							<div class="radio">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios1" value="option1" checked> 지나가던 강아지
+								<label> <input type="radio" name="optionsRadios1" id="ex1" value="option1" > 지나가던 강아지
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 옆집 고양이
+									<input type="radio" name="optionsRadios1" id="optionsRadios2" value="option2"> 옆집 고양이
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> 춤추던 사자
+									<input type="radio" name="optionsRadios1" id="optionsRadios3" value="option3"> 춤추던 사자
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 강아지를 보던 사람
+									<input type="radio" name="optionsRadios1" id="optionsRadios2" value="option2"> 강아지를 보던 사람
 								</label>
 							</div>
-
+						</div>
+						<div id="radio-group">
 							<h4>문제2 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 지나가던 강아지
+									<input type="radio" name="optionsRadios2" id="optionsRadios1" value="option1" checked> 지나가던 강아지
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 옆집 고양이
+									<input type="radio" name="optionsRadios2" id="optionsRadios2" value="option2"> 옆집 고양이
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> 춤추던 사자
+									<input type="radio" name="optionsRadios2" id="optionsRadios3" value="option3"> 춤추던 사자
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 강아지를 보던 사람
+									<input type="radio" name="optionsRadios2" id="optionsRadios2" value="option2"> 강아지를 보던 사람
 								</label>
 							</div>
-
+						</div>
+						<div id="radio-group">
 							<h4>문제3 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 지나가던 강아지
+									<input type="radio" name="optionsRadios3" id="optionsRadios1" value="option1" checked> 지나가던 강아지
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 옆집 고양이
+									<input type="radio" name="optionsRadios3" id="optionsRadios2" value="option2"> 옆집 고양이
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> 춤추던 사자
+									<input type="radio" name="optionsRadios3" id="optionsRadios3" value="option3"> 춤추던 사자
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 강아지를 보던 사람
+									<input type="radio" name="optionsRadios3" id="optionsRadios2" value="option2"> 강아지를 보던 사람
 								</label>
 							</div>
 						</div>
@@ -130,44 +131,45 @@
 							<h4>문제4 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 지나가던 강아지
+									<input type="radio" name="optionsRadios4" id="optionsRadios1" value="option1" checked> 지나가던 강아지
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 옆집 고양이
+									<input type="radio" name="optionsRadios4" id="optionsRadios2" value="option2"> 옆집 고양이
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> 춤추던 사자
+									<input type="radio" name="optionsRadios4" id="optionsRadios3" value="option3"> 춤추던 사자
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 강아지를 보던 사람
+									<input type="radio" name="optionsRadios4" id="optionsRadios2" value="option2"> 강아지를 보던 사람
 								</label>
 							</div>
-
+						</div>
+						<div id="radio-group">
 							<h4>문제5 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 지나가던 강아지
+									<input type="radio" name="optionsRadios5" id="optionsRadios1" value="option1" checked> 지나가던 강아지
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 옆집 고양이
+									<input type="radio" name="optionsRadios5" id="optionsRadios2" value="option2"> 옆집 고양이
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios3" value="option3"> 춤추던 사자
+									<input type="radio" name="optionsRadios5" id="optionsRadios3" value="option3"> 춤추던 사자
 								</label>
 							</div>
 							<div class="radio">
 								<label>
-									<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> 강아지를 보던 사람
+									<input type="radio" name="optionsRadios5" id="optionsRadios2" value="option2"> 강아지를 보던 사람
 								</label>
 							</div>
 						</div>
@@ -175,7 +177,6 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
 		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>

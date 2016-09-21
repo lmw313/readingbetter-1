@@ -38,7 +38,7 @@
 				<th class="active">종류</th>
 				<td>
 					<c:choose>
-                        <c:when test="${vo.identity == 1}">문의</c:when>
+                        <c:when test="${vo.identity == 1}">리뷰</c:when>
                         <c:when test="${vo.identity == 2}">댓글</c:when>
                      
                      </c:choose>
@@ -60,7 +60,7 @@
 			<tr>
 				<td id="content" colspan=6>
 				<c:choose>
-                        <c:when test="${vo.identity == 1}">${boardvo.content }</c:when>
+                        <c:when test="${vo.identity == 1}">${reviewvo.review }</c:when>
                         <c:when test="${vo.identity == 2}">${commentsvo.content }</c:when>
                </c:choose>
 				</td>

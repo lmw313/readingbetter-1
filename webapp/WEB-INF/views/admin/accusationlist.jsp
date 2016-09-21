@@ -32,8 +32,13 @@
 				<c:set var="countList" value="${fn:length(accusationlist)}" />
 				<c:forEach var='vo' items='${accusationlist}' varStatus='s'>
 					<tr>
-						<td>[${countList-s.index}]</td>
-						<td>${vo.reason }</td>
+						<td>${countList-s.index}</td>
+						<td>
+							<c:choose>
+		                        <c:when test="${vo.identity == 1}">리뷰</c:when>
+		                        <c:when test="${vo.identity == 2}">댓글</c:when>
+	               			</c:choose>
+						</td>
 						<td>${vo.memName }</td>
 						<td>${vo.keyNo }</td>
 						<td>${vo.regDate }</td>

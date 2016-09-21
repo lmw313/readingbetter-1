@@ -52,7 +52,9 @@
 									<th  class="active" colspan=6>신고 이유</th>
 								</tr>
 								<tr>
-									<td id="content" colspan=6>욕했엉</td>
+									<td id="content" colspan=6>
+										<input name="content" type="text" class="form-control" id="exampleInputEmail1">
+									</td>
 								</tr>
 							</table>
 								

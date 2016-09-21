@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.AccusationDao;
 import kr.ac.readingbetter.vo.AccusationVo;
-import kr.ac.readingbetter.vo.BoardVo;
 import kr.ac.readingbetter.vo.CommentsVo;
+import kr.ac.readingbetter.vo.ReviewVo;
 
 @Service
 public class AccusationService {
@@ -26,9 +26,9 @@ public class AccusationService {
 		return adminAccusation;
 	}
 
-	public BoardVo getBoardList(Long no) {
-		BoardVo adminBoard = accusationDao.getBoardList(no);
-		return adminBoard;
+	public ReviewVo getReviewList(Long no) {
+		ReviewVo adminReview = accusationDao.getReviewList(no);
+		return adminReview;
 	}
 
 	public CommentsVo getCommentsList(Long no) {

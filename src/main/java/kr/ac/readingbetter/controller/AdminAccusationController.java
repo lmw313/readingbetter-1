@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.readingbetter.service.AccusationService;
 import kr.ac.readingbetter.vo.AccusationVo;
-import kr.ac.readingbetter.vo.BoardVo;
 import kr.ac.readingbetter.vo.CommentsVo;
+import kr.ac.readingbetter.vo.ReviewVo;
 
 @Controller
 @RequestMapping("/admin")
@@ -33,14 +33,14 @@ public class AdminAccusationController {
 	@RequestMapping(value = "/accusationview/{no}", method = RequestMethod.GET)
 	public String accusationView(@PathVariable("no") Long no, Model model) {
 		AccusationVo vo = adminAccusationService.getByNo(no);
-		BoardVo boardvo;
 		CommentsVo commentsvo;
+		ReviewVo reviewvo;
 		Long identity = vo.getIdentity();
 		Long keyNo = vo.getKeyNo();
 
 		if (identity == 1) {
-			boardvo = adminAccusationService.getBoardList(keyNo);
-			model.addAttribute("boardvo", boardvo);
+			reviewvo = adminAccusationService.getReviewList(keyNo);
+			 			model.addAttribute("reviewvo", reviewvo);
 		} else {
 			commentsvo = adminAccusationService.getCommentsList(keyNo);
 			model.addAttribute("commentsvo", commentsvo);

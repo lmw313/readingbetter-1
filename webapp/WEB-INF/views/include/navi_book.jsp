@@ -5,6 +5,6 @@
 <div id="navigation">
 <p id="category">책 목록</p>
 	<ul>
-		<li><a href="/readingbetter/book/list">책 목록</a></li>
+		<li><a href="/readingbetter/book/booklist">책 목록</a></li>
 	</ul>
 </div>

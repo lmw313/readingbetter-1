@@ -10,5 +10,14 @@
 			where b.no=a.member_no
 		]]>
 	</select>
-	
+
+	<select id="getByNo" parameterType="commentsvo" resultType="commentsvo">
+		<![CDATA[
+			select a.no,a.content,a.reg_date as regDate ,a.group_no as groupNo,a.depth,a.announce_no as announceNo,a.member_no as memberNo,b.id
+			from comments a,member b
+			where b.no=a.member_no
+			and a.no=#{no}
+		]]>
+	</select>
+
 </mapper>
