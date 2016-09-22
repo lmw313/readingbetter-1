@@ -25,158 +25,67 @@
 						<a href="/readingbetter/book/booklist">책 목록</a> > 문제 풀기
 					</div>
 					<p class="menu-title">문제 풀기</p>
-					<form class="form-horizontal">
+					<form class="form-horizontal" action="/readingbetter/book/resultquiz" method="post">
 						<div class="form-group">
 							<div class="col-sm-6">
 								<img id="img-solvequiz" class="img-thumbnail"
-									src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/book.png"><br>
-							</div>
-							<div class="col-sm-6">
+									src="${vo.cover }"><br>
 								<table id="table-solve" class="table">
 									<tr>
 										<td>제목</td>
 										<br>
-										<td>누가 내머리에 똥 쌌어?</td>
+										<td>${vo.title }</td>
 									</tr>
 									<tr>
 										<td>출판사</td>
 										<br>
-										<td>두더지 나라 만세</td>
+										<td>${vo.publisherTitle }</td>
 									</tr>
 									<tr>
 										<td>추천 학년</td>
 										<br>
-										<td>6학년</td>
+										<td>${vo.recommend }학년</td>
 									</tr>
 								</table>
 							</div>
+							<div class="col-sm-6">
+								<c:forEach begin='${count }' end='${maxcount }' step='1' var='i'>
+									<div id="radio-group">
+										<h4>문제${i+1 } : ${list[i].quiz }</h4>
+										<div class="radio">
+											<label>
+												<input type="radio" name="selectedRadio${i }" 
+												id="options${i }Radios1" value="${list[i].ex1 }">${list[i].ex1 }
+											</label>
+										</div>
+										<div class="radio">
+											<label> 
+												<input type="radio" name="selectedRadio${i }"
+												id="options${i }Radios2" value="${list[i].ex2 }">${list[i].ex2 }
+											</label>
+										</div>
+										<div class="radio">
+											<label> 
+												<input type="radio" name="selectedRadio${i }"
+												id="options${i }Radios3" value="${list[i].ex3 }">${list[i].ex3 }
+											</label>
+										</div>
+										<div class="radio">
+											<label> 
+												<input type="radio" name="selectedRadio${i }"
+												id="options${i }Radios4" value="${list[i].ex4 }">${list[i].ex4 }
+											</label>
+										</div>
+										<input type="hidden" type="text" name="no${i }" value="${list[i].no }">
+									</div>
+								</c:forEach>
+								<button class="btn btn-default" type="submit">결과보기</button>
+							</div>
 						</div>
 					</form>
-					
-					<div class="col-lg-6">
-						<div id="radio-group">
-							<h4>문제1 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
-							<div class="radio">
-								<label> <input type="radio" name="optionsRadios1" id="ex1" value="option1" > 지나가던 강아지
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios1" id="optionsRadios2" value="option2"> 옆집 고양이
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios1" id="optionsRadios3" value="option3"> 춤추던 사자
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios1" id="optionsRadios2" value="option2"> 강아지를 보던 사람
-								</label>
-							</div>
-						</div>
-						<div id="radio-group">
-							<h4>문제2 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios2" id="optionsRadios1" value="option1" checked> 지나가던 강아지
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios2" id="optionsRadios2" value="option2"> 옆집 고양이
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios2" id="optionsRadios3" value="option3"> 춤추던 사자
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios2" id="optionsRadios2" value="option2"> 강아지를 보던 사람
-								</label>
-							</div>
-						</div>
-						<div id="radio-group">
-							<h4>문제3 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios3" id="optionsRadios1" value="option1" checked> 지나가던 강아지
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios3" id="optionsRadios2" value="option2"> 옆집 고양이
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios3" id="optionsRadios3" value="option3"> 춤추던 사자
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios3" id="optionsRadios2" value="option2"> 강아지를 보던 사람
-								</label>
-							</div>
-						</div>
-
-						<br>
-					</div>
-
-					<div class="col-lg-6">
-						<div id="radio-group">
-							<h4>문제4 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios4" id="optionsRadios1" value="option1" checked> 지나가던 강아지
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios4" id="optionsRadios2" value="option2"> 옆집 고양이
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios4" id="optionsRadios3" value="option3"> 춤추던 사자
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios4" id="optionsRadios2" value="option2"> 강아지를 보던 사람
-								</label>
-							</div>
-						</div>
-						<div id="radio-group">
-							<h4>문제5 : 두더지 머리에 누가 똥을 쌌을 까요?</h4>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios5" id="optionsRadios1" value="option1" checked> 지나가던 강아지
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios5" id="optionsRadios2" value="option2"> 옆집 고양이
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios5" id="optionsRadios3" value="option3"> 춤추던 사자
-								</label>
-							</div>
-							<div class="radio">
-								<label>
-									<input type="radio" name="optionsRadios5" id="optionsRadios2" value="option2"> 강아지를 보던 사람
-								</label>
-							</div>
-						</div>
-						<a class="btn btn-default" href="/readingbetter/book/resultquiz" type="submit">결과보기</a>
-					</div>
 				</div>
 			</div>
+
 		</div>
 		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>

@@ -12,42 +12,52 @@ import kr.ac.readingbetter.vo.QuizVo;
 
 @Service
 public class QuizService {
-	
+
 	@Autowired
 	private QuizDao quizDao;
-	
+
 	@Autowired
 	private BookDao bookDao;
-	
+
 	public List<QuizVo> getList() {
 		List<QuizVo> list = quizDao.getList();
 		return list;
 	}
-	
+
 	public QuizVo quizView(Long no) {
 		QuizVo vo = quizDao.quizView(no);
 		return vo;
 	}
-	
+
 	public void quizUpdate(QuizVo vo) {
 		quizDao.quizUpdate(vo);
 	}
-	
+
 	public List<BookVo> getBookList() {
 		List<BookVo> list = bookDao.getList();
 		return list;
 	}
-	
+
 	public BookVo getBook(Long no) {
 		BookVo bookVo = bookDao.getByNo(no);
 		return bookVo;
 	}
-	
+
 	public void quizAddAdmin(QuizVo vo) {
 		quizDao.quizAddAdmin(vo);
 	}
-	
+
 	public void quizAddUser(QuizVo vo) {
 		quizDao.quizAddUser(vo);
+	}
+
+	public List<QuizVo> selectQuiz(Long no) {
+		List<QuizVo> list = quizDao.selectQuiz(no);
+		return list;
+	}
+
+	public QuizVo selectResult(QuizVo vo) {
+		vo = quizDao.selectResult(vo);
+		return vo;
 	}
 }

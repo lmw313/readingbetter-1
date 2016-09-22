@@ -10,7 +10,7 @@
 			where a.book_no=b.no order by a.no desc
 		]]>
 	</select>
-	
+
 	<select id="getByNo" parameterType="long" resultType="quizvo">
 		<![CDATA[
 			select a.no, b.title, a.quiz, a.ex1, a.ex2, a.ex3, a.ex4, a.answer, 
@@ -18,25 +18,39 @@
 			where a.book_no=b.no and a.no=#{no}
 		]]>
 	</select>
-	
+
 	<update id="update" parameterType="quizvo">
 		<![CDATA[
 			update quiz set accept=#{accept} where no=#{no}
 		]]>
 	</update>
-	
+
 	<insert id="insertForAdmin" parameterType="quizvo">
 		<![CDATA[
 			insert into quiz 
 			values(seq_quiz.nextval, #{quiz}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{answer}, 1, #{bookNo})
 		]]>
 	</insert>
-	
+
 	<insert id="insertForUser" parameterType="quizvo">
  		<![CDATA[
  			insert into quiz 
  			values(seq_quiz.nextval, #{quiz}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{answer}, 0, #{bookNo})
  		]]>
- 	</insert>
-	
+	</insert>
+
+	<select id="selectQuiz" parameterType="Long" resultType="quizvo">
+		<![CDATA[
+			select no, quiz, ex1, ex2, ex3, ex4 
+			from (select * from quiz where accept=1 and book_no=#{no} 
+			order by dbms_random.value) where rownum <= 5
+		]]>
+	</select>
+
+	<select id="selectResult" parameterType="quizvo" resultType="quizvo">
+		<![CDATA[
+			select * from quiz where no=#{no} and answer=#{selected}
+		]]>
+	</select>
+
 </mapper>

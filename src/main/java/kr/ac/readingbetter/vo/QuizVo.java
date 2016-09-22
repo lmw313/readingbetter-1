@@ -1,7 +1,6 @@
 package kr.ac.readingbetter.vo;
 
 public class QuizVo {
-	
 	private Long no;
 	private String quiz;
 	private String ex1;
@@ -12,6 +11,7 @@ public class QuizVo {
 	private String accept;
 	private Long bookNo;
 	private String title;
+	private String selected;
 
 	public Long getNo() {
 		return no;
@@ -93,9 +93,18 @@ public class QuizVo {
 		this.title = title;
 	}
 
+	public String getSelected() {
+		return selected;
+	}
+
+	public void setSelected(String selected) {
+		this.selected = selected;
+	}
+
 	@Override
 	public String toString() {
 		return "QuizVo [no=" + no + ", quiz=" + quiz + ", ex1=" + ex1 + ", ex2=" + ex2 + ", ex3=" + ex3 + ", ex4=" + ex4
-				+ ", answer=" + answer + ", accept=" + accept + ", bookNo=" + bookNo + ", title=" + title + "]";
+				+ ", answer=" + answer + ", accept=" + accept + ", bookNo=" + bookNo + ", title=" + title
+				+ ", selected=" + selected + "]";
 	}
 }
