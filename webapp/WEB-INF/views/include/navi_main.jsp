@@ -8,7 +8,7 @@
 		<c:when test='${empty authUser }'>
 			<div id="login_before">
 				<h4>
-					로그인<a href="/readingbetter/mypage/join">가입하기</a>
+					로그인<a href="/readingbetter/member/joinform">가입하기</a>
 				</h4>
 				<form action="/readingbetter/main/login" method="post">
 					<div class="form-group">

@@ -1,25 +1,42 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
 
-	<select id="list" parameterType="membervo" resultType="membervo">
-		<![CDATA[
-			select no, id, name, penalty from member 
-			where id like '%' || #{kwd} || '%' order by no asc
-		]]>
-	</select>
-	
 	<select id="selectAuthUser" parameterType="membervo" resultType="membervo">
 		<![CDATA[
-			select no, name, id from member where id=#{id} and pw=#{pw}
+			select no, name from member where id=#{id} and pw=#{pw}
 		]]>
 	</select>
 
-	<delete id="delete" parameterType="long">
+	<select id="selectSchoolTitle" resultType="schoolvo">
 		<![CDATA[
-			delete from member where no=#{no}
+			select title from school order by title asc
 		]]>
-	</delete>
+	</select>
+
+	<select id="searchSchool" parameterType="string" resultType="schoolvo">
+		<![CDATA[
+			select no, title from school where title like '%' || #{kwd} || '%' order by title asc
+		]]>
+	</select>
+
+	<select id="checkId" parameterType="string" resultType="membervo">
+		<![CDATA[
+			select id from member where id=#{id}
+		]]>
+	</select>
+
+	<select id="checkEmail" parameterType="string" resultType="membervo">
+		<![CDATA[
+			select email from member where email=#{email}
+		]]>
+	</select>
+
+	<insert id="insertMember" parameterType="membervo">
+		<![CDATA[
+			insert into member values(seq_member.nextval, #{id}, #{pw}, #{name}, #{email}, #{tel}, sysdate, 1, 0, #{grade}, #{classNo}, (select no from school where title=#{schoolName}))
+		]]>
+	</insert>
 	
 </mapper>

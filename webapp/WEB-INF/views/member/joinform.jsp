@@ -9,6 +9,9 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/mypage.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/joinform.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -23,77 +26,91 @@
 					<p class="menu-title">회원가입</p>
 
 					<div id="radio-group">
-						<form class="form-horizontal">
+						<form class="form-horizontal" id="join-form" action="/readingbetter/member/join" method="POST">
 							<div class="form-group">
 								<label class="col-sm-3 control-label">이름</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputName" placeholder="Name">
+									<input type="text" class="form-control" id="inputName" placeholder="Name" name="name">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-sm-3 control-label">아이디</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputID" placeholder="ID">
+									<input type="text" class="form-control" id="inputID" placeholder="ID" name="id">
 								</div>
 								<div class="col-sm-1">
-									<a class="btn btn-default" role="button">중복확인</a>
+									<img id="image-checked" style="width:16px; display:none" src="/readingbetter/assets/images/check.png"/>
+									<a class="btn btn-default" role="button" id="check-id">중복확인</a>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-sm-3 control-label">비밀번호</label>
 								<div class="col-sm-6">
-									<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+									<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="pw">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-3 control-label">비밀번호 확인</label>
+								<div class="col-sm-6">
+									<input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Password">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-sm-3 control-label">이메일</label>
 								<div class="col-sm-6">
-									<input type="Email" class="form-control" id="inputEmail" placeholder="Email">
+									<input type="Email" class="form-control" id="inputEmail" placeholder="Email" name="email">
 								</div>
 								<div class="col-sm-1">
-									<a class="btn btn-default" role="button">중복확인</a>
+									<img id="image-emailchecked" style="width:16px; display:none" src="/readingbetter/assets/images/check.png"/>
+									<a class="btn btn-default" role="button" id="check-email">중복확인</a>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-sm-3 control-label">전화번호</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputPhone" placeholder="PhoneNumber">
+									<input type="text" class="form-control" id="inputPhone" placeholder="PhoneNumber" name="tel">
 								</div>
 							</div>
 
 
 							<label class="radio-inline">
-								<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">초등학생
+								<input type="radio" name="inlineRadioOptions" id="element" value="option1" checked>초등학생
 							</label>
 							<label class="radio-inline">
-								<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option3">기타
+								<input type="radio" name="inlineRadioOptions" id="etc" value="option2">기타
 							</label><br><br>
 
-							<div class="form-group">
-								<label class="col-sm-3 control-label">학교이름</label>
-								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputSchoolName" placeholder="SchoolName">
+							<div id="school-info">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">학교이름</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="inputSchoolName" placeholder="SchoolName" readOnly name="schoolName">
+									</div>
+									<div class="col-sm-1">
+										<button type="button" class="btn btn-default" id="btn-searchschool">찾기</button>
+									</div>
+								</div>
+	
+								<div class="form-group">
+									<label class="col-sm-3 control-label">학년</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="inputSchoolGrade" placeholder="Grade" name="grade">
+									</div>
+								</div>
+	
+								<div class="form-group">
+									<label class="col-sm-3 control-label">반</label>
+									<div class="col-sm-6">
+										<input type="text" class="form-control" id="inputSchoolClass" placeholder="Class" name="classNo">
+									</div>
 								</div>
 							</div>
-
-							<div class="form-group">
-								<label class="col-sm-3 control-label">학년</label>
-								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputSchoolGrade" placeholder="Grade">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-sm-3 control-label">반</label>
-								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputSchoolClass" placeholder="Class">
-								</div>
-							</div>
-							<a class="btn btn-default" type="submit">가입하기</a>
+							<button class="btn btn-default" type="submit">가입하기</button>
 						</form>
 					</div>
 				</div>
@@ -103,3 +120,26 @@
 	</div>
 </body>
 </html>
+
+<!-- 학교검색모달 -->
+<div id="schoolModal" class="modal fade school-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">학교 검색</h4>
+			</div>
+			<div class="modal-body">
+				<input type="text" id="school-kwd" name="kwd" value="${param.kwd }">
+				<button class="btn btn-default" id="search">검색</button>
+				<div id="search-list">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
