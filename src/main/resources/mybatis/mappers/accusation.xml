@@ -5,26 +5,40 @@
 
 	<select id="list" parameterType="accusationvo" resultType="accusationvo">
 		<![CDATA[
-			select a.no,a.reason,a.reg_date as regDate,a.accept,a.mem_no as memNo,a.IDENTITY,a.key_no as keyNo,b.name as memName
-			from accusation a,member b
-			where b.no=a.mem_no
+			select a.no, a.reason, to_char(a.reg_date, 'yyyy-mm-dd') as regDate,
+			a.accept, a.member_no as memberNo, a.IDENTITY, a.key_no as keyNo, 
+			b.id as id from accusation a,member b
+			where b.no=a.member_no order by a.no desc
 		]]>
 	</select>
 	
-	<select id="getByNo" parameterType="accusationvo" resultType="accusationvo">
+	<select id="getByNo" parameterType="long" resultType="accusationvo">
 		<![CDATA[
-			select a.no,a.reason,a.reg_date as regDate,a.accept,a.mem_no as memNo,a.IDENTITY,a.key_no as keyNo,b.name as memName
-			from accusation a,member b
-			where b.no=a.mem_no
-			and a.no=#{no}
+			select a.no, a.reason,to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			a.accept, a.member_no as memberNo, a.IDENTITY, a.key_no as keyNo, 
+			b.id as id from accusation a,member b
+			where b.no=a.member_no and a.no=#{no}
 		]]>
 	</select>
 	
 	<update id="update" parameterType="accusationvo">
 		<![CDATA[
-			update accusation set accept=#{accept} where no=#{no}
-		
+			update accusation set accept=#{accept} where no=#{no}		
 		]]>	
 	</update>
+	
+	<insert id="insertReview" parameterType="accusationvo">
+      <![CDATA[
+         insert into accusation values
+         (seq_accusation.nextval,#{reason},sysdate,0,#{memberNo},1,#{keyNo})
+      ]]>
+   </insert>
+   
+   <insert id="insertComments" parameterType="accusationvo">
+      <![CDATA[
+         insert into accusation values
+         (seq_accusation.nextval,#{reason},sysdate,0,#{memberNo},2,#{keyNo})
+      ]]>
+   </insert>
 	
 </mapper>

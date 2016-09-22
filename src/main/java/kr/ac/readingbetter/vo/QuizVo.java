@@ -1,6 +1,7 @@
 package kr.ac.readingbetter.vo;
 
 public class QuizVo {
+	
 	private Long no;
 	private String quiz;
 	private String ex1;

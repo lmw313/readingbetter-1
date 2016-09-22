@@ -1,6 +1,7 @@
 package kr.ac.readingbetter.vo;
 
 public class WishbookVo {
+	
 	private Long no;
 	private String title;
 	private String reason;

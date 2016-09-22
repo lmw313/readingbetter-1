@@ -1,12 +1,11 @@
 package kr.ac.readingbetter.vo;
 
 public class CommentsVo {
+
 	private Long no;
 	private String content;
 	private String regDate;
-	private Integer groupNo;
-	private Integer depth;
-	private Long announceNo;
+	private Long noticeNo;
 	private Long memberNo;
 	private String id;
 
@@ -34,28 +33,12 @@ public class CommentsVo {
 		this.regDate = regDate;
 	}
 
-	public Integer getGroupNo() {
-		return groupNo;
+	public Long getNoticeNo() {
+		return noticeNo;
 	}
 
-	public void setGroupNo(Integer groupNo) {
-		this.groupNo = groupNo;
-	}
-
-	public Integer getDepth() {
-		return depth;
-	}
-
-	public void setDepth(Integer depth) {
-		this.depth = depth;
-	}
-
-	public Long getAnnounceNo() {
-		return announceNo;
-	}
-
-	public void setAnnounceNo(Long announceNo) {
-		this.announceNo = announceNo;
+	public void setNoticeNo(Long noticeNo) {
+		this.noticeNo = noticeNo;
 	}
 
 	public Long getMemberNo() {
@@ -76,7 +59,7 @@ public class CommentsVo {
 
 	@Override
 	public String toString() {
-		return "AdminCommentsVo [no=" + no + ", content=" + content + ", regDate=" + regDate + ", groupNo=" + groupNo
-				+ ", depth=" + depth + ", announceNo=" + announceNo + ", memberNo=" + memberNo + ", id=" + id + "]";
+		return "CommentsVo [no=" + no + ", content=" + content + ", regDate=" + regDate + ", noticeNo=" + noticeNo
+				+ ", memberNo=" + memberNo + ", id=" + id + "]";
 	}
 }

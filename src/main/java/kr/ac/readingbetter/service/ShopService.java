@@ -10,6 +10,7 @@ import kr.ac.readingbetter.vo.ShopVo;
 
 @Service
 public class ShopService {
+	
 	@Autowired
 	private ShopDao shopDao;
 

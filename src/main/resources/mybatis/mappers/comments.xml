@@ -5,19 +5,46 @@
 
 	<select id="list" parameterType="commentsvo" resultType="commentsvo">
 		<![CDATA[
-			select a.no,a.content,a.reg_date as regDate ,a.group_no as groupNo,a.depth,a.announce_no as announceNo,a.member_no as memberNo,b.id
-			from comments a,member b
-			where b.no=a.member_no
+			select a.no, a.content, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			a.notice_no as noticeNo, a.member_no as memberNo, b.id 
+			from comments a, member b
+			where b.no=a.member_no order by a.no desc
 		]]>
 	</select>
 
-	<select id="getByNo" parameterType="commentsvo" resultType="commentsvo">
+	<select id="getByNo" parameterType="long" resultType="commentsvo">
 		<![CDATA[
-			select a.no,a.content,a.reg_date as regDate ,a.group_no as groupNo,a.depth,a.announce_no as announceNo,a.member_no as memberNo,b.id
-			from comments a,member b
-			where b.no=a.member_no
-			and a.no=#{no}
+			select a.no, a.content, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			a.notice_no as noticeNo, a.member_no as memberNo, b.id 
+			from comments a, member b
+			where b.no=a.member_no and a.no=#{no}
 		]]>
 	</select>
+	
+	<select id="getByNoticeNo" parameterType="long" resultType="commentsvo">
+		<![CDATA[
+			select a.no, a.content, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			a.notice_no as noticeNo, a.member_no as memberNo, b.id 
+			from comments a, member b
+			where b.no=a.member_no and a.notice_no=#{noticeNo}
+			order by a.no desc
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="commentsvo">
+		<![CDATA[
+			insert into comments 
+			values(seq_comments.nextval,#{content},sysdate,#{noticeNo},#{memberNo})
+		]]>
+	</insert>
+	
+	<delete id="delete" parameterType="long">
+		<![CDATA[
+			delete from comments where no=#{no}
+		]]>
+	</delete>
 
 </mapper>

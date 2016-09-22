@@ -16,7 +16,7 @@ import kr.ac.readingbetter.vo.ShopVo;
 public class AdminShopController {
 
 	@Autowired
-	private ShopService adminShopService;
+	private ShopService shopService;
 
 	// 상품 리스트 폼 및 출력
 	@RequestMapping("/shoplist")
@@ -24,7 +24,7 @@ public class AdminShopController {
 		if (vo.getTitle() == null) { // 검색할 상품명이 없으면 빈 문자열로 교체
 			vo.setTitle("");
 		}
-		List<ShopVo> getGoodsList = adminShopService.getList(vo);
+		List<ShopVo> getGoodsList = shopService.getList(vo);
 		model.addAttribute("getGoodsList", getGoodsList);
 		return "admin/shoplist";
 	}
@@ -38,14 +38,14 @@ public class AdminShopController {
 	// 상품 추가
 	@RequestMapping(value = "/shopadd", method = RequestMethod.POST)
 	public String goodsInsert(ShopVo vo) {
-		adminShopService.goodsInsert(vo);
+		shopService.goodsInsert(vo);
 		return "redirect:shoplist";
 	}
 
 	// 상품 삭제
 	@RequestMapping(value = "/shoplist/delete")
 	public String goodsDelete(Long no) {
-		adminShopService.goodsDelete(no);
+		shopService.goodsDelete(no);
 		return "redirect:/admin/shoplist";
 	}
 }

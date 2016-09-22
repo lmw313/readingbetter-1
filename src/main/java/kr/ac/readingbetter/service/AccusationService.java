@@ -39,4 +39,8 @@ public class AccusationService {
 	public void update(AccusationVo vo) {
 		accusationDao.update(vo);
 	}
+	
+	public void insertComments(AccusationVo vo){
+		accusationDao.insertComments(vo);
+	}
 }

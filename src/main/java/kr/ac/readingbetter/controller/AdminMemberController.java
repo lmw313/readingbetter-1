@@ -18,21 +18,21 @@ import kr.ac.readingbetter.vo.MemberVo;
 public class AdminMemberController {
 	
 	@Autowired
-	MemberService adminMemberService;
+	private MemberService memberService;
 	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String memberList(Model model, MemberVo vo) {
 		if(vo.getKwd() == null){
 			vo.setKwd("");
 		}
-		List<MemberVo> list = adminMemberService.getList(vo);
+		List<MemberVo> list = memberService.getList(vo);
 		model.addAttribute("list", list);
 		return "admin/memberlist";
 	}
 	
 	@RequestMapping("/delete/{no}")
 	public String memberDelete(@PathVariable("no") Long no, @ModelAttribute MemberVo vo){
-		adminMemberService.delete(vo);
+		memberService.delete(vo);
 		return "redirect:/admin/memberlist";
 	}
 }

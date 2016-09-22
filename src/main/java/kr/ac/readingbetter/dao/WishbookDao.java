@@ -12,6 +12,7 @@ import kr.ac.readingbetter.vo.WishbookVo;
 
 @Repository
 public class WishbookDao {
+	
 	@Autowired
 	private SqlSession sqlSession;
 	

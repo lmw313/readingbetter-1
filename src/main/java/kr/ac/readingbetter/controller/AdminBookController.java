@@ -19,18 +19,18 @@ import kr.ac.readingbetter.vo.PublisherVo;
 public class AdminBookController {
 
 	@Autowired
-	BookService adminBookService;
+	private BookService bookService;
 
 	@Autowired
-	AuthorService authorService;
+	private AuthorService authorService;
 
 	@Autowired
-	PublisherService publisherService;
+	private PublisherService publisherService;
 
 	// 도서 관리
 	@RequestMapping("/booklist")
 	public String bookList(Model model) {
-		List<BookVo> list = adminBookService.getList();
+		List<BookVo> list = bookService.getList();
 		model.addAttribute("list", list);
 		return "admin/booklist";
 	}

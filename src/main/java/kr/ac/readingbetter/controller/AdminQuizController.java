@@ -19,46 +19,46 @@ import kr.ac.readingbetter.vo.QuizVo;
 public class AdminQuizController {
 	
 	@Autowired
-	private QuizService adminQuizService;
+	private QuizService quizService;
 
 	// 퀴즈 관리
 	@RequestMapping(value = "/quizlist", method = RequestMethod.GET)
 	public String quizList(Model model) {
-		List<QuizVo> list = adminQuizService.getList();
+		List<QuizVo> list = quizService.getList();
 		model.addAttribute("list", list);
 		return "admin/quizlist";
 	}
 	
 	@RequestMapping(value = "/quizview/{no}", method = RequestMethod.GET)
 	public String quizView(@PathVariable("no") Long no, Model model) {
-		QuizVo vo = adminQuizService.quizView(no);
+		QuizVo vo = quizService.quizView(no);
 		model.addAttribute("vo", vo);
 		return "admin/quizview";
 	}
 	
 	@RequestMapping(value = "/quizUpdate", method = RequestMethod.POST)
 	public String quizUpdate(@ModelAttribute QuizVo vo) {
-		adminQuizService.quizUpdate(vo);
+		quizService.quizUpdate(vo);
 		return "redirect:/admin/quizlist";
 	}
 	
 	@RequestMapping(value = "/quizaddbook", method = RequestMethod.GET)
 	public String quizAddBook(Model model) {
-		List<BookVo> bookList = adminQuizService.getBookList();
+		List<BookVo> bookList = quizService.getBookList();
 		model.addAttribute("bookList", bookList);
 		return "admin/quizaddbook";
 	}
 
 	@RequestMapping(value = "/quizaddform/{no}", method = RequestMethod.GET)
 	public String quizAddForm(@PathVariable("no") Long no, Model model) {
-		BookVo bookVo = adminQuizService.getBook(no);
+		BookVo bookVo = quizService.getBook(no);
 		model.addAttribute("bookVo", bookVo);
 		return "admin/quizaddform";
 	}
 	
 	@RequestMapping(value = "/quizadd", method = RequestMethod.POST)
 	public String quizAddAdmin(@ModelAttribute QuizVo vo) {
-		adminQuizService.quizAddAdmin(vo);
+		quizService.quizAddAdmin(vo);
 		return "redirect:/admin/quizlist";
 	}
 }

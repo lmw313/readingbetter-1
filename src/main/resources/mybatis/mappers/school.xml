@@ -4,7 +4,8 @@
 <mapper namespace="school">
 	<select id="list" parameterType="string" resultType="schoolvo">
 		<![CDATA[
-			select * from school where title like '%' || #{kwd} || '%' order by no asc
+			select no, title from school where title 
+			like '%' || #{kwd} || '%' order by no asc
 		]]>
 	</select>
 	

@@ -10,6 +10,7 @@ import kr.ac.readingbetter.vo.MemberVo;
 
 @Service
 public class MemberService {
+	
 	@Autowired
 	private MemberDao memberDao;
 	

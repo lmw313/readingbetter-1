@@ -1,6 +1,7 @@
 package kr.ac.readingbetter.vo;
 
 public class PublisherVo {
+	
 	private Long no;
 	private String title;
 	private String kwd1;

@@ -5,24 +5,28 @@
 
 	<select id="list" parameterType="noticevo" resultType="noticevo">
 		<![CDATA[
-			select a.no, a.title, a.content, a.reg_date as regDate, 
+			select a.no, a.title, a.content, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
 			a.view_count as viewCount, a.member_no as memberNo, 
 			b.name from notice a, member b where a.member_no=b.no 
 			order by a.no desc
 		]]>
 	</select>
 	
-	<select id="getByNo" parameterType="Long" resultType="noticevo">
+	<select id="getByNo" parameterType="long" resultType="noticevo">
 		<![CDATA[
-			select a.no, a.title, a.content, a.reg_date as regDate, 
+			select a.no, a.title, a.content, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
 			a.view_count as viewCount, a.member_no as memberNo, 
-			b.name from notice a, member b where a.member_no=b.no and a.no=#{no}
+			b.name from notice a, member b 
+			where a.member_no=b.no and a.no=#{no}
 		]]>
 	</select>
 	
 	<insert id="insert" parameterType="noticevo">
 		<![CDATA[
-			insert into notice values(seq_notice.nextval,#{title},#{content},sysdate,0, 1)
+			insert into notice 
+			values(seq_notice.nextval,#{title},#{content},sysdate,0, 1)
 		]]>
 	</insert>
 	

@@ -1,6 +1,7 @@
 package kr.ac.readingbetter.vo;
 
 public class SchoolVo {
+	
 	private Long no;
 	private String title;
 	

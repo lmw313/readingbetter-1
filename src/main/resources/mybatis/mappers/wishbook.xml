@@ -4,15 +4,18 @@
 <mapper namespace="wishbook">
 	<select id="list" resultType="wishbookvo">
 		<![CDATA[
-			select w.no, w.title, m.NAME, w.recommend, w.accept from wishbook w, member m where w.MEMBER_NO = m.NO order by w.recommend desc
+			select w.no, w.title, m.NAME, w.recommend, w.accept 
+			from wishbook w, member m where w.MEMBER_NO = m.NO 
+			order by w.recommend desc
 		]]>
 	</select>
 	
-	<select id="getByNo" parameterType="wishbookvo" resultType="wishbookvo">
+	<select id="getByNo" parameterType="long" resultType="wishbookvo">
 		<![CDATA[
-			select w.title, w.publisher, w.reason, w.reg_date as regDate, w.recommend, w.accept, m.name
-				from wishbook w, member m 
-				where w.MEMBER_NO = m.NO and w.no=#{no}
+			select w.title, w.publisher, w.reason, 
+			to_char(w.reg_date, 'yyyy-mm-dd') as regDate, w.recommend, 
+			w.accept, m.name from wishbook w, member m 
+			where w.MEMBER_NO=m.NO and w.no=#{no}
 		]]>
 	</select>
 	
@@ -24,7 +27,8 @@
 	
 	<select id="findBook" parameterType="bookvo" resultType="bookvo">
 		<![CDATA[
-			select * from book where title like '%' || #{bkwd} || '%' order by no asc
+			select * from book where title 
+			like '%' || #{bkwd} || '%' order by no asc
 		]]>
 	</select>
 	
@@ -42,14 +46,10 @@
 	
 	<insert id="insertBook" parameterType="wishbookvo">
 		<![CDATA[
-			insert into book values(
-				seq_book.nextval, 
-				#{title}, 
-				0, 
-				'', 
-				(select no from publisher where title=
-					(select publisher from wishbook where no=#{no})), 
-				null)
+			insert into book 
+			values(seq_book.nextval, #{title}, 0, '', 
+			(select no from publisher 
+			where title=(select publisher from wishbook where no=#{no})), null)
 		]]>
 	</insert>
 	

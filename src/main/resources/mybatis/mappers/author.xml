@@ -5,15 +5,14 @@
 
 	<select id="list" parameterType="authorvo" resultType="authorvo">
 		<![CDATA[
-			select no,name from author where name like '%' || #{kwd2} || '%' order by name
+			select no, name from author where name 
+			like '%' || #{kwd2} || '%' order by name
 		]]>
 	</select>
 	
 	<insert id="insert" parameterType="authorvo">
 		<![CDATA[
-		insert 
-		  into author
-		values(seq_author.nextval, #{name } ) 
+			insert into author values(seq_author.nextval, #{name }) 
 		]]>
 	</insert>
 	

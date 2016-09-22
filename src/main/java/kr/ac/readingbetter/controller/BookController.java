@@ -22,13 +22,13 @@ import kr.ac.readingbetter.vo.ReviewVo;
 public class BookController {
 
 	@Autowired
-	BookService bookService;
+	private BookService bookService;
 
 	@Autowired
-	QuizService quizService;
+	private QuizService quizService;
 
 	@Autowired
-	ReviewService reviewService;
+	private ReviewService reviewService;
 
 	@RequestMapping("/booklist")
 	public String bookList(Model model) {

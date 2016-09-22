@@ -6,8 +6,8 @@ public class AccusationVo {
 	private String reason;
 	private String regDate;
 	private String accept;
-	private Long memNo;
-	private String memName;
+	private Long memberNo;
+	private String id;
 	private Long identity;
 	private Long keyNo;
 
@@ -43,20 +43,20 @@ public class AccusationVo {
 		this.accept = accept;
 	}
 
-	public Long getMemNo() {
-		return memNo;
+	public Long getMemberNo() {
+		return memberNo;
 	}
 
-	public void setMemNo(Long memNo) {
-		this.memNo = memNo;
+	public void setMemberNo(Long memberNo) {
+		this.memberNo = memberNo;
 	}
 
-	public String getMemName() {
-		return memName;
+	public String getId() {
+		return id;
 	}
 
-	public void setMemName(String memName) {
-		this.memName = memName;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public Long getIdentity() {
@@ -77,7 +77,7 @@ public class AccusationVo {
 
 	@Override
 	public String toString() {
-		return "AdminAccusationVo [no=" + no + ", reason=" + reason + ", regDate=" + regDate + ", accept=" + accept
-				+ ", memNo=" + memNo + ", memName=" + memName + ", identity=" + identity + ", keyNo=" + keyNo + "]";
+		return "AccusationVo [no=" + no + ", reason=" + reason + ", regDate=" + regDate + ", accept=" + accept
+				+ ", memberNo=" + memberNo + ", id=" + id + ", identity=" + identity + ", keyNo=" + keyNo + "]";
 	}
 }

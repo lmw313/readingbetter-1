@@ -5,16 +5,19 @@
 
 	<select id="list" parameterType="reviewvo" resultType="reviewvo">
 		<![CDATA[
-			select a.no,a.review,a.reg_date as regDate,a.book_no as bookNo,a.member_no as memberNo,b.id from review a,member b
-			where b.no=a.member_no
+			select a.no, a.review, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			a.book_no as bookNo, a.member_no as memberNo, b.id 
+			from review a,member b where b.no=a.member_no
 		]]>
 	</select>
 
-	<select id="getByNo" parameterType="reviewvo" resultType="reviewvo">
+	<select id="getByNo" parameterType="long" resultType="reviewvo">
 		<![CDATA[
-			select a.no,a.review,a.reg_date as regDate,a.book_no as bookNo,a.member_no as memberNo,b.id from review a,member b
-			where b.no=a.member_no
-			and a.no=#{no}
+			select a.no, a.review, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			a.book_no as bookNo, a.member_no as memberNo, b.id 
+			from review a,member b where b.no=a.member_no and a.no=#{no}
 		]]>
 	</select>
 

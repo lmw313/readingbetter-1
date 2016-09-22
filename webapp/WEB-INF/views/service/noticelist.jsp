@@ -7,10 +7,8 @@
 <head>
 <title>ReadingBetter</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/board.css" rel="stylesheet"
-	type="text/css">
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -22,15 +20,10 @@
 			<div id="content" class="col-lg-10">
 				<div id="notice">
 					<div class="small-menu">
-						<a href="/readingbetter/main">홈</a> > <a
-							href="/readingbetter/service/noticelist">고객센터</a> > 공지
+						<a href="/readingbetter/main">홈</a> > 
+						<a href="/readingbetter/service/noticelist">고객센터</a> > 공지
 					</div>
 					<p class="menu-title">공지</p>
-
-					<form id="search_form" action="/mysite/board" method="post">
-						<input type="text" id="kwd" name="kwd" value="${kwd }"> <input
-							type="submit" value="찾기">
-					</form>
 
 					<div id="board">
 						<table class="tbl-ex">
@@ -41,20 +34,16 @@
 								<th>조회수</th>
 								<th>작성일</th>
 							</tr>
+							<c:set var="countList" value="${fn:length(list)}"/>
+							<c:forEach var='vo' items='${list}' varStatus='s'>
 							<tr>
-								<td>1</td>
-								<td><a href="/readingbetter/service/noticeview">제목</a></td>
-								<td>작성자</td>
-								<td>3</td>
-								<td>2016-09-07</td>
+								<td>${countList-s.index}</td>
+								<td><a href="/readingbetter/service/noticeview/${vo.no }">${vo.title }</a></td>
+								<td>${vo.name }</td>
+								<td>${vo.viewCount }</td>
+								<td>${vo.regDate }</td>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td><a href="">제목</a></td>
-								<td>작성자</td>
-								<td>3</td>
-								<td>2016-09-07</td>
-							</tr>
+							</c:forEach>
 						</table>
 
 						<!-- begin:paging -->

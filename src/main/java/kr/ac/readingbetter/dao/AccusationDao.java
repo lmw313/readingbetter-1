@@ -39,4 +39,8 @@ public class AccusationDao {
 	public void update(AccusationVo vo) {
 		sqlSession.update("accusation.update", vo);
 	}
+	
+	public void insertComments(AccusationVo vo){
+		sqlSession.insert("accusation.insertComments", vo);
+	}
 }

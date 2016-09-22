@@ -19,12 +19,12 @@ import kr.ac.readingbetter.vo.WishbookVo;
 public class AdminWishbookController {
 	
 	@Autowired
-	private WishbookService adminWishBookService;
+	private WishbookService wishBookService;
 	
 	// 희망도서 관리
 	@RequestMapping("")
 	public String wishBookList(Model model) {
-		List<WishbookVo> list = adminWishBookService.getList();
+		List<WishbookVo> list = wishBookService.getList();
 		model.addAttribute("list", list);
 		
 		return "admin/wishbooklist";
@@ -32,7 +32,7 @@ public class AdminWishbookController {
 	
 	@RequestMapping("/wishbookview")
 	public String wishBookView(Model model, WishbookVo vo, PublisherVo pVo, BookVo bVo) {
-		vo = adminWishBookService.getView(vo);
+		vo = wishBookService.getView(vo);
 		
 		if(pVo.getKwd1() == null || pVo.getKwd1().equals("")){
 			pVo.setKwd1("@@@@@@@@@@@@@@@@");
@@ -42,8 +42,8 @@ public class AdminWishbookController {
 			bVo.setBkwd("@@@@@@@@@@@@@@@@@@@@");
 		}
 		
-		List<PublisherVo> pList = adminWishBookService.findPublisher(pVo);
-		List<BookVo> bList = adminWishBookService.findBook(bVo);
+		List<PublisherVo> pList = wishBookService.findPublisher(pVo);
+		List<BookVo> bList = wishBookService.findBook(bVo);
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("plist", pList);
@@ -54,22 +54,22 @@ public class AdminWishbookController {
 	
 	@RequestMapping(value="/wishbookview/accept", method=RequestMethod.POST)
 	public String wishBookAccept(@ModelAttribute WishbookVo vo){
-		List<PublisherVo> pList = adminWishBookService.selectPublisher(vo);
+		List<PublisherVo> pList = wishBookService.selectPublisher(vo);
 		Integer pListLength = pList.size();
 		
 		if(pListLength == 0){
-			adminWishBookService.insertPublisher(vo);
+			wishBookService.insertPublisher(vo);
 		}
 		
-		adminWishBookService.insertBook(vo);
-		adminWishBookService.updateAcceptToOne(vo);
+		wishBookService.insertBook(vo);
+		wishBookService.updateAcceptToOne(vo);
 		
 		return "redirect:/admin/wishbooklist";
 	}
 	
 	@RequestMapping("/wishbookview/refuse")
 	public String wishBookRefuse(WishbookVo vo){
-		adminWishBookService.updateAcceptToTwo(vo);
+		wishBookService.updateAcceptToTwo(vo);
 		
 		return "redirect:/admin/wishbooklist";
 	}

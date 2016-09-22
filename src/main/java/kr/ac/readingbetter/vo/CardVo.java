@@ -2,12 +2,12 @@ package kr.ac.readingbetter.vo;
 
 public class CardVo {
 	
-	Long no; // 카드 번호
-	String title; // 카드 이름
-	String content; // 카드 내용
-	String skill; // 카드 스킬
-	Long bonus; // 카드 제공 점수
-	String cover; // 카드 커버
+	private Long no; // 카드 번호
+	private String title; // 카드 이름
+	private String content; // 카드 내용
+	private String skill; // 카드 스킬
+	private Long bonus; // 카드 제공 점수
+	private String cover; // 카드 커버
 
 	public Long getNo() {
 		return no;

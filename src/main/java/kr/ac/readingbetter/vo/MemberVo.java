@@ -1,6 +1,7 @@
 package kr.ac.readingbetter.vo;
 
 public class MemberVo {
+	
 	private Long no;
 	private String id;
 	private String pw;

@@ -18,7 +18,7 @@ import kr.ac.readingbetter.vo.SchoolVo;
 public class AdminSchoolController {
 	
 	@Autowired
-	private SchoolService adminSchoolService;
+	private SchoolService schoolService;
 	
 	@RequestMapping("")
 	public String schoolList(Model model, @RequestParam(value="kwd", required=false, defaultValue="") String kwd) {
@@ -26,7 +26,7 @@ public class AdminSchoolController {
 			kwd = "";
 		}
 		
-		List<SchoolVo> list = adminSchoolService.getList(kwd);
+		List<SchoolVo> list = schoolService.getList(kwd);
 		
 		model.addAttribute("list", list);
 		
@@ -35,7 +35,7 @@ public class AdminSchoolController {
 	
 	@RequestMapping(value="/insert", method=RequestMethod.POST)
 	public String insertSchool(@RequestParam(value="add", required=false, defaultValue="") String title){
-		adminSchoolService.insertSchool(title);
+		schoolService.insertSchool(title);
 		
 		return "redirect:/admin/schoollist";
 	}

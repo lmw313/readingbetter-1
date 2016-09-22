@@ -20,29 +20,29 @@ import kr.ac.readingbetter.vo.ReviewVo;
 public class AdminAccusationController {
 
 	@Autowired
-	AccusationService adminAccusationService;
+	private AccusationService accusationService;
 
 	// 신고 관리
 	@RequestMapping("/accusationlist")
 	public String accusationList(Model model) {
-		List<AccusationVo> list = adminAccusationService.getList();
+		List<AccusationVo> list = accusationService.getList();
 		model.addAttribute("accusationlist", list);
 		return "admin/accusationlist";
 	}
 
 	@RequestMapping(value = "/accusationview/{no}", method = RequestMethod.GET)
 	public String accusationView(@PathVariable("no") Long no, Model model) {
-		AccusationVo vo = adminAccusationService.getByNo(no);
+		AccusationVo vo = accusationService.getByNo(no);
 		CommentsVo commentsvo;
 		ReviewVo reviewvo;
 		Long identity = vo.getIdentity();
 		Long keyNo = vo.getKeyNo();
 
 		if (identity == 1) {
-			reviewvo = adminAccusationService.getReviewList(keyNo);
-			 			model.addAttribute("reviewvo", reviewvo);
+			reviewvo = accusationService.getReviewList(keyNo);
+			model.addAttribute("reviewvo", reviewvo);
 		} else {
-			commentsvo = adminAccusationService.getCommentsList(keyNo);
+			commentsvo = accusationService.getCommentsList(keyNo);
 			model.addAttribute("commentsvo", commentsvo);
 		}
 
@@ -53,7 +53,7 @@ public class AdminAccusationController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String modify(@ModelAttribute AccusationVo vo) {
 		System.out.println(vo);
-		adminAccusationService.update(vo);
+		accusationService.update(vo);
 		return "redirect:/admin/accusationlist";
 	}
 }

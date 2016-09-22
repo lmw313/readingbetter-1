@@ -19,10 +19,10 @@ import kr.ac.readingbetter.vo.PublisherVo;
 public class AdminBookInfoController {
 
 	@Autowired
-	AuthorService adminAuthorService;
+	private AuthorService authorService;
 
 	@Autowired
-	PublisherService adminPublisherService;
+	private PublisherService publisherService;
 
 	// 출판사,작가 관리
 	@RequestMapping("/bookinfolist")
@@ -31,13 +31,13 @@ public class AdminBookInfoController {
 			authorvo.setKwd2("");
 		}
 
-		List<AuthorVo> list = adminAuthorService.getList(authorvo);
+		List<AuthorVo> list = authorService.getList(authorvo);
 		model.addAttribute("authorlist", list);
 
 		if (publishervo.getKwd1() == null) {
 			publishervo.setKwd1("");
 		}
-		List<PublisherVo> list2 = adminPublisherService.getList(publishervo);
+		List<PublisherVo> list2 = publisherService.getList(publishervo);
 		model.addAttribute("publisherlist", list2);
 
 		return "admin/bookinfolist";
@@ -45,13 +45,13 @@ public class AdminBookInfoController {
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insertPublisher(@ModelAttribute PublisherVo vo) {
-		adminPublisherService.insert(vo);
+		publisherService.insert(vo);
 		return "redirect:/admin/bookinfolist";
 	}
 
 	@RequestMapping(value = "/insertauthor", method = RequestMethod.POST)
 	public String insertAuthor(@ModelAttribute AuthorVo vo) {
-		adminAuthorService.insert(vo);
+		authorService.insert(vo);
 		return "redirect:/admin/bookinfolist";
 	}
 }

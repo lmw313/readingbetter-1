@@ -5,19 +5,21 @@
 
 	<select id="list" parameterType="shopvo" resultType="shopvo">
 		<![CDATA[
-			select no, cover, title, price from goods where title like '%' || #{title} || '%' order by no desc
+			select no, cover, title, price from goods 
+			where title like '%' || #{title} || '%' order by no desc
 		]]>
 	</select>
 
 	<insert id="insert" parameterType="shopvo">
 		<![CDATA[
-			INSERT INTO "GOODS" (no, title, price, cover) VALUES (seq_goods.nextval, #{title}, #{price}, #{cover})
+			INSERT INTO GOODS 
+			VALUES(seq_goods.nextval, #{title}, #{price}, #{cover})
 		]]>
 	</insert>
 	
-	<delete id="delete" parameterType="Long">
+	<delete id="delete" parameterType="long">
 		<![CDATA[
-			DELETE FROM GOODS WHERE NO = #{no}
+			DELETE FROM GOODS WHERE NO=#{no}
 		]]>
 	</delete>
 	

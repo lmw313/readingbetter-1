@@ -30,9 +30,10 @@
 				<th>경고</th>
 				<th></th>
 			</tr>
+			<c:set var="countList" value="${fn:length(list)}" />
 			<c:forEach var='vo' items='${list }' varStatus='s'>
 				<tr>
-					<td>${vo.no }</td>
+					<td>${countList-s.index}</td>
 					<td>${vo.id }</td>
 					<td>${vo.name }</td>
 					<td>${vo.penalty }</td>

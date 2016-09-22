@@ -1,6 +1,7 @@
 package kr.ac.readingbetter.vo;
 
 public class BookVo {
+	
 	private Long no;
 	private String title;
 	private Integer recommend;

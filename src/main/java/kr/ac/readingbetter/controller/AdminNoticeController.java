@@ -18,12 +18,12 @@ import kr.ac.readingbetter.vo.NoticeVo;
 public class AdminNoticeController {
 	
 	@Autowired
-	NoticeService adminNoticeService;
+	private NoticeService noticeService;
 
 	// 공지 관리
 	@RequestMapping(value = "/noticelist", method = RequestMethod.GET)
 	public String noticeList(Model model, NoticeVo vo) {
-		List<NoticeVo> list = adminNoticeService.getList(vo);
+		List<NoticeVo> list = noticeService.getList(vo);
 		model.addAttribute("list", list);
 		return "admin/noticelist";
 	}
@@ -35,27 +35,27 @@ public class AdminNoticeController {
 	
 	@RequestMapping(value = "/noticewrite", method = RequestMethod.POST)
 	public String noticeWrite(@ModelAttribute NoticeVo vo) {
-		adminNoticeService.noticeWrite(vo);
+		noticeService.noticeWrite(vo);
 		return "redirect:/admin/noticelist";
 	}
 
 	@RequestMapping(value = "/noticeview/{no}", method = RequestMethod.GET)
 	public String noticeView(@PathVariable("no") Long no, Model model) {
-		NoticeVo vo = adminNoticeService.noticeView(no);
+		NoticeVo vo = noticeService.noticeView(no);
 		model.addAttribute("vo", vo);
 		return "admin/noticeview";
 	}
 
 	@RequestMapping(value = "/noticemodifyform/{no}", method = RequestMethod.GET)
 	public String noticeModifyForm(@PathVariable("no") Long no, Model model) {
-		NoticeVo vo = adminNoticeService.noticeView(no);
+		NoticeVo vo = noticeService.noticeView(no);
 		model.addAttribute("vo", vo);
 		return "admin/noticemodifyform";
 	}
 	
 	@RequestMapping(value = "/noticemodify", method = RequestMethod.POST)
 	public String noticeModify(@ModelAttribute NoticeVo vo) {
-		adminNoticeService.noticeModify(vo);
+		noticeService.noticeModify(vo);
 		return "redirect:/admin/noticelist";
 	}
 }

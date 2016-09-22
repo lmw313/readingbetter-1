@@ -30,60 +30,63 @@
 						<table class="table table-bordered">
 							<tr>
 								<td class="active">제목</td>
-								<td colspan=7></td>
+								<td colspan=7>${vo.title }</td>
 							</tr>
 							<tr>
 								<td class="active">작성자</td>
-								<td>GM</td>
-								<td class="active">번호</td>
-								<td>1</td>
+								<td>${vo.name }</td>
 								<td class="active">조회수</td>
-								<td>23</td>
+								<td>${vo.viewCount }</td>
 								<td class="active">작성일</td>
-								<td>2016-09-08</td>
+								<td>${vo.regDate }</td>
 							</tr>
 							<tr>
 								<td colspan=8 class="active"></td>
 							</tr>
 							<tr>
-								<td id="notice-content" colspan=8 rowspan=5>공지입니다.</td>
+								<td id="notice-content" colspan=8 rowspan=5>${vo.content }</td>
 							</tr>
 						</table>
 						
 						<div id="button-set">							
 							<a href="/readingbetter/service/noticelist" class="btn btn-default">목록</a>
-						</div>
+						</div><br><br><br><br>
 
 						<table class="tbl-ex">
 							<tr>
-								<th>내용</th>
+								<th>댓글</th>
 								<th>글쓴이</th>
-								<th>신고</th>
 								<th>작성일</th>
-								<th>&nbsp;</th>
+								<c:if test='${not empty sessionScope.authUser}'>
+									<th>신고</th>
+									<th>삭제</th>
+								</c:if>
 							</tr>
-							<tr>
-								<td id="review-content">내용</td>
-								<td>글쓴이</td>
-								<td>
-									<a href="">
-										<img id="img-singo" src="/readingbetter/assets/images/singo.png">
-									</a>
-								</td>
-								<td>2016-09-07</td>
-								<td id="review-modify"><a href="">수정</a> <a href="">삭제</a></td>
-							</tr>
-							<tr>
-								<td id="review-content">내용</td>
-								<td>글쓴이</td>
-								<td>
-									<a href="">
-									<img id="img-singo"
-										src="/readingbetter/assets/images/singo.png"></a>
-								</td>
-								<td>2016-09-07</td>
-								<td><a href="">수정</a><a href="">삭제</a></td>
-							</tr>
+							
+							<c:forEach var='commentsVo' items='${list}'>
+								<tr>
+									<td id="review-content">${commentsVo.content }</td>
+									<td>${commentsVo.id }</td>
+									<td>${commentsVo.regDate }</td>
+									
+									<c:if test='${not empty sessionScope.authUser}'>
+										<c:choose>
+											<c:when test="${commentsVo.memberNo == authUser.no}">
+												<td></td>
+												<td><a href="/readingbetter/service/deleteComments/${commentsVo.no }">삭제</a></td>
+											</c:when>																		
+											<c:otherwise>
+												<td>
+													<a href="/readingbetter/service/commentsAccusation/${commentsVo.no }">
+														<img id="img-singo" src="/readingbetter/assets/images/singo.png">
+													</a>
+												</td>
+												<td></td>
+											</c:otherwise>
+										</c:choose>
+									</c:if>									
+								</tr>
+							</c:forEach>
 						</table>
 
 						<!-- begin:paging -->
@@ -100,14 +103,16 @@
 							</ul>
 						</div>
 						<!-- end:paging -->
-
-						<form class="form-inline">
-							<div class="form-group">
-								<label class="sr-only" for="insertReview">review</label>
-								<input type="text" class="form-control input-sm" id="review">
-								<button type="submit" class="btn btn-default">등록</button>
-							</div>
-						</form>
+						<c:if test='${not empty sessionScope.authUser}'>
+							<form class="form-inline"  method="post" action="../commentswrite">
+								<div class="form-group">
+									<input type="hidden" name="noticeNo" value="${vo.no }">
+									<input type="hidden" name="memberNo" value="${authUser.no }">
+									<input type="text" class="form-control input-sm" id="review" name="content">
+									<button type="submit" class="btn btn-default">등록</button>
+								</div>
+							</form>
+						</c:if>
 					</div>
 				</div>
 			</div>

@@ -12,6 +12,7 @@ import kr.ac.readingbetter.vo.WishbookVo;
 
 @Service
 public class WishbookService {
+	
 	@Autowired
 	private WishbookDao wishbookDao;
 	

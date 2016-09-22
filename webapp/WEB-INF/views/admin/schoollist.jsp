@@ -7,19 +7,15 @@
 <head>
 <title>ReadingBetter_Admin</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/board.css" rel="stylesheet"
-	type="text/css">
-<link href="/readingbetter/assets/css/admin.css" rel="stylesheet"
-	type="text/css">
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/admin/header.jsp' />
-
-		<h4>학교</h4>
-		
+		<br><br>
+		<h4>학교</h4>		
 		<form id="search_form" action="/readingbetter/admin/schoollist/insert" method="post">
 			<input type="text" id="add" name="add" value="">
 			<input type="submit" value="추가">
@@ -36,9 +32,10 @@
 				<td>번호</td>
 				<td>이름</td>
 			</tr>
-			<c:forEach var='vo' items='${list }'>
+			<c:set var="countList" value="${fn:length(list)}" />
+			<c:forEach var='vo' items='${list }' varStatus='s'>
 				<tr>
-					<td>${vo.no }</td>
+					<td>${countList-s.index}</td>
 					<td>${vo.title }</td>
 				</tr>
 			</c:forEach>

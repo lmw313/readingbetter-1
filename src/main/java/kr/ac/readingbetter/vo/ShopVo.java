@@ -1,10 +1,11 @@
 package kr.ac.readingbetter.vo;
 
 public class ShopVo {
-	Long no; // 상품 번호
-	String title; // 상품명
-	Long price; // 상품 가격(캔디)
-	String cover; // 상품 사진
+	
+	private Long no; // 상품 번호
+	private String title; // 상품명
+	private Long price; // 상품 가격(캔디)
+	private String cover; // 상품 사진
 
 	public Long getNo() {
 		return no;

@@ -25,7 +25,6 @@
 					<th>번호</th>
 					<th>종류</th>
 					<th>신고자</th>
-					<th>피신고자</th>
 					<th>신고일</th>
 					<th>승인</th>
 				</tr>
@@ -39,8 +38,7 @@
 		                        <c:when test="${vo.identity == 2}">댓글</c:when>
 	               			</c:choose>
 						</td>
-						<td>${vo.memName }</td>
-						<td>${vo.keyNo }</td>
+						<td>${vo.id }</td>
 						<td>${vo.regDate }</td>
 						<td><a href="/readingbetter/admin/accusationview/${vo.no}">
 								<c:choose>

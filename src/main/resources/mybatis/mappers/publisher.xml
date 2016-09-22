@@ -5,15 +5,14 @@
 
 	<select id="list" parameterType="publishervo" resultType="publishervo">
 		<![CDATA[
-			select no,title from publisher where title like '%' || #{kwd1} || '%' order by title
+			select no,title from publisher 
+			where title like '%' || #{kwd1} || '%' order by title
 		]]>
 	</select>
 	
 	<insert id="insert" parameterType="publishervo">
 		<![CDATA[
-		insert 
-		  into publisher 
-		values(seq_publisher.nextval, #{title } ) 
+			insert into publisher values(seq_publisher.nextval, #{title }) 
 		]]>
 	</insert>
 	

@@ -5,8 +5,11 @@
 
 	<select id="list" parameterType="boardvo" resultType="boardvo">
 		<![CDATA[
-			select a.no,a.title,a.content,a.reg_date as regDate, a.view_count as viewCount,a.group_no as groupNo,a.position,a.accept,a.member_no as memberNo,b.id from board a,member b
-    		where b.no=a.member_no
+			select a.no, a.title, a.content, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			a.view_count as viewCount, a.group_no as groupNo, a.position, 
+			a.accept, a.member_no as memberNo, b.id from board a, member b
+    		where b.no=a.member_no order by a.no desc
 		]]>
 	</select>
 	

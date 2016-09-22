@@ -25,12 +25,12 @@
 		<table id="board" class="table table-bordered">
 			<tr>
 				<th class="active">신고자</th>
-				<td colspan=2>${vo.memName }</td>
+				<td colspan=2>${vo.id }</td>
 				<th class="active">피신고자</th>
 				<td colspan=2>
 				<c:choose>
-                        <c:when test="${vo.identity == 1}">${boardvo.id }</c:when>
-                        <c:when test="${vo.identity == 2}">${commentsvo.memberNo }</c:when>
+                        <c:when test="${vo.identity == 1}">${reviewvo.id }</c:when>
+                        <c:when test="${vo.identity == 2}">${commentsvo.id }</c:when>
                </c:choose>
 				</td>
 			</tr>
