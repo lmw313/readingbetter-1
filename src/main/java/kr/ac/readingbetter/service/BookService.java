@@ -19,6 +19,12 @@ public class BookService {
 		return list;
 	}
 
+	// 페이징 리스트
+	public List<BookVo> getListPage(Integer pageNo) {
+		List<BookVo> list = bookDao.getListPage(pageNo);
+		return list;
+	}
+
 	public List<BookVo> getListKwd(BookVo vo) {
 		List<BookVo> list = bookDao.getListKwd(vo);
 		return list;
@@ -28,8 +34,8 @@ public class BookService {
 		BookVo vo = bookDao.getByNo(no);
 		return vo;
 	}
-	
-	public List<BookVo> findBook(BookVo vo){
+
+	public List<BookVo> findBook(BookVo vo) {
 		List<BookVo> list = bookDao.findBook(vo);
 		return list;
 	}

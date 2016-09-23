@@ -10,6 +10,9 @@
 <title>ReadingBetter</title>
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/booklist.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -26,14 +29,13 @@
 					</div>
 					<p class="menu-title">책 목록</p>
 					
-					<form id="search_form" action="/readingbetter/book/booklist" method="post">
-						<input type="text" id="Bkwd" name="bkwd" value="${bkwd }">
-						<input type="submit" value="찾기">
+					<form id="search_form" action="" method="get">
+ 						<input type="text" id="bkwd" name="bkwd" value="${bkwd }">
+ 						<input id="btn-s" type="submit" value="찾기">
 					</form>
 					<br>
 					
-					<c:set var="countList" value="${fn:length(list)}"/>
-	  				<c:forEach var='vo' items='${list}' varStatus='s'>					
+					<c:forEach var='vo' items='${listpage}' varStatus='s'>
 						<table id="book-table">
 							<colgroup>
 								<col width="30%" />
@@ -75,13 +77,30 @@
 					<div class="pager">
 						<ul>
 							<li>
-								<li><a href="">◀</a></li>
-								<li><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href="">4</a></li>
-								<li><a href="">5</a></li>
-								<li><a href="">▶</a></li>
+								<a href="/readingbetter/book/booklist/${beginPage-1 }?bkwd=${bkwd}">◀</a>
+								<input type="hidden" name="pageNo" value="${beginPage-1 }">
+							</li>
+								
+							<c:forEach begin='${beginPage }' end='${endPage }' step='1' var='i'>
+								<c:choose>
+									<c:when test='${currentPage == i }'>
+										<li class="selected">${i }</li>
+									</c:when>
+								<c:otherwise>
+									<li>
+										<a href="/readingbetter/book/booklist/${i }?bkwd=${bkwd}">${i }</a>
+										<input type="hidden" name="pageNo" value="${i}">
+									</li>
+								</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						
+							<c:if test='${endPage<total }'>
+								<li>
+									<a href="/readingbetter/book/booklist/${endPage+1 }?bkwd=${bkwd}">▶</a>
+									<input type="hidden" name="pageNo" value="${endPage+1}">
+								</li>
+							</c:if>
 						</ul>
 					</div>
 					<!-- end:paging -->

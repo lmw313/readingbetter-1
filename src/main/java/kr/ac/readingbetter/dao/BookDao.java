@@ -19,6 +19,12 @@ public class BookDao {
 		return list;
 	}
 
+	// 페이징 리스트
+	public List<BookVo> getListPage(Integer pageNo) {
+		List<BookVo> list = sqlSession.selectList("book.listpage", pageNo);
+		return list;
+	}
+
 	public List<BookVo> getListKwd(BookVo vo) {
 		List<BookVo> list = sqlSession.selectList("book.listkwd", vo);
 		return list;
@@ -28,8 +34,8 @@ public class BookDao {
 		BookVo vo = sqlSession.selectOne("book.getByNo", no);
 		return vo;
 	}
-	
-	public List<BookVo> findBook(BookVo vo){
+
+	public List<BookVo> findBook(BookVo vo) {
 		List<BookVo> list = sqlSession.selectList("book.findBook", vo);
 		return list;
 	}

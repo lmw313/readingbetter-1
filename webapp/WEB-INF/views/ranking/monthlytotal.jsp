@@ -2,13 +2,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
+
 <!doctype html>
 <html>
 <head>
 <title>ReadingBetter</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/ranking.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -21,12 +21,13 @@
 			<div id="content" class="col-lg-6">
 				<div id="monthlytotal">
 					<div class="small-menu">
-						<a href="/readingbetter/main">홈</a> > <a
-							href="/readingbetter/ranking/summary">순위</a> > 이번 달 전체 순위
-					</div>
+						<a href="/readingbetter/main">홈</a> > 
+						<a href="/readingbetter/ranking/summary">순위</a> > 이번 달 전체 순위
+					</div>					
+					<input type="hidden">
+					
 					<div id="rank-table" class="col-lg-6">
-						<P id="title">이번 달 전체 순위</P>
-						<br>
+						<P id="title">이번 달 전체 순위</P><br>						
 						<table class="table table-striped">
 							<colgroup>
 								<col width="20%" />
@@ -38,60 +39,16 @@
 								<th>아이디</th>
 								<th>점수</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>ID2</td>
-								<td>4</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>ID3</td>
-								<td>3</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>ID4</td>
-								<td>2</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-						</table>
-						<br>
-						<p id="title">나의 순위</p>
-						<br>
+							<c:forEach items="${monthlyRank }" end="11" var="rankingvo">
+								<tr>
+									<td>${rankingvo.rank }</td>
+									<td>${rankingvo.id }</td>
+									<td>${rankingvo.monthlyScore }</td>
+								<tr>
+							</c:forEach>
+						</table><br>
+						
+						<p id="title">나의 순위</p><br>
 						<table class="table table-striped">
 							<colgroup>
 								<col width="20%" />
@@ -103,13 +60,20 @@
 								<th>아이디</th>
 								<th>점수</th>
 							</tr>
+
 							<tr>
-								<td>1</td>
-								<td>null
-								<td>0</td>
+								<c:choose>
+									<c:when test="${not empty sessionScope.authUser}">
+										<td>${myMonthlyRank.rank }</td>
+										<td>${myMonthlyRank.id }</td>
+										<td>${myMonthlyRank.myMonthlyScore }</td>
+									</c:when>
+									<c:otherwise>
+										<td colspan=3>로그인이 필요한 기능입니다</td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
-						</table>
-						<br>
+						</table><br>
 					</div>
 				</div>
 			</div>

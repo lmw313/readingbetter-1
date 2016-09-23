@@ -7,8 +7,10 @@
 <head>
 <title>ReadingBetter</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/ranking.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/ranking.css" rel="stylesheet"
+	type="text/css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -25,8 +27,8 @@
 					</div>
 
 					<form id="search_form" action="" method="post">
-						<input type="text" id="kwd" name="kwd" value="${kwd }">
-						<input type="submit" value="찾기">
+						<input type="text" id="kwd" name="kwd" value="${kwd }"> <input
+							type="submit" value="찾기">
 					</form>
 
 					<div id="table" class="col-lg-6">
@@ -43,56 +45,24 @@
 								<th>아이디</th>
 								<th>점수</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
+							<c:forEach items="${monthlyRank }" end="10" var="rankingvo">
+								<c:choose>
+									<c:when test="${monthlyRank!=null }">
+										<tr>
+											<td>${rankingvo.rank }</td>
+											<td>${rankingvo.id }</td>
+											<td>${rankingvo.monthlyScore }</td>
+										<tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td>-</td>
+											<td>-</td>
+											<td>-</td>
+										<tr>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 						</table>
 					</div>
 
@@ -162,7 +132,7 @@
 							</tr>
 						</table>
 					</div>
-					
+
 					<div id="table" class="col-lg-6">
 						<p id="title">이번 달 학년별 순위</p>
 						<br>
@@ -244,56 +214,24 @@
 								<th>아이디</th>
 								<th>점수</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
+							<c:forEach items="${honor }" end="10" var="rankingvo">
+								<c:choose>
+									<c:when test="${honor!=null }">
+										<tr>
+											<td>${rankingvo.rank }</td>
+											<td>${rankingvo.id }</td>
+											<td>${rankingvo.totalScore }</td>
+										<tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<td>-</td>
+											<td>-</td>
+											<td>-</td>
+										<tr>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 						</table>
 						<br>
 					</div>

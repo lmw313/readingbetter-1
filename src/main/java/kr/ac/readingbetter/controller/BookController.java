@@ -50,6 +50,47 @@ public class BookController {
 		return "book/booklist";
 	}
 
+	// 책 리스트 페이징
+	@RequestMapping(value = "/booklist/{pageNo}", method = RequestMethod.GET)
+	public String bookListPage(@PathVariable("pageNo") Integer pageNo, BookVo bookvo, Model model) {
+		List<BookVo> list = bookService.getList();
+
+		if (pageNo == 0 || "".equals(pageNo)) {
+			pageNo = 1;
+		}
+
+		if (bookvo.getBkwd() == null) {
+			bookvo.setBkwd("");
+			List<BookVo> listpage = bookService.getListPage(pageNo);
+			model.addAttribute("listpage", listpage);
+		}
+		
+		String bkwd = bookvo.getBkwd();
+		bookvo.setBkwd(bkwd);
+
+		List<BookVo> listkwd = bookService.getListKwd(bookvo);
+		model.addAttribute("listpage", listkwd);
+
+		int pageLength = 3;
+		int currentBlock = (int) Math.ceil((double) pageNo / pageLength);
+
+		int currentPage = pageNo;
+		int total = (int) Math.ceil((double) list.size() / pageLength);
+
+		int beginPage = (currentBlock - 1) * 3 + 1;
+		int endPage = currentBlock * 3;
+		if (endPage > total) {
+			endPage = total;
+		}
+
+		model.addAttribute("bkwd", bkwd);
+		model.addAttribute("beginPage", beginPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("total", total);
+		return "book/booklist";
+	}
+
 	// 퀴즈 풀기 화면 열기
 	@RequestMapping("/solvequizform")
 	public String solveQuizForm(Model model, @RequestParam(value = "no", required = false, defaultValue = "") Long no) {
@@ -117,7 +158,7 @@ public class BookController {
 		// 책 정보 불러오기
 		BookVo vo = bookService.getByNo(bookNo);
 		model.addAttribute("vo", vo);
-		
+
 		// 책에 따른 리뷰 불러오기
 		List<ReviewVo> list = reviewService.getList(bookNo);
 		// 신고받은 리뷰는 리스트에서 삭제
@@ -133,7 +174,7 @@ public class BookController {
 					list.remove(j);
 				}
 			}
-		}		
+		}
 		model.addAttribute("list", list);
 		return "book/review";
 	}
@@ -161,7 +202,7 @@ public class BookController {
 		// 삭제한 리뷰가 있는 화면으로 간다
 		ReviewVo reviewVo = reviewService.getByNo(no);
 		Long bookNo = reviewVo.getBookNo();
-		reviewService.reviewDelete(no);	
+		reviewService.reviewDelete(no);
 		return "redirect:/book/review/" + bookNo;
 	}
 

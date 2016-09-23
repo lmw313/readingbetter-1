@@ -1,7 +1,7 @@
 package kr.ac.readingbetter.vo;
 
 public class BookVo {
-	
+
 	private Long no;
 	private String title;
 	private Integer recommend;
@@ -11,6 +11,7 @@ public class BookVo {
 	private String authorName;
 	private String publisherTitle;
 	private String bkwd;
+	private Integer pageNo;
 
 	public Long getNo() {
 		return no;
@@ -84,10 +85,18 @@ public class BookVo {
 		this.bkwd = bkwd;
 	}
 
+	public Integer getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
+	}
+
 	@Override
 	public String toString() {
 		return "BookVo [no=" + no + ", title=" + title + ", recommend=" + recommend + ", cover=" + cover
 				+ ", publisherNo=" + publisherNo + ", authorNo=" + authorNo + ", authorName=" + authorName
-				+ ", publisherTitle=" + publisherTitle + ", bkwd=" + bkwd + "]";
+				+ ", publisherTitle=" + publisherTitle + ", bkwd=" + bkwd + ", pageNo=" + pageNo + "]";
 	}
 }
