@@ -23,4 +23,14 @@ public class SchoolDao {
 	public void insertSchool(String title){
 		sqlSession.insert("school.insert", title);
 	}
+	
+	public List<SchoolVo> selectSchoolTitle() {
+		List<SchoolVo> list = sqlSession.selectList("school.selectSchoolTitle");
+		return list;
+	}
+
+	public List<SchoolVo> searchSchool(String kwd) {
+		List<SchoolVo> list = sqlSession.selectList("school.searchSchool", kwd);
+		return list;
+	}
 }

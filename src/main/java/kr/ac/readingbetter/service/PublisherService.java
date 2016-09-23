@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.PublisherDao;
 import kr.ac.readingbetter.vo.PublisherVo;
+import kr.ac.readingbetter.vo.WishbookVo;
 
 @Service
 public class PublisherService {
@@ -21,5 +22,15 @@ public class PublisherService {
 
 	public void insert(PublisherVo vo) {
 		publisherDao.insert(vo);
+	}
+	
+	public List<PublisherVo> findPublisher(PublisherVo vo){
+		List<PublisherVo> list = publisherDao.findPublisher(vo);
+		return list;
+	}
+	
+	public List<PublisherVo> selectPublisher(WishbookVo vo){
+		List<PublisherVo> list = publisherDao.selectPublisher(vo);
+		return list;
 	}
 }

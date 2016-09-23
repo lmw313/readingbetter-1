@@ -26,8 +26,8 @@
 					</div>
 					<p class="menu-title">책 목록</p>
 					
-					<form id="search_form" action="/mysite/board" method="post">
-						<input type="text" id="kwd" name="kwd" value="${kwd }">
+					<form id="search_form" action="/readingbetter/book/booklist" method="post">
+						<input type="text" id="Bkwd" name="bkwd" value="${bkwd }">
 						<input type="submit" value="찾기">
 					</form>
 					<br>
@@ -61,7 +61,7 @@
 								<td class="table-right">추천학년</td>
 								<td class="table-left">${vo.recommend }</td>
 								<td>
-									<a class="btn btn-default" href="/readingbetter/book/review" role="button">리뷰보기</a>
+									<a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
 									<a class="btn btn-default" href="/readingbetter/book/solvequizform?no=${vo.no }" role="button">문제풀기</a>
 									<a class="btn btn-default" href="/readingbetter/book/makequizform/${vo.no}" role="button">문제내기</a>
 								</td>

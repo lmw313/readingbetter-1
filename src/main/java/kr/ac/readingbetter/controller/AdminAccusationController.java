@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.readingbetter.service.AccusationService;
+import kr.ac.readingbetter.service.CommentsService;
+import kr.ac.readingbetter.service.ReviewService;
 import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.CommentsVo;
 import kr.ac.readingbetter.vo.ReviewVo;
@@ -21,6 +23,12 @@ public class AdminAccusationController {
 
 	@Autowired
 	private AccusationService accusationService;
+	
+	@Autowired
+	private ReviewService reviewService;
+	
+	@Autowired
+	private CommentsService commentsService;
 
 	// 신고 관리
 	@RequestMapping("/accusationlist")
@@ -39,10 +47,10 @@ public class AdminAccusationController {
 		Long keyNo = vo.getKeyNo();
 
 		if (identity == 1) {
-			reviewvo = accusationService.getReviewList(keyNo);
+			reviewvo = reviewService.getByNo(keyNo);
 			model.addAttribute("reviewvo", reviewvo);
 		} else {
-			commentsvo = accusationService.getCommentsList(keyNo);
+			commentsvo = commentsService.getCommentsList(keyNo);
 			model.addAttribute("commentsvo", commentsvo);
 		}
 

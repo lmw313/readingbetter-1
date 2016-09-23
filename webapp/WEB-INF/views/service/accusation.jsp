@@ -10,6 +10,8 @@
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/notice_accusation.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -22,17 +24,19 @@
 				<div id="review">
 					<div class="small-menu">
 						<a href="/readingbetter/main">홈</a> > 
-						<a href="/readingbetter/book/booklist">독서활동</a> > 
-						<a href="/readingbetter/book/booklist">책 목록</a> > 
-						<a href="/readingbetter/book/review">리뷰</a> > 신고
+						<a href="/readingbetter/service/noticelist">고객센터</a> > 
+						<a href="/readingbetter/service/noticelist">공지</a> > 신고
 					</div>
 					<p class="menu-title">신고</p>
 					<br>
 					<div>
-						<form method="post" action="../insertComments">
+						<form method="post" action="../insertComments" id="comments-accusation">
 							<input type="hidden" name="keyNo" value="${vo.no }">
 							<input type="hidden" name="memberNo" value="${authUser.no }">
 							<table id="board" class="table table-bordered">
+								<tr>
+									<th class="active" colspan=5>부당하게 신고할 시 본인에게 불이익이 있을 수 있습니다</th>
+								</tr>
 								<tr>
 									<th class="active">신고자</th>
 									<td colspan=2>${authUser.id }</td>

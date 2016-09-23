@@ -10,17 +10,27 @@ import kr.ac.readingbetter.vo.SchoolVo;
 
 @Service
 public class SchoolService {
-	
+
 	@Autowired
 	private SchoolDao schoolDao;
-	
-	public List<SchoolVo> getList(String kwd){
+
+	public List<SchoolVo> getList(String kwd) {
 		List<SchoolVo> list = schoolDao.getList(kwd);
-		
+
 		return list;
 	}
-	
-	public void insertSchool(String title){
+
+	public void insertSchool(String title) {
 		schoolDao.insertSchool(title);
+	}
+
+	public List<SchoolVo> selectSchoolTitle() {
+		List<SchoolVo> list = schoolDao.selectSchoolTitle();
+		return list;
+	}
+
+	public List<SchoolVo> searchSchool(String kwd) {
+		List<SchoolVo> list = schoolDao.searchSchool(kwd);
+		return list;
 	}
 }

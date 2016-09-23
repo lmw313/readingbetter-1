@@ -2,8 +2,6 @@ package kr.ac.readingbetter.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +15,6 @@ import kr.ac.readingbetter.service.CommentsService;
 import kr.ac.readingbetter.service.NoticeService;
 import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.CommentsVo;
-import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.NoticeVo;
 
 @Controller

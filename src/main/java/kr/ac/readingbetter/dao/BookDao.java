@@ -10,17 +10,27 @@ import kr.ac.readingbetter.vo.BookVo;
 
 @Repository
 public class BookDao {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	public List<BookVo> getList() {
 		List<BookVo> list = sqlSession.selectList("book.list");
 		return list;
 	}
-	
-	public BookVo getByNo(Long no){
+
+	public List<BookVo> getListKwd(BookVo vo) {
+		List<BookVo> list = sqlSession.selectList("book.listkwd", vo);
+		return list;
+	}
+
+	public BookVo getByNo(Long no) {
 		BookVo vo = sqlSession.selectOne("book.getByNo", no);
 		return vo;
+	}
+	
+	public List<BookVo> findBook(BookVo vo){
+		List<BookVo> list = sqlSession.selectList("book.findBook", vo);
+		return list;
 	}
 }

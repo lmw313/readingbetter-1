@@ -6,8 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.ac.readingbetter.vo.BookVo;
-import kr.ac.readingbetter.vo.PublisherVo;
 import kr.ac.readingbetter.vo.WishbookVo;
 
 @Repository
@@ -24,21 +22,6 @@ public class WishbookDao {
 	public WishbookVo getView(WishbookVo vo){
 		vo = sqlSession.selectOne("wishbook.getByNo", vo);
 		return vo;
-	}
-	
-	public List<PublisherVo> findPublisher(PublisherVo vo){
-		List<PublisherVo> list = sqlSession.selectList("wishbook.findPublisher", vo);
-		return list;
-	}
-	
-	public List<BookVo> findBook(BookVo vo){
-		List<BookVo> list = sqlSession.selectList("wishbook.findBook", vo);
-		return list;
-	}
-	
-	public List<PublisherVo> selectPublisher(WishbookVo vo){
-		List<PublisherVo> list = sqlSession.selectList("wishbook.selectPublisher", vo);
-		return list;
 	}
 	
 	public void insertPublisher(WishbookVo vo){

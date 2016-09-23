@@ -20,5 +20,28 @@
 			from review a,member b where b.no=a.member_no and a.no=#{no}
 		]]>
 	</select>
+	
+	<select id="getByBookNo" parameterType="long" resultType="reviewvo">
+		<![CDATA[
+			select a.no, a.review, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			a.book_no as bookNo, a.member_no as memberNo, b.id 
+			from review a,member b where b.no=a.member_no 
+			and a.book_no=#{bookNo} order by a.no
+		]]>
+	</select>
+
+	<delete id="delete" parameterType="Long">
+		<![CDATA[
+			DELETE FROM review WHERE NO = #{no}
+		]]>
+	</delete>
+
+	<insert id="insert" parameterType="reviewvo">
+		<![CDATA[
+			insert into review values
+			(seq_review.nextval,#{review},sysdate,#{bookNo},#{memberNo})
+		]]>
+	</insert>
 
 </mapper>

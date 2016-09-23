@@ -16,4 +16,16 @@
 		]]>
 	</insert>
 	
+	<select id="findPublisher" parameterType="publishervo" resultType="publishervo">
+		<![CDATA[
+			select title from publisher where title like '%' || #{kwd1} || '%' order by no asc
+		]]>
+	</select>
+	
+	<select id="selectPublisher" parameterType="wishbookvo" resultType="publishervo">
+		<![CDATA[
+			select no, title from publisher where title=#{publisher}
+		]]>
+	</select>
+	
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.ac.readingbetter.service.BookService;
 import kr.ac.readingbetter.service.QuizService;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.QuizVo;
@@ -20,6 +21,10 @@ public class AdminQuizController {
 	
 	@Autowired
 	private QuizService quizService;
+	
+	@Autowired
+	private BookService BookService;
+	
 
 	// 퀴즈 관리
 	@RequestMapping(value = "/quizlist", method = RequestMethod.GET)
@@ -44,14 +49,14 @@ public class AdminQuizController {
 	
 	@RequestMapping(value = "/quizaddbook", method = RequestMethod.GET)
 	public String quizAddBook(Model model) {
-		List<BookVo> bookList = quizService.getBookList();
+		List<BookVo> bookList = BookService.getList();
 		model.addAttribute("bookList", bookList);
 		return "admin/quizaddbook";
 	}
 
 	@RequestMapping(value = "/quizaddform/{no}", method = RequestMethod.GET)
 	public String quizAddForm(@PathVariable("no") Long no, Model model) {
-		BookVo bookVo = quizService.getBook(no);
+		BookVo bookVo = BookService.getByNo(no);
 		model.addAttribute("bookVo", bookVo);
 		return "admin/quizaddform";
 	}

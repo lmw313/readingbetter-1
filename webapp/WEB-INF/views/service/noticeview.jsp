@@ -62,31 +62,46 @@
 									<th>삭제</th>
 								</c:if>
 							</tr>
-							
-							<c:forEach var='commentsVo' items='${list}'>
-								<tr>
-									<td id="review-content">${commentsVo.content }</td>
-									<td>${commentsVo.id }</td>
-									<td>${commentsVo.regDate }</td>
-									
-									<c:if test='${not empty sessionScope.authUser}'>
+							<c:choose>
+								<c:when test="${empty list}">
+									<tr>
 										<c:choose>
-											<c:when test="${commentsVo.memberNo == authUser.no}">
-												<td></td>
-												<td><a href="/readingbetter/service/deleteComments/${commentsVo.no }">삭제</a></td>
-											</c:when>																		
+											<c:when test="${not empty sessionScope.authUser}">
+												<td colspan=5>아직 등록된 댓글이 없습니다</td>
+											</c:when>
 											<c:otherwise>
-												<td>
-													<a href="/readingbetter/service/commentsAccusation/${commentsVo.no }">
-														<img id="img-singo" src="/readingbetter/assets/images/singo.png">
-													</a>
-												</td>
-												<td></td>
+												<td colspan=3>아직 등록된 댓글이 없습니다</td>
 											</c:otherwise>
 										</c:choose>
-									</c:if>									
-								</tr>
-							</c:forEach>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<c:forEach var='commentsVo' items='${list}'>
+										<tr>
+											<td id="review-content">${commentsVo.content }</td>
+											<td>${commentsVo.id }</td>
+											<td>${commentsVo.regDate }</td>
+											
+											<c:if test='${not empty sessionScope.authUser}'>
+												<c:choose>
+													<c:when test="${commentsVo.memberNo == authUser.no}">
+														<td></td>
+														<td><a href="/readingbetter/service/deleteComments/${commentsVo.no }">삭제</a></td>
+													</c:when>																		
+													<c:otherwise>
+														<td>
+															<a href="/readingbetter/service/commentsAccusation/${commentsVo.no }">
+																<img id="img-singo" src="/readingbetter/assets/images/singo.png">
+															</a>
+														</td>
+														<td></td>
+													</c:otherwise>
+												</c:choose>
+											</c:if>								
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</table>
 
 						<!-- begin:paging -->

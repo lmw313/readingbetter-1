@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.readingbetter.vo.MemberVo;
-import kr.ac.readingbetter.vo.SchoolVo;
 
 @Repository
 public class MemberDao {
@@ -27,16 +26,6 @@ public class MemberDao {
 	public MemberVo selectAuthUser(MemberVo vo) {
 		vo = sqlSession.selectOne("member.selectAuthUser", vo);
 		return vo;
-	}
-
-	public List<SchoolVo> selectSchoolTitle() {
-		List<SchoolVo> list = sqlSession.selectList("member.selectSchoolTitle");
-		return list;
-	}
-
-	public List<SchoolVo> searchSchool(String kwd) {
-		List<SchoolVo> list = sqlSession.selectList("member.searchSchool", kwd);
-		return list;
 	}
 
 	public MemberVo checkId(String id) {

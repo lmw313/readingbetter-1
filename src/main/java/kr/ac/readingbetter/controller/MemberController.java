@@ -11,14 +11,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.MemberService;
+import kr.ac.readingbetter.service.SchoolService;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.SchoolVo;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+
 	@Autowired
 	private MemberService memberService;
+
+	@Autowired
+	private SchoolService schoolService;
 
 	@RequestMapping("/loginform")
 	public String loginForm() {
@@ -27,7 +32,7 @@ public class MemberController {
 
 	@RequestMapping("/joinform")
 	public String joinForm(Model model) {
-		List<SchoolVo> list = memberService.selectSchoolTitle();
+		List<SchoolVo> list = schoolService.selectSchoolTitle();
 
 		model.addAttribute("list", list);
 
@@ -41,7 +46,7 @@ public class MemberController {
 			kwd = "@@@@@@@@@@@";
 		}
 
-		List<SchoolVo> list = memberService.searchSchool(kwd);
+		List<SchoolVo> list = schoolService.searchSchool(kwd);
 
 		return list;
 	}

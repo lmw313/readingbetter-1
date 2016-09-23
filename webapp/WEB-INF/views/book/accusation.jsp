@@ -10,6 +10,8 @@
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/review_accusation.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -29,37 +31,37 @@
 					<p class="menu-title">신고</p>
 					<br>
 					<div>
-						<form method="post" action="../update">
-							<input type="hidden" name="no" value="${vo.no }">
+						<form method="post" action="../insertReview" id="review-accusation">
+							<input type="hidden" name="keyNo" value="${vo.no }">
+							<input type="hidden" name="memberNo" value="${authUser.no }">
 							<table id="board" class="table table-bordered">
 								<tr>
-									<th class="active">신고자</th>
-									<td colspan=2>양송이</td>
-									<th class="active">피신고자</th>
-									<td colspan=2>김민정</td>
+									<th class="active" colspan=5>부당하게 신고할 시 본인에게 불이익이 있을 수 있습니다</th>
 								</tr>
 								<tr>
-									<th class="active">신고일</th>
-									<td colspan=4>2016-01-01</td>
-								</tr>
+									<th class="active">신고자</th>
+									<td colspan=2>${authUser.id }</td>
+									<th class="active">피신고자</th>
+									<td colspan=2>${vo.id }</td>
+								</tr>								
 								<tr>
 									<th  class="active" colspan=6>글 내용</th>
 								</tr>
 								<tr>
-									<td id="content" colspan=6>씨바*시귀</td>
+									<td id="content" colspan=6>${vo.review }</td>
 								</tr>
 								<tr>
 									<th  class="active" colspan=6>신고 이유</th>
 								</tr>
 								<tr>
 									<td id="content" colspan=6>
-										<input name="content" type="text" class="form-control" id="exampleInputEmail1">
+										<input name="reason" type="text" class="form-control" id="exampleInputEmail1">
 									</td>
 								</tr>
 							</table>
 								
 							<div id="buttons">
-								<a href="/readingbetter/admin/accusationlist" class="btn btn-default">승인</a>
+								<button type="submit" class="btn btn-default">제출</button>
 							</div>
 						</form>
 					</div>

@@ -31,4 +31,9 @@ public class CommentsService {
 	public void deleteComments(Long no) {
 		commentsDao.deleteComments(no);
 	}
+	
+	public CommentsVo getCommentsList(Long no) {
+		CommentsVo adminComments = commentsDao.getCommentsList(no);
+		return adminComments;
+	}
 }

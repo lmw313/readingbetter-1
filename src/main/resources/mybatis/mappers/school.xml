@@ -14,4 +14,18 @@
 			insert into school values(seq_school.nextval, #{title})
 		]]>
 	</insert>
+	
+	<select id="selectSchoolTitle" resultType="schoolvo">
+		<![CDATA[
+			select title from school order by title asc
+		]]>
+	</select>
+	
+	<select id="searchSchool" parameterType="string" resultType="schoolvo">
+		<![CDATA[
+			select no, title from school where title 
+			like '%' || #{kwd} || '%' order by title asc
+		]]>
+	</select>
+	
 </mapper>

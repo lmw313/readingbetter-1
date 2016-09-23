@@ -5,19 +5,9 @@
 
 	<select id="selectAuthUser" parameterType="membervo" resultType="membervo">
 		<![CDATA[
-			select no, name from member where id=#{id} and pw=#{pw}
-		]]>
-	</select>
-
-	<select id="selectSchoolTitle" resultType="schoolvo">
-		<![CDATA[
-			select title from school order by title asc
-		]]>
-	</select>
-
-	<select id="searchSchool" parameterType="string" resultType="schoolvo">
-		<![CDATA[
-			select no, title from school where title like '%' || #{kwd} || '%' order by title asc
+			select no, name, id, pw, last_date as lastDate, position, 
+			email, tel, penalty, grade, class_no as classNo, 
+			school_no as schoolNo from member where id=#{id} and pw=#{pw}
 		]]>
 	</select>
 

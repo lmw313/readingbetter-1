@@ -18,9 +18,19 @@ public class BookService {
 		List<BookVo> list = bookDao.getList();
 		return list;
 	}
-	
-	public BookVo getByNo(Long no){
+
+	public List<BookVo> getListKwd(BookVo vo) {
+		List<BookVo> list = bookDao.getListKwd(vo);
+		return list;
+	}
+
+	public BookVo getByNo(Long no) {
 		BookVo vo = bookDao.getByNo(no);
 		return vo;
+	}
+	
+	public List<BookVo> findBook(BookVo vo){
+		List<BookVo> list = bookDao.findBook(vo);
+		return list;
 	}
 }

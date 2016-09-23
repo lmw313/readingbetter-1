@@ -31,4 +31,9 @@ public class CommentsDao {
 	public void deleteComments(Long no) {
 		sqlSession.delete("comments.delete", no);
 	}
+	
+	public CommentsVo getCommentsList(Long no) {
+		CommentsVo vo = sqlSession.selectOne("comments.getByNo", no);
+		return vo;
+	}
 }

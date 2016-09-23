@@ -28,37 +28,95 @@
 					<p class="menu-title">리뷰</p>
 					<div>
 						<img id="img-book" class="img-thumbnail" src="${vo.cover }">
-					</div>
+						<table class="table">
+							<tr>
+								<td>제목</td>
+								<br>
+								<td>${vo.title}</td>
+							</tr>
+							<tr>
+								<td>출판사</td>
+								<br>
+								<td>${vo.publisherTitle }</td>
+							</tr>
+							<tr>
+								<td>추천 학년</td>
+								<br>
+								<td>${vo.recommend}</td>
+							</tr>
+						</table>
+					</div><br>
 
 					<div id="board">
 						<table class="tbl-ex">
-							<colgroup>
-								<col width="40%" />
-								<col width="10%" />
-								<col width="10%" />
-								<col width="20%" />
-								<col width="10%" />
-							</colgroup>
+							<c:choose>
+							<c:when test="${not empty sessionScope.authUser}">
+								<colgroup>
+									<col width="30%" />
+									<col width="10%" />
+									<col width="20%" />
+									<col width="10%" />
+									<col width="10%" />
+								</colgroup>
+							</c:when>
+							<c:otherwise>
+								<colgroup>
+									<col width="50%" />
+									<col width="25%" />
+									<col width="25%" />
+								</colgroup>
+							</c:otherwise>
+						</c:choose>
+				
 							<tr>
 								<th>내용</th>
 								<th>글쓴이</th>
-								<th>신고</th>
 								<th>작성일</th>
-								<th></th>
+								<c:if test = '${not empty sessionScope.authUser}'>
+									<th>신고</th>
+									<th>삭제</th>
+								</c:if>
 							</tr>
-							<c:set var="countList" value="${fn:length(list)}"/>
-	  						<c:forEach var='vo' items='${reviewlist}' varStatus='s'>	
-							<tr>
-								<td>${vo.review }</td>
-								<td>${vo.id }</td>
-								<td>
-									<a href="/readingbetter/book/accusation">
-									<img id="img-singo" src="/readingbetter/assets/images/singo.png"></a>
-								</td>
-								<td>${vo.regDate }</td>
-								<td><a href="">삭제</a></td>
-							</tr>
-							</c:forEach>							
+							<c:choose>
+								<c:when test="${empty list}">
+									<tr>
+										<c:choose>
+											<c:when test="${not empty sessionScope.authUser}">
+												<td colspan=5>아직 등록된 댓글이 없습니다</td>
+											</c:when>
+											<c:otherwise>
+												<td colspan=3>아직 등록된 댓글이 없습니다</td>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:when>
+								<c:otherwise>
+			  						<c:forEach var='reviewVo' items='${list}' varStatus='s'>	
+										<tr>
+											<td>${reviewVo.review }</td>
+											<td>${reviewVo.id }</td>
+											<td>${reviewVo.regDate }</td>
+											
+											<c:if test = '${not empty sessionScope.authUser}'>
+												<c:choose>
+													<c:when test="${reviewVo.memberNo == authUser.no}">
+														<td></td>
+														<td><a href="/readingbetter/book/delete/${reviewVo.no }">삭제</a></td>
+													</c:when>
+													<c:otherwise>
+														<td>
+															<a href="/readingbetter/book/accusation/${reviewVo.no }">
+																<img id="img-singo" src="/readingbetter/assets/images/singo.png">
+															</a>
+														</td>
+														<td></td>
+													</c:otherwise>
+												</c:choose>
+											</c:if>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</table>
 
 						<!-- begin:paging -->
@@ -75,14 +133,16 @@
 							</ul>
 						</div>
 						<!-- end:paging -->
-
-						<form class="form-inline">
+						<c:if test = '${not empty sessionScope.authUser}'>
+						<form class="form-inline" method="post" action="../insert/${vo.no}" >
+							<input type="hidden" name="bookNo" value="${vo.no}">	
 							<div class="form-group">
 								<label class="sr-only">review</label>
 								<input  name="review" type="text" class="form-control input-sm" id="write-review">
 								<button type="submit" class="btn btn-default">등록</button>
 							</div>
 						</form>
+						</c:if>
 					</div>
 				</div>
 			</div>

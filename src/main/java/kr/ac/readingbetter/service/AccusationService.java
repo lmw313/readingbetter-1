@@ -7,15 +7,13 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.AccusationDao;
 import kr.ac.readingbetter.vo.AccusationVo;
-import kr.ac.readingbetter.vo.CommentsVo;
-import kr.ac.readingbetter.vo.ReviewVo;
 
 @Service
 public class AccusationService {
 
 	@Autowired
 	private AccusationDao accusationDao;
-
+	
 	public List<AccusationVo> getList() {
 		List<AccusationVo> list = accusationDao.getList();
 		return list;
@@ -26,21 +24,15 @@ public class AccusationService {
 		return adminAccusation;
 	}
 
-	public ReviewVo getReviewList(Long no) {
-		ReviewVo adminReview = accusationDao.getReviewList(no);
-		return adminReview;
-	}
-
-	public CommentsVo getCommentsList(Long no) {
-		CommentsVo adminComments = accusationDao.getCommentsList(no);
-		return adminComments;
-	}
-
 	public void update(AccusationVo vo) {
 		accusationDao.update(vo);
 	}
-	
-	public void insertComments(AccusationVo vo){
+
+	public void insertComments(AccusationVo vo) {
 		accusationDao.insertComments(vo);
+	}
+
+	public void insertReviewAccusation(AccusationVo vo) {
+		accusationDao.insertReviewAccusation(vo);
 	}
 }
