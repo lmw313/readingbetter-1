@@ -10,7 +10,7 @@ import kr.ac.readingbetter.vo.ShopVo;
 
 @Service
 public class ShopService {
-	
+
 	@Autowired
 	private ShopDao shopDao;
 
@@ -27,5 +27,10 @@ public class ShopService {
 	// 상품 삭제
 	public void goodsDelete(Long no) {
 		shopDao.goodsDelete(no);
+	}
+
+	public ShopVo getByNo(Long no) {
+		ShopVo shop = shopDao.getByNo(no);
+		return shop;
 	}
 }

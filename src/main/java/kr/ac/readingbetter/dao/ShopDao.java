@@ -25,4 +25,9 @@ public class ShopDao {
 	public void goodsDelete(Long no) {
 		sqlSession.delete("shop.delete", no);
 	}
+
+	public ShopVo getByNo(Long no) {
+		ShopVo vo = sqlSession.selectOne("shop.getByNo", no);
+		return vo;
+	}
 }

@@ -16,11 +16,17 @@
 			VALUES(seq_goods.nextval, #{title}, #{price}, #{cover})
 		]]>
 	</insert>
-	
+
 	<delete id="delete" parameterType="long">
 		<![CDATA[
 			DELETE FROM GOODS WHERE NO=#{no}
 		]]>
 	</delete>
-	
+
+	<select id="getByNo" parameterType="shopvo" resultType="shopvo">
+ 		<![CDATA[
+ 			select no, cover, title, price from goods where no=#{no}
+ 		]]>
+	</select>
+
 </mapper>
