@@ -76,11 +76,12 @@
 					<!-- begin:paging -->
 					<div class="pager">
 						<ul>
-							<li>
-								<a href="/readingbetter/book/booklist/${beginPage-1 }?bkwd=${bkwd}">◀</a>
-								<input type="hidden" name="pageNo" value="${beginPage-1 }">
-							</li>
-								
+							<c:if test="${beginPage>1 }">
+								<li>
+									<a href="/readingbetter/book/booklist?pageNo=${beginPage-1 }&bkwd=${bkwd}">◀</a>
+									<input type="hidden" name="pageNo" value="${beginPage-1 }">
+								</li>
+							</c:if>
 							<c:forEach begin='${beginPage }' end='${endPage }' step='1' var='i'>
 								<c:choose>
 									<c:when test='${currentPage == i }'>
@@ -88,7 +89,7 @@
 									</c:when>
 								<c:otherwise>
 									<li>
-										<a href="/readingbetter/book/booklist/${i }?bkwd=${bkwd}">${i }</a>
+										<a href="/readingbetter/book/booklist?pageNo=${i }&bkwd=${bkwd}">${i }</a>
 										<input type="hidden" name="pageNo" value="${i}">
 									</li>
 								</c:otherwise>
@@ -97,7 +98,7 @@
 						
 							<c:if test='${endPage<total }'>
 								<li>
-									<a href="/readingbetter/book/booklist/${endPage+1 }?bkwd=${bkwd}">▶</a>
+									<a href="/readingbetter/book/booklist?pageNo=${endPage+1 }&bkwd=${bkwd}">▶</a>
 									<input type="hidden" name="pageNo" value="${endPage+1}">
 								</li>
 							</c:if>

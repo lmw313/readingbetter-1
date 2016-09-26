@@ -59,45 +59,36 @@ public class BookController {
 	@Autowired
 	private CertificationService certificationService;
 
-	// 책 리스트
-	@RequestMapping("/booklist")
-	public String bookList(Model model, BookVo bookvo) {
-		if (bookvo.getBkwd() == null) {
-			bookvo.setBkwd("");
-		}
-		List<BookVo> list = bookService.getListKwd(bookvo);
-		model.addAttribute("list", list);
-		return "book/booklist";
-	}
-
-	// 책 리스트 페이징
-	@RequestMapping(value = "/booklist/{pageNo}", method = RequestMethod.GET)
-	public String bookListPage(@PathVariable("pageNo") Integer pageNo, BookVo bookvo, Model model) {
-		List<BookVo> list = bookService.getList();
-
-		if (pageNo == 0 || "".equals(pageNo)) {
-			pageNo = 1;
-		}
-
-		if (bookvo.getBkwd() == null) {
-			bookvo.setBkwd("");
-			List<BookVo> listpage = bookService.getListPage(pageNo);
-			model.addAttribute("listpage", listpage);
-		}
-
-		String bkwd = bookvo.getBkwd();
-		bookvo.setBkwd(bkwd);
-
-		List<BookVo> listkwd = bookService.getListKwd(bookvo);
-		model.addAttribute("listpage", listkwd);
+	// 책 리스트 검색, 페이징
+	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
+	public String bookListPage(BookVo bookvo, Model model) {
 
 		int pageLength = 3;
-		int currentBlock = (int) Math.ceil((double) pageNo / pageLength);
+		int beginPage;
 
-		int currentPage = pageNo;
+		if (bookvo.getPageNo() == null) {
+			bookvo.setPageNo(1);
+		}
+
+		if (bookvo.getBkwd() == null) {
+			bookvo.setBkwd("");
+			List<BookVo> listpage = bookService.getListPage(bookvo);
+			model.addAttribute("listpage", listpage);
+
+		}
+		String bkwd = bookvo.getBkwd();
+		bookvo.setBkwd(bkwd);
+		List<BookVo> list = bookService.getListService(bookvo);
+		List<BookVo> listkwd = bookService.getListKwd(bookvo);
+
+		model.addAttribute("listpage", listkwd);
+
+		int currentBlock = (int) Math.ceil((double) bookvo.getPageNo() / pageLength);
+
+		int currentPage = bookvo.getPageNo();
+		beginPage = (currentBlock - 1) * 3 + 1;
+
 		int total = (int) Math.ceil((double) list.size() / pageLength);
-
-		int beginPage = (currentBlock - 1) * 3 + 1;
 		int endPage = currentBlock * 3;
 		if (endPage > total) {
 			endPage = total;

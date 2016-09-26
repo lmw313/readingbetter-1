@@ -49,5 +49,16 @@
 			like '%' || #{bkwd} || '%' order by no asc
 		]]>
 	</select>
+	
+	<select id="listservice" parameterType="bookvo" resultType="bookvo">
+		<![CDATA[
+			select a.no,a.title,a.recommend,a.cover,b.title as publisherTitle,
+			c.name as authorName from book a, publisher b,author c
+ 			where b.no=a.publisher_no 
+ 			and c.no=a.author_no
+ 			and a.title like '%' || #{bkwd} || '%' 
+ 			order by a.title 
+		]]>
+	</select>
 
 </mapper>
