@@ -1,15 +1,15 @@
 package kr.ac.readingbetter.vo;
 
-public class RankingVo {
-	Long rank; // 순위
-	String id; // 아이디
-	String school; // 학교 이름
-	Long monthlyScore; // 한 달 점수
-	Long myMonthlyScore; // 로그인 한 회원의 한 달 점수
-	Long totalScore; // 전체 점수 (초기화 되지 않는 점수)
-	Long myTotalScore; // 로그인 한 회원의 전체 점수
-	Long schoolScore; // 학교 점수
-	Long mySchoolScore; // 로그인 한 회원의 학교 점수
+public class ScoresVo {
+	private Long rank; // 순위
+	private String id; // 아이디
+	private String title; // 학교 이름
+	private Long monthlyScore; // 한 달 점수
+	private Long myMonthlyScore; // 로그인 한 회원의 한 달 점수
+	private Long totalScore; // 전체 점수 (초기화 되지 않는 점수)
+	private Long myTotalScore; // 로그인 한 회원의 전체 점수
+	private Long schoolScore; // 학교 점수
+	private Long mySchoolScore; // 로그인 한 회원의 학교 점수
 
 	public Long getRank() {
 		return rank;
@@ -27,12 +27,12 @@ public class RankingVo {
 		this.id = id;
 	}
 
-	public String getSchool() {
-		return school;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setSchool(String school) {
-		this.school = school;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Long getMonthlyScore() {
@@ -85,7 +85,7 @@ public class RankingVo {
 
 	@Override
 	public String toString() {
-		return "RankingVo [rank=" + rank + ", id=" + id + ", school=" + school + ", monthlyScore=" + monthlyScore
+		return "RankingVo [rank=" + rank + ", id=" + id + ", title=" + title + ", monthlyScore=" + monthlyScore
 				+ ", myMonthlyScore=" + myMonthlyScore + ", totalScore=" + totalScore + ", myTotalScore=" + myTotalScore
 				+ ", schoolScore=" + schoolScore + ", mySchoolScore=" + mySchoolScore + "]";
 	}

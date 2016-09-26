@@ -26,11 +26,6 @@
 							href="/readingbetter/ranking/summary">순위</a> > 순위 한눈에 보기/검색
 					</div>
 
-					<form id="search_form" action="" method="post">
-						<input type="text" id="kwd" name="kwd" value="${kwd }"> <input
-							type="submit" value="찾기">
-					</form>
-
 					<div id="table" class="col-lg-6">
 						<p id="title">이번 달 전체 순위</p>
 						<br>
@@ -45,23 +40,12 @@
 								<th>아이디</th>
 								<th>점수</th>
 							</tr>
-							<c:forEach items="${monthlyRank }" end="10" var="rankingvo">
-								<c:choose>
-									<c:when test="${monthlyRank!=null }">
-										<tr>
-											<td>${rankingvo.rank }</td>
-											<td>${rankingvo.id }</td>
-											<td>${rankingvo.monthlyScore }</td>
-										<tr>
-									</c:when>
-									<c:otherwise>
-										<tr>
-											<td>-</td>
-											<td>-</td>
-											<td>-</td>
-										<tr>
-									</c:otherwise>
-								</c:choose>
+							<c:forEach items="${monthlyRank }" var="rankingvo">
+								<tr>
+									<td>${rankingvo.rank }</td>
+									<td>${rankingvo.id }</td>
+									<td>${rankingvo.monthlyScore }</td>
+								<tr>
 							</c:forEach>
 						</table>
 					</div>
@@ -80,56 +64,13 @@
 								<th>학교명</th>
 								<th>점수</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
+							<c:forEach items="${monthlySchool }" var="rankingvo">
+								<tr>
+									<td>${rankingvo.rank }</td>
+									<td>${rankingvo.title }</td>
+									<td>${rankingvo.schoolScore }</td>
+								</tr>
+							</c:forEach>
 						</table>
 					</div>
 

@@ -7,8 +7,10 @@
 <head>
 <title>ReadingBetter</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/ranking.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/ranking.css" rel="stylesheet"
+	type="text/css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -37,56 +39,13 @@
 								<th>학교명</th>
 								<th>점수</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>ID2</td>
-								<td>4</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>ID3</td>
-								<td>3</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>ID4</td>
-								<td>2</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>ID5</td>
-								<td>1</td>
-							</tr>
+							<c:forEach items="${monthlySchool }" var="rankingvo">
+								<tr>
+									<td>${rankingvo.rank }</td>
+									<td>${rankingvo.title }</td>
+									<td>${rankingvo.schoolScore }</td>
+								</tr>
+							</c:forEach>
 						</table>
 						<br>
 						<p id="title">우리 학교 순위</p>
@@ -102,11 +61,27 @@
 								<th>학교명</th>
 								<th>점수</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td>null
-								<td>0</td>
-							</tr>
+							<c:choose>
+								<c:when test="${not empty sessionScope.authUser}">
+									<c:choose>
+										<c:when test="${mySchoolRank ne null}">
+											<tr>
+												<td>${mySchoolRank.rank }위</td>
+												<td>${mySchoolRank.title }</td>
+												<td>${mySchoolRank.mySchoolScore }</td>
+											</tr>
+										</c:when>
+										<c:otherwise>
+											<tr>
+												<td colspan=3>회원님의 학교 정보가 없습니다</td>
+											</tr>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									<td colspan=3>로그인이 필요한 기능입니다</td>
+								</c:otherwise>
+							</c:choose>
 						</table>
 						<br>
 					</div>

@@ -3,11 +3,100 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="scores">
+
+	<!-- 한 달 점수 랭킹 (상위 10명) -->
+	<select id="monthlyRank" parameterType="scoresvo" resultType="scoresvo">
+		<![CDATA[
+			select rank, id, monthlyscore 
+			from (select rank() over(order by score desc) as rank, id, 
+			score as monthlyScore from scores, member 
+			where member.no = scores.member_no) where rownum<=10
+		]]>
+	</select>
+
+	<!-- 나의 한 달 점수 랭킹 -->
+	<select id="myMonthlyRank" parameterType="long" resultType="scoresvo">
+		<![CDATA[
+			select rank, id, myMonthlyscore 
+			from (select rank() over(order by score desc) rank, id, no, 
+			score as myMonthlyScore from scores, member 
+			where member.no = scores.member_no) where no=#{no}
+		]]>
+	</select>
+
+	<!-- 종합 점수 랭킹 (명예의 전당) -->
+	<select id="honor" parameterType="scoresvo" resultType="scoresvo">
+		<![CDATA[
+			select rank, id, totalscore 
+			from (select rank() over(order by scores.total_score desc) as rank, 
+			id, scores.total_score as totalscore from scores, member 
+			where member.no = scores.member_no) where rownum<=10
+		]]>
+	</select>
+
+	<!-- 나의 종합 점수 랭킹 (명예의 전당) -->
+	<select id="myTotalRank" parameterType="long" resultType="scoresvo">
+		<![CDATA[
+			select rank, id, myTotalScore 
+			from (select rank() over(order BY scores.total_score desc) rank, 
+			id, no, scores.total_score as myTotalScore 
+			from scores, member where member.no = scores.member_no) 
+			where no=#{no}			
+		]]>
+	</select>
+
+	<!-- 종합 점수 랭킹 (top 3) -->
+	<select id="totalTopRanker" parameterType="scoresvo" resultType="scoresvo">
+		<![CDATA[
+			select rank, id 
+			from (select rank() OVER(order BY scores.total_score desc) as rank, 
+			id, scores.total_score as totalscore from scores, member 
+			where member.no = scores.member_no) 
+			where rownum<=3 order by rank asc			
+		]]>
+	</select>
+
+	<!-- 학교별 랭킹 -->
+	<select id="schoolRank" parameterType="scoresvo" resultType="scoresvo">
+		<![CDATA[
+			select rank, title, schoolscore
+				from (select rank() OVER(ORDER BY SchoolScore DESC) as rank, title, schoolscore
+				      from (select
+				                     b.school_no,sum(a.score) as SchoolScore
+				            from     scores a, member b
+				            where    b.no=a.member_no
+				            group by school_no, b.school_no) a,school b
+				where b.no=a.school_no
+				order by rank asc) where rownum <= 10
+		]]>
+	</select>
 	
+	<!-- 로그인 한 회원의 학교 랭킹 -->
+	<select id="mySchoolRank" parameterType="integer" resultType="scoresvo">
+		<![CDATA[
+			select rank, title, mySchoolScore
+				from(select rank() OVER(ORDER BY mySchoolScore DESC) as rank, title, mySchoolScore, b.NO as sno
+				       from (select
+				                     b.school_no, sum(a.score) as mySchoolScore
+				            from     scores a, member b
+				            where    b.no=a.member_no
+				            group by school_no, b.school_no) a,school b
+				where b.no=a.school_no) where sno = #{no}
+		]]>
+	</select>
+
+	<!-- 학년별 랭킹 -->
+	<select id="gradeRank" parameterType="scoresvo" resultType="scoresvo">
+		<![CDATA[
+			
+		]]>
+	</select>
+
+	<!-- 퀴즈 결과에 따른 업데이트 -->
 	<update id="updateScores" parameterType="historyvo">
 		<![CDATA[
 			update scores set score=score+#{score} , point=point+#{point} where member_no=#{memberNo}
 		]]>
 	</update>
-	
+
 </mapper>

@@ -5,7 +5,6 @@
 	<typeAliases>
 		<typeAlias type="kr.ac.readingbetter.vo.MemberVo" alias="membervo" />
 		<typeAlias type="kr.ac.readingbetter.vo.WishbookVo" alias="wishbookvo" />
-		<typeAlias type="kr.ac.readingbetter.vo.BookVo" alias="bookvo" />
 		<typeAlias type="kr.ac.readingbetter.vo.SchoolVo" alias="schoolvo" />
 		<typeAlias type="kr.ac.readingbetter.vo.NoticeVo" alias="noticevo" />
 		<typeAlias type="kr.ac.readingbetter.vo.BookVo" alias="bookvo"/>
@@ -18,9 +17,9 @@
 		<typeAlias type="kr.ac.readingbetter.vo.ShopVo" alias="shopvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.CardVo" alias="cardvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.ReviewVo" alias="reviewvo"/>
-		<typeAlias type="kr.ac.readingbetter.vo.RankingVo" alias="rankingvo"/>
-		<typeAlias type="kr.ac.readingbetter.vo.CertificationVo" alias="certificationvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.HistoryVo" alias="historyvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.ScoresVo" alias="scoresvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.CertificationVo" alias="certificationvo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -38,7 +37,6 @@
 		<mapper resource="mybatis/mappers/shop.xml" />
 		<mapper resource="mybatis/mappers/card.xml" />
 		<mapper resource="mybatis/mappers/review.xml" />
-		<mapper resource="mybatis/mappers/ranking.xml" />
 		<mapper resource="mybatis/mappers/history.xml" />
 		<mapper resource="mybatis/mappers/scores.xml" />
 		<mapper resource="mybatis/mappers/certification.xml" />
