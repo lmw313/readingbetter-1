@@ -27,7 +27,7 @@ public class ScoresDao {
 
 	// 학교 랭킹
 	// 로그인 한 회원의 학교 랭킹
-	public ScoresVo mySchoolRank(Integer no) {
+	public ScoresVo mySchoolRank(Long no) {
 		return sqlSession.selectOne("scores.mySchoolRank", no);
 	}
 
@@ -57,5 +57,14 @@ public class ScoresDao {
 
 	public void updateScores(HistoryVo vo) {
 		sqlSession.update("scores.updateScores", vo);
+	}
+
+	public ScoresVo selectScores(Long no) {
+		ScoresVo vo = sqlSession.selectOne("scores.selectScores", no);
+		return vo;
+	}
+
+	public void insertScores(Long no) {
+		sqlSession.insert("scores.insertScores", no);
 	}
 }

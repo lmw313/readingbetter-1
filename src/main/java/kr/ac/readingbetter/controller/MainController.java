@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.ac.readingbetter.service.MemberService;
+import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.MemberVo;
+import kr.ac.readingbetter.vo.ScoresVo;
 
 @Controller
 @RequestMapping("/main")
@@ -16,6 +18,9 @@ public class MainController {
 
 	@Autowired
 	private MemberService memberService;
+
+	@Autowired
+	private ScoresService scoresService;
 
 	@RequestMapping("")
 	public String Main() {
@@ -26,6 +31,7 @@ public class MainController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberVo vo, HttpSession session) {
 
+		// login
 		MemberVo authUser = memberService.selectAuthUser(vo);
 
 		if (authUser == null) {
@@ -34,6 +40,13 @@ public class MainController {
 
 		// 인증 성공
 		session.setAttribute("authUser", authUser);
+
+		// scores insert
+		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
+
+		if (scoresVo == null) {
+			scoresService.insertScores(authUser.getNo());
+		}
 
 		return "redirect:/main";
 	}

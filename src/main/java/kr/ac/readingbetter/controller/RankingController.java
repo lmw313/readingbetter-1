@@ -82,7 +82,7 @@ public class RankingController {
 
 		// 로그인 한 회원의 학교 랭킹
 		if (authUser != null) {// 로그인을 했을 때
-			Integer no = authUser.getSchoolNo(); // 로그인 한 회원의 학교 번호를 받아옴
+			Long no = authUser.getSchoolNo(); // 로그인 한 회원의 학교 번호를 받아옴
 			if (no != null) { // 학교 번호가 null이 아닐 경우에만 vo에 랭킹 정보 삽입
 				vo = scoresService.mySchoolRank(no);
 				model.addAttribute("mySchoolRank", vo);

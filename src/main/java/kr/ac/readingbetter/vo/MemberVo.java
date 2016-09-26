@@ -12,7 +12,7 @@ public class MemberVo {
 	private Integer penalty;
 	private Integer grade;
 	private Integer classNo;
-	private Integer schoolNo;
+	private Long schoolNo;
 	private String kwd;
 	private String schoolName;
 
@@ -104,11 +104,11 @@ public class MemberVo {
 		this.classNo = classNo;
 	}
 
-	public Integer getSchoolNo() {
+	public Long getSchoolNo() {
 		return schoolNo;
 	}
 
-	public void setSchoolNo(Integer schoolNo) {
+	public void setSchoolNo(Long schoolNo) {
 		this.schoolNo = schoolNo;
 	}
 

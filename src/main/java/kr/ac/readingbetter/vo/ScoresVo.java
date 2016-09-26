@@ -4,12 +4,15 @@ public class ScoresVo {
 	private Long rank; // 순위
 	private String id; // 아이디
 	private String title; // 학교 이름
-	private Long monthlyScore; // 한 달 점수
-	private Long myMonthlyScore; // 로그인 한 회원의 한 달 점수
-	private Long totalScore; // 전체 점수 (초기화 되지 않는 점수)
-	private Long myTotalScore; // 로그인 한 회원의 전체 점수
-	private Long schoolScore; // 학교 점수
-	private Long mySchoolScore; // 로그인 한 회원의 학교 점수
+	private Integer monthlyScore; // 한 달 점수
+	private Integer myMonthlyScore; // 로그인 한 회원의 한 달 점수
+	private Integer totalScore; // 전체 점수 (초기화 되지 않는 점수)
+	private Integer myTotalScore; // 로그인 한 회원의 전체 점수
+	private Integer schoolScore; // 학교 점수
+	private Integer mySchoolScore; // 로그인 한 회원의 학교 점수
+	private Long memberNo;
+	private Integer score;
+	private Integer point;
 
 	public Long getRank() {
 		return rank;
@@ -35,58 +38,83 @@ public class ScoresVo {
 		this.title = title;
 	}
 
-	public Long getMonthlyScore() {
+	public Integer getMonthlyScore() {
 		return monthlyScore;
 	}
 
-	public void setMonthlyScore(Long monthlyScore) {
+	public void setMonthlyScore(Integer monthlyScore) {
 		this.monthlyScore = monthlyScore;
 	}
 
-	public Long getMyMonthlyScore() {
+	public Integer getMyMonthlyScore() {
 		return myMonthlyScore;
 	}
 
-	public void setMyMonthlyScore(Long myMonthlyScore) {
+	public void setMyMonthlyScore(Integer myMonthlyScore) {
 		this.myMonthlyScore = myMonthlyScore;
 	}
 
-	public Long getTotalScore() {
+	public Integer getTotalScore() {
 		return totalScore;
 	}
 
-	public void setTotalScore(Long totalScore) {
+	public void setTotalScore(Integer totalScore) {
 		this.totalScore = totalScore;
 	}
 
-	public Long getMyTotalScore() {
+	public Integer getMyTotalScore() {
 		return myTotalScore;
 	}
 
-	public void setMyTotalScore(Long myTotalScore) {
+	public void setMyTotalScore(Integer myTotalScore) {
 		this.myTotalScore = myTotalScore;
 	}
 
-	public Long getSchoolScore() {
+	public Integer getSchoolScore() {
 		return schoolScore;
 	}
 
-	public void setSchoolScore(Long schoolScore) {
+	public void setSchoolScore(Integer schoolScore) {
 		this.schoolScore = schoolScore;
 	}
 
-	public Long getMySchoolScore() {
+	public Integer getMySchoolScore() {
 		return mySchoolScore;
 	}
 
-	public void setMySchoolScore(Long mySchoolScore) {
+	public void setMySchoolScore(Integer mySchoolScore) {
 		this.mySchoolScore = mySchoolScore;
+	}
+
+	public Long getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(Long memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+
+	public Integer getPoint() {
+		return point;
+	}
+
+	public void setPoint(Integer point) {
+		this.point = point;
 	}
 
 	@Override
 	public String toString() {
-		return "RankingVo [rank=" + rank + ", id=" + id + ", title=" + title + ", monthlyScore=" + monthlyScore
+		return "ScoresVo [rank=" + rank + ", id=" + id + ", title=" + title + ", monthlyScore=" + monthlyScore
 				+ ", myMonthlyScore=" + myMonthlyScore + ", totalScore=" + totalScore + ", myTotalScore=" + myTotalScore
-				+ ", schoolScore=" + schoolScore + ", mySchoolScore=" + mySchoolScore + "]";
+				+ ", schoolScore=" + schoolScore + ", mySchoolScore=" + mySchoolScore + ", memberNo=" + memberNo
+				+ ", score=" + score + ", point=" + point + "]";
 	}
 }

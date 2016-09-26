@@ -80,7 +80,7 @@
 								
 								<div id="button-group">
 									<a class="btn btn-default" href="/readingbetter/book/solvequizform?no=${param.no }" type="button">다시풀기</a>
-									<a class="btn btn-default" href="/readingbetter/book/booklist" type="button">책 목록으로</a>
+									<a class="btn btn-default" href="/readingbetter/book/booklist/1" type="button">책 목록으로</a>
 								</div>
 							</c:when>
 							<c:otherwise>

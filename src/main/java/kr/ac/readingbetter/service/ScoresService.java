@@ -11,7 +11,7 @@ import kr.ac.readingbetter.vo.ScoresVo;
 
 @Service
 public class ScoresService {
-	
+
 	@Autowired
 	private ScoresDao scoresDao;
 
@@ -31,7 +31,7 @@ public class ScoresService {
 	}
 
 	// 로그인 한 회원의 학교 랭킹
-	public ScoresVo mySchoolRank(Integer no) {
+	public ScoresVo mySchoolRank(Long no) {
 		return scoresDao.mySchoolRank(no);
 	}
 
@@ -58,5 +58,14 @@ public class ScoresService {
 
 	public void updateScores(HistoryVo vo) {
 		scoresDao.updateScores(vo);
+	}
+
+	public ScoresVo selectScores(Long no) {
+		ScoresVo vo = scoresDao.selectScores(no);
+		return vo;
+	}
+
+	public void insertScores(Long no) {
+		scoresDao.insertScores(no);
 	}
 }

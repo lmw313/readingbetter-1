@@ -8,13 +8,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.ac.readingbetter.service.MemberService;
+import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.MemberVo;
+import kr.ac.readingbetter.vo.ScoresVo;
 
 @Controller
 @RequestMapping("/mypage")
 public class MyPageController {
+
 	@Autowired
 	private MemberService memberService;
+
+	@Autowired
+	private ScoresService scoresService;
 
 	@RequestMapping("/modifyform")
 	public String ModifyForm() {
@@ -26,11 +32,14 @@ public class MyPageController {
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 
 		MemberVo memberVo = memberService.selectMyinfo(authUser.getNo());
+		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
 
 		model.addAttribute("memberVo", memberVo);
+		model.addAttribute("scoresVo", scoresVo);
 
 		return "mypage/info";
 	}
+
 
 	@RequestMapping("/findform")
 	public String FindForm() {

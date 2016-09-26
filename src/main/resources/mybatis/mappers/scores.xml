@@ -72,16 +72,15 @@
 	</select>
 	
 	<!-- 로그인 한 회원의 학교 랭킹 -->
-	<select id="mySchoolRank" parameterType="integer" resultType="scoresvo">
+	<select id="mySchoolRank" parameterType="long" resultType="scoresvo">
 		<![CDATA[
-			select rank, title, mySchoolScore
-				from(select rank() OVER(ORDER BY mySchoolScore DESC) as rank, title, mySchoolScore, b.NO as sno
-				       from (select
-				                     b.school_no, sum(a.score) as mySchoolScore
-				            from     scores a, member b
-				            where    b.no=a.member_no
-				            group by school_no, b.school_no) a,school b
-				where b.no=a.school_no) where sno = #{no}
+			select rank, title, mySchoolScore 
+			from(select rank() OVER(ORDER BY mySchoolScore DESC) as rank, 
+			title, mySchoolScore, b.NO as sno 
+			from (select b.school_no, sum(a.score) as mySchoolScore 
+			from scores a, member b where b.no=a.member_no 
+			group by school_no, b.school_no) a,school b 
+			where b.no=a.school_no) where sno = #{no}
 		]]>
 	</select>
 
@@ -98,5 +97,21 @@
 			update scores set score=score+#{score} , point=point+#{point} where member_no=#{memberNo}
 		]]>
 	</update>
+	
+	<!-- 마이 페이지 -->
+	<select id="selectScores" parameterType="long" resultType="scoresvo">
+		<![CDATA[
+			select member_no as memberNo, score, point, total_score as totalScore 
+				from scores 
+				where member_no=#{no}
+		]]>
+	</select>
+	
+	<!-- 로그인시 자동 추가 -->
+	<insert id="insertScores" parameterType="long">
+		<![CDATA[
+			insert into scores values(#{no}, 0, 0, 0)
+		]]>
+	</insert>
 
 </mapper>

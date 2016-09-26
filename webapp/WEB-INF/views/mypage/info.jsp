@@ -76,14 +76,14 @@
 						<tr>
 							<td>캔디 수</td>
 							<br>
-							<td>점수</td>
-							<td>순위</td>
+							<td>종합 점수</td>
+							<td>이번달 점수</td>
 						</tr>
 						<tr>
-							<td>20</td>
+							<td>${scoresVo.point }</td>
 							<br>
-							<td>300</td>
-							<td>1</td>
+							<td>${scoresVo.totalScore }</td>
+							<td>${scoresVo.score }</td>
 						</tr>
 					</table>
 				</div>
