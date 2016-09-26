@@ -41,4 +41,9 @@ public class MemberService {
 	public void insertMember(MemberVo vo) {
 		memberDao.insertMember(vo);
 	}
+
+	public MemberVo selectMyinfo(Long no) {
+		MemberVo vo = memberDao.selectMyinfo(no);
+		return vo;
+	}
 }

@@ -10,7 +10,7 @@
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/main.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-1.9.0.js"></script>
-<script type="text/javascript" src="/readingbetter/assets/js/jquery/main.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/main.js"></script>
 </head>
 <body>
 	<div class="container-fluid">

@@ -79,13 +79,13 @@
 										<input type="hidden" type="text" name="no${i }" value="${list[i].no }">
 									</div>
 								</c:forEach>
+								<input type="hidden" name="no" value="${param.no }">
 								<button class="btn btn-default" type="submit">결과보기</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
-
 		</div>
 		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>

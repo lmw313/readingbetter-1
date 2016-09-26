@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="scores">
+	
+	<update id="updateScores" parameterType="historyvo">
+		<![CDATA[
+			update scores set score=score+#{score} , point=point+#{point} where member_no=#{memberNo}
+		]]>
+	</update>
+	
+</mapper>

@@ -42,4 +42,11 @@
 		]]>
 	</update>
 	
+	<select id="selectCardByRandom" resultType="cardvo">
+		<![CDATA[
+			select title, content, skill, bonus, cover 
+			from (select no, title, content, skill, bonus, cover from card order by dbms_random.value) where rownum=1
+		]]>
+	</select>
+	
 </mapper>

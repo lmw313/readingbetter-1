@@ -10,7 +10,7 @@ import kr.ac.readingbetter.vo.CardVo;
 
 @Repository
 public class CardDao {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -32,5 +32,10 @@ public class CardDao {
 
 	public void updateCard(CardVo vo) {
 		sqlSession.update("card.update", vo);
+	}
+
+	public CardVo selectCardByRandom() {
+		CardVo vo = sqlSession.selectOne("card.selectCardByRandom");
+		return vo;
 	}
 }

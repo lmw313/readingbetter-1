@@ -13,15 +13,15 @@
 				<form action="/readingbetter/main/login" method="post">
 					<div class="form-group">
 						<label for="id">아이디:</label>
-						<input type="text" class="form-control input-sm" id="email" name="id">
+						<input type="text" class="form-control input-sm" id="id" name="id">
 					</div>
 					<div class="form-group">
-						<label for="pwd">비밀번호:</label>
-						<input type="password" class="form-control input-sm" id="pwd" name="pw">
+						<label for="pw">비밀번호:</label>
+						<input type="password" class="form-control input-sm" id="pw" name="pw">
 					</div>
 					<!--<div class="checkbox">
 					<label><input type="checkbox"> Remember me</label></div> -->
-					<button type="submit" class="btn btn-default">로그인</button>
+					<button type="submit" class="btn btn-default" id="btn-login">로그인</button>
 				</form>
 				<a href="/readingbetter/mypage/findjoin">아이디/비밀번호 찾기</a>
 			</div>

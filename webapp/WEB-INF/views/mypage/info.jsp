@@ -31,16 +31,23 @@
 								src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/pikachu.png"><br>
 							<br>
 							<div class="form-group">
+								<label class="col-sm-3 control-label">이름</label>
+								<div class="col-sm-9">
+									<p class="form-control-static">${memberVo.name }</p>
+								</div>
+							</div>
+							
+							<div class="form-group">
 								<label class="col-sm-3 control-label">초등학교</label>
 								<div class="col-sm-9">
-									<p class="form-control-static">두더지 초등학교</p>
+									<p class="form-control-static">${memberVo.schoolName }</p>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-sm-3 control-label">학년 반</label>
 								<div class="col-sm-9">
-									<p class="form-control-static">2학년 4반</p>
+									<p class="form-control-static">${memberVo.grade }학년 ${memberVo.classNo }반</p>
 								</div>
 							</div>
 						</form>
@@ -50,21 +57,15 @@
 						<h4>연락처</h4>
 						<form class="form-horizontal">
 							<div class="form-group">
-								<label class="col-sm-3 control-label">기본이메일</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">kmg878@naver.com</p>
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-sm-3 control-label">본인 확인 이메일</label>
 								<div class="col-sm-9">
-									<p class="form-control-static">kmg878@naver.com</p>
+									<p class="form-control-static">${memberVo.email }</p>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label">휴대전화</label>
 								<div class="col-sm-9">
-									<p class="form-control-static">010-7274-3349</p>
+									<p class="form-control-static">${memberVo.tel }</p>
 								</div>
 							</div>
 							<a class="btn btn-default" href="/readingbetter/mypage/modifyform" role="button">수정하기</a>

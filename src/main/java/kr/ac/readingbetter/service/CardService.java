@@ -10,7 +10,7 @@ import kr.ac.readingbetter.vo.CardVo;
 
 @Service
 public class CardService {
-	
+
 	@Autowired
 	private CardDao cardDao;
 
@@ -33,5 +33,11 @@ public class CardService {
 
 	public void updateCard(CardVo vo) {
 		cardDao.updateCard(vo);
+	}
+
+	// 카드 랜덤으로 가져오기
+	public CardVo selectCardByRandom() {
+		CardVo vo = cardDao.selectCardByRandom();
+		return vo;
 	}
 }

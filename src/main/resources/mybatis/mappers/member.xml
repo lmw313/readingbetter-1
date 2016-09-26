@@ -29,4 +29,12 @@
 		]]>
 	</insert>
 	
+	<select id="selectMyinfo" parameterType="long" resultType="membervo">
+		<![CDATA[
+			select m.name, m.email, m.tel, s.title as schoolName, m.grade, m.class_no as classNo
+				from member m, school s 
+				where m.SCHOOL_NO = s.NO and m.no=#{no}
+		]]>
+	</select>
+	
 </mapper>

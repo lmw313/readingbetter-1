@@ -29,7 +29,7 @@ public class MainController {
 		MemberVo authUser = memberService.selectAuthUser(vo);
 
 		if (authUser == null) {
-			return "redirect:/main";
+			return "redirect:/member/loginform?error=true";
 		}
 
 		// 인증 성공

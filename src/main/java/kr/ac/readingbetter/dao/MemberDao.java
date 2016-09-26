@@ -41,4 +41,10 @@ public class MemberDao {
 	public void insertMember(MemberVo vo) {
 		sqlSession.insert("member.insertMember", vo);
 	}
+
+	public MemberVo selectMyinfo(Long no) {
+		MemberVo vo = sqlSession.selectOne("member.selectMyinfo", no);
+		return vo;
+	}
+
 }

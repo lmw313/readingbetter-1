@@ -24,6 +24,10 @@
 					<br>
 					
 					<div id="radio-group">
+						<c:if test="${param.error != null }">
+							<h6 style="color: red;">아이디 혹은 비밀번호가 틀립니다</h6>
+						</c:if>
+							
 						<form class="form-horizontal" action="/readingbetter/main/login" method="post"><br><br>
 							<img id="img-login" class="img-circle"
 								src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/pikachu.png"><br>
@@ -50,7 +54,6 @@
 				</div>
 			</div>
 		</div>
-
 		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>
 </body>
