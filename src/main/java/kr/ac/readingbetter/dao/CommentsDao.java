@@ -14,8 +14,8 @@ public class CommentsDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<CommentsVo> getList(Long no) {
-		List<CommentsVo> list = sqlSession.selectList("comments.getByNoticeNo", no);
+	public List<CommentsVo> getList(CommentsVo vo) {
+		List<CommentsVo> list = sqlSession.selectList("comments.getByNoticeNo", vo);
 		return list;
 	}
 	
@@ -35,5 +35,14 @@ public class CommentsDao {
 	public CommentsVo getCommentsList(Long no) {
 		CommentsVo vo = sqlSession.selectOne("comments.getByNo", no);
 		return vo;
+	}
+	
+	public Integer listCount(Long no) {
+		int count = sqlSession.selectOne("comments.listCount", no);
+		return count;
+	}
+	
+	public void updateState(Long no) {
+		sqlSession.update("comments.updateState", no);
 	}
 }

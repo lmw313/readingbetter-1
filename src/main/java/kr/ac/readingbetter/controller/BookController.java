@@ -141,7 +141,8 @@ public class BookController {
 
 	// 퀴즈 풀기 결과 보기
 	@RequestMapping("/resultquiz")
-	public String resultQuiz(QuizVo vo, @RequestParam(value = "no0", required = false, defaultValue = "") Long no1,
+	public String resultQuiz(QuizVo vo, 
+			@RequestParam(value = "no0", required = false, defaultValue = "") Long no1,
 			@RequestParam(value = "no1", required = false, defaultValue = "") Long no2,
 			@RequestParam(value = "no2", required = false, defaultValue = "") Long no3,
 			@RequestParam(value = "no3", required = false, defaultValue = "") Long no4,

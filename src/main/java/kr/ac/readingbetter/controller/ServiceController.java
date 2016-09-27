@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.ac.readingbetter.service.AccusationService;
 import kr.ac.readingbetter.service.CommentsService;
@@ -33,35 +34,112 @@ public class ServiceController {
 	// 공지
 	// 공지 리스트 띄우기
 	@RequestMapping(value = "/noticelist", method = RequestMethod.GET)
-	public String noticeList(Model model, NoticeVo vo) {
+	public String noticeList(Model model, NoticeVo vo,
+			@RequestParam(value = "noticePage", required = false, defaultValue = "") String noticePage) {
+		// noticePage가 null값일때 1로 고정
+		if (noticePage == null || "".equals(noticePage)) {
+			noticePage = "1";
+		}
+
+		// 공지 전체 개수
+		int count = noticeService.listCount();
+
+		// 공지 추가하기
+		vo.setNoticePage(noticePage);
 		List<NoticeVo> list = noticeService.getList(vo);
+
+		// 페이징
+		int totalPage = 1;
+		int currentPage = Integer.parseInt(noticePage);
+
+		if (count % 5 != 0) {
+			totalPage = count / 5 + 1;
+		} else {
+			totalPage = count / 5;
+		}
+
+		int pageGroupNum = 1;
+		int pageGroup = 5;
+		int beginPage = 1;
+		int endPage = 1;
+
+		pageGroupNum = (int) Math.ceil((double) currentPage / pageGroup);
+
+		if (pageGroupNum < 1) {
+			pageGroupNum = pageGroupNum + 1;
+		}
+
+		beginPage = (pageGroupNum - 1) * pageGroup + 1;
+		endPage = pageGroupNum * pageGroup;
+
+		if (totalPage < endPage) {
+			endPage = totalPage;
+		}
+
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("beginPage", beginPage);
+		model.addAttribute("endPage", endPage);
 		model.addAttribute("list", list);
 		return "service/noticelist";
 	}
 
 	// 공지 상세 보기
-	@RequestMapping(value = "/noticeview/{noticeNo}", method = RequestMethod.GET)
-	public String noticeView(@PathVariable("noticeNo") Long noticeNo, Model model) {
+	@RequestMapping(value = "/noticeview/{no}", method = RequestMethod.GET)
+	public String noticeView(@PathVariable("no") Long no, Model model, CommentsVo commentsVo,
+			@RequestParam(value = "commentsPage", required = false, defaultValue = "") String commentsPage) {
 		// 공지 상세 불러오기
-		NoticeVo vo = noticeService.noticeView(noticeNo);
+		noticeService.viewCount(no);
+		NoticeVo vo = noticeService.noticeView(no);
 		model.addAttribute("vo", vo);
 
-		// 공지에 따른 댓글 불러오기
-		List<CommentsVo> list = commentsService.getList(noticeNo);
-		// 신고받은 댓글은 리스트에서 삭제
-		List<AccusationVo> accusationList = accusationService.getList();
-		for (int i = 0; i < accusationList.size(); i++) {
-			AccusationVo accusationVo = accusationList.get(i);
-			Long identity = accusationVo.getIdentity();
-			Long keyNo = accusationVo.getKeyNo();			
-			for (int j = 0; j < list.size(); j++) {
-				CommentsVo commentsVo = list.get(j);
-				Long no = commentsVo.getNo();
-				if (identity == 2 && no == keyNo) {
-					list.remove(j);
-				}
-			}
+		// 공지에 따른 댓글 불러오기, 페이징
+		// commentsPage가 null값일때 1로 고정
+		if (commentsPage == null || "".equals(commentsPage)) {
+			commentsPage = "1";
 		}
+
+		// 댓글 전체 갯수
+		int count = commentsService.listCount(no);
+
+		// 신고받지 않은 리스트만 불러옴
+		commentsVo.setNoticeNo(no);
+		commentsVo.setState("0");
+		commentsVo.setCommentsPage(commentsPage);
+		List<CommentsVo> list = commentsService.getList(commentsVo);
+
+		// 페이징
+		int totalPage = 1;
+		int currentPage = Integer.parseInt(commentsPage);
+
+		if (count % 5 != 0) {
+			totalPage = count / 5 + 1;
+		} else {
+			totalPage = count / 5;
+		}
+
+		int pageGroupNum = 1;
+		int pageGroup = 5;
+		int beginPage = 1;
+		int endPage = 1;
+
+		pageGroupNum = (int) Math.ceil((double) currentPage / pageGroup);
+
+		if (pageGroupNum < 1) {
+			pageGroupNum = pageGroupNum + 1;
+		}
+
+		beginPage = (pageGroupNum - 1) * pageGroup + 1;
+		endPage = pageGroupNum * pageGroup;
+
+		if (totalPage < endPage) {
+			endPage = totalPage;
+		}
+
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("beginPage", beginPage);
+		model.addAttribute("endPage", endPage);
 		model.addAttribute("list", list);
 		return "service/noticeview";
 	}
@@ -87,6 +165,7 @@ public class ServiceController {
 		accusationService.insertComments(vo);
 		// 신고한 댓글이 있는 공지 상세 화면으로 간다
 		CommentsVo commentsVo = commentsService.commentsAccusation(vo.getKeyNo());
+		commentsService.updateState(commentsVo.getNo());
 		return "redirect:/service/noticeview/" + commentsVo.getNoticeNo();
 	}
 

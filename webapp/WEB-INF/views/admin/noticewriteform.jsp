@@ -18,6 +18,7 @@
 	<h4>공지 쓰기</h4>
 	<div>
 	<form action="noticewrite" method="post">
+		<input type="hidden" name="memberNo" value="${authUser.no }">
 		<table id="board" class="table table-bordered">
 			<tr>
 				<th>제목</th>

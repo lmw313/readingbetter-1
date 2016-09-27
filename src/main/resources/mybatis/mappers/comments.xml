@@ -6,38 +6,44 @@
 	<select id="list" parameterType="commentsvo" resultType="commentsvo">
 		<![CDATA[
 			select a.no, a.content, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.state, 
 			a.notice_no as noticeNo, a.member_no as memberNo, b.id 
 			from comments a, member b
 			where b.no=a.member_no order by a.no desc
 		]]>
 	</select>
-
+	
 	<select id="getByNo" parameterType="long" resultType="commentsvo">
 		<![CDATA[
 			select a.no, a.content, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.state, 
 			a.notice_no as noticeNo, a.member_no as memberNo, b.id 
 			from comments a, member b
 			where b.no=a.member_no and a.no=#{no}
 		]]>
 	</select>
 	
-	<select id="getByNoticeNo" parameterType="long" resultType="commentsvo">
+	<select id="getByNoticeNo" parameterType="commentsvo" resultType="commentsvo">
 		<![CDATA[
-			select a.no, a.content, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
-			a.notice_no as noticeNo, a.member_no as memberNo, b.id 
-			from comments a, member b
-			where b.no=a.member_no and a.notice_no=#{noticeNo}
-			order by a.no desc
+			select no, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, 
+			state, notice_no as noticeNo, member_no as memberNo, id, rn from
+			(select c.*, rownum as rn from
+			(select a.*, b.id from comments a, member b where b.no=a.member_no 
+			and a.notice_no=#{noticeNo} and a.state=#{state} order by a.no desc) c)
+			where (#{commentsPage}-1)*5+1 <= rn and rn <= #{commentsPage}*5
+		]]>
+	</select>
+	
+	<select id="listCount" parameterType="long" resultType="integer">
+		<![CDATA[
+			select count(*) from comments where notice_no=#{noticeNo} and state=0
 		]]>
 	</select>
 	
 	<insert id="insert" parameterType="commentsvo">
 		<![CDATA[
 			insert into comments 
-			values(seq_comments.nextval,#{content},sysdate,#{noticeNo},#{memberNo})
+			values(seq_comments.nextval,#{content},sysdate,0,#{noticeNo},#{memberNo})
 		]]>
 	</insert>
 	
@@ -46,5 +52,11 @@
 			delete from comments where no=#{no}
 		]]>
 	</delete>
+	
+	<update id="updateState" parameterType="commentsvo">
+		<![CDATA[
+			update comments set state=1 where no=#{no}
+		]]>	
+	</update>
 
 </mapper>

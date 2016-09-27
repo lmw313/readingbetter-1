@@ -31,4 +31,13 @@ public class NoticeDao {
 	public void noticeModify(NoticeVo vo){
 		sqlSession.update("notice.update", vo);
 	}
+	
+	public void viewCount(Long no){
+		sqlSession.update("notice.viewCount", no);
+	}
+	
+	public Integer listCount() {
+		int count = sqlSession.selectOne("notice.listCount");
+		return count;
+	}
 }

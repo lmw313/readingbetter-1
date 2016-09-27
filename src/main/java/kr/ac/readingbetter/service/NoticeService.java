@@ -31,4 +31,13 @@ public class NoticeService {
 	public void noticeModify(NoticeVo vo){
 		noticeDao.noticeModify(vo);
 	}
+	
+	public void viewCount(Long no){
+		noticeDao.viewCount(no);
+	}
+	
+	public Integer listCount() {
+		int count = noticeDao.listCount();
+		return count;
+	}
 }

@@ -9,6 +9,7 @@ public class NoticeVo {
 	private String regDate;
 	private Integer viewCount;
 	private Long memberNo;
+	private String noticePage;
 
 	public Long getNo() {
 		return no;
@@ -66,9 +67,17 @@ public class NoticeVo {
 		this.memberNo = memberNo;
 	}
 
+	public String getNoticePage() {
+		return noticePage;
+	}
+
+	public void setNoticePage(String noticePage) {
+		this.noticePage = noticePage;
+	}
+
 	@Override
 	public String toString() {
 		return "NoticeVo [no=" + no + ", name=" + name + ", title=" + title + ", content=" + content + ", regDate="
-				+ regDate + ", viewCount=" + viewCount + ", memberNo=" + memberNo + "]";
+				+ regDate + ", viewCount=" + viewCount + ", memberNo=" + memberNo + ", noticePage=" + noticePage + "]";
 	}
 }

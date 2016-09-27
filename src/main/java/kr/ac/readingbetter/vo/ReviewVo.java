@@ -8,6 +8,7 @@ public class ReviewVo {
 	private Long bookNo;
 	private Long memberNo;
 	private String id;
+	private String reviewPage;
 
 	public Long getNo() {
 		return no;
@@ -57,9 +58,17 @@ public class ReviewVo {
 		this.id = id;
 	}
 
+	public String getReviewPage() {
+		return reviewPage;
+	}
+
+	public void setReviewPage(String reviewPage) {
+		this.reviewPage = reviewPage;
+	}
+
 	@Override
 	public String toString() {
 		return "ReviewVo [no=" + no + ", review=" + review + ", regDate=" + regDate + ", bookNo=" + bookNo
-				+ ", memberNo=" + memberNo + ", id=" + id + "]";
+				+ ", memberNo=" + memberNo + ", id=" + id + ", reviewPage=" + reviewPage + "]";
 	}
 }

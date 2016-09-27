@@ -14,8 +14,8 @@ public class CommentsService {
 	@Autowired
 	private CommentsDao commentsDao;
 	
-	public List<CommentsVo> getList(Long no) {
-		List<CommentsVo> list = commentsDao.getList(no);
+	public List<CommentsVo> getList(CommentsVo vo) {
+		List<CommentsVo> list = commentsDao.getList(vo);
 		return list;
 	}
 	
@@ -35,5 +35,14 @@ public class CommentsService {
 	public CommentsVo getCommentsList(Long no) {
 		CommentsVo adminComments = commentsDao.getCommentsList(no);
 		return adminComments;
+	}
+	
+	public Integer listCount(Long no) {
+		int count = commentsDao.listCount(no);
+		return count;
+	}
+	
+	public void updateState(Long no) {
+		commentsDao.updateState(no);
 	}
 }

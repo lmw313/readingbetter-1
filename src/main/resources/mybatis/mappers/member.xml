@@ -3,6 +3,13 @@
 
 <mapper namespace="member">
 
+	<select id="list" parameterType="membervo" resultType="membervo">
+		<![CDATA[
+			select no, id, name, penalty from member 
+			where id like '%' || #{kwd} || '%' order by no asc
+		]]>
+	</select>
+	
 	<select id="selectAuthUser" parameterType="membervo" resultType="membervo">
 		<![CDATA[
 			select no, name, id, pw, last_date as lastDate, position, 
@@ -36,5 +43,11 @@
 				where m.SCHOOL_NO = s.NO and m.no=#{no}
 		]]>
 	</select>
+	
+	<delete id="delete" parameterType="long">
+		<![CDATA[
+			delete from member where no=#{no}
+		]]>
+	</delete>
 	
 </mapper>
