@@ -23,7 +23,7 @@
 				<div id="summary">
 					<div class="small-menu">
 						<a href="/readingbetter/main">홈</a> > <a
-							href="/readingbetter/ranking/summary">순위</a> > 순위 한눈에 보기/검색
+							href="/readingbetter/ranking/summary">순위</a> > 순위 한눈에 보기
 					</div>
 
 					<div id="table" class="col-lg-6">

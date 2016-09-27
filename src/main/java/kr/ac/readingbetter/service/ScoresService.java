@@ -35,12 +35,6 @@ public class ScoresService {
 		return scoresDao.mySchoolRank(no);
 	}
 
-	// 학년 랭킹
-	/*
-	 * public List<ScoresVo> gradeRank(ScoresVo vo) { return
-	 * scoresDao.gradeRank(vo); }
-	 */
-
 	// 명예의 전당
 	public List<ScoresVo> honor(ScoresVo vo) {
 		return scoresDao.honor(vo);
@@ -67,5 +61,19 @@ public class ScoresService {
 
 	public void insertScores(Long no) {
 		scoresDao.insertScores(no);
+	}
+
+	public List<ScoresVo> monthlyGrade(ScoresVo vo) {
+		return scoresDao.monthlyGrade(vo);
+	}
+
+	// 메인화면에 한 달 랭킹 상위 5명 출력
+	public List<ScoresVo> monthlyMainRank(ScoresVo vo) {
+		return scoresDao.monthlyMainRank(vo);
+	}
+
+	// 메인화면에 명예의 전당 랭킹 상위 5명 출력
+	public List<ScoresVo> mainHonor(ScoresVo vo) {
+		return scoresDao.mainHonor(vo);
 	}
 }

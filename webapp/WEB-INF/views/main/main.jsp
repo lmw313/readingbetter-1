@@ -54,31 +54,13 @@
 										<td id="mtrtext">아이디</td>
 										<td id="mtrtext">점수</td>
 									</tr>
-									<tr>
-										<td id="mtfirst">1</td>
-										<td id="mtsecond">ID1</td>
-										<td id="mtthird">5</td>
-									</tr>
-									<tr>
-										<td id="mtfirst">2</td>
-										<td id="mtsecond">ID2</td>
-										<td id="mtthird">4</td>
-									</tr>
-									<tr>
-										<td id="mtfirst">3</td>
-										<td id="mtsecond">ID3</td>
-										<td id="mtthird">3</td>
-									</tr>
-									<tr>
-										<td id="mtfirst">4</td>
-										<td id="mtsecond">ID4</td>
-										<td id="mtthird">2</td>
-									</tr>
-									<tr>
-										<td id="mtfirst">5</td>
-										<td id="mtsecond">ID5</td>
-										<td id="mtthird">1</td>
-									</tr>
+									<c:forEach items="${monthlyMainRank }" var="scoresvo">
+ 										<tr>
+ 											<td>${scoresvo.rank }</td>
+ 											<td>${scoresvo.id }</td>
+ 											<td>${scoresvo.monthlyScore }</td>
+										</tr>
+ 									</c:forEach>
 								</table>
 							</div>
 							<div id="honor_rank">
@@ -89,31 +71,13 @@
 										<td id="mtrtext">아이디</td>
 										<td id="mtrtext">점수</td>
 									</tr>
-									<tr>
-										<td id="mtfirst">1</td>
-										<td id="mtsecond">ID1</td>
-										<td id="mtthird">5</td>
-									</tr>
-									<tr>
-										<td id="mtfirst">2</td>
-										<td id="mtsecond">ID2</td>
-										<td id="mtthird">4</td>
-									</tr>
-									<tr>
-										<td id="mtfirst">3</td>
-										<td id="mtsecond">ID3</td>
-										<td id="mtthird">3</td>
-									</tr>
-									<tr>
-										<td id="mtfirst">4</td>
-										<td id="mtsecond">ID4</td>
-										<td id="mtthird">2</td>
-									</tr>
-									<tr>
-										<td id="mtfirst">5</td>
-										<td id="mtsecond">ID5</td>
-										<td id="mtthird">1</td>
-									</tr>
+									<c:forEach items="${mainHonor }" var="scoresvo">
+ 										<tr>
+ 											<td>${scoresvo.rank }</td>
+ 											<td>${scoresvo.id }</td>
+ 											<td>${scoresvo.totalScore }</td>
+ 										</tr>
+ 									</c:forEach>
 								</table>
 								<ul>
 									<li></li>

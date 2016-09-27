@@ -73,7 +73,25 @@ select rank, title, mySchoolScore
 				where b.no=a.school_no) where sno = '1';
 
 /* 학년별 순위 */
-select b.grade,sum(a.score) from scores a,member b
-where b.no=a.member_no
-group by grade, b.grade
-order by grade;
+				
+-- 학년별 순위 (상위 10명)
+select grade, rank, id, score
+from (select rank() over(order by score desc) rank,
+             b.id as id,
+             b.grade as grade,
+             a.score as score
+        from scores a,member b
+       where b.no=a.member_no
+         and grade = 1)
+where rownum <= 10;
+
+-- 로그인 한 회원의 해당 학년 순위
+select grade, rank, id, score
+from (select rank() over(order by score desc) rank,
+             b.id as id,
+             b.grade as grade,
+             a.score as score
+        from scores a,member b
+       where b.no=a.member_no
+         and grade = 1)
+where id = 'wjsdbf0794';

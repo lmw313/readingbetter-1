@@ -14,6 +14,16 @@
 		]]>
 	</select>
 
+	<!-- 한 달 점수 랭킹 (상위 5명) -->
+	<select id="monthlyMainRank" parameterType="scoresvo" resultType="scoresvo">
+		<![CDATA[
+			select rank, id, monthlyScore 
+			from (select rank() over(order by score desc) as rank, id, 
+			score as monthlyScore from scores, member 
+			where member.no = scores.member_no) where rownum<=5
+		]]>
+	</select>
+
 	<!-- 나의 한 달 점수 랭킹 -->
 	<select id="myMonthlyRank" parameterType="long" resultType="scoresvo">
 		<![CDATA[
@@ -34,6 +44,16 @@
 		]]>
 	</select>
 
+	<!-- 종합 점수 랭킹 5명(명예의 전당) -->
+	<select id="mainHonor" parameterType="scoresvo" resultType="scoresvo">
+		<![CDATA[
+			select rank, id, totalscore 
+			from (select rank() over(order by scores.total_score desc) as rank, 
+			id, scores.total_score as totalscore from scores, member 
+			where member.no = scores.member_no) where rownum<=5
+		]]>
+	</select>
+
 	<!-- 나의 종합 점수 랭킹 (명예의 전당) -->
 	<select id="myTotalRank" parameterType="long" resultType="scoresvo">
 		<![CDATA[
@@ -41,7 +61,7 @@
 			from (select rank() over(order BY scores.total_score desc) rank, 
 			id, no, scores.total_score as myTotalScore 
 			from scores, member where member.no = scores.member_no) 
-			where no=#{no}			
+			where no=#{no}
 		]]>
 	</select>
 
@@ -52,25 +72,22 @@
 			from (select rank() OVER(order BY scores.total_score desc) as rank, 
 			id, scores.total_score as totalscore from scores, member 
 			where member.no = scores.member_no) 
-			where rownum<=3 order by rank asc			
+			where rownum<=3 order by rank asc
 		]]>
 	</select>
 
 	<!-- 학교별 랭킹 -->
 	<select id="schoolRank" parameterType="scoresvo" resultType="scoresvo">
 		<![CDATA[
-			select rank, title, schoolscore
-				from (select rank() OVER(ORDER BY SchoolScore DESC) as rank, title, schoolscore
-				      from (select
-				                     b.school_no,sum(a.score) as SchoolScore
-				            from     scores a, member b
-				            where    b.no=a.member_no
-				            group by school_no, b.school_no) a,school b
-				where b.no=a.school_no
-				order by rank asc) where rownum <= 10
+			select rank, title, schoolscore 
+			from (select rank() OVER(ORDER BY SchoolScore DESC) as rank, title, schoolscore 
+			from (select b.school_no,sum(a.score) as SchoolScore 
+			from scores a, member b where b.no=a.member_no 
+			group by school_no, b.school_no) a,school b 
+			where b.no=a.school_no order by rank asc) where rownum <= 10
 		]]>
 	</select>
-	
+
 	<!-- 로그인 한 회원의 학교 랭킹 -->
 	<select id="mySchoolRank" parameterType="long" resultType="scoresvo">
 		<![CDATA[
@@ -97,7 +114,7 @@
 			update scores set score=score+#{score} , point=point+#{point} where member_no=#{memberNo}
 		]]>
 	</update>
-	
+
 	<!-- 마이 페이지 -->
 	<select id="selectScores" parameterType="long" resultType="scoresvo">
 		<![CDATA[
@@ -106,7 +123,7 @@
 				where member_no=#{no}
 		]]>
 	</select>
-	
+
 	<!-- 로그인시 자동 추가 -->
 	<insert id="insertScores" parameterType="long">
 		<![CDATA[

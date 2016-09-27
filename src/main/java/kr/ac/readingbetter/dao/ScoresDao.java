@@ -25,16 +25,10 @@ public class ScoresDao {
 		return sqlSession.selectOne("scores.myMonthlyRank", no);
 	}
 
-	// 학교 랭킹
 	// 로그인 한 회원의 학교 랭킹
 	public ScoresVo mySchoolRank(Long no) {
 		return sqlSession.selectOne("scores.mySchoolRank", no);
 	}
-
-	// 학년 랭킹
-	/*
-	 * public List<ScoresVo> gradeRank(ScoresVo vo) { return null; }
-	 */
 
 	// 명예의 전당
 	public List<ScoresVo> honor(ScoresVo vo) {
@@ -66,5 +60,17 @@ public class ScoresDao {
 
 	public void insertScores(Long no) {
 		sqlSession.insert("scores.insertScores", no);
+	}
+
+	public List<ScoresVo> monthlyGrade(ScoresVo vo) {
+		return sqlSession.selectList("scores.monthlyGrade", vo);
+	}
+
+	public List<ScoresVo> monthlyMainRank(ScoresVo vo) {
+		return sqlSession.selectList("scores.monthlyMainRank", vo);
+	}
+
+	public List<ScoresVo> mainHonor(ScoresVo vo) {
+		return sqlSession.selectList("scores.mainHonor", vo);
 	}
 }

@@ -1,9 +1,12 @@
 package kr.ac.readingbetter.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -23,7 +26,14 @@ public class MainController {
 	private ScoresService scoresService;
 
 	@RequestMapping("")
-	public String Main() {
+	public String Main(ScoresVo vo, Model model) {
+		// 메인에 한 달 랭킹 상위 5명 출력
+		List<ScoresVo> monthlyMainRank = scoresService.monthlyMainRank(vo);
+		model.addAttribute("monthlyMainRank", monthlyMainRank);
+
+		// 메인에 명예의 전당 랭킹 상위 5명 출력
+		List<ScoresVo> mainHonor = scoresService.mainHonor(vo);
+		model.addAttribute("mainHonor", mainHonor);
 		return "main/main";
 	}
 

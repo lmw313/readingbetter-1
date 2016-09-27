@@ -1,6 +1,7 @@
 package kr.ac.readingbetter.vo;
 
 public class ScoresVo {
+
 	private Long rank; // 순위
 	private String id; // 아이디
 	private String title; // 학교 이름
@@ -10,6 +11,7 @@ public class ScoresVo {
 	private Integer myTotalScore; // 로그인 한 회원의 전체 점수
 	private Integer schoolScore; // 학교 점수
 	private Integer mySchoolScore; // 로그인 한 회원의 학교 점수
+	private Integer grade; // 학년 정보
 	private Long memberNo;
 	private Integer score;
 	private Integer point;
@@ -86,6 +88,14 @@ public class ScoresVo {
 		this.mySchoolScore = mySchoolScore;
 	}
 
+	public Integer getGrade() {
+		return grade;
+	}
+
+	public void setGrade(Integer grade) {
+		this.grade = grade;
+	}
+
 	public Long getMemberNo() {
 		return memberNo;
 	}
@@ -114,7 +124,7 @@ public class ScoresVo {
 	public String toString() {
 		return "ScoresVo [rank=" + rank + ", id=" + id + ", title=" + title + ", monthlyScore=" + monthlyScore
 				+ ", myMonthlyScore=" + myMonthlyScore + ", totalScore=" + totalScore + ", myTotalScore=" + myTotalScore
-				+ ", schoolScore=" + schoolScore + ", mySchoolScore=" + mySchoolScore + ", memberNo=" + memberNo
-				+ ", score=" + score + ", point=" + point + "]";
+				+ ", schoolScore=" + schoolScore + ", mySchoolScore=" + mySchoolScore + ", grade=" + grade
+				+ ", memberNo=" + memberNo + ", score=" + score + ", point=" + point + "]";
 	}
 }
