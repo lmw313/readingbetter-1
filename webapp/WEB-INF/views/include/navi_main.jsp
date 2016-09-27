@@ -23,7 +23,7 @@
 					<label><input type="checkbox"> Remember me</label></div> -->
 					<button type="submit" class="btn btn-default" id="btn-login">로그인</button>
 				</form>
-				<a href="/readingbetter/mypage/findjoin">아이디/비밀번호 찾기</a>
+				<a href="/readingbetter/member/findform">아이디/비밀번호 찾기</a>
 			</div>
 		</c:when>
 		
@@ -44,12 +44,13 @@
 
 <div id="search">
 	<h5>책 검색</h5>
-	<form class="searchform">
+	<form id="searchform" action="" method="get">
 		<div class="form-group">
-			<input type="email" class="form-control input-sm" id="email">
-		</div>
-		<button type="submit" class="btn btn-default">검색</button>
+ 			<input type="text" id="bkwd" class="form-control input-sm" name="bkwd" value="${bkwd }">
+ 		</div>
+ 		<button type="submit" class="btn btn-default">검색</button>
 	</form>
+	
 </div>
 
 <div id="helpcall">

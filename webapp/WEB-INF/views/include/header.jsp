@@ -26,7 +26,9 @@
 			<a href="/readingbetter/book/booklist">독서활동</a>
 			<a href="/readingbetter/ranking/summary">순위</a>
 			<a href="/readingbetter/shop">상점</a>
-			<a href="/readingbetter/mypage/info">내정보</a>
+			<c:if test="${not empty authUser }">
+				<a href="/readingbetter/mypage/info">내정보</a>
+			</c:if>
 			<a href="/readingbetter/service/noticelist">고객센터</a>
 		</div>
 	</div>

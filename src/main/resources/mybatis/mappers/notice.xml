@@ -10,7 +10,7 @@
 			(select c.*, rownum as rn from
 			(select a.*, b.name from notice a, member b 
 			where a.member_no=b.no order by a.no desc) c) 
-			where (#{noticePage}-1)*5+1 <= rn and rn <= #{noticePage}*5
+			where (#{noticePage}-1)*10+1 <= rn and rn <= #{noticePage}*10
 		]]>
 	</select>
 	

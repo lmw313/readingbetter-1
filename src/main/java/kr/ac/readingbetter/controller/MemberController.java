@@ -33,9 +33,7 @@ public class MemberController {
 	@RequestMapping("/joinform")
 	public String joinForm(Model model) {
 		List<SchoolVo> list = schoolService.selectSchoolTitle();
-
 		model.addAttribute("list", list);
-
 		return "member/joinform";
 	}
 
@@ -47,7 +45,6 @@ public class MemberController {
 		}
 
 		List<SchoolVo> list = schoolService.searchSchool(kwd);
-
 		return list;
 	}
 
@@ -59,10 +56,8 @@ public class MemberController {
 		// null 객체를 return할 때의 error 방지
 		if (vo == null) {
 			vo2.setId("");
-
 			return vo2;
 		}
-
 		return vo;
 	}
 
@@ -74,17 +69,19 @@ public class MemberController {
 		// null 객체를 return할 때의 error 방지
 		if (vo == null) {
 			vo2.setEmail("");
-
 			return vo2;
 		}
-
 		return vo;
 	}
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(MemberVo vo) {
 		memberService.insertMember(vo);
-
 		return "redirect:/main";
+	}
+	
+	@RequestMapping("/findform")
+	public String FindForm() {
+		return "member/findform";
 	}
 }

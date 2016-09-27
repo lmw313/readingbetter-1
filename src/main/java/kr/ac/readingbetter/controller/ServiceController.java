@@ -113,7 +113,6 @@ public class ServiceController {
 
 		// 신고받지 않은 리스트만 불러옴
 		commentsVo.setNoticeNo(no);
-		commentsVo.setState("0");
 		commentsVo.setCommentsPage(commentsPage);
 		List<CommentsVo> list = commentsService.getList(commentsVo);
 

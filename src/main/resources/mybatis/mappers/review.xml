@@ -6,7 +6,7 @@
 	<select id="list" parameterType="reviewvo" resultType="reviewvo">
 		<![CDATA[
 			select a.no, a.review, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.state, 
 			a.book_no as bookNo, a.member_no as memberNo, b.id 
 			from review a,member b where b.no=a.member_no
 		]]>
@@ -15,19 +15,27 @@
 	<select id="getByNo" parameterType="long" resultType="reviewvo">
 		<![CDATA[
 			select a.no, a.review, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.state, 
 			a.book_no as bookNo, a.member_no as memberNo, b.id 
-			from review a,member b where b.no=a.member_no and a.no=#{no}
+			from review a,member b 
+			where b.no=a.member_no and a.no=#{no}
 		]]>
 	</select>
 	
-	<select id="getByBookNo" parameterType="long" resultType="reviewvo">
+	<select id="getByBookNo" parameterType="reviewvo" resultType="reviewvo">
 		<![CDATA[
-			select a.no, a.review, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
-			a.book_no as bookNo, a.member_no as memberNo, b.id 
-			from review a,member b where b.no=a.member_no 
-			and a.book_no=#{bookNo} order by a.no
+			select no, review, to_char(reg_date, 'yyyy-mm-dd') as regDate, 
+			book_no as bookNo, member_no as memberNo, id, rn from
+			(select c.*, rownum as rn from
+			(select a.*, b.id from review a,member b where b.no=a.member_no 
+			and a.book_no=#{bookNo} and a.state=0 order by a.no desc) c) 
+			where (#{reviewPage}-1)*5+1 <= rn and rn <= #{reviewPage}*5
+		]]>
+	</select>
+	
+	<select id="listCount" parameterType="long" resultType="integer">
+		<![CDATA[
+			select count(*) from review where book_no=#{bookNo} and state=0
 		]]>
 	</select>
 
@@ -40,8 +48,14 @@
 	<insert id="insert" parameterType="reviewvo">
 		<![CDATA[
 			insert into review values
-			(seq_review.nextval,#{review},sysdate,#{bookNo},#{memberNo})
+			(seq_review.nextval,#{review},sysdate,0,#{bookNo},#{memberNo})
 		]]>
 	</insert>
+	
+	<update id="updateState" parameterType="reviewvo">
+		<![CDATA[
+			update review set state=1 where no=#{no}
+		]]>
+	</update>
 
 </mapper>

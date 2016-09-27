@@ -40,12 +40,6 @@ public class MyPageController {
 		return "mypage/info";
 	}
 
-
-	@RequestMapping("/findform")
-	public String FindForm() {
-		return "mypage/findform";
-	}
-
 	@RequestMapping("/history")
 	public String History() {
 		return "mypage/history";

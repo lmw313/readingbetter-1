@@ -14,8 +14,8 @@ public class ReviewDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public List<ReviewVo> getList(Long no) {
-		List<ReviewVo> list = sqlSession.selectList("review.getByBookNo", no);
+	public List<ReviewVo> getList(ReviewVo vo) {
+		List<ReviewVo> list = sqlSession.selectList("review.getByBookNo", vo);
 		return list;
 	}
 
@@ -30,5 +30,14 @@ public class ReviewDao {
 	public ReviewVo getByNo(Long no) {
 		ReviewVo vo = sqlSession.selectOne("review.getByNo", no);
 		return vo;
+	}
+	
+	public void updateState(Long no) {
+		sqlSession.update("review.updateState", no);
+	}
+	
+	public Integer listCount(Long no) {
+		int count = sqlSession.selectOne("review.listCount", no);
+		return count;
 	}
 }

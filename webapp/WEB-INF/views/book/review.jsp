@@ -120,19 +120,29 @@
 						</table>
 
 						<!-- begin:paging -->
-						<div class="pager">
-							<ul>
-								<li>
-								<li><a href="">◀</a></li>
-								<li><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href="">4</a></li>
-								<li><a href="">5</a></li>
-								<li><a href="">▶</a></li>
-							</ul>
-						</div>
-						<!-- end:paging -->
+		            	<div class="pager">
+		            	<br>
+		               		<ul>
+		               			<c:if test='${beginPage>1}'>
+		               				<li><a href="/readingbetter/book/review/${vo.no }?reviewPage=${beginPage-1}">◀</a></li>
+		               			</c:if>
+		                  		<c:forEach begin='${beginPage}' end='${endPage}' step='1' var='i'>
+		                  			<c:choose>
+		                  				<c:when test='${currentPage == i}'>
+		                  					<li class="selected">${i}</li>
+		                  				</c:when>
+		                  				<c:otherwise>
+		                  					<li><a href="/readingbetter/book/review/${vo.no }?reviewPage=${i}">${i}</a></li>
+		                  				</c:otherwise>
+		                  			</c:choose>
+		                  		</c:forEach>
+		                  		<c:if test='${endPage<totalPage}'>
+		                  			<li><a href="/readingbetter/book/review/${vo.no }?reviewPage=${endPage+1}">▶</a></li>
+		                  		</c:if>               		
+		               		</ul>
+		            	</div>
+		            	<!-- end:paging -->
+		            	
 						<c:if test = '${not empty sessionScope.authUser}'>
 						<form class="form-inline" method="post" action="../insert/${vo.no}" >
 							<input type="hidden" name="bookNo" value="${vo.no}">	

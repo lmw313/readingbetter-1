@@ -14,8 +14,8 @@ public class ReviewService {
 	@Autowired
 	private ReviewDao reviewDao;
 
-	public List<ReviewVo> getList(Long no) {
-		List<ReviewVo> list = reviewDao.getList(no);
+	public List<ReviewVo> getList(ReviewVo vo) {
+		List<ReviewVo> list = reviewDao.getList(vo);
 		return list;
 	}
 
@@ -30,5 +30,14 @@ public class ReviewService {
 	public ReviewVo getByNo(Long no) {
 		ReviewVo adminReview = reviewDao.getByNo(no);
 		return adminReview;
+	}
+	
+	public void updateState(Long no) {
+		reviewDao.updateState(no);
+	}
+	
+	public Integer listCount(Long no) {
+		int count = reviewDao.listCount(no);
+		return count;
 	}
 }

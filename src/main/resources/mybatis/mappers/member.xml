@@ -12,9 +12,9 @@
 
 	<select id="selectAuthUser" parameterType="membervo" resultType="membervo">
 		<![CDATA[
-			select no, name, id, pw, last_date as lastDate, position, 
-			email, tel, penalty, grade, class_no as classNo, 
-			school_no as schoolNo from member where id=#{id} and pw=#{pw}
+			select no, name, id
+            from member
+            where id=#{id} and pw=#{pw}
 		]]>
 	</select>
 

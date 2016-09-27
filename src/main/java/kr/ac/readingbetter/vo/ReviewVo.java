@@ -9,6 +9,7 @@ public class ReviewVo {
 	private Long memberNo;
 	private String id;
 	private String reviewPage;
+	private String state;
 
 	public Long getNo() {
 		return no;
@@ -66,9 +67,17 @@ public class ReviewVo {
 		this.reviewPage = reviewPage;
 	}
 
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 	@Override
 	public String toString() {
 		return "ReviewVo [no=" + no + ", review=" + review + ", regDate=" + regDate + ", bookNo=" + bookNo
-				+ ", memberNo=" + memberNo + ", id=" + id + ", reviewPage=" + reviewPage + "]";
+				+ ", memberNo=" + memberNo + ", id=" + id + ", reviewPage=" + reviewPage + ", state=" + state + "]";
 	}
 }

@@ -141,8 +141,7 @@ public class BookController {
 
 	// 퀴즈 풀기 결과 보기
 	@RequestMapping("/resultquiz")
-	public String resultQuiz(QuizVo vo, 
-			@RequestParam(value = "no0", required = false, defaultValue = "") Long no1,
+	public String resultQuiz(QuizVo vo, @RequestParam(value = "no0", required = false, defaultValue = "") Long no1,
 			@RequestParam(value = "no1", required = false, defaultValue = "") Long no2,
 			@RequestParam(value = "no2", required = false, defaultValue = "") Long no3,
 			@RequestParam(value = "no3", required = false, defaultValue = "") Long no4,
@@ -252,27 +251,58 @@ public class BookController {
 
 	// 리뷰 화면 열기
 	@RequestMapping(value = "/review/{no}", method = RequestMethod.GET)
-	public String review(@PathVariable("no") Long bookNo, Model model) {
+	public String review(@PathVariable("no") Long no, Model model, ReviewVo reviewVo,
+			@RequestParam(value = "reviewPage", required = false, defaultValue = "") String reviewPage) {
 		// 책 정보 불러오기
-		BookVo vo = bookService.getByNo(bookNo);
+		BookVo vo = bookService.getByNo(no);
 		model.addAttribute("vo", vo);
 
-		// 책에 따른 리뷰 불러오기
-		List<ReviewVo> list = reviewService.getList(bookNo);
-		// 신고받은 리뷰는 리스트에서 삭제
-		List<AccusationVo> accusationList = accusationService.getList();
-		for (int i = 0; i < accusationList.size(); i++) {
-			AccusationVo accusationVo = accusationList.get(i);
-			Long identity = accusationVo.getIdentity();
-			Long keyNo = accusationVo.getKeyNo();
-			for (int j = 0; j < list.size(); j++) {
-				ReviewVo reviewVo = list.get(j);
-				Long no = reviewVo.getNo();
-				if (identity == 1 && no == keyNo) {
-					list.remove(j);
-				}
-			}
+		// 책에 따른 리뷰 불러오기, 페이징
+		// reviewPage가 null값일때 1로 고정
+		if (reviewPage == null || "".equals(reviewPage)) {
+			reviewPage = "1";
 		}
+
+		// 댓글 전체 갯수
+		int count = reviewService.listCount(no);
+
+		// 신고받지 않은 리뷰만 불러옴
+		reviewVo.setBookNo(no);
+		reviewVo.setReviewPage(reviewPage);
+		List<ReviewVo> list = reviewService.getList(reviewVo);
+
+		// 페이징
+		int totalPage = 1;
+		int currentPage = Integer.parseInt(reviewPage);
+
+		if (count % 5 != 0) {
+			totalPage = count / 5 + 1;
+		} else {
+			totalPage = count / 5;
+		}
+
+		int pageGroupNum = 1;
+		int pageGroup = 5;
+		int beginPage = 1;
+		int endPage = 1;
+
+		pageGroupNum = (int) Math.ceil((double) currentPage / pageGroup);
+
+		if (pageGroupNum < 1) {
+			pageGroupNum = pageGroupNum + 1;
+		}
+
+		beginPage = (pageGroupNum - 1) * pageGroup + 1;
+		endPage = pageGroupNum * pageGroup;
+
+		if (totalPage < endPage) {
+			endPage = totalPage;
+		}
+
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("beginPage", beginPage);
+		model.addAttribute("endPage", endPage);
 		model.addAttribute("list", list);
 		return "book/review";
 	}
@@ -291,6 +321,7 @@ public class BookController {
 		accusationService.insertReviewAccusation(vo);
 		// 신고한 리뷰가 있는 화면으로 간다
 		ReviewVo reviewVo = reviewService.getByNo(vo.getKeyNo());
+		reviewService.updateState(reviewVo.getNo());
 		return "redirect:/book/review/" + reviewVo.getBookNo();
 	}
 

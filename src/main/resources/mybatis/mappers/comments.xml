@@ -29,7 +29,7 @@
 			state, notice_no as noticeNo, member_no as memberNo, id, rn from
 			(select c.*, rownum as rn from
 			(select a.*, b.id from comments a, member b where b.no=a.member_no 
-			and a.notice_no=#{noticeNo} and a.state=#{state} order by a.no desc) c)
+			and a.notice_no=#{noticeNo} and a.state=0 order by a.no desc) c)
 			where (#{commentsPage}-1)*5+1 <= rn and rn <= #{commentsPage}*5
 		]]>
 	</select>

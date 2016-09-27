@@ -32,9 +32,7 @@
 						</tr>
 						<tr>
 							<td>
-								<a href="/readingbetter/book/booklist">책목록</a><br>
-								<a class="quiz" href="">문제 풀기</a><br>
-								<a class="quiz" href="">문제 내기</a>
+								<a href="/readingbetter/book/booklist">책목록</a><br>ㄴ문제 풀기<br>ㄴ문제 내기
 							</td>
 							<td>
 								<a href="/readingbetter/ranking/summary">순위 한눈에 보기</a><br>
@@ -56,21 +54,43 @@
 							<col width="33%" />
 						</colgroup>
 						<tr class="info">
-							<td>내정보</td>
-							<td>고객 센터</td>
-							<td></td>
+							<c:choose>
+								<c:when test="${not empty authUser }">
+									<td>내정보</td>
+									<td>고객 센터</td>
+									<td></td>
+								</c:when>								
+								<c:otherwise>
+									<td>고객 센터</td>
+									<td></td>
+									<td></td>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 						<tr>
-							<td>
-								<a href="/readingbetter/mypage/info">내 정보 보기</a><br>
-								<a href="/readingbetter/mypage/history">내 활동</a>
-							</td>
-							<td>
-								<a href="/readingbetter/service/noticelist">공지</a><br>
-								<a href="/readingbetter/service/questionlist">문의 사항</a><br>
-								<a href="/readingbetter/service/wishbooklist">희망 도서 신청</a><br>
-							</td>
-							<td></td>
+							<c:choose>
+								<c:when test="${not empty authUser }">
+									<td>
+										<a href="/readingbetter/mypage/info">내 정보 보기</a><br>
+										<a href="/readingbetter/mypage/history">내 활동</a>
+									</td>
+									<td>
+										<a href="/readingbetter/service/noticelist">공지</a><br>
+										<a href="/readingbetter/service/questionlist">문의 사항</a><br>
+										<a href="/readingbetter/service/wishbooklist">희망 도서 신청</a><br>
+									</td>
+									<td></td>
+								</c:when>
+								<c:otherwise>
+									<td>
+										<a href="/readingbetter/service/noticelist">공지</a><br>
+										<a href="/readingbetter/service/questionlist">문의 사항</a><br>
+										<a href="/readingbetter/service/wishbooklist">희망 도서 신청</a><br>
+									</td>
+									<td></td>
+									<td></td>
+								</c:otherwise>
+							</c:choose>
 						</tr>
 					</table>
 				</div>
