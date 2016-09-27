@@ -8,5 +8,6 @@ select email from member where email='kmg878@naver.com';
 
 -- insert
 insert into member values(seq_member.nextval, 'test01', 'aaaa', 'test', 'test01@naver.com', '01000001111', sysdate, 1, 0, '', '', (select no from school where title='성결초등학교'));
+insert into member values(seq_member.nextval, 'test7', 'aaaa', '테스트7', 'test07@naver.com', '0100000000', sysdate, 1, 0, null, null, null);
 
 select no from school where title='성결초등학교';

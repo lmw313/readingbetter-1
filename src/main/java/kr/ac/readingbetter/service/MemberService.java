@@ -39,6 +39,10 @@ public class MemberService {
 	}
 
 	public void insertMember(MemberVo vo) {
+		if (vo.getSchoolName().equals("")) {
+			memberDao.inserMemberEtc(vo);
+			return;
+		}
 		memberDao.insertMember(vo);
 	}
 

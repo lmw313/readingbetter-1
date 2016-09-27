@@ -38,35 +38,30 @@
 							<th>작성일</th>
 							<th>승인</th>
 						</tr>
-						<tr>
-							<td>3</td>
-							<td><a href="/readingbetter/service/wishbookview">제목</a></td>
-							<td>작성자</td>
-							<td>3</td>
-							<td>2016-09-07</td>
-							<td>대기</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td><a href="">제목</a></td>
-							<td>작성자</td>
-							<td>3</td>
-							<td>2016-09-07</td>
-							<td>승인</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td><a href="">제목</a></td>
-							<td>작성자</td>
-							<td>3</td>
-							<td>2016-09-07</td>
-							<td>승인</td>
-						</tr>
+						<c:forEach var='vo' items='${list }'>
+							<tr>
+								<td>${vo.no }</td>
+								<td><a href="/readingbetter/service/wishbookview?no=${vo.no }">${vo.title }</a></td>
+								<td>${vo.name }</td>
+								<td>${vo.recommend }</td>
+								<td>${vo.regDate }</td>
+								<td>
+								<c:choose>
+									<c:when test="${vo.accept == 0 }">대기</c:when>
+									<c:when test="${vo.accept == 1 }">승인</c:when>
+									<c:when test="${vo.accept == 2 }">반려</c:when>
+								</c:choose>
+								</td>
+							</tr>
+						</c:forEach>
 					</table>
-					<div id="button-set">
-						<a class="btn btn-default" href="/readingbetter/service/wishbookwrite" role="button">글쓰기</a>
-					</div>
-
+					
+					<c:if test="${authUser != null }">
+						<div id="button-set">
+							<a class="btn btn-default" href="/readingbetter/service/wishbookwriteform" role="button">글쓰기</a>
+						</div>
+					</c:if>
+					
 					<!-- begin:paging -->
 					<div class="pager">
 						<ul>

@@ -9,7 +9,7 @@
 			where id like '%' || #{kwd} || '%' order by no asc
 		]]>
 	</select>
-	
+
 	<select id="selectAuthUser" parameterType="membervo" resultType="membervo">
 		<![CDATA[
 			select no, name, id, pw, last_date as lastDate, position, 
@@ -30,12 +30,6 @@
 		]]>
 	</select>
 
-	<insert id="insertMember" parameterType="membervo">
-		<![CDATA[
-			insert into member values(seq_member.nextval, #{id}, #{pw}, #{name}, #{email}, #{tel}, sysdate, 1, 0, #{grade}, #{classNo}, (select no from school where title=#{schoolName}))
-		]]>
-	</insert>
-	
 	<select id="selectMyinfo" parameterType="long" resultType="membervo">
 		<![CDATA[
 			select m.name, m.email, m.tel, s.title as schoolName, m.grade, m.class_no as classNo
@@ -43,11 +37,23 @@
 				where m.SCHOOL_NO = s.NO and m.no=#{no}
 		]]>
 	</select>
-	
+
+	<insert id="insertMember" parameterType="membervo">
+		<![CDATA[
+			insert into member values(seq_member.nextval, #{id}, #{pw}, #{name}, #{email}, #{tel}, sysdate, 1, 0, #{grade}, #{classNo}, (select no from school where title=#{schoolName}))
+		]]>
+	</insert>
+
+	<insert id="inserMemberEtc" parameterType="membervo">
+		<![CDATA[
+			insert into member values(seq_member.nextval, #{id}, #{pw}, #{name}, #{email}, #{tel}, sysdate, 1, 0, null, null, null)
+		]]>
+	</insert>
+
 	<delete id="delete" parameterType="long">
 		<![CDATA[
 			delete from member where no=#{no}
 		]]>
 	</delete>
-	
+
 </mapper>

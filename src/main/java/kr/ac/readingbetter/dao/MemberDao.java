@@ -47,4 +47,7 @@ public class MemberDao {
 		return vo;
 	}
 
+	public void inserMemberEtc(MemberVo vo) {
+		sqlSession.insert("member.inserMemberEtc", vo);
+	}
 }

@@ -9,8 +9,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/wishbook.js"></script>
 </head>
 <body>
+<input type="hidden" id="no" value="${param.no }">
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/include/header.jsp' />
 		<div class="row asideWrap">
@@ -26,29 +29,36 @@
 					</div>
 					<p class="menu-title">희망도서 정보</p>
 
-					<table class="table table-bordered" id="board">
-						<colgroup>
-							<col width="25%"/>
-							<col width="25%"/>
-							<col width="25%"/>
-							<col width="25%"/>
-						</colgroup>
-						<tr>
-							<td class="active">책 제목</td>
-							<td colspan="4">누가 내머리에 똥 쌌어?</td>
-						</tr>
-						<tr>
-							<td class="active">작성자</td>
-							<td>미미</td>
-							<td class="active">출판사</td>
-							<td>두더지 나라</td>
-						</tr>
-						<tr>
-							<td colspan="4">두더지가 되고 싶은 나의 마음이 있다.<br>
-							<br></td>
-						</tr>
-					</table>
-					<a class="btn btn-default" href="/readingbetter/service/wishbooklist" role="button">목록</a>
+					<div id="board">
+						<table class="table table-bordered">
+							<colgroup>
+								<col width="25%"/>
+								<col width="25%"/>
+								<col width="25%"/>
+								<col width="25%"/>
+							</colgroup>
+							<tr>
+								<td class="active">책 제목</td>
+								<td colspan="4">${vo.title }</td>
+							</tr>
+							<tr>
+								<td class="active">작성자</td>
+								<td>${vo.name }</td>
+								<td class="active">출판사${vo.no }</td>
+								<td>${vo.publisher }</td>
+							</tr>
+							<tr>
+								<td colspan="4">${vo.reason }<br>
+								<br></td>
+							</tr>
+						</table>
+						<div id="button-set">
+							<c:if test="${authUser != null }">
+								<button class="btn btn-default" role="button" id="recommend">추천</button>
+							</c:if>
+							<a class="btn btn-default" href="/readingbetter/service/wishbooklist" role="button">목록</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

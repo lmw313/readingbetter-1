@@ -7,10 +7,8 @@
 <head>
 <title>이번 달 학년 순위</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/board.css" rel="stylesheet"
-	type="text/css">
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -27,39 +25,38 @@
 						<a href="/readingbetter/service/wishbooklist"> 희망도서 신청</a> > 글쓰기
 					</div>
 
-					<p class="menu-title">희망도서 신청</p>
-					<div id="board">
-						<table class="table table-bordered ">
-							<tr>
-								<th class="active">책 제목</th>
-								<td colspan=3>
-									<input type="text" class="form-control" name="title" placeholder="필수 입력">
-								</td>
-							</tr>
-							<tr>
-								<th class="active celltitle">글쓴이</th>
-								<td>
-									<input type="text" class="form-control" name="author" placeholder="필수 입력">
-								<th class="active">출판사</th>
-								<td>
-									<input type="text" class="form-control" name="publisher" placeholder="필수 입력">
-								</td>
-							</tr>
-							<tr>
-								<th colspan=4 class="active">책 소개 (또는 추천 이유)</th>
-							</tr>
-							<tr>
-								<td colspan=4>
-									<textarea class="form-control" rows="10" placeholder="내용을 입력하세요."></textarea>
-								</td>
-							</tr>
-						</table>
-						
-						<div id="buttonalign">
-							<button type="submit" class="btn btn-default">작성</button>
-							<br><br>
+					<form action="/readingbetter/service/wishbookwrite" method="post">
+						<p class="menu-title">희망도서 신청</p>
+						<div id="board">
+							<table class="table table-bordered ">
+								<tr>
+									<th class="active">책 제목</th>
+									<td colspan=3>
+										<input type="text" class="form-control" name="title" placeholder="필수 입력">
+									</td>
+								</tr>
+								<tr>
+									<th class="active">출판사</th>
+									<td>
+										<input type="text" class="form-control" name="publisher" placeholder="필수 입력">
+									</td>
+								</tr>
+								<tr>
+									<th colspan=4 class="active">책 소개 (또는 추천 이유)</th>
+								</tr>
+								<tr>
+									<td colspan=4>
+										<textarea class="form-control" rows="10" placeholder="내용을 입력하세요." name="reason"></textarea>
+									</td>
+								</tr>
+							</table>
+							
+							<div id="buttonalign">
+								<button type="submit" class="btn btn-default">작성</button>
+								<br><br>
+							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>

@@ -2,6 +2,8 @@ package kr.ac.readingbetter.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,13 +12,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.AccusationService;
 import kr.ac.readingbetter.service.CommentsService;
 import kr.ac.readingbetter.service.NoticeService;
+import kr.ac.readingbetter.service.WishbookService;
 import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.CommentsVo;
+import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.NoticeVo;
+import kr.ac.readingbetter.vo.WishbookVo;
 
 @Controller
 @RequestMapping("/service")
@@ -30,6 +36,9 @@ public class ServiceController {
 
 	@Autowired
 	private AccusationService accusationService;
+	
+	@Autowired
+	private WishbookService wishbookService;
 
 	// 공지
 	// 공지 리스트 띄우기
@@ -198,17 +207,35 @@ public class ServiceController {
 
 	// 희망도서
 	@RequestMapping("/wishbooklist")
-	public String wishBookList() {
+	public String wishBookList(Model model) {
+		List<WishbookVo> list = wishbookService.selectListOrderByNo();
+		model.addAttribute("list", list);
 		return "service/wishbooklist";
 	}
 
-	@RequestMapping("/wishbookwrite")
-	public String wishBookWrite() {
+	@RequestMapping("/wishbookwriteform")
+	public String wishBookWriteForm() {
 		return "service/wishbookwrite";
 	}
 
 	@RequestMapping("/wishbookview")
-	public String wishBookView() {
+	public String wishBookView(@RequestParam(value = "no") Long no, Model model) {
+		WishbookVo vo = wishbookService.selectWishbook(no);
+		model.addAttribute("vo", vo);
 		return "service/wishbookview";
+	}
+
+	@RequestMapping(value = "/wishbookwrite", method = RequestMethod.POST)
+	public String wishBookWrite(WishbookVo vo, HttpSession session) {
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		vo.setMemberNo(authUser.getNo());
+		wishbookService.insertWishbook(vo);
+		return "redirect:/service/wishbooklist";
+	}
+
+	@RequestMapping(value = "/wishbookrecommend")
+	@ResponseBody
+	public void wishBookRecommend(@RequestParam(value = "no") Long no) {
+		wishbookService.updateRecommend(no);
 	}
 }

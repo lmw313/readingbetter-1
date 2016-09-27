@@ -1,9 +1,15 @@
 $(document).ready(function() {
 	$("#element").click(function() {
+		$("#inputSchoolName").val(null);
+		$("#inputSchoolGrade").val(null);
+		$("#inputSchoolClass").val(null);
 		$("#school-info").show();
 	});
 
 	$("#etc").click(function() {
+		$("#inputSchoolName").val(null);
+		$("#inputSchoolGrade").val(null);
+		$("#inputSchoolClass").val(null);
 		$("#school-info").hide();
 	});
 });
