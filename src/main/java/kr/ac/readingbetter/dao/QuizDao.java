@@ -45,4 +45,8 @@ public class QuizDao {
 		vo = sqlSession.selectOne("quiz.selectResult", vo);
 		return vo;
 	}
+	
+	public String selectAnswer(Long no){
+		return sqlSession.selectOne("quiz.selectAnswer", no);
+	}
 }

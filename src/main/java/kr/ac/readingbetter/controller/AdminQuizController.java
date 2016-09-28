@@ -25,7 +25,6 @@ public class AdminQuizController {
 	@Autowired
 	private BookService BookService;
 	
-
 	// 퀴즈 관리
 	@RequestMapping(value = "/quizlist", method = RequestMethod.GET)
 	public String quizList(Model model) {

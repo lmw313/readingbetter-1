@@ -36,6 +36,12 @@
 			select * from quiz where no=#{no} and answer=#{selected}
 		]]>
 	</select>
+	
+	<select id="selectAnswer" parameterType="long" resultType="String">
+		<![CDATA[
+			select answer from quiz where no=#{no}
+		]]>
+	</select>
 
 	<!-- 퀴즈 승인여부 업데이트 -->
 	<update id="update" parameterType="quizvo">

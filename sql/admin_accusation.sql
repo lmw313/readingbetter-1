@@ -9,4 +9,4 @@ select a.review as content,
 			from review a, member b 
 			where b.no = a.member_no and a.no=1;
       
-select c.CONTENT, m.ID from comments c, member m where c.MEMBER_NO = m.NO and c.no=1;
+select c.CONTENT, m.ID from comments c, member m where c.MEMBER_NO = m.NO and c.no=27;

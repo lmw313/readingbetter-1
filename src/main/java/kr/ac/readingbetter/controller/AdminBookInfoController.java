@@ -23,7 +23,7 @@ public class AdminBookInfoController {
 
 	@Autowired
 	private PublisherService publisherService;
-
+	
 	// 출판사,작가 관리
 	@RequestMapping("/bookinfolist")
 	public String bookInfoList(Model model, PublisherVo publishervo, AuthorVo authorvo) {

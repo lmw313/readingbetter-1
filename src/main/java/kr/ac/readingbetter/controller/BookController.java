@@ -166,8 +166,8 @@ public class BookController {
 			vo.setNo(no[i]);
 			vo.setSelected(answer[i]);
 
-			QuizVo vo2 = quizService.selectResult(vo);
-			if (vo2 != null) {
+			String OAnswer = bookService.getAnswer(no[i]);
+			if (OAnswer.equals(answer[i])) {
 				count++;
 			}
 		}
