@@ -11,9 +11,9 @@
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
-
 <script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="/readingbetter/assets/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/bookaddform.js"></script>
 </head>
 <body>
 	<c:import url='/WEB-INF/views/admin/header.jsp'></c:import>
@@ -30,37 +30,41 @@
 						<td>
 							<label for="title"></label>
 							<input type="text" class="form-control" id="title" value="">
+							<button class="btn btn-primary" id="check-title" type="button">중복확인</button>
 						</td>
 					</tr>
 				<tr>
 					<td class="left-label">작가</td>
 					<td>
 						<label for="author_no"></label>
-						<input type="text" class="form-control" id="author_no" value="${authorVo.name }">
-						
-						<!-- Small modal -->
+						<input type="text" class="form-control" id="author_no" value="" name="author">
 						<button id="btn_writerModal" value="" type="button" class="btn btn-primary" data-toggle="modal" data-target=".writer-modal">찾기</button>
 					</td>
 				<tr>
 					<td class="left-label">출판사</td>
 					<td>
 						<input type="text" class="form-control" id="publisher_no" value="">
-							
-						<!-- Small modal -->
 						<button id="btn_publisherModal" type="button" class="btn btn-primary" data-toggle="modal" data-target=".publisher-modal">찾기</button>
 					</td>
 				</tr>
 				<tr>
-					<td class="left-label">추천</td>
+					<td class="left-label">추천학년</td>
 					<td>
-						<input type="text" class="form-control" id="recommend" value="">
+						<select class="form-control">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+						</select>
 					</td>
 				</tr>
 				<tr>
 					<td class="left-label">사진</td>
 					<td>
 						<label for=""></label>
-						<input type="text" class="form-control" id="cover">
+						<input type="text" class="form-control" id="cover" name="cover">
 					</td>
 				</tr>
 			</table>
@@ -84,23 +88,16 @@
 				<h4 class="modal-title">작가 검색</h4>
 			</div>
 			<div class="modal-body">
-	
-		<form action="/readingbetter/admin/bookaddform" method="get">
-			<input type="text" id="kwd" name="kwd2" value="${param.kwd2 }"> 
-			<input type="submit" class="btn btn-default" value="찾기">
-		</form>
-				<select class="form-control">
-				
-				 <c:forEach var='vo' items='${authorlist}'>
-						<option>${vo.name }</option>
-				</c:forEach>
-				</select>
+				<input type="text" name="kwd2" value=""> 
+				<input type="submit" class="btn btn-default" value="찾기">
+				<div id="search-author-result">
+					<a>검색결과</a>
+				</div>
+				<div id="author-input" style="display: none;">
+					<input type="text" name="kwd">
+					<button class="btn btn-default">확인</button>
+				</div>
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-				<button type="submit" class="btn btn-primary">확인</button>
-			</div>
-		
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -116,27 +113,16 @@
 				<h4 class="modal-title">출판사 검색</h4>
 			</div>
 			<div class="modal-body">
-		<form action="/readingbetter/admin/bookaddform/${param.kwd1 }" method="get">
-			<input type="text" id="kwd" name="kwd1" value="${param.kwd1 }"> 
-			<input type="submit" class="btn btn-default" value="찾기">
-		</form>
-				<select class="form-control">
-			 <c:forEach var='vo' items='${publisherlist}'>
-						<option>${vo.title }</option>
-				</c:forEach>
-				</select>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-				<button type="button" class="btn btn-primary">확인</button>
+				<input type="text" name="kwd2" value=""> 
+				<input type="submit" class="btn btn-default" value="찾기">
+				<div id="search-publisher-result">
+					<a>검색결과</a>
+				</div>
+				<div id="publisher-input" style="display: none;">
+					<input type="text" name="kwd">
+					<button class="btn btn-default">확인</button>
+				</div>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
-<!-- <script>
-$("#btn_writerModal").on("click", function(){
-	
-	$("#writerModal").modal();
-});
-</script> -->

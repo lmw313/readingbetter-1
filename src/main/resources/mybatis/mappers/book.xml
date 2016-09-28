@@ -66,5 +66,19 @@
  			order by a.title
 		]]>
 	</select>
+	
+	<!-- 공백제거 검색 -->
+	<select id="findBookReplace" parameterType="string" resultType="bookvo">
+		<![CDATA[
+			select title, publisherTitle, authorName 
+				from (select b.title, 
+							 replace(b.title, ' ', '') as re_title, 
+							 p.TITLE as publisherTitle, 
+							 a.NAME as authorName 
+						from book b, publisher p, author a 
+						where b.PUBLISHER_NO = p.NO and b.AUTHOR_NO = a.NO) 
+				where re_title like '%' || #{kwd} || '%'
+		]]>
+	</select>
 
 </mapper>

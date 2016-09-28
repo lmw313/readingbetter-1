@@ -148,7 +148,7 @@
 		<![CDATA[
 			select member_no as memberNo, score, point, total_score as totalScore 
 				from scores 
-				where member_no=#{no}
+				where member_no=#{memberNo}
 		]]>
 	</select>
 
@@ -169,5 +169,12 @@
 			insert into scores values(#{no}, 0, 0, 0)
 		]]>
 	</insert>
+	
+	<!-- 상점 점수 차감 -->
+ 	<update id="updateshop" parameterType="scoresvo">
+ 		<![CDATA[
+ 			update scores set point=#{point} where member_no=#{memberNo}
+ 		]]>
+ 	</update>
 
 </mapper>

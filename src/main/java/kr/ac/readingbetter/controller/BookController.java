@@ -63,7 +63,6 @@ public class BookController {
 	// 책 리스트 검색, 페이징
 	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
 	public String bookListPage(BookVo bookvo, Model model) {
-
 		int pageLength = 3;
 		int beginPage;
 
@@ -103,7 +102,7 @@ public class BookController {
 		return "book/booklist";
 	}
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	// 퀴즈 내기
 	// 퀴즈 내기 화면 열기
 	@RequestMapping(value = "/makequizform/{no}", method = RequestMethod.GET)
@@ -120,7 +119,7 @@ public class BookController {
 		return "redirect:/book/booklist";
 	}
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	// 퀴즈 풀기
 	// 퀴즈 풀기 화면 열기
 	@RequestMapping("/solvequizform")
@@ -254,7 +253,7 @@ public class BookController {
 		return returnValue;
 	}
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	// 리뷰
 	// 리뷰 화면 열기
 	@RequestMapping(value = "/review/{no}", method = RequestMethod.GET)

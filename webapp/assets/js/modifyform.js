@@ -10,75 +10,78 @@ $(document).ready(function() {
 		var school = "기타";
 		var grade = 0;
 		var classNo = 0;
-		
+
 		$("#inputSchoolName").val(school);
 		$("#inputSchoolGrade").val(grade);
 		$("#inputSchoolClass").val(classNo);
 		$("#school-info").hide();
 	});
 
-	if($("#element").is(":checked")){
+	if ($("#element").is(":checked")) {
 		console.log("element checked");
 		$("#school-info").show();
 	}
-	
-	if($("#etc").is(":checked")){
+
+	if ($("#etc").is(":checked")) {
 		console.log("etc checked");
 		$("#school-info").hide();
 	}
 });
 
 $(function() {
-	
+
 	$("#btn-searchschool").click(function() {
 		$('div.modal').modal();
 	});
-	
+
 	// 학교 검색
-	$("#search").on("click", function() {
-		$("#search-list").empty();
+	$("#search").on(
+			"click",
+			function() {
+				$("#search-list").empty();
 
-		var kwd = $("#school-kwd").val();
+				var kwd = $("#school-kwd").val();
 
-		$.ajax({
-			url : "/readingbetter/member/search",
-			type : "POST",
-			data : {
+				$.ajax({
+					url : "/readingbetter/member/search",
+					type : "POST",
+					data : {
 						"kwd" : kwd
 					},
-			dataType : "json",
-			// contentType: "application/json",
-			success : function(list) {
-				for (var i = 0; i < list.length; i++) {
-					$("#search-list").append(
-						"<a class='search-result' data-dismiss='modal'>"
-						+ list[i].title + "</a><br>");
-				}
-			}, error : function(jqXHR, status, error) {
-				console.error(status + " : " + error);
-			}
-		});
-	});
+					dataType : "json",
+					// contentType: "application/json",
+					success : function(list) {
+						for (var i = 0; i < list.length; i++) {
+							$("#search-list").append(
+									"<a class='search-result' data-dismiss='modal'>"
+											+ list[i].title + "</a><br>");
+						}
+					},
+					error : function(jqXHR, status, error) {
+						console.error(status + " : " + error);
+					}
+				});
+			});
 
 	$("#search-list").on("click", ".search-result", function() {
 		$("#inputSchoolName").val($(this).text());
 	});
-	
+
 	// 이메일 중복체크
 	$("#check-email").on("click", function() {
 		var email = $("#inputEmail").val();
 		var authUserEmail = $("#authUserEmail").val();
-		
+
 		if (email == "") {
 			return;
 		}
-		
-		if (email == authUserEmail){
-	         $("#image-emailchecked").show();
-	         $("#check-email").hide();
-	         return;
-	    }
-		
+
+		if (email == authUserEmail) {
+			$("#image-emailchecked").show();
+			$("#check-email").hide();
+			return;
+		}
+
 		$.ajax({
 			url : "/readingbetter/member/checkemail",
 			type : "POST",
@@ -100,12 +103,12 @@ $(function() {
 			}
 		});
 	});
-	
+
 	$("#inputEmail").change(function() {
 		$("#image-emailchecked").hide();
 		$("#check-email").show();
 	});
-	
+
 	// 폼 체크
 	$("#modify-form").submit(function() {
 		// 입력 체크
@@ -126,25 +129,25 @@ $(function() {
 			$("#inputPhone").focus();
 			return false;
 		}
-		
+
 		if ($("#inputSchoolName").val() == "") {
 			alert("학교 이름은 필수 입력사항입니다.");
 			$("#inputSchoolName").focus();
 			return false;
 		}
-		
+
 		if ($("#inputSchoolGrade").val() == "") {
 			alert("학년은 필수 입력사항입니다.");
 			$("#inputSchoolGrade").focus();
 			return false;
 		}
-		
+
 		if ($("#inputSchoolClass").val() == "") {
 			alert("반은 필수 입력사항입니다.");
 			$("#inputSchoolClass").focus();
 			return false;
 		}
-		
+
 		if ($("#image-emailchecked").is(":visible") == false) {
 			alert("이메일 중복 체크를 해 주세요.");
 			return false;

@@ -78,6 +78,7 @@
 				<form class="form-inline">
 					<div class="form-group">
 						<p id="message-conform">
+							<input type="hidden" name="no" id="no" value="">
 							<strong id=title></strong>을 결제 하시겠습니까?<br>
 							<strong id=price></strong>캔디
 						</p>

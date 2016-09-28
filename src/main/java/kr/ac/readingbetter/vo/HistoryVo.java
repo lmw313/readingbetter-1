@@ -7,6 +7,8 @@ public class HistoryVo {
 	private Long memberNo;
 	private Integer identity;
 	private Long keyNo;
+	private String title;
+	private String regDate;
 
 	public Long getNo() {
 		return no;
@@ -56,9 +58,25 @@ public class HistoryVo {
 		this.keyNo = keyNo;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+
 	@Override
 	public String toString() {
 		return "HistoryVo [no=" + no + ", score=" + score + ", point=" + point + ", memberNo=" + memberNo
-				+ ", identity=" + identity + ", keyNo=" + keyNo + "]";
+				+ ", identity=" + identity + ", keyNo=" + keyNo + ", title=" + title + ", regDate=" + regDate + "]";
 	}
 }

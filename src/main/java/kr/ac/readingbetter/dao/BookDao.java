@@ -44,4 +44,9 @@ public class BookDao {
 		List<BookVo> list = sqlSession.selectList("book.listService", vo);
 		return list;
 	}
+
+	public List<BookVo> findBookReplace(String title) {
+		List<BookVo> bookList = sqlSession.selectList("book.findBookReplace", title);
+		return bookList;
+	}
 }

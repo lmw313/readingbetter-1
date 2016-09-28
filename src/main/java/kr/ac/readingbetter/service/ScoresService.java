@@ -85,4 +85,9 @@ public class ScoresService {
 	public ScoresVo monthlyMyGradeRank(String id) {
 		return scoresDao.monthlyMyGradeRank(id);
 	}
+
+	// 상점
+	public void scoreUpdate(ScoresVo vo) {
+		scoresDao.scoreUpdate(vo);
+	}
 }

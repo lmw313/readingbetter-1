@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.BookService;
+import kr.ac.readingbetter.service.AdminBookService;
 import kr.ac.readingbetter.service.AuthorService;
 import kr.ac.readingbetter.service.PublisherService;
 import kr.ac.readingbetter.vo.AuthorVo;
@@ -26,6 +30,9 @@ public class AdminBookController {
 
 	@Autowired
 	private PublisherService publisherService;
+
+	@Autowired
+	private AdminBookService adminBookService;
 
 	// 도서 관리
 	@RequestMapping("/booklist")
@@ -52,5 +59,14 @@ public class AdminBookController {
 		model.addAttribute("publisherlist", list2);
 
 		return "admin/bookaddform";
+	}
+
+	@RequestMapping(value = "/checkbook", method = RequestMethod.POST)
+	@ResponseBody
+	public void checkBook(@RequestParam(value = "title") String title) {
+		System.out.println(title);
+
+		List<BookVo> bookList = adminBookService.checkBook(title);
+		System.out.println(bookList);
 	}
 }

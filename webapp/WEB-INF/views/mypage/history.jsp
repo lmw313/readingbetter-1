@@ -31,7 +31,7 @@
 							<img id="img" class="img-circle"
 								src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/pikachu.png">
 							<br> <br>
-							<p id="idtext">ID : test01</p>
+							<p id="idtext">NAME :${ memberVo.name }</p>
 							<br> <br>
 						</div>
 					</div>
@@ -40,15 +40,15 @@
 						<table id="info-table" class="table">
 							<tr>
 								<th>보유 캔디 수 :</th>
-								<td>1개</td>
+								<td>${scoresVo.point }</td>
 							</tr>
 							<tr>
 								<th>누적 점수 :</th>
-								<td>1000점</td>
+								<td>${scoresVo.totalScore }점</td>
 							</tr>
 							<tr>
 								<th>이번 달 점수 :</th>
-								<td>190점</td>
+								<td>${scoresVo.score }점</td>
 							</tr>
 						</table>
 					</div>
@@ -64,51 +64,32 @@
 							<th>인증</th>
 							<th>날짜</th>
 						</tr>
+						<c:forEach var='vo' items='${historylist}' varStatus='s'>
+					
 						<tr>
-							<td>5</td>
-							<td>퀴즈 풀기</td>
-							<td>서울 쥐와 시골 쥐</td>
-							<td>30</td>
-							<td>0</td>
-							<td>실패</td>
-							<td>2016-01-03</td>
+							<td>${vo.no}</td>
+							<td>
+								<c:choose>
+                       				 <c:when test="${vo.identity == 0}">문제풀기</c:when>
+                       				 <c:when test="${vo.identity == 1}">상점</c:when>
+              					 </c:choose>
+							</td>
+							<td>
+							${vo.title }</td>
+							<td>${vo.score }</td>
+							<td>
+							<c:choose>
+                       				 <c:when test="${vo.identity == 0}">+${vo.point }</c:when>
+                       				 <c:when test="${vo.identity == 1}">-${vo.point }</c:when>
+              				</c:choose>
+							</td>
+							
+							<td>
+							성공
+							</td>
+							<td>${vo.regDate}</td>
 						</tr>
-						<tr>
-							<td>4</td>
-							<td>상점 이용</td>
-							<td>불닭볶음면</td>
-							<td>-</td>
-							<td>-5</td>
-							<td>-</td>
-							<td>2016-01-03</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>퀴즈 풀기</td>
-							<td>강아지와 고양이</td>
-							<td>50</td>
-							<td>3</td>
-							<td>성공</td>
-							<td>2016-01-02</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>퀴즈 풀기</td>
-							<td>토끼와 자라</td>
-							<td>10</td>
-							<td>0</td>
-							<td>실패</td>
-							<td>2016-01-02</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>퀴즈 풀기</td>
-							<td>누가 내 머리에 똥 쌌어</td>
-							<td>100</td>
-							<td>3</td>
-							<td>성공</td>
-							<td>2016-01-01</td>
-						</tr>
+						</c:forEach>
 					</table>
 					<br>
 				</div>

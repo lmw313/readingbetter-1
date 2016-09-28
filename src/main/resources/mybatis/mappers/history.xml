@@ -3,17 +3,26 @@
 
 <mapper namespace="history">
 
-	<!-- 히스토리 추가 -->
 	<insert id="insertHistory" parameterType="historyvo">
 		<![CDATA[
 			insert into history values(
 				seq_history.nextval, 
+				#{title},
 				#{score}, 
 				#{point}, 
+				sysdate,
 				#{memberNo}, 
 				#{identity}, 
-				#{keyNo})
+				#{keyNo})				
 		]]>
 	</insert>
 	
+	<select id="list" parameterType="historyvo" resultType="historyvo">
+		<![CDATA[
+			select no,title,score,point,reg_date as regDate, 
+			member_no as memberNo,identity,key_no from history
+			order by reg_date desc        
+		]]>
+	</select>	
+
 </mapper>

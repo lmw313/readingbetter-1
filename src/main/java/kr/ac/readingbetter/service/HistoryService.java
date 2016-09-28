@@ -1,5 +1,7 @@
 package kr.ac.readingbetter.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +15,10 @@ public class HistoryService {
 
 	public void insertHistory(HistoryVo vo) {
 		historyDao.insertHistory(vo);
+	}
+
+	public List<HistoryVo> getList(HistoryVo vo) {
+		List<HistoryVo> list = historyDao.getList(vo);
+		return list;
 	}
 }

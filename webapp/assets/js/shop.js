@@ -20,6 +20,25 @@ $(function() {
 	});
 	
 	$("#btn-buy").on("click", function() {
-		alert("구매하셨습니다.");
+		var price= $("#price").text();
+		var no =$("#no").val();
+		var title= $("#title").text();
+		
+		$.ajax({
+			url : "/readingbetter/shop/buy",
+			type : "POST",
+			data : {
+				"price" : price,
+				"no" : no,
+				"title" : title
+			},
+			dataType : "json",
+			success : function(scoresVo) {
+				console.log("scores");
+			},
+			error : function(jqXHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
 	});
 });

@@ -27,18 +27,18 @@
 							<br>
 							<p>아이디 찾기</p>
 							<div class="form-group">
-								<label class="col-sm-3 control-label">이메일</label>
-								<div class="col-sm-6">
-									<input type="Email" class="form-control" placeholder="Email">
-								</div>
-							</div>
-
-							<div class="form-group">
 								<label class="col-sm-3 control-label">이름</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" placeholder="Name">
+									<input type="text" name="name" class="form-control" placeholder="Name">
 								</div>
-							</div>							
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-3 control-label">이메일</label>
+								<div class="col-sm-6">
+									<input type="Email" name="email" class="form-control" placeholder="Email">
+								</div>
+							</div>
 							<p>당신의 아이디는 :</p>
 						</form>
 					</div>
@@ -50,20 +50,21 @@
 							<div class="form-group">
 								<label for="inputID" class="col-sm-3 control-label">아이디</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputID" placeholder="ID">
+									<input type="text" name="id" class="form-control" id="inputID" placeholder="ID">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="inputEmail" class="col-sm-3 control-label">이메일</label>
-								<div class="col-sm-6">
-									<input type="Email" class="form-control" id="inputEmail" placeholder="Email">
-								</div>
-							</div>
-
+							
 							<div class="form-group">
 								<label for="inputName" class="col-sm-3 control-label">이름</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputPassword" placeholder="Name">
+									<input type="text" name="name" class="form-control" id="inputPassword" placeholder="Name">
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="inputEmail" class="col-sm-3 control-label">이메일</label>
+								<div class="col-sm-6">
+									<input type="Email" name="email" class="form-control" id="inputEmail" placeholder="Email">
 								</div>
 							</div>
 							<p>당신의 비밀번호는 :</p>

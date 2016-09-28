@@ -81,4 +81,9 @@ public class ScoresDao {
 	public ScoresVo monthlyMyGradeRank(String id) {
 		return sqlSession.selectOne("scores.monthlyMyGradeRank", id);
 	}
+
+	// 상점
+	public void scoreUpdate(ScoresVo vo) {
+		sqlSession.update("scores.updateshop", vo);
+	}
 }
