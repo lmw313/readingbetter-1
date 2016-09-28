@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.ac.readingbetter.service.MemberService;
 import kr.ac.readingbetter.service.MypageService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.MemberVo;
@@ -17,9 +16,6 @@ import kr.ac.readingbetter.vo.ScoresVo;
 @Controller
 @RequestMapping("/mypage")
 public class MyPageController {
-
-	@Autowired
-	private MemberService memberService;
 
 	@Autowired
 	private ScoresService scoresService;

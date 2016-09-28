@@ -23,45 +23,28 @@
 					<p class="menu-title">아이디/비밀번호 찾기</p>
 					
 					<div id="radio-group">
-						<form class="form-horizontal">
+						<form class="form-horizontal" action="" method="POST">
 							<br>
 							<p>아이디 찾기</p>
 							<div class="form-group">
-								<label for="inputEmail" class="col-sm-3 control-label">이메일</label>
+								<label class="col-sm-3 control-label">이메일</label>
 								<div class="col-sm-6">
-									<input type="Email" class="form-control" id="inputEmail" placeholder="Email">
+									<input type="Email" class="form-control" placeholder="Email">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="inputName" class="col-sm-3 control-label">이름</label>
+								<label class="col-sm-3 control-label">이름</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="inputPassword"
-										placeholder="Name">
+									<input type="text" class="form-control" placeholder="Name">
 								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="inputSchoolName" class="col-sm-3 control-label">학교 이름</label>
-								<div class="col-sm-6">
-									<select class="form-control">
-										<option>두더지 초등학교</option>
-										<option>사슴 초등학교</option>
-										<option>강아지 초등학교</option>
-										<option>태초 마을</option>
-										<option>피카츄 마을</option>
-									</select>
-								</div>
-								<div class="col-sm-1">
-									<a class="btn btn-default" type="submit">찾기</a>
-								</div>
-							</div>
+							</div>							
 							<p>당신의 아이디는 :</p>
 						</form>
 					</div>
 
 					<div id="radio-group">
-						<form class="form-horizontal">
+						<form class="form-horizontal"  action="" method="POST">
 							<br>
 							<p>비밀 번호 찾기</p>
 							<div class="form-group">
@@ -81,23 +64,6 @@
 								<label for="inputName" class="col-sm-3 control-label">이름</label>
 								<div class="col-sm-6">
 									<input type="text" class="form-control" id="inputPassword" placeholder="Name">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="inputSchoolName" class="col-sm-3 control-label">학교 이름</label>
-								<div class="col-sm-6">
-									<select class="form-control">
-										<option>두더지 초등학교</option>
-										<option>사슴 초등학교</option>
-										<option>강아지 초등학교</option>
-										<option>태초 마을</option>
-										<option>피카츄 마을</option>
-									</select>
-								</div>
-								
-								<div class="col-sm-1">
-									<a class="btn btn-default" type="submit">찾기</a>
 								</div>
 							</div>
 							<p>당신의 비밀번호는 :</p>

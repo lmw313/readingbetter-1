@@ -60,7 +60,6 @@ public class AdminAccusationController {
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String modify(@ModelAttribute AccusationVo vo) {
-		System.out.println(vo);
 		accusationService.update(vo);
 		return "redirect:/admin/accusationlist";
 	}
