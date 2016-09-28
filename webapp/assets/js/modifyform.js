@@ -67,11 +67,18 @@ $(function() {
 	// 이메일 중복체크
 	$("#check-email").on("click", function() {
 		var email = $("#inputEmail").val();
-
+		var authUserEmail = $("#authUserEmail").val();
+		
 		if (email == "") {
 			return;
 		}
-
+		
+		if (email == authUserEmail){
+	         $("#image-emailchecked").show();
+	         $("#check-email").hide();
+	         return;
+	    }
+		
 		$.ajax({
 			url : "/readingbetter/member/checkemail",
 			type : "POST",

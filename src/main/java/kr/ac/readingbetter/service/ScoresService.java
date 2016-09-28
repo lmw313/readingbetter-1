@@ -31,8 +31,8 @@ public class ScoresService {
 	}
 
 	// 로그인 한 회원의 학교 랭킹
-	public ScoresVo mySchoolRank(Long no) {
-		return scoresDao.mySchoolRank(no);
+	public ScoresVo mySchoolRank(String id) {
+		return scoresDao.mySchoolRank(id);
 	}
 
 	// 명예의 전당
@@ -63,8 +63,8 @@ public class ScoresService {
 		scoresDao.insertScores(no);
 	}
 
-	public List<ScoresVo> monthlyGrade(ScoresVo vo) {
-		return scoresDao.monthlyGrade(vo);
+	public List<ScoresVo> monthlyGrade(Integer grade) {
+		return scoresDao.monthlyGrade(grade);
 	}
 
 	// 메인화면에 한 달 랭킹 상위 5명 출력
@@ -75,5 +75,14 @@ public class ScoresService {
 	// 메인화면에 명예의 전당 랭킹 상위 5명 출력
 	public List<ScoresVo> mainHonor(ScoresVo vo) {
 		return scoresDao.mainHonor(vo);
+	}
+
+	// 로그인 한 회원의 학년 점수 랭킹
+	public List<ScoresVo> monthlyMyGrade(String id) {
+		return scoresDao.monthlyMyGrade(id);
+	}
+
+	public ScoresVo monthlyMyGradeRank(String id) {
+		return scoresDao.monthlyMyGradeRank(id);
 	}
 }

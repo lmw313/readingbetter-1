@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.MemberVo;
@@ -23,7 +24,8 @@ public class RankingController {
 	/* 페이지 */
 	// 요약 페이지 및 랭킹 출력
 	@RequestMapping("/summary")
-	public String summary(ScoresVo vo, Model model) {
+	public String summary(ScoresVo vo, Model model, HttpSession session) {
+
 		// 전체 랭킹
 		List<ScoresVo> monthlyRank = scoresService.monthlyRank(vo);
 		model.addAttribute("monthlyRank", monthlyRank);
@@ -32,12 +34,13 @@ public class RankingController {
 		List<ScoresVo> monthlySchool = scoresService.schoolRank(vo);
 		model.addAttribute("monthlySchool", monthlySchool);
 
-		// 학년 랭킹
-		/*
-		 * List<RankingVo> monthlyGrade = scoresService.gradeRank(vo);
-		 * model.addAttribute("monthlyGrade", monthlyGrade);
-		 */
-
+		// 학년 랭킹 (로그인 한 회원의 학년 랭킹)
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		if (authUser != null) { // 로그인을 했을 경우에만 vo에 랭킹 삽입
+			String id = authUser.getId();
+			List<ScoresVo> monthlyMyGrade = scoresService.monthlyMyGrade(id);
+			model.addAttribute("monthlyMyGrade", monthlyMyGrade);
+		}
 		// 명예의 전당
 		List<ScoresVo> honor = scoresService.honor(vo);
 		model.addAttribute("honor", honor);
@@ -65,7 +68,20 @@ public class RankingController {
 
 	// 학년별 랭킹 페이지
 	@RequestMapping("/monthlygrade")
-	public String monthlyGrade() {
+	public String monthlyGrade(ScoresVo vo, Model model, HttpSession session,
+			@RequestParam(value = "grade") Integer grade) { // get 방식으로 학년정보 전송
+
+		// 학년별 랭킹
+		List<ScoresVo> monthlyGrade = scoresService.monthlyGrade(grade);
+		model.addAttribute("monthlygrade", monthlyGrade);
+
+		// 로그인 한 회원의 학년 내 랭킹
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		if (authUser != null) {
+			String id = authUser.getId();
+			vo = scoresService.monthlyMyGradeRank(id);
+			model.addAttribute("monthlyMyGradeRank", vo);
+		}
 		return "ranking/monthlygrade";
 	}
 
@@ -81,9 +97,9 @@ public class RankingController {
 
 		// 로그인 한 회원의 학교 랭킹
 		if (authUser != null) {// 로그인을 했을 때
-			Long no = authUser.getSchoolNo(); // 로그인 한 회원의 학교 번호를 받아옴
-			if (no != null) { // 학교 번호가 null이 아닐 경우에만 vo에 랭킹 정보 삽입
-				vo = scoresService.mySchoolRank(no);
+			String id = authUser.getId(); // 로그인 한 회원의 아이디를 받아옴
+			if (id != null) { // 학교 번호가 null이 아닐 경우에만 vo에 랭킹 정보 삽입
+				vo = scoresService.mySchoolRank(id);
 				model.addAttribute("mySchoolRank", vo);
 			}
 		}

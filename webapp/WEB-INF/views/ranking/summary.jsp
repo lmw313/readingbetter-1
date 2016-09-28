@@ -23,7 +23,7 @@
 				<div id="summary">
 					<div class="small-menu">
 						<a href="/readingbetter/main">홈</a> > <a
-							href="/readingbetter/ranking/summary">순위</a> > 순위 한눈에 보기
+							href="/readingbetter/ranking/summary">순위</a> > 순위 한눈에 보기/검색
 					</div>
 
 					<div id="table" class="col-lg-6">
@@ -40,11 +40,11 @@
 								<th>아이디</th>
 								<th>점수</th>
 							</tr>
-							<c:forEach items="${monthlyRank }" var="rankingvo">
+							<c:forEach items="${monthlyRank }" var="scoresvo">
 								<tr>
-									<td>${rankingvo.rank }</td>
-									<td>${rankingvo.id }</td>
-									<td>${rankingvo.monthlyScore }</td>
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.id }</td>
+									<td>${scoresvo.monthlyScore }</td>
 								<tr>
 							</c:forEach>
 						</table>
@@ -64,18 +64,18 @@
 								<th>학교명</th>
 								<th>점수</th>
 							</tr>
-							<c:forEach items="${monthlySchool }" var="rankingvo">
+							<c:forEach items="${monthlySchool }" var="scoresvo">
 								<tr>
-									<td>${rankingvo.rank }</td>
-									<td>${rankingvo.title }</td>
-									<td>${rankingvo.schoolScore }</td>
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.title }</td>
+									<td>${scoresvo.schoolScore }</td>
 								</tr>
 							</c:forEach>
 						</table>
 					</div>
 
 					<div id="table" class="col-lg-6">
-						<p id="title">이번 달 학년별 순위</p>
+						<p id="title">이번 달 우리 학년 순위</p>
 						<br>
 						<table id="ltable" class="table table-striped">
 							<colgroup>
@@ -88,56 +88,29 @@
 								<th>아이디</th>
 								<th>점수</th>
 							</tr>
-							<tr>
-								<td>1</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>8</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>9</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
-							<tr>
-								<td>10</td>
-								<td>ID1</td>
-								<td>5</td>
-							</tr>
+							<c:choose>
+								<c:when test="${not empty sessionScope.authUser}">
+									<c:choose>
+										<c:when test="${monthlyMyGrade ne null}">
+											<c:forEach items="${monthlyMyGrade}" var="scoresvo">
+												<tr>
+													<td>${scoresvo.rank }</td>
+													<td>${scoresvo.id }</td>
+													<td>${scoresvo.score }</td>
+												</tr>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<td colspan=3>회원님의 학년 정보가<br>없습니다.
+											</td>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									<td colspan=3>로그인 하시면<br>확인 가능합니다.
+									</td>
+								</c:otherwise>
+							</c:choose>
 						</table>
 					</div>
 
@@ -155,23 +128,14 @@
 								<th>아이디</th>
 								<th>점수</th>
 							</tr>
-							<c:forEach items="${honor }" end="10" var="rankingvo">
-								<c:choose>
-									<c:when test="${honor!=null }">
-										<tr>
-											<td>${rankingvo.rank }</td>
-											<td>${rankingvo.id }</td>
-											<td>${rankingvo.totalScore }</td>
-										<tr>
-									</c:when>
-									<c:otherwise>
-										<tr>
-											<td>-</td>
-											<td>-</td>
-											<td>-</td>
-										<tr>
-									</c:otherwise>
-								</c:choose>
+							<c:forEach items="${honor }" end="10" var="scoresvo">
+
+								<tr>
+									<td>${scoresvo.rank }</td>
+									<td>${scoresvo.id }</td>
+									<td>${scoresvo.totalScore }</td>
+								<tr>
+								</tr>
 							</c:forEach>
 						</table>
 						<br>

@@ -14,6 +14,7 @@
 <script type="text/javascript" src="/readingbetter/assets/js/modifyform.js"></script>
 </head>
 <body>
+<input type="hidden" id="authUserEmail" value="${vo.email }">
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/include/header.jsp' />
 		<div class="row asideWrap">

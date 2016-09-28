@@ -26,8 +26,8 @@ public class ScoresDao {
 	}
 
 	// 로그인 한 회원의 학교 랭킹
-	public ScoresVo mySchoolRank(Long no) {
-		return sqlSession.selectOne("scores.mySchoolRank", no);
+	public ScoresVo mySchoolRank(String id) {
+		return sqlSession.selectOne("scores.mySchoolRank", id);
 	}
 
 	// 명예의 전당
@@ -62,8 +62,8 @@ public class ScoresDao {
 		sqlSession.insert("scores.insertScores", no);
 	}
 
-	public List<ScoresVo> monthlyGrade(ScoresVo vo) {
-		return sqlSession.selectList("scores.monthlyGrade", vo);
+	public List<ScoresVo> monthlyGrade(Integer grade) {
+		return sqlSession.selectList("scores.monthlygrade", grade);
 	}
 
 	public List<ScoresVo> monthlyMainRank(ScoresVo vo) {
@@ -72,5 +72,13 @@ public class ScoresDao {
 
 	public List<ScoresVo> mainHonor(ScoresVo vo) {
 		return sqlSession.selectList("scores.mainHonor", vo);
+	}
+
+	public List<ScoresVo> monthlyMyGrade(String id) {
+		return sqlSession.selectList("scores.monthlyMyGrade", id);
+	}
+
+	public ScoresVo monthlyMyGradeRank(String id) {
+		return sqlSession.selectOne("scores.monthlyMyGradeRank", id);
 	}
 }

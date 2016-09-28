@@ -1,11 +1,11 @@
 -- 커밋
 commit;
 
-SELECT  no, name/*, school_no*/ FROM member ORDER by no asc;
+SELECT  no, name, school_no, grade FROM member ORDER by no asc;
 
 -- 테이블 전체 조회
 Select * From scores;
-Select id, school_no From member order by no asc;
+Select no, id, pw, school_no, grade From member order by no asc;
 select * from school;
 
 -- 점수 삽입
@@ -51,7 +51,7 @@ select rank, id from (SELECT rank() OVER(ORDER BY scores.total_score DESC) as ra
 
 /* 학교 */
 
--- 학교별 순위
+-- 학교별 순위 (상위 10곳)
 select rank, title, schoolscore
 from (select rank() OVER(ORDER BY SchoolScore DESC) as rank, title, schoolscore
       from (select
@@ -59,21 +59,21 @@ from (select rank() OVER(ORDER BY SchoolScore DESC) as rank, title, schoolscore
             from     scores a, member b
             where    b.no=a.member_no
             group by school_no, b.school_no) a,school b
-where b.no=a.school_no
+where b.no=a.school_no and NOT(title='기타')
 order by rank asc) where rownum <= 10;
 
--- 우리 학교 순위
-select rank, title, mySchoolScore
-				from(select rank() OVER(ORDER BY mySchoolScore DESC) as rank, title, mySchoolScore, b.NO as sno
-				       from (select
-				                     b.school_no, sum(a.score) as mySchoolScore
-				            from     scores a, member b
-				            where    b.no=a.member_no
-				            group by school_no, b.school_no) a,school b
-				where b.no=a.school_no) where sno = '1';
+-- 우리 학교 순위 
+select sno, rank, title, mySchoolScore
+  from(select b.no as schoolno, rank() OVER(ORDER BY mySchoolScore DESC) as rank, title, mySchoolScore, b.NO as sno
+			   from (select    b.school_no, sum(a.score) as mySchoolScore
+                 from    scores a, member b
+                where    b.no=a.member_no
+             group by school_no, b.school_no) a, school b
+                where b.no=a.school_no and NOT(title='기타')), member
+  where MEMBER.school_no=sno and id='ysi1246';
 
 /* 학년별 순위 */
-				
+
 -- 학년별 순위 (상위 10명)
 select grade, rank, id, score
 from (select rank() over(order by score desc) rank,
@@ -82,10 +82,10 @@ from (select rank() over(order by score desc) rank,
              a.score as score
         from scores a,member b
        where b.no=a.member_no
-         and grade = 1)
+         and grade = 3)
 where rownum <= 10;
 
--- 로그인 한 회원의 해당 학년 순위
+-- 요약 페이지 (회원의 학년 순위)
 select grade, rank, id, score
 from (select rank() over(order by score desc) rank,
              b.id as id,
@@ -93,5 +93,16 @@ from (select rank() over(order by score desc) rank,
              a.score as score
         from scores a,member b
        where b.no=a.member_no
-         and grade = 1)
-where id = 'wjsdbf0794';
+         and grade = (select grade from member where id='kg00003'))
+where rownum <= 10;
+
+-- 로그인 한 회원의 해당 학년 내 순위
+select grade, rank, id, score
+from (select rank() over(order by score desc) rank,
+             b.id as id,
+             b.grade as grade,
+             a.score as score
+        from scores a,member b
+       where b.no=a.member_no
+         and grade = (select grade from member where id='ysi1246'))
+where id = 'ysi1246';
