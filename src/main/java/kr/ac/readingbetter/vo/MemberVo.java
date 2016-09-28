@@ -15,6 +15,7 @@ public class MemberVo {
 	private Long schoolNo;
 	private String kwd;
 	private String schoolName;
+	private Long memberNo;
 
 	public Long getNo() {
 		return no;
@@ -128,11 +129,19 @@ public class MemberVo {
 		this.schoolName = schoolName;
 	}
 
+	public Long getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(Long memberNo) {
+		this.memberNo = memberNo;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVo [no=" + no + ", id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", tel="
 				+ tel + ", lastDate=" + lastDate + ", position=" + position + ", penalty=" + penalty + ", grade="
 				+ grade + ", classNo=" + classNo + ", schoolNo=" + schoolNo + ", kwd=" + kwd + ", schoolName="
-				+ schoolName + "]";
+				+ schoolName + ", memberNo=" + memberNo + "]";
 	}
 }

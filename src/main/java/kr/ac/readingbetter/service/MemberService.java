@@ -38,16 +38,12 @@ public class MemberService {
 		return vo;
 	}
 
-	public void insertMember(MemberVo vo) {
-		if (vo.getSchoolName().equals("")) {
-			memberDao.inserMemberEtc(vo);
-			return;
-		}
-		memberDao.insertMember(vo);
-	}
-
 	public MemberVo selectMyinfo(Long no) {
 		MemberVo vo = memberDao.selectMyinfo(no);
 		return vo;
+	}
+	
+	public void insertMember(MemberVo vo) {
+		memberDao.insertMember(vo);
 	}
 }

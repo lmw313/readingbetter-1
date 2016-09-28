@@ -44,12 +44,14 @@
 								</div>
 							</div>
 
-							<div class="form-group">
-								<label class="col-sm-3 control-label">학년 반</label>
-								<div class="col-sm-9">
-									<p class="form-control-static">${memberVo.grade }학년 ${memberVo.classNo }반</p>
+							<c:if test="${memberVo.schoolName != '기타' }">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">학년 반</label>
+									<div class="col-sm-9">
+										<p class="form-control-static">${memberVo.grade }학년 ${memberVo.classNo }반</p>
+									</div>
 								</div>
-							</div>
+							</c:if>
 						</form>
 					</div>
 

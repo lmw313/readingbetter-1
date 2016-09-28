@@ -47,7 +47,11 @@ public class MemberDao {
 		return vo;
 	}
 
-	public void inserMemberEtc(MemberVo vo) {
-		sqlSession.insert("member.inserMemberEtc", vo);
+	public void updateMember(MemberVo vo) {
+		sqlSession.update("member.updateMember", vo);
+	}
+
+	public void updateMemberWithPw(MemberVo vo) {
+		sqlSession.update("member.updateMemberWithPw", vo);
 	}
 }

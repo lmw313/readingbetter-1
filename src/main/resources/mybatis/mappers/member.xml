@@ -14,7 +14,7 @@
 	<!-- 아이디, 비번에 따른 로그인 상태의 회원 정보 -->
 	<select id="selectAuthUser" parameterType="membervo" resultType="membervo">
 		<![CDATA[
-			select no, name, id
+			select no, name, id, position
             from member
             where id=#{id} and pw=#{pw}
 		]]>
@@ -37,8 +37,12 @@
 	<!-- 기본키에 따른 회원 조회, 학교 테이블에서 학교 이름 가져옴  -->
 	<select id="selectMyinfo" parameterType="long" resultType="membervo">
 		<![CDATA[
-			select m.name, m.email, m.tel, s.title as schoolName, m.grade, 
-			m.class_no as classNo
+			select m.name, 
+				   m.email, 
+				   m.tel, 
+				   m.grade, 
+				   m.class_no as classNo, 
+				   s.TITLE as schoolName 
 				from member m, school s 
 				where m.SCHOOL_NO = s.NO and m.no=#{no}
 		]]>
@@ -51,18 +55,40 @@
 		]]>
 	</insert>
 
-	<!-- 학교정보가 없는 회원가입 -->
-	<insert id="inserMemberEtc" parameterType="membervo">
-		<![CDATA[
-			insert into member values(seq_member.nextval, #{id}, #{pw}, #{name}, #{email}, #{tel}, sysdate, 1, 0, null, null, null)
-		]]>
-	</insert>
-
 	<!-- 댓글 리스트, 회원 테이블에서 아이디 가져옴 -->
 	<delete id="delete" parameterType="long">
 		<![CDATA[
 			delete from member where no=#{no}
 		]]>
 	</delete>
+	
+	<!-- 비밀번호 수정 없음 -->
+	<update id="updateMember" parameterType="membervo">
+		<![CDATA[
+			update member set 
+				name=#{name}, 
+				email=#{email}, 
+				tel=#{tel}, 
+				school_no=(select no from school where title=#{schoolName}), 
+				grade=#{grade}, 
+				class_no=#{classNo} 
+			where no=#{memberNo}
+		]]>
+	</update>
+	
+	<!-- 비밀번호 수정 있음 -->
+	<update id="updateMemberWithPw" parameterType="membervo">
+		<![CDATA[
+			update member set 
+				pw=#{pw},
+				name=#{name}, 
+				email=#{email}, 
+				tel=#{tel}, 
+				school_no=(select no from school where title=#{schoolName}), 
+				grade=#{grade}, 
+				class_no=#{classNo}
+			where no=#{memberNo}
+		]]>
+	</update>
 
 </mapper>

@@ -120,7 +120,11 @@
 	<!-- 퀴즈 결과에 따른 업데이트 -->
 	<update id="updateScores" parameterType="historyvo">
 		<![CDATA[
-			update scores set score=score+#{score}, point=point+#{point} where member_no=#{memberNo}
+			update scores 
+				set score=score+#{score}, 
+					total_score=total_score+#{score}, 
+					point=point+#{point} 
+				where member_no=#{memberNo}
 		]]>
 	</update>
 
