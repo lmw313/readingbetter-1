@@ -25,6 +25,8 @@ public class MainController {
 	@Autowired
 	private ScoresService scoresService;
 
+	// 메인
+	// 메인 화면 열기
 	@RequestMapping("")
 	public String Main(ScoresVo vo, Model model) {
 		// 메인에 한 달 랭킹 상위 5명 출력
@@ -36,8 +38,10 @@ public class MainController {
 		model.addAttribute("mainHonor", mainHonor);
 		return "main/main";
 	}
-
+	////////////////////////////////////////////////////////////////////////////
+	
 	// 네비
+	// 네비의 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberVo vo, HttpSession session) {
 
@@ -60,8 +64,10 @@ public class MainController {
 
 		return "redirect:/main";
 	}
-
+	////////////////////////////////////////////////////////////////////////////
+	
 	// 헤더
+	// 헤더에 로그아웃
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("authUser");
@@ -69,18 +75,22 @@ public class MainController {
 
 		return "redirect:/main";
 	}
-
+	////////////////////////////////////////////////////////////////////////////
+	
 	// 푸터
+	// 푸터의 이용법
 	@RequestMapping("/manual")
 	public String Manual() {
 		return "main/manual";
 	}
 
+	// 푸터의 소개
 	@RequestMapping("/siteinfo")
 	public String SiteInfo() {
 		return "main/siteinfo";
 	}
 
+	// 푸터의 사이트맵
 	@RequestMapping("/sitemap")
 	public String SiteMap() {
 		return "main/sitemap";

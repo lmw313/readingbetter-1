@@ -2,7 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="review">
-
+	
+	<!-- 리뷰 리스트, 회원 테이블에서 id 가져옴 -->
 	<select id="list" parameterType="reviewvo" resultType="reviewvo">
 		<![CDATA[
 			select a.no, a.review, 
@@ -12,6 +13,7 @@
 		]]>
 	</select>
 
+	<!-- 기본키에 따른 리뷰 조회, 회원 테이블에서 id 가져옴 -->
 	<select id="getByNo" parameterType="long" resultType="reviewvo">
 		<![CDATA[
 			select a.no, a.review, 
@@ -22,6 +24,7 @@
 		]]>
 	</select>
 	
+	<!-- 페이징, 책번호에 따른 리뷰 조회, 신고당한 리뷰 제외, 회원 테이블에서 id 가져옴 -->
 	<select id="getByBookNo" parameterType="reviewvo" resultType="reviewvo">
 		<![CDATA[
 			select no, review, to_char(reg_date, 'yyyy-mm-dd') as regDate, 
@@ -33,18 +36,21 @@
 		]]>
 	</select>
 	
+	<!-- 책번호에 따른 리뷰 총 수, 신고당한 리뷰 제외 -->
 	<select id="listCount" parameterType="long" resultType="integer">
 		<![CDATA[
 			select count(*) from review where book_no=#{bookNo} and state=0
 		]]>
 	</select>
 
+	<!-- 리뷰 삭제 -->
 	<delete id="delete" parameterType="Long">
 		<![CDATA[
 			DELETE FROM review WHERE NO = #{no}
 		]]>
 	</delete>
 
+	<!-- 리뷰 추가 -->
 	<insert id="insert" parameterType="reviewvo">
 		<![CDATA[
 			insert into review values
@@ -52,6 +58,7 @@
 		]]>
 	</insert>
 	
+	<!-- 리뷰 상태 업데이트 -->
 	<update id="updateState" parameterType="reviewvo">
 		<![CDATA[
 			update review set state=1 where no=#{no}

@@ -24,7 +24,6 @@ public class RankingController {
 	// 요약 페이지 및 랭킹 출력
 	@RequestMapping("/summary")
 	public String summary(ScoresVo vo, Model model) {
-
 		// 전체 랭킹
 		List<ScoresVo> monthlyRank = scoresService.monthlyRank(vo);
 		model.addAttribute("monthlyRank", monthlyRank);

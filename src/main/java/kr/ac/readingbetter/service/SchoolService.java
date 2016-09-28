@@ -28,9 +28,4 @@ public class SchoolService {
 		List<SchoolVo> list = schoolDao.selectSchoolTitle();
 		return list;
 	}
-
-	public List<SchoolVo> searchSchool(String kwd) {
-		List<SchoolVo> list = schoolDao.searchSchool(kwd);
-		return list;
-	}
 }

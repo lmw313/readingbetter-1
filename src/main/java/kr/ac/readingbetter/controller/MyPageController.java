@@ -22,11 +22,8 @@ public class MyPageController {
 	@Autowired
 	private ScoresService scoresService;
 
-	@RequestMapping("/modifyform")
-	public String ModifyForm() {
-		return "mypage/modifyform";
-	}
-
+	// 내 정보
+	// 회원 정보 화면 열기
 	@RequestMapping("/info")
 	public String Info(HttpSession session, Model model) {
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
@@ -40,6 +37,15 @@ public class MyPageController {
 		return "mypage/info";
 	}
 
+	// 회원 정보 수정 화면 열기
+	@RequestMapping("/modifyform")
+	public String ModifyForm() {
+		return "mypage/modifyform";
+	}
+	////////////////////////////////////////////////////////////////////////////
+	
+	// 내 활동
+	// 히스토리 화면 열기
 	@RequestMapping("/history")
 	public String History() {
 		return "mypage/history";

@@ -3,6 +3,7 @@
 
 <mapper namespace="comments">
 
+	<!-- 댓글 리스트, 회원 테이블에서 아이디 가져옴 -->
 	<select id="list" parameterType="commentsvo" resultType="commentsvo">
 		<![CDATA[
 			select a.no, a.content, 
@@ -13,6 +14,7 @@
 		]]>
 	</select>
 	
+	<!-- 기본키에 따른 댓글 조회, 회원 테이블에서 아이디 가져옴 -->
 	<select id="getByNo" parameterType="long" resultType="commentsvo">
 		<![CDATA[
 			select a.no, a.content, 
@@ -23,6 +25,7 @@
 		]]>
 	</select>
 	
+	<!-- 페이징, 공지에 따른 댓글 조회, 신고받은 댓글 제외, 회원 테이블에서 아이디 가져옴 -->
 	<select id="getByNoticeNo" parameterType="commentsvo" resultType="commentsvo">
 		<![CDATA[
 			select no, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, 
@@ -34,12 +37,14 @@
 		]]>
 	</select>
 	
+	<!-- 공지에 따른 댓글들의 총 수, 신고받은 댓글 제외 -->
 	<select id="listCount" parameterType="long" resultType="integer">
 		<![CDATA[
 			select count(*) from comments where notice_no=#{noticeNo} and state=0
 		]]>
 	</select>
 	
+	<!-- 댓글 추가 -->
 	<insert id="insert" parameterType="commentsvo">
 		<![CDATA[
 			insert into comments 
@@ -47,12 +52,14 @@
 		]]>
 	</insert>
 	
+	<!-- 댓글 삭제 -->
 	<delete id="delete" parameterType="long">
 		<![CDATA[
 			delete from comments where no=#{no}
 		]]>
 	</delete>
 	
+	<!-- 댓글 상태 변경 -->
 	<update id="updateState" parameterType="commentsvo">
 		<![CDATA[
 			update comments set state=1 where no=#{no}

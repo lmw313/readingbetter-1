@@ -24,11 +24,6 @@ public class PublisherService {
 		publisherDao.insert(vo);
 	}
 	
-	public List<PublisherVo> findPublisher(PublisherVo vo){
-		List<PublisherVo> list = publisherDao.findPublisher(vo);
-		return list;
-	}
-	
 	public List<PublisherVo> selectPublisher(WishbookVo vo){
 		List<PublisherVo> list = publisherDao.selectPublisher(vo);
 		return list;

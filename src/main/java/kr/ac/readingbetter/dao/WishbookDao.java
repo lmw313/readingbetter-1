@@ -40,18 +40,8 @@ public class WishbookDao {
 		sqlSession.update("wishbook.updateAcceptToTwo", vo);
 	}
 
-	public List<WishbookVo> selectListOrderByNo() {
-		List<WishbookVo> list = sqlSession.selectList("wishbook.selectListOrderByNo");
-		return list;
-	}
-
 	public void insertWishbook(WishbookVo vo) {
 		sqlSession.insert("wishbook.insertWishbook", vo);
-	}
-
-	public WishbookVo selectWishbook(Long no) {
-		WishbookVo vo = sqlSession.selectOne("wishbook.selectWishbook", no);
-		return vo;
 	}
 
 	public void updateRecommend(Long no) {

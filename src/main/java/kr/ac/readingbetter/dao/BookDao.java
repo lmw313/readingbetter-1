@@ -21,12 +21,12 @@ public class BookDao {
 
 	// 페이징 리스트
 	public List<BookVo> getListPage(BookVo vo) {
-		List<BookVo> list = sqlSession.selectList("book.listpage", vo);
+		List<BookVo> list = sqlSession.selectList("book.listPage", vo);
 		return list;
 	}
 
 	public List<BookVo> getListKwd(BookVo vo) {
-		List<BookVo> list = sqlSession.selectList("book.listkwd", vo);
+		List<BookVo> list = sqlSession.selectList("book.listKwd", vo);
 		return list;
 	}
 
@@ -41,7 +41,7 @@ public class BookDao {
 	}
 
 	public List<BookVo> getListService(BookVo vo) {
-		List<BookVo> list = sqlSession.selectList("book.listservice", vo);
+		List<BookVo> list = sqlSession.selectList("book.listService", vo);
 		return list;
 	}
 }

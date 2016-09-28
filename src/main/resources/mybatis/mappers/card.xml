@@ -10,6 +10,23 @@
 			where title like '%' || #{title} || '%' order by no desc
 		]]>
 	</select>
+	
+	<!-- 번호로 카드 조회 (수정 폼에서 이용) -->
+	<select id="getByNo" parameterType="long" resultType="cardvo">
+		<![CDATA[
+			SELECT NO, TITLE, CONTENT, SKILL, BONUS, COVER FROM CARD 
+			where no=#{no}
+		]]>
+	</select>
+	
+	<!-- 문제 풀기 후, 랜덤으로 카드 배열 후, 상위 1개 조회 -->
+	<select id="selectCardByRandom" resultType="cardvo">
+		<![CDATA[
+			select title, content, skill, bonus, cover 
+			from (select no, title, content, skill, bonus, cover from card order by dbms_random.value) 
+			where rownum=1
+		]]>
+	</select>
 
 	<!-- 카드 등록 -->
 	<insert id="insert" parameterType="cardvo">
@@ -26,14 +43,6 @@
 		]]>
 	</delete>
 
-	<!-- 번호로 카드 조회 (수정 폼에서 이용) -->
-	<select id="getByNo" parameterType="long" resultType="cardvo">
-		<![CDATA[
-			SELECT NO, TITLE, CONTENT, SKILL, BONUS, COVER FROM CARD 
-			where no=#{no}
-		]]>
-	</select>
-
 	<!-- 카드 수정 -->
 	<update id="update" parameterType="cardvo">
 		<![CDATA[
@@ -41,12 +50,5 @@
 			SKILL=#{skill}, BONUS=#{bonus}, COVER=#{cover} WHERE NO=#{no}
 		]]>
 	</update>
-	
-	<select id="selectCardByRandom" resultType="cardvo">
-		<![CDATA[
-			select title, content, skill, bonus, cover 
-			from (select no, title, content, skill, bonus, cover from card order by dbms_random.value) where rownum=1
-		]]>
-	</select>
 	
 </mapper>

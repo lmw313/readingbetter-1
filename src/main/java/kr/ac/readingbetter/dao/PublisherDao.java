@@ -24,11 +24,6 @@ public class PublisherDao {
 		sqlSession.insert("publisher.insert", vo);
 	}
 	
-	public List<PublisherVo> findPublisher(PublisherVo vo){
-		List<PublisherVo> list = sqlSession.selectList("publisher.findPublisher", vo);
-		return list;
-	}
-	
 	public List<PublisherVo> selectPublisher(WishbookVo vo){
 		List<PublisherVo> list = sqlSession.selectList("publisher.selectPublisher", vo);
 		return list;

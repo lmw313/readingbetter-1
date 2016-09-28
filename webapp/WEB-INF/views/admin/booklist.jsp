@@ -16,7 +16,10 @@
 <c:import url='/WEB-INF/views/admin/header.jsp'></c:import>
 <br><br>
 <h4>도서 관리</h4>
-	<div id="board">	
+	<div id="board">
+		<div id="button-set">
+			<a href="/readingbetter/admin/bookaddform" class="btn btn-default">추가</a>
+		</div>
 		<table class="tbl-ex">		
 			<tr>
 				<th>번호</th>
@@ -36,10 +39,6 @@
 				</tr>
 	 		</c:forEach>
 		</table>
-		
-		<div id="button-set">
-			<a href="/readingbetter/admin/bookaddform" class="btn btn-default">추가</a>
-		</div>
 	</div>
 </body>
 </html>

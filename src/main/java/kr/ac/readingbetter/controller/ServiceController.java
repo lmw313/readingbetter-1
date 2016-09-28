@@ -55,7 +55,7 @@ public class ServiceController {
 
 		// 공지 추가하기
 		vo.setNoticePage(noticePage);
-		List<NoticeVo> list = noticeService.getList(vo);
+		List<NoticeVo> list = noticeService.listPage(vo);
 
 		// 페이징
 		int totalPage = 1;
@@ -187,43 +187,52 @@ public class ServiceController {
 		commentsService.deleteComments(no);
 		return "redirect:/service/noticeview/" + noticeNo;
 	}
-
+	///////////////////////////////////////////////////////////////////////////
+	
 	// 문의
+	// 문의 리스트
 	@RequestMapping("/questionlist")
 	public String questionList() {
 		return "service/questionlist";
 	}
 
+	// 문의 상세 보기
 	@RequestMapping("/questionview")
 	public String questionView() {
 		return "service/questionview";
 	}
-
+	
+	// 문의 쓰기
 	@RequestMapping("/questionwrite")
 	public String questionWrite() {
 		return "service/questionwrite";
 	}
+	///////////////////////////////////////////////////////////////////////////
 
 	// 희망도서
+	// 희망도서 리스트
 	@RequestMapping("/wishbooklist")
 	public String wishBookList(Model model) {
-		List<WishbookVo> list = wishbookService.selectListOrderByNo();
+		List<WishbookVo> list = wishbookService.getList();
 		model.addAttribute("list", list);
 		return "service/wishbooklist";
 	}
-
+	
+	// 희망도서 쓰기 화면 열기
 	@RequestMapping("/wishbookwriteform")
 	public String wishBookWriteForm() {
 		return "service/wishbookwrite";
 	}
 
+	// 희망도서 상세 보기
 	@RequestMapping("/wishbookview")
-	public String wishBookView(@RequestParam(value = "no") Long no, Model model) {
-		WishbookVo vo = wishbookService.selectWishbook(no);
+	public String wishBookView(@RequestParam(value = "no") Long no, WishbookVo vo, Model model) {
+		vo = wishbookService.getView(vo);
 		model.addAttribute("vo", vo);
 		return "service/wishbookview";
 	}
 
+	// 희망도서 쓰기
 	@RequestMapping(value = "/wishbookwrite", method = RequestMethod.POST)
 	public String wishBookWrite(WishbookVo vo, HttpSession session) {
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
@@ -232,6 +241,7 @@ public class ServiceController {
 		return "redirect:/service/wishbooklist";
 	}
 
+	// 희망도서 추천수
 	@RequestMapping(value = "/wishbookrecommend")
 	@ResponseBody
 	public void wishBookRecommend(@RequestParam(value = "no") Long no) {

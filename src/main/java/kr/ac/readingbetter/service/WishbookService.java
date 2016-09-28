@@ -40,18 +40,8 @@ public class WishbookService {
 		wishbookDao.updateAcceptToTwo(vo);
 	}
 
-	public List<WishbookVo> selectListOrderByNo() {
-		List<WishbookVo> list = wishbookDao.selectListOrderByNo();
-		return list;
-	}
-
 	public void insertWishbook(WishbookVo vo) {
 		wishbookDao.insertWishbook(vo);
-	}
-
-	public WishbookVo selectWishbook(Long no) {
-		WishbookVo vo = wishbookDao.selectWishbook(no);
-		return vo;
 	}
 
 	public void updateRecommend(Long no) {

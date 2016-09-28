@@ -3,6 +3,7 @@
 
 <mapper namespace="member">
 
+	<!-- 검색 회원 리스트 -->
 	<select id="list" parameterType="membervo" resultType="membervo">
 		<![CDATA[
 			select no, id, name, penalty from member 
@@ -10,6 +11,7 @@
 		]]>
 	</select>
 
+	<!-- 아이디, 비번에 따른 로그인 상태의 회원 정보 -->
 	<select id="selectAuthUser" parameterType="membervo" resultType="membervo">
 		<![CDATA[
 			select no, name, id
@@ -18,38 +20,45 @@
 		]]>
 	</select>
 
+	<!-- 아이디 중복 체크-->
 	<select id="checkId" parameterType="string" resultType="membervo">
 		<![CDATA[
 			select id from member where id=#{id}
 		]]>
 	</select>
 
+	<!-- 이메일 중복 체크 -->
 	<select id="checkEmail" parameterType="string" resultType="membervo">
 		<![CDATA[
 			select email from member where email=#{email}
 		]]>
 	</select>
 
+	<!-- 기본키에 따른 회원 조회, 학교 테이블에서 학교 이름 가져옴  -->
 	<select id="selectMyinfo" parameterType="long" resultType="membervo">
 		<![CDATA[
-			select m.name, m.email, m.tel, s.title as schoolName, m.grade, m.class_no as classNo
+			select m.name, m.email, m.tel, s.title as schoolName, m.grade, 
+			m.class_no as classNo
 				from member m, school s 
 				where m.SCHOOL_NO = s.NO and m.no=#{no}
 		]]>
 	</select>
 
+	<!-- 학교 정보가 있는 회원가입 -->
 	<insert id="insertMember" parameterType="membervo">
 		<![CDATA[
 			insert into member values(seq_member.nextval, #{id}, #{pw}, #{name}, #{email}, #{tel}, sysdate, 1, 0, #{grade}, #{classNo}, (select no from school where title=#{schoolName}))
 		]]>
 	</insert>
 
+	<!-- 학교정보가 없는 회원가입 -->
 	<insert id="inserMemberEtc" parameterType="membervo">
 		<![CDATA[
 			insert into member values(seq_member.nextval, #{id}, #{pw}, #{name}, #{email}, #{tel}, sysdate, 1, 0, null, null, null)
 		]]>
 	</insert>
 
+	<!-- 댓글 리스트, 회원 테이블에서 아이디 가져옴 -->
 	<delete id="delete" parameterType="long">
 		<![CDATA[
 			delete from member where no=#{no}

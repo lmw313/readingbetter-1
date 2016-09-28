@@ -25,11 +25,16 @@ public class MemberController {
 	@Autowired
 	private SchoolService schoolService;
 
+	// 로그인
+	// 로그인 화면 열기
 	@RequestMapping("/loginform")
 	public String loginForm() {
 		return "member/loginform";
 	}
-
+	////////////////////////////////////////////////////////////////////////////
+	
+	// 회원가입
+	// 회원가입 화면 열기
 	@RequestMapping("/joinform")
 	public String joinForm(Model model) {
 		List<SchoolVo> list = schoolService.selectSchoolTitle();
@@ -37,6 +42,7 @@ public class MemberController {
 		return "member/joinform";
 	}
 
+	// 회원가입시 학교 검색
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	@ResponseBody
 	public List<SchoolVo> searchSchool(@RequestParam(value = "kwd") String kwd) {
@@ -44,10 +50,11 @@ public class MemberController {
 			kwd = "@@@@@@@@@@@";
 		}
 
-		List<SchoolVo> list = schoolService.searchSchool(kwd);
+		List<SchoolVo> list = schoolService.getList(kwd);
 		return list;
 	}
 
+	// 회원가입시 아이디 체크
 	@RequestMapping(value = "/checkid", method = RequestMethod.POST)
 	@ResponseBody
 	public MemberVo checkId(MemberVo vo2, @RequestParam(value = "id") String id) {
@@ -61,6 +68,7 @@ public class MemberController {
 		return vo;
 	}
 
+	// 회원가입시 이메일 체크
 	@RequestMapping(value = "/checkemail", method = RequestMethod.POST)
 	@ResponseBody
 	public MemberVo checkEmail(MemberVo vo2, @RequestParam(value = "email") String email) {
@@ -74,12 +82,16 @@ public class MemberController {
 		return vo;
 	}
 
+	// 회원가입
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String join(MemberVo vo) {
 		memberService.insertMember(vo);
 		return "redirect:/main";
 	}
+	////////////////////////////////////////////////////////////////////////////
 	
+	// 아이디/비번 찾기
+	// 아이디/비번 찾기 화면 열기
 	@RequestMapping("/findform")
 	public String FindForm() {
 		return "member/findform";

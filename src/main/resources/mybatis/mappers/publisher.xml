@@ -3,29 +3,26 @@
 
 <mapper namespace="publisher">
 
+	<!-- 검색 출판사 리스트 -->
 	<select id="list" parameterType="publishervo" resultType="publishervo">
 		<![CDATA[
 			select no,title from publisher 
 			where title like '%' || #{kwd1} || '%' order by title
 		]]>
 	</select>
-	
-	<insert id="insert" parameterType="publishervo">
-		<![CDATA[
-			insert into publisher values(seq_publisher.nextval, #{title }) 
-		]]>
-	</insert>
-	
-	<select id="findPublisher" parameterType="publishervo" resultType="publishervo">
-		<![CDATA[
-			select title from publisher where title like '%' || #{kwd1} || '%' order by no asc
-		]]>
-	</select>
-	
+
+	<!-- 출판사명에 따른 조회 -->
 	<select id="selectPublisher" parameterType="wishbookvo" resultType="publishervo">
 		<![CDATA[
 			select no, title from publisher where title=#{publisher}
 		]]>
 	</select>
-	
+
+	<!-- 출판사 추가 -->
+	<insert id="insert" parameterType="publishervo">
+		<![CDATA[
+			insert into publisher values(seq_publisher.nextval, #{title }) 
+		]]>
+	</insert>
+
 </mapper>

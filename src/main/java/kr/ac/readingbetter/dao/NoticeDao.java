@@ -19,6 +19,11 @@ public class NoticeDao {
 		return list;
 	}
 	
+	public List<NoticeVo> listPage(NoticeVo vo) {
+		List<NoticeVo> list = sqlSession.selectList("notice.listPage", vo);
+		return list;
+	}
+	
 	public void noticeWrite(NoticeVo vo){
 		sqlSession.insert("notice.insert", vo);
 	}

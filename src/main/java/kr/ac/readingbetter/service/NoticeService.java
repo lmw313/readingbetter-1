@@ -19,6 +19,11 @@ public class NoticeService {
 		return list;
 	}
 	
+	public List<NoticeVo> listPage(NoticeVo vo) {
+		List<NoticeVo> list = noticeDao.listPage(vo);
+		return list;
+	}
+	
 	public void noticeWrite(NoticeVo vo){
 		noticeDao.noticeWrite(vo);
 	}

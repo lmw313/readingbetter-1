@@ -3,6 +3,7 @@
 
 <mapper namespace="book">
 
+	<!-- 페이징 없는 책 리스트, 출판사 테이블에서  출판사명 가져옴, 작가 테이블에서 작가 이름 가져옴 -->
 	<select id="list" parameterType="bookvo" resultType="bookvo">
 		<![CDATA[
 			select a.no, a.title, a.recommend, a.cover, 
@@ -12,7 +13,8 @@
 		]]>
 	</select>
 
-	<select id="listpage" parameterType="bookvo" resultType="bookvo">
+	<!-- 페이징 책 리스트, 출판사 테이블에서  출판사명 가져옴, 작가 테이블에서 작가 이름 가져옴 -->
+	<select id="listPage" parameterType="bookvo" resultType="bookvo">
 		<![CDATA[
 			select * from (select rownum as rnum, a.no, a.title, a.recommend, 
 			a.cover, b.title as publisherTitle, c.name as authorName 
@@ -23,7 +25,8 @@
 		]]>
 	</select>
 
-	<select id="listkwd" parameterType="bookvo" resultType="bookvo">
+	<!-- 페이징, 검색 책 리스트, 출판사 테이블에서  출판사명 가져옴, 작가 테이블에서 작가 이름 가져옴 -->
+	<select id="listKwd" parameterType="bookvo" resultType="bookvo">
 		<![CDATA[
 			select * from (select rownum as rnum, a.no, a.title, a.recommend, 
 			a.cover, b.title as publisherTitle, c.name as authorName 
@@ -34,6 +37,7 @@
 		]]>
 	</select>
 
+	<!-- 기본키에 따른 책 조회, 출판사 테이블에서  출판사명 가져옴, 작가 테이블에서 작가 이름 가져옴 -->
 	<select id="getByNo" parameterType="long" resultType="bookvo">
 		<![CDATA[
 			select a.no, a.title, a.recommend, a.cover, 
@@ -43,6 +47,7 @@
 		]]>
 	</select>
 
+	<!-- 검색 책 리스트 -->
 	<select id="findBook" parameterType="bookvo" resultType="bookvo">
 		<![CDATA[
 			select * from book where title 
@@ -50,14 +55,15 @@
 		]]>
 	</select>
 	
-	<select id="listservice" parameterType="bookvo" resultType="bookvo">
+	<!-- 검색 책 리스트, 출판사 테이블에서  출판사명 가져옴, 작가 테이블에서 작가 이름 가져옴 -->
+	<select id="listService" parameterType="bookvo" resultType="bookvo">
 		<![CDATA[
 			select a.no,a.title,a.recommend,a.cover,b.title as publisherTitle,
 			c.name as authorName from book a, publisher b,author c
  			where b.no=a.publisher_no 
  			and c.no=a.author_no
  			and a.title like '%' || #{bkwd} || '%' 
- 			order by a.title 
+ 			order by a.title
 		]]>
 	</select>
 

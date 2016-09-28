@@ -28,9 +28,4 @@ public class SchoolDao {
 		List<SchoolVo> list = sqlSession.selectList("school.selectSchoolTitle");
 		return list;
 	}
-
-	public List<SchoolVo> searchSchool(String kwd) {
-		List<SchoolVo> list = sqlSession.selectList("school.searchSchool", kwd);
-		return list;
-	}
 }

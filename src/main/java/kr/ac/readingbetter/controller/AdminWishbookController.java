@@ -50,7 +50,7 @@ public class AdminWishbookController {
 			bVo.setBkwd("@@@@@@@@@@@@@@@@@@@@");
 		}
 
-		List<PublisherVo> pList = publisherService.findPublisher(pVo);
+		List<PublisherVo> pList = publisherService.getList(pVo);
 		List<BookVo> bList = bookService.findBook(bVo);
 
 		model.addAttribute("vo", vo);

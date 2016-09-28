@@ -59,6 +59,7 @@ public class BookController {
 	@Autowired
 	private CertificationService certificationService;
 
+	// 책 리스트
 	// 책 리스트 검색, 페이징
 	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
 	public String bookListPage(BookVo bookvo, Model model) {
@@ -101,7 +102,26 @@ public class BookController {
 		model.addAttribute("total", total);
 		return "book/booklist";
 	}
+	///////////////////////////////////////////////////////////////////////////
+	
+	// 퀴즈 내기
+	// 퀴즈 내기 화면 열기
+	@RequestMapping(value = "/makequizform/{no}", method = RequestMethod.GET)
+	public String makeQuizForm(@PathVariable("no") Long no, Model model) {
+		BookVo vo = bookService.getByNo(no);
+		model.addAttribute("vo", vo);
+		return "book/makequizform";
+	}
 
+	// 퀴즈 내기
+	@RequestMapping(value = "/makequizinsert", method = RequestMethod.POST)
+	public String makequizInsert(@ModelAttribute QuizVo vo) {
+		quizService.quizAddUser(vo);
+		return "redirect:/book/booklist";
+	}
+	///////////////////////////////////////////////////////////////////////////
+	
+	// 퀴즈 풀기
 	// 퀴즈 풀기 화면 열기
 	@RequestMapping("/solvequizform")
 	public String solveQuizForm(Model model, @RequestParam(value = "no", required = false, defaultValue = "") Long no,
@@ -122,21 +142,6 @@ public class BookController {
 		model.addAttribute("maxcount", MAXCOUNT);
 
 		return "book/solvequizform";
-	}
-
-	// 퀴즈 내기 화면 열기
-	@RequestMapping(value = "/makequizform/{no}", method = RequestMethod.GET)
-	public String makeQuizForm(@PathVariable("no") Long no, Model model) {
-		BookVo vo = bookService.getByNo(no);
-		model.addAttribute("vo", vo);
-		return "book/makequizform";
-	}
-
-	// 퀴즈 내기
-	@RequestMapping(value = "/makequizinsert", method = RequestMethod.POST)
-	public String makequizInsert(@ModelAttribute QuizVo vo) {
-		quizService.quizAddUser(vo);
-		return "redirect:/book/booklist";
 	}
 
 	// 퀴즈 풀기 결과 보기
@@ -248,7 +253,9 @@ public class BookController {
 
 		return returnValue;
 	}
-
+	///////////////////////////////////////////////////////////////////////////
+	
+	// 리뷰
 	// 리뷰 화면 열기
 	@RequestMapping(value = "/review/{no}", method = RequestMethod.GET)
 	public String review(@PathVariable("no") Long no, Model model, ReviewVo reviewVo,
