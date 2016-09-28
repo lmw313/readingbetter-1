@@ -11,7 +11,7 @@
 <title>ReadingBetter_Admin</title>
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/boarddxs.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<c:import url='/WEB-INF/views/admin/header.jsp' />
@@ -27,12 +27,7 @@
 				<th class="active">신고자</th>
 				<td colspan=2>${vo.id }</td>
 				<th class="active">피신고자</th>
-				<td colspan=2>
-				<c:choose>
-                        <c:when test="${vo.identity == 1}">${reviewvo.id }</c:when>
-                        <c:when test="${vo.identity == 2}">${commentsvo.id }</c:when>
-               </c:choose>
-				</td>
+				<td colspan=2>${viewVo.id }</td>
 			</tr>
 			<tr>
 				<th class="active">종류</th>
@@ -40,7 +35,6 @@
 					<c:choose>
                         <c:when test="${vo.identity == 1}">리뷰</c:when>
                         <c:when test="${vo.identity == 2}">댓글</c:when>
-                     
                      </c:choose>
 				</td>
 				<th class="active">승인 여부</th>
@@ -58,12 +52,7 @@
 				<th  class="active" colspan=6>글 내용</th>
 			</tr>
 			<tr>
-				<td id="content" colspan=6>
-				<c:choose>
-                        <c:when test="${vo.identity == 1}">${reviewvo.review }</c:when>
-                        <c:when test="${vo.identity == 2}">${commentsvo.content }</c:when>
-               </c:choose>
-				</td>
+				<td id="content" colspan=6>${viewVo.content }</td>
 			</tr>
 			<tr>
 				<th  class="active" colspan=6>신고 이유</th>

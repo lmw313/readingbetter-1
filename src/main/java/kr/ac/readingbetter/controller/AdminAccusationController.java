@@ -10,57 +10,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.ac.readingbetter.service.AccusationService;
-import kr.ac.readingbetter.service.CommentsService;
-import kr.ac.readingbetter.service.ReviewService;
+import kr.ac.readingbetter.service.AdminAccusationService;
+import kr.ac.readingbetter.vo.AccusationViewVo;
 import kr.ac.readingbetter.vo.AccusationVo;
-import kr.ac.readingbetter.vo.CommentsVo;
-import kr.ac.readingbetter.vo.ReviewVo;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminAccusationController {
-
-	@Autowired
-	private AccusationService accusationService;
 	
 	@Autowired
-	private ReviewService reviewService;
-	
-	@Autowired
-	private CommentsService commentsService;
+	private AdminAccusationService adminAccusationService;
 
 	// 신고 관리
 	@RequestMapping("/accusationlist")
 	public String accusationList(Model model) {
-		List<AccusationVo> list = accusationService.getList();
+		List<AccusationVo> list = adminAccusationService.getList();
 		model.addAttribute("accusationlist", list);
 		return "admin/accusationlist";
 	}
 
 	@RequestMapping(value = "/accusationview/{no}", method = RequestMethod.GET)
 	public String accusationView(@PathVariable("no") Long no, Model model) {
-		AccusationVo vo = accusationService.getByNo(no);
-		CommentsVo commentsvo;
-		ReviewVo reviewvo;
+		AccusationVo vo = adminAccusationService.getByNo(no);
+		
 		Long identity = vo.getIdentity();
 		Long keyNo = vo.getKeyNo();
+		
+		AccusationViewVo accusationViewVo = 
+				adminAccusationService.getAccuView(identity, keyNo);
 
-		if (identity == 1) {
-			reviewvo = reviewService.getByNo(keyNo);
-			model.addAttribute("reviewvo", reviewvo);
-		} else {
-			commentsvo = commentsService.getCommentsList(keyNo);
-			model.addAttribute("commentsvo", commentsvo);
-		}
-
+		model.addAttribute("viewVo", accusationViewVo);
 		model.addAttribute("vo", vo);
 		return "admin/accusationview";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String modify(@ModelAttribute AccusationVo vo) {
-		accusationService.update(vo);
+		adminAccusationService.update(vo);
 		return "redirect:/admin/accusationlist";
 	}
 }

@@ -20,6 +20,7 @@
 		<typeAlias type="kr.ac.readingbetter.vo.HistoryVo" alias="historyvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.ScoresVo" alias="scoresvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.CertificationVo" alias="certificationvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.AccusationViewVo" alias="accusationviewvo"/>
 	</typeAliases>
 	
 	<mappers>

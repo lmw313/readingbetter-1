@@ -235,6 +235,8 @@ public class BookController {
 		}
 
 		// history insert
+		BookVo vo = bookService.getByNo(bookNo);
+	    historyVo.setTitle(vo.getTitle());
 		historyVo.setScore(score);
 		historyVo.setPoint(point);
 		historyVo.setMemberNo(authUser.getNo());

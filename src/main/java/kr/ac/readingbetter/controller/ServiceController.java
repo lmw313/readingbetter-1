@@ -62,9 +62,9 @@ public class ServiceController {
 		int currentPage = Integer.parseInt(noticePage);
 
 		if (count % 5 != 0) {
-			totalPage = count / 5 + 1;
+			totalPage = count / 10 + 1;
 		} else {
-			totalPage = count / 5;
+			totalPage = count / 10;
 		}
 
 		int pageGroupNum = 1;

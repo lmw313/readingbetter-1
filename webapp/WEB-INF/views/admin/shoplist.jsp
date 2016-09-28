@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/boarddxs.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/shop.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -22,6 +22,10 @@
 		<input type="text" id="title" name="title"> <input type="submit" value="찾기">
 	</form>
 
+	<div id="buttons">
+		<a href="shopaddform" class="btn btn-default">추가</a>
+	</div>
+	
 	<div>
 		<br> <br>
 		<table id="shopgoods" class="table table-bordered table-hover">
@@ -46,10 +50,6 @@
 				</tbody>
 			</c:forEach>
 		</table>
-		
-		<div id="buttons">
-			<a href="shopaddform" class="btn btn-default">추가</a>
-		</div>
 	</div>
 </body>
 </html>

@@ -11,7 +11,7 @@
 <title>ReadingBetter_Admin</title>
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/boarddxs.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<c:import url='/WEB-INF/views/admin/header.jsp' />

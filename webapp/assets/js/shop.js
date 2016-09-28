@@ -12,6 +12,7 @@ $(function() {
 			success : function(shopvo) {
 				$("#title").html(shopvo.title);
 				$("#price").html(shopvo.price);
+				$("#no").val(shopvo.no);
 			},
 			error : function(jqXHR, status, error) {
 				console.error(status + " : " + error);
