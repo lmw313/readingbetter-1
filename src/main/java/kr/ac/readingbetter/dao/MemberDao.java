@@ -54,4 +54,18 @@ public class MemberDao {
 	public void updateMemberWithPw(MemberVo vo) {
 		sqlSession.update("member.updateMemberWithPw", vo);
 	}
+	
+	public MemberVo findId(MemberVo vo) {
+		vo = sqlSession.selectOne("member.findId", vo);
+		return vo;
+	}
+	
+	public MemberVo findPw(MemberVo vo) {
+		vo = sqlSession.selectOne("member.findPw", vo);
+		return vo;
+	}
+	
+	public void updateTempPw(MemberVo vo) {
+		sqlSession.update("member.updateTempPw", vo);
+	}
 }

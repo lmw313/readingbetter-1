@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -95,5 +96,35 @@ public class MemberController {
 	@RequestMapping("/findform")
 	public String FindForm() {
 		return "member/findform";
+	}
+
+	// 아이디 찾기
+	@RequestMapping(value = "/findId", method = RequestMethod.POST)
+	@ResponseBody
+	public MemberVo findId(@RequestBody MemberVo vo, MemberVo vo2) {
+		vo = memberService.findId(vo);
+
+		// null 객체를 return할 때의 error 방지
+		if (vo == null) {
+			vo2.setId("");
+			return vo2;
+		}
+		return vo;
+	}
+
+	// 비밀번호 찾기
+	@RequestMapping(value = "/findPw", method = RequestMethod.POST)
+	@ResponseBody
+	public MemberVo findPw(@RequestBody MemberVo vo, MemberVo vo2) throws Exception {
+		vo = memberService.findPw(vo);
+		
+		// null 객체를 return할 때의 error 방지
+		if (vo == null) {
+			vo2.setPw("");
+			return vo2;
+		}
+		
+		memberService.sendEmail(vo);		
+		return vo;
 	}
 }
