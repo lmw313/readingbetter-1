@@ -9,7 +9,16 @@ public class HistoryVo {
 	private Long keyNo;
 	private String title;
 	private String regDate;
+	private Integer pageNo;
 
+	public Integer getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
+	}
+	
 	public Long getNo() {
 		return no;
 	}
@@ -77,6 +86,7 @@ public class HistoryVo {
 	@Override
 	public String toString() {
 		return "HistoryVo [no=" + no + ", score=" + score + ", point=" + point + ", memberNo=" + memberNo
-				+ ", identity=" + identity + ", keyNo=" + keyNo + ", title=" + title + ", regDate=" + regDate + "]";
+				+ ", identity=" + identity + ", keyNo=" + keyNo + ", title=" + title + ", regDate=" + regDate
+				+ ", pageNo=" + pageNo + "]";
 	}
 }

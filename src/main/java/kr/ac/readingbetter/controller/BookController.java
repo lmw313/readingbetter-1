@@ -23,7 +23,6 @@ import kr.ac.readingbetter.service.QuizService;
 import kr.ac.readingbetter.service.ReviewService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.AccusationVo;
-import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.CardVo;
 import kr.ac.readingbetter.vo.CertificationVo;
@@ -145,7 +144,7 @@ public class BookController {
 	}
 
 	// 퀴즈 풀기 결과 보기
-	@RequestMapping("/resultquiz")
+	@RequestMapping(value="/resultquiz", method=RequestMethod.POST)
 	public String resultQuiz(QuizVo vo, @RequestParam(value = "no0", required = false, defaultValue = "") Long no1,
 			@RequestParam(value = "no1", required = false, defaultValue = "") Long no2,
 			@RequestParam(value = "no2", required = false, defaultValue = "") Long no3,
@@ -162,7 +161,7 @@ public class BookController {
 		String answer[] = { answer1, answer2, answer3, answer4, answer5 };
 		Integer count = 0;
 		Integer len = no.length;
-		
+
 		for (int i = 0; i < len; i++) {
 			vo.setNo(no[i]);
 			vo.setSelected(answer[i]);

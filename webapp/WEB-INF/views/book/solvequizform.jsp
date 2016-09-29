@@ -9,6 +9,8 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<!-- <script type="text/javascript" src="/readingbetter/assets/js/solvequiz.js"></script> -->
 </head>
 <body>
 	<div class="container-fluid">
@@ -80,7 +82,7 @@
 									</div>
 								</c:forEach>
 								<input type="hidden" name="no" value="${param.no }">
-								<button class="btn btn-default" type="submit">결과보기</button>
+								<button class="btn btn-default" type="submit" id="go-result">결과보기</button>
 							</div>
 						</div>
 					</form>

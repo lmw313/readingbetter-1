@@ -52,6 +52,5 @@ public class AdminBookController {
 	@ResponseBody
 	public void checkBook(@RequestParam(value = "title") String title) {
 		List<BookVo> bookList = adminBookService.checkBook(title);
-		System.out.println(bookList);
 	}
 }
