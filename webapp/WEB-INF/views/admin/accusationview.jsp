@@ -12,6 +12,8 @@
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/accusationview.js"></script>
 </head>
 <body>
 	<c:import url='/WEB-INF/views/admin/header.jsp' />
@@ -20,8 +22,7 @@
 	<h4>신고 글 내용</h4>
 	<br>
 	<div>
-	<form method="post" action="../update">
-	<input type="hidden" name="no" value="${vo.no }">
+		<input type="hidden" name="no" value="${vo.no }">
 		<table id="board" class="table table-bordered">
 			<tr>
 				<th class="active">신고자</th>
@@ -70,6 +71,9 @@
 	               		<label class="radio-inline">
 	                    	<input type="radio" name="accept" value=2>반려
 	               		</label>
+	               		<label class="radio-inline">
+	                    	<input type="radio" name="accept" value=3>패널티
+	               		</label>
 	            	</td>
 	         	</tr>
          	</c:if>
@@ -78,10 +82,9 @@
 		<div id="buttons">
 			<a href="/readingbetter/admin/accusationlist" class="btn btn-default">목록</a>
 			<c:if test="${vo.accept == 0}">
-				<input class="btn btn-default" type="submit" value="완료">
+				<input class="btn btn-default" type="button" id="btn-accept" value="완료">
 			</c:if>
 		</div>
-	</form>
 	</div>
 </body>
 </html>

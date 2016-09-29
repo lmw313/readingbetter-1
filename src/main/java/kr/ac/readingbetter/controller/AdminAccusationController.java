@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.AdminAccusationService;
 import kr.ac.readingbetter.vo.AccusationViewVo;
@@ -45,8 +46,9 @@ public class AdminAccusationController {
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String modify(@ModelAttribute AccusationVo vo) {
-		adminAccusationService.update(vo);
-		return "redirect:/admin/accusationlist";
+	@ResponseBody
+	public void modify(@RequestBody AccusationVo vo) {
+		System.out.println(vo);
+//		adminAccusationService.updateAccept(vo);
 	}
 }

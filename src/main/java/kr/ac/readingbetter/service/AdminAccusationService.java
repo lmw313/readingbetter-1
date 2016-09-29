@@ -49,8 +49,21 @@ public class AdminAccusationService {
 		
 		return vo;
 	}
-
-	public void update(AccusationVo vo) {
-		accusationDao.update(vo);
+	
+	public void updateAccept(String accept, Long no, AccusationVo vo){
+		System.out.println(no);
+		System.out.println(accept);
+		
+		if(accept.equals("1")){
+			vo.setAccept(accept);
+			vo.setNo(no);
+			
+			System.out.println("accept : " + accept);
+			System.out.println(vo);
+		} else if (accept.equals("2")){
+			System.out.println("accept : " + accept);
+		} else if (accept.equals("3")){
+			System.out.println("accept : " + accept);
+		}
 	}
 }
