@@ -24,6 +24,8 @@ select * from quiz where no=1 and answer='나';
 select no from certification where member_no=25 and book_no=1;
 select title, content, skill, bonus, cover from (select no, title, content, skill, bonus, cover from card order by dbms_random.value) where rownum=1;
 
+select answer from quiz where no=1;
+
 -- insert
 insert into certification values(seq_certification.nextval, 25, 1);
 insert into history values(seq_history.nextval, 61, 3, 25, 0, 1);

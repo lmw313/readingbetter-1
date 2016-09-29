@@ -34,11 +34,15 @@ public class ShopController {
 
 	// 상점 화면 열기
 	@RequestMapping("/shop")
-	public String goodsList(Model model, ShopVo vo) {
+	public String goodsList(HttpSession session,Model model, ShopVo vo) {
 		if (vo.getTitle() == null) { // 검색할 상품명이 없으면 빈 문자열로 교체
 			vo.setTitle("");
 		}
 		List<ShopVo> getGoodsList = shopService.getList(vo);
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
+			
+		model.addAttribute("scoresVo",scoresVo);
 		model.addAttribute("getGoodsList", getGoodsList);
 		return "shop/shop";
 	}
