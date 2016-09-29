@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.BookDao;
 import kr.ac.readingbetter.dao.QuizDao;
+import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
 
 @Service
@@ -51,5 +52,20 @@ public class BookService {
 	
 	public String getAnswer(Long no){
 		return quizDao.selectAnswer(no);
+	}
+	
+	// 정답 개수 구하기
+	public Integer getCount(List<AnswerVo> list){
+		Integer len = list.size();
+		Integer count = 0;
+		
+		for (int i = 0; i < len; i++) {
+			String oAnswer = quizDao.selectAnswer(list.get(i).getQuizNo());
+			if (oAnswer.equals(list.get(i).getAnswer())) {
+				count++;
+			}
+		}
+		
+		return count;
 	}
 }

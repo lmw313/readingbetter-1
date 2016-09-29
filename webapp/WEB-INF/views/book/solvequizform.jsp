@@ -10,7 +10,7 @@
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
-<!-- <script type="text/javascript" src="/readingbetter/assets/js/solvequiz.js"></script> -->
+<script type="text/javascript" src="/readingbetter/assets/js/solvequiz.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -27,7 +27,6 @@
 						<a href="/readingbetter/book/booklist">책 목록</a> > 문제 풀기
 					</div>
 					<p class="menu-title">문제 풀기</p>
-					<form class="form-horizontal" action="/readingbetter/book/resultquiz" method="post">
 						<div class="form-group">
 							<div class="col-sm-6">
 								<img id="img-solvequiz" class="img-thumbnail"
@@ -82,10 +81,9 @@
 									</div>
 								</c:forEach>
 								<input type="hidden" name="no" value="${param.no }">
-								<button class="btn btn-default" type="submit" id="go-result">결과보기</button>
+								<button class="btn btn-default" id="go-result">결과보기</button>
 							</div>
 						</div>
-					</form>
 				</div>
 			</div>
 		</div>

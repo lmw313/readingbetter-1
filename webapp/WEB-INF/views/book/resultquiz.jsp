@@ -15,7 +15,7 @@
 </head>
 <body>
 	<input type="hidden" id="bookNo" value="${param.no }">
-	<input type="hidden" id="count" value="${count }">
+	<input type="hidden" id="count" value="${param.count }">
 	<input type="hidden" id="skill" value="${cardVo.skill }">
 	<input type="hidden" id="bonus" value="${cardVo.bonus }">
 	<div class="container-fluid">

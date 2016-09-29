@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,7 @@ import kr.ac.readingbetter.service.QuizService;
 import kr.ac.readingbetter.service.ReviewService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.AccusationVo;
+import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.CardVo;
 import kr.ac.readingbetter.vo.CertificationVo;
@@ -123,12 +125,7 @@ public class BookController {
 	// 퀴즈 풀기
 	// 퀴즈 풀기 화면 열기
 	@RequestMapping("/solvequizform")
-	public String solveQuizForm(Model model, @RequestParam(value = "no", required = false, defaultValue = "") Long no,
-			HttpSession session) {
-		if (session.getAttribute("complete") != null) {
-			session.removeAttribute("complete");
-		}
-
+	public String solveQuizForm(Model model, @RequestParam(value = "no", required = false, defaultValue = "") Long no) {
 		final Integer COUNT = 0;
 		final Integer MAXCOUNT = 4;
 
@@ -142,36 +139,18 @@ public class BookController {
 
 		return "book/solvequizform";
 	}
-
-	// 퀴즈 풀기 결과 보기
-	@RequestMapping(value="/resultquiz", method=RequestMethod.POST)
-	public String resultQuiz(QuizVo vo, @RequestParam(value = "no0", required = false, defaultValue = "") Long no1,
-			@RequestParam(value = "no1", required = false, defaultValue = "") Long no2,
-			@RequestParam(value = "no2", required = false, defaultValue = "") Long no3,
-			@RequestParam(value = "no3", required = false, defaultValue = "") Long no4,
-			@RequestParam(value = "no4", required = false, defaultValue = "") Long no5,
-			@RequestParam(value = "selectedRadio0", required = false, defaultValue = "") String answer1,
-			@RequestParam(value = "selectedRadio1", required = false, defaultValue = "") String answer2,
-			@RequestParam(value = "selectedRadio2", required = false, defaultValue = "") String answer3,
-			@RequestParam(value = "selectedRadio3", required = false, defaultValue = "") String answer4,
-			@RequestParam(value = "selectedRadio4", required = false, defaultValue = "") String answer5,
-			@RequestParam(value = "no", required = false, defaultValue = "") Long bookNo, Model model,
-			HttpSession session) {
-		Long no[] = { no1, no2, no3, no4, no5 };
-		String answer[] = { answer1, answer2, answer3, answer4, answer5 };
-		Integer count = 0;
-		Integer len = no.length;
-
-		for (int i = 0; i < len; i++) {
-			vo.setNo(no[i]);
-			vo.setSelected(answer[i]);
-
-			String oAnswer = bookService.getAnswer(no[i]);
-			if (oAnswer.equals(answer[i])) {
-				count++;
-			}
+	
+	@RequestMapping("/resultquiz")
+	public String resultQuiz(
+			@RequestParam(value="count") Integer count,
+			@RequestParam(value="no", required = false, defaultValue = "") Long bookNo,
+			HttpSession session,
+			Model model){
+		MemberVo authUser = (MemberVo)session.getAttribute("authUser");
+		if(authUser == null){
+			return "redirect:/main";
 		}
-
+		
 		// select card by random
 		CardVo cardVo = cardService.selectCardByRandom();
 
@@ -182,10 +161,23 @@ public class BookController {
 
 		model.addAttribute("bookVo", bookVo);
 		model.addAttribute("cardVo", cardVo);
-		model.addAttribute("count", count);
 		model.addAttribute("complete", completeSession);
-
+		
 		return "book/resultquiz";
+	}
+	
+	@RequestMapping(value="/countquiz", method=RequestMethod.POST)
+	@ResponseBody
+	public Integer resultQuiz(
+			@RequestBody List<AnswerVo> answerList,
+			HttpSession session){
+		if (session.getAttribute("complete") != null) {
+			session.removeAttribute("complete");
+		}
+		
+		Integer count = bookService.getCount(answerList);
+		
+		return count;
 	}
 
 	// 퀴즈 결과 ajax 동작
