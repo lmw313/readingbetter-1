@@ -16,7 +16,7 @@ public class MemberService {
 
 	@Autowired
 	private MemberDao memberDao;
-	
+
 	@Autowired
 	private MailSender mailSender; // 메일 전송
 
@@ -48,46 +48,59 @@ public class MemberService {
 		MemberVo vo = memberDao.selectMyinfo(no);
 		return vo;
 	}
-	
+
 	public void insertMember(MemberVo vo) {
 		memberDao.insertMember(vo);
-	}
-	
-	// 아이디 찾기
-		public MemberVo findId(MemberVo vo) {
-			vo = memberDao.findId(vo);
-			return vo;
-		}
-
-		// 비밀번호 찾기
-		public MemberVo findPw(MemberVo vo) {
-			vo = memberDao.findPw(vo);
-			return vo;
-		}
 		
-		// 임시 비밀번호로 변경후 이메일 전송
-		public MemberVo sendEmail(MemberVo vo) throws Exception {
-			// 임시 비밀번호 생성
-			StringBuffer buffer = new StringBuffer();
-			Random random = new Random();
-			int size = 5;
+		// 회원가입 축하 이메일
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(vo.getEmail()); // 받는 사람 이메일
+		message.setSubject("ReadingBetter에서 회원가입을 축하드립니다"); // 메일 제목
+		message.setText(
+				vo.getName() + 
+				"님 회원가입을 축하드립니다!\n당신은 아이디 : " + 
+				vo.getId() + 
+				"로 가입하셨습니다!\n\n" + 
+				"ReadingBetter의 다양한 서비스를 즐겨주세요!"); // 메일 내용
+		mailSender.send(message);
+	}
 
-			String chars[] = "A,B,C,D,E,a,b,c,d,e,1,2,3,4,5,!,@,#,$,%".split(",");
-			for (int i = 0; i < size; i++) {
-				buffer.append(chars[random.nextInt(chars.length)]);
-			}
+	// 아이디 찾기
+	public MemberVo findId(MemberVo vo) {
+		vo = memberDao.findId(vo);
+		return vo;
+	}
 
-			// 임시 비밀번호로 업데이트
-			vo.setPw(buffer.toString());
-			memberDao.updateTempPw(vo);
+	// 비밀번호 찾기
+	public MemberVo findPw(MemberVo vo) {
+		vo = memberDao.findPw(vo);
+		return vo;
+	}
 
-			// 입력된 이메일로 임시 비밀번호 전송
-			SimpleMailMessage message = new SimpleMailMessage();
-			message.setTo(vo.getEmail()); // 받는 사람 이메일
-			message.setSubject("ReadingBetter에서 비빌번호를 보냅니다"); // 메일 제목
-			message.setText("당신의 임시 비밀번호는 " + buffer.toString() 
-				+ "입니다.\n로그인후 반드시 새 비밀번호를 변경해 주세요"); // 메일																								// 내용
-			mailSender.send(message);
-			return vo;
+	// 임시 비밀번호로 변경후 이메일 전송
+	public MemberVo sendEmail(MemberVo vo) throws Exception {
+		// 임시 비밀번호 생성
+		StringBuffer buffer = new StringBuffer();
+		Random random = new Random();
+		int size = 5;
+
+		String chars[] = "A,B,C,D,E,a,b,c,d,e,1,2,3,4,5,!,@,#,$,%".split(",");
+		for (int i = 0; i < size; i++) {
+			buffer.append(chars[random.nextInt(chars.length)]);
 		}
+
+		// 임시 비밀번호로 업데이트
+		vo.setPw(buffer.toString());
+		memberDao.updateTempPw(vo);
+
+		// 입력된 이메일로 임시 비밀번호 전송
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(vo.getEmail()); // 받는 사람 이메일
+		message.setSubject("ReadingBetter에서 임시 비밀번호를 보냅니다"); // 메일 제목
+		message.setText("당신의 임시 비밀번호는 " + buffer.toString() + "입니다.\n로그인후 반드시 새 비밀번호를 변경해 주세요"); // 메일
+																									// //
+																									// 내용
+		mailSender.send(message);
+		return vo;
+	}
 }
