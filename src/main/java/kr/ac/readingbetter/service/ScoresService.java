@@ -90,4 +90,13 @@ public class ScoresService {
 	public void scoreUpdate(ScoresVo vo) {
 		scoresDao.scoreUpdate(vo);
 	}
+
+	// 메인화면에 명예의 전당 랭킹 상위 5명 출력
+	public List<ScoresVo> mainSchool(ScoresVo vo) {
+		return scoresDao.mainSchool(vo);
+	}
+
+	public List<ScoresVo> mainGrade(String id) {
+		return scoresDao.mainGrade(id);
+	}
 }

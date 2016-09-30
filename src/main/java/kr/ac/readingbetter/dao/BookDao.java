@@ -53,4 +53,10 @@ public class BookDao {
 	public void insert(BookVo vo) {
 		sqlSession.insert("book.insert", vo);
 	}
+	
+	// 관리자페이징 리스트
+	public List<BookVo> getAdminListPage(BookVo vo) {
+		List<BookVo> list = sqlSession.selectList("book.adminlistPage", vo);
+		return list;
+	}
 }

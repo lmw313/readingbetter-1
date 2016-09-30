@@ -86,4 +86,12 @@ public class ScoresDao {
 	public void scoreUpdate(ScoresVo vo) {
 		sqlSession.update("scores.updateshop", vo);
 	}
+
+	public List<ScoresVo> mainSchool(ScoresVo vo) {
+		return sqlSession.selectList("scores.mainSchool");
+	}
+
+	public List<ScoresVo> mainGrade(String id) {
+		return sqlSession.selectList("scores.mainGrade", id);
+	}
 }

@@ -105,4 +105,10 @@ public class BookService {
 	public void insert(BookVo vo) {
 		bookDao.insert(vo);
 	}
+	
+	// 사용자 페이징 리스트
+	public List<BookVo> getAdminListPage(BookVo vo) {
+		List<BookVo> list = bookDao.getAdminListPage(vo);
+		return list;
+	}
 }

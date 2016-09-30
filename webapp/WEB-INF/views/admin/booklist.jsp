@@ -28,10 +28,9 @@
 				<th>출판사</th>
 				<th>사진</th>
 			</tr>
-			<c:set var="countList" value="${fn:length(list)}"/>
 	  		<c:forEach var='vo' items='${list}' varStatus='s'>
 				<tr>
-					<td>${countList-s.index}</td>
+					<td>${vo.no}</td>
 					<td>${vo.title }</td>
 					<td>${vo.authorName }</td>
 					<td>${vo.publisherTitle }</td>
@@ -39,6 +38,40 @@
 				</tr>
 	 		</c:forEach>
 		</table>
+		
+		<!-- begin:paging -->
+		<div class="pager">
+			<ul>
+				<c:if test="${beginPage>1 }">
+					<li>
+						<a href="/readingbetter/admin/booklist?pageNo=${beginPage-1 }">◀</a>
+						<input type="hidden" name="pageNo" value="${beginPage-1 }">
+					</li>
+				</c:if>
+				<c:forEach begin='${beginPage }' end='${endPage }' step='1' var='i'>
+					<c:choose>
+						<c:when test='${currentPage == i }'>
+							<li class="selected">${i }</li>
+						</c:when>
+						<c:otherwise>
+							<li>
+								<a href="/readingbetter/admin/booklist?pageNo=${i }">${i }</a>
+								<input type="hidden" name="pageNo" value="${i}">
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:if test='${endPage<total }'>
+					<li>
+						<a href="/readingbetter/admin/booklist?pageNo=${endPage+1 }">▶</a>
+						<input type="hidden" name="pageNo" value="${endPage+1}">
+					</li>
+				</c:if>
+			</ul>
+		</div>
+		<!-- end:paging -->
+		
 	</div>
 </body>
 </html>
