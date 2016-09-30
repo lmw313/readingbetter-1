@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.ac.readingbetter.dao.ScoresDao;
 import kr.ac.readingbetter.service.MemberService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.MemberVo;
@@ -24,19 +25,32 @@ public class MainController {
 
 	@Autowired
 	private ScoresService scoresService;
-
+	
 	// 메인
 	// 메인 화면 열기
 	@RequestMapping("")
-	public String Main(ScoresVo vo, Model model) {
+	public String Main(ScoresVo vo, Model model, HttpSession session) {
 		// 메인에 한 달 랭킹 상위 5명 출력
 		List<ScoresVo> monthlyMainRank = scoresService.monthlyMainRank(vo);
 		model.addAttribute("monthlyMainRank", monthlyMainRank);
 
 		// 메인에 명예의 전당 랭킹 상위 5명 출력
 		List<ScoresVo> mainHonor = scoresService.mainHonor(vo);
-		model.addAttribute("mainHonor", mainHonor);
+		model.addAttribute("mainHonor", mainHonor);	
+
+		// 메인에 학교 랭킹 상위 5곳 출력
+		List<ScoresVo> mainSchool = scoresService.mainSchool(vo);
+		model.addAttribute("mainSchool", mainSchool);
+		
+		// 메인에 학년 랭킹 상위 5명 출력
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		if (authUser != null) { // 로그인을 했을 경우에만 vo에 랭킹 삽입
+			String id = authUser.getId();
+			List<ScoresVo> mainGrade = scoresService.mainGrade(id);
+			model.addAttribute("mainGrade", mainGrade);
+			}
 		return "main/main";
+	
 	}
 	////////////////////////////////////////////////////////////////////////////
 	

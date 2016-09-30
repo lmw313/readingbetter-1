@@ -7,9 +7,12 @@
 <head>
 <title>ReadingBetter</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/main.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-1.9.0.js"></script>
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/main.css" rel="stylesheet"
+	type="text/css">
+<script type="text/javascript"
+	src="/readingbetter/assets/js/jquery/jquery-1.9.0.js"></script>
 <script type="text/javascript" src="/readingbetter/assets/js/main.js"></script>
 </head>
 <body>
@@ -21,7 +24,7 @@
 			</div>
 			<div id="content" class="col-lg-10">
 				<div id="main">
-					<div class="col-lg-6" >
+					<div class="col-lg-6">
 						<div id="today_book_box">
 							<h4>오늘의 책</h4>
 							<div class="tab-box">
@@ -44,44 +47,105 @@
 					</div>
 
 					<div class="col-lg-6">
-						<div id="ranking_box" class="tab-box2">
-							<h4>순위</h4>
-							<div id="total_rank">
-								<label>이번 달 전체 순위</label>
-								<table id="ltable" class="table table-striped">
-									<tr>
-										<td id="mtrtext">순위</td>
-										<td id="mtrtext">아이디</td>
-										<td id="mtrtext">점수</td>
-									</tr>
-									<c:forEach items="${monthlyMainRank }" var="scoresvo">
- 										<tr>
- 											<td>${scoresvo.rank }</td>
- 											<td>${scoresvo.id }</td>
- 											<td>${scoresvo.monthlyScore }</td>
-										</tr>
- 									</c:forEach>
-								</table>
-							</div>
-							<div id="honor_rank">
-								<label>명예의 전당 순위</label>
-								<table id="ltable" class="table table-striped">
-									<tr>
-										<td id="mtrtext">순위</td>
-										<td id="mtrtext">아이디</td>
-										<td id="mtrtext">점수</td>
-									</tr>
-									<c:forEach items="${mainHonor }" var="scoresvo">
- 										<tr>
- 											<td>${scoresvo.rank }</td>
- 											<td>${scoresvo.id }</td>
- 											<td>${scoresvo.totalScore }</td>
- 										</tr>
- 									</c:forEach>
-								</table>
+						<div>
+							<div id="ranking_box" class="tab-box2">
+								<h4>순위</h4>
+								<div id="ranking_content1" class="tab-content2">
+									<div id="total_rank">
+										<label>이 달의 Top 5</label>
+										<table id="ltable" class="table table-striped">
+											<tr>
+												<td id="mtrtext">순위</td>
+												<td id="mtrtext">아이디</td>
+												<td id="mtrtext">점수</td>
+											</tr>
+											<c:forEach items="${monthlyMainRank }" var="scoresvo">
+												<tr>
+													<td>${scoresvo.rank }</td>
+													<td>${scoresvo.id }</td>
+													<td>${scoresvo.monthlyScore }</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+									<div id="honor_rank">
+										<label>명예의 전당 Top 5</label>
+										<table id="ltable" class="table table-striped">
+											<tr>
+												<td id="mtrtext">순위</td>
+												<td id="mtrtext">아이디</td>
+												<td id="mtrtext">점수</td>
+											</tr>
+											<c:forEach items="${mainHonor }" var="scoresvo">
+												<tr>
+													<td>${scoresvo.rank }</td>
+													<td>${scoresvo.id }</td>
+													<td>${scoresvo.totalScore }</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</div>
+								<div id="ranking_content2" class="tab-content1">
+									<div id="honor_rank">
+										<label>이 달의 학교 Top 5</label>
+										<table id="ltable" class="table table-striped">
+											<tr>
+												<td id="mtrtext">순위</td>
+												<td id="mtrtext">아이디</td>
+												<td id="mtrtext">점수</td>
+											</tr>
+											<c:forEach items="${mainSchool }" var="scoresvo">
+												<tr>
+													<td>${scoresvo.rank }</td>
+													<td>${scoresvo.title }</td>
+													<td>${scoresvo.schoolScore }</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+									<div id="honor_rank">
+										<label>이 달의 우리 학년 Top 5</label>
+										<table id="ltable" class="table table-striped">
+											<colgroup>
+												<col width="20%" />
+												<col width="40%" />
+												<col width="40%" />
+											</colgroup>
+											<tr>
+												<th>순위</th>
+												<th>아이디</th>
+												<th>점수</th>
+											</tr>
+											<c:choose>
+												<c:when test="${not empty sessionScope.authUser}">
+													<c:choose>
+														<c:when test="${mainGrade ne null}">
+															<c:forEach items="${mainGrade}" var="scoresvo">
+																<tr>
+																	<td>${scoresvo.rank }</td>
+																	<td>${scoresvo.id }</td>
+																	<td>${scoresvo.score }</td>
+																</tr>
+															</c:forEach>
+														</c:when>
+														<c:otherwise>
+															<td colspan=3>회원님의 학년 정보가<br>없습니다.
+															</td>
+														</c:otherwise>
+													</c:choose>
+												</c:when>
+												<c:otherwise>
+													<td colspan=3>로그인 하시면<br>확인 가능합니다.
+													</td>
+												</c:otherwise>
+											</c:choose>
+										</table>
+									</div>
+								</div>
 								<ul>
-									<li></li>
-									<li></li>
+									<li class="firstrankpage"></li>
+									<li class="secondrankpage"></li>
 								</ul>
 							</div>
 						</div>
