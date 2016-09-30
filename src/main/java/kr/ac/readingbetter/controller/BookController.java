@@ -70,10 +70,8 @@ public class BookController {
 
 		if (bookvo.getBkwd() == null) {
 			bookvo.setBkwd("");
-			List<BookVo> listpage = bookService.getListPage(bookvo);
-			model.addAttribute("listpage", listpage);
-
 		}
+		
 		String bkwd = bookvo.getBkwd();
 		bookvo.setBkwd(bkwd);
 		List<BookVo> list = bookService.getListService(bookvo);

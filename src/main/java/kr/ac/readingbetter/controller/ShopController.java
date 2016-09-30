@@ -34,16 +34,21 @@ public class ShopController {
 
 	// 상점 화면 열기
 	@RequestMapping("/shop")
-	public String goodsList(HttpSession session,Model model, ShopVo vo) {
+	public String goodsList(HttpSession session, Model model, ShopVo vo, ScoresVo scoresVo) {
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		// 세션 정보가 없으면 로그인 화면으로 간다
+		if (authUser == null) {
+			return "redirect:/member/loginform";
+		}
+		
 		if (vo.getTitle() == null) { // 검색할 상품명이 없으면 빈 문자열로 교체
 			vo.setTitle("");
 		}
+
 		List<ShopVo> getGoodsList = shopService.getList(vo);
-		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
-		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
-			
-		model.addAttribute("scoresVo",scoresVo);
+		scoresVo = scoresService.selectScores(authUser.getNo());
 		model.addAttribute("getGoodsList", getGoodsList);
+		model.addAttribute("scoresVo", scoresVo);
 		return "shop/shop";
 	}
 
@@ -58,11 +63,12 @@ public class ShopController {
 	// 구입 차감 모달
 	@ResponseBody
 	@RequestMapping(value = "/shop/buy", method = RequestMethod.POST)
-	public ScoresVo shopbuy(HttpSession session, HistoryVo historyVo, 
-			@RequestParam(value = "price") int price, 
-			@RequestParam(value = "no") Long no,
+	public ScoresVo shopbuy(
+			HttpSession session, 
+			HistoryVo historyVo, 
+			@RequestParam(value = "price") int price,
+			@RequestParam(value = "no") Long no, 
 			@RequestParam(value = "title") String title) {
-
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
 		int point = scoresVo.getPoint();

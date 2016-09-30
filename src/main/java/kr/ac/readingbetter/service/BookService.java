@@ -25,12 +25,6 @@ public class BookService {
 		return list;
 	}
 
-	// 페이징 리스트
-	public List<BookVo> getListPage(BookVo vo) {
-		List<BookVo> list = bookDao.getListPage(vo);
-		return list;
-	}
-
 	public List<BookVo> getListKwd(BookVo vo) {
 		List<BookVo> list = bookDao.getListKwd(vo);
 		return list;

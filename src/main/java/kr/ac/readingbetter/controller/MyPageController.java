@@ -40,6 +40,12 @@ public class MyPageController {
 	@RequestMapping("/info")
 	public String Info(HttpSession session, Model model) {
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		
+		// 세션 정보가 없으면 로그인 화면으로 간다
+		if (authUser == null) {
+			return "redirect:/member/loginform";
+		}
+
 		MemberVo memberVo = mypageService.selectMyinfo(authUser.getNo());
 		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
 		model.addAttribute("memberVo", memberVo);
@@ -51,6 +57,12 @@ public class MyPageController {
 	@RequestMapping("/modifyform")
 	public String ModifyForm(HttpSession session, Model model) {
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		
+		// 세션 정보가 없으면 로그인 화면으로 간다
+		if (authUser == null) {
+			return "redirect:/member/loginform";
+		}
+
 		MemberVo vo = mypageService.selectMyinfo(authUser.getNo());
 		model.addAttribute("vo", vo);
 		return "mypage/modifyform";
@@ -76,6 +88,11 @@ public class MyPageController {
 	@RequestMapping("/history")
 	public String History(HttpSession session, Model model, HistoryVo historyvo, CertificationVo certificationvo) {
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		
+		// 세션 정보가 없으면 로그인 화면으로 간다
+		if (authUser == null) {
+			return "redirect:/member/loginform";
+		}
 
 		MemberVo memberVo = memberService.selectMyinfo(authUser.getNo());
 		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());

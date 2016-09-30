@@ -9,6 +9,8 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/js/makequizform.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -49,7 +51,7 @@
 					</div>
 					
 					<div class="col-lg-6">
-						<form method="post" action="../makequizinsert">
+						<form method="post" action="../makequizinsert" id="make-quiz-form">
 							<input type="hidden" name="bookNo" value="${vo.no}">					
 							<div id="radio-group">
 								<h4>문제</h4>

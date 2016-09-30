@@ -82,10 +82,10 @@
 									<tr>
 										<c:choose>
 											<c:when test="${not empty sessionScope.authUser}">
-												<td colspan=5>아직 등록된 댓글이 없습니다</td>
+												<td colspan=5>아직 등록된 리뷰가 없습니다</td>
 											</c:when>
 											<c:otherwise>
-												<td colspan=3>아직 등록된 댓글이 없습니다</td>
+												<td colspan=5>아직 등록된 리뷰가 없습니다</td>
 											</c:otherwise>
 										</c:choose>
 									</tr>
