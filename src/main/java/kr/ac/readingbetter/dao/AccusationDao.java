@@ -35,4 +35,19 @@ public class AccusationDao {
 	public void insertReviewAccusation(AccusationVo vo) {
 		sqlSession.insert("accusation.insertReview", vo);
 	}
+	
+	public Long selectIdentity(Long no){
+		Long identity = sqlSession.selectOne("accusation.selectIdentity", no);
+		return identity;
+	}
+	
+	public AccusationVo getAccusationViewFromReview(Long no){
+		AccusationVo vo = sqlSession.selectOne("accusation.getAccusationViewFromReview", no);
+		return vo;
+	}
+	
+	public AccusationVo getAccusationViewFromComments(Long no){
+		AccusationVo vo = sqlSession.selectOne("accusation.getAccusationViewFromComments", no);
+		return vo;
+	}
 }

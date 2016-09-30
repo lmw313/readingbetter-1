@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.AccusationDao;
-import kr.ac.readingbetter.dao.CommentsDao;
-import kr.ac.readingbetter.dao.ReviewDao;
-import kr.ac.readingbetter.vo.AccusationViewVo;
 import kr.ac.readingbetter.vo.AccusationVo;
 
 @Service
@@ -16,12 +13,6 @@ public class AdminAccusationService {
 	
 	@Autowired
 	private AccusationDao accusationDao;
-	
-	@Autowired
-	private ReviewDao reviewDao;
-	
-	@Autowired
-	private CommentsDao commentsDao;
 	
 	public List<AccusationVo> getList() {
 		List<AccusationVo> list = accusationDao.getList();
@@ -38,32 +29,29 @@ public class AdminAccusationService {
 		return adminAccusation;
 	}
 	
-	public AccusationViewVo getAccuView(Long identity, Long keyNo){
-		AccusationViewVo vo;
+	public AccusationVo getAccuView(Long no){
+		AccusationVo vo;
+		
+		Long identity = accusationDao.selectIdentity(no);
 		
 		if (identity == 1) {
-			vo = reviewDao.getAccuView(keyNo);
+			vo = accusationDao.getAccusationViewFromReview(no);
 		} else {
-			vo = commentsDao.getAccuView(keyNo);
+			vo = accusationDao.getAccusationViewFromComments(no);
 		}
 		
 		return vo;
 	}
 	
-	public void updateAccept(String accept, Long no, AccusationVo vo){
-		System.out.println(no);
-		System.out.println(accept);
+	public void updateAccept(AccusationVo vo){
+		System.out.println(vo);
 		
-		if(accept.equals("1")){
-			vo.setAccept(accept);
-			vo.setNo(no);
-			
-			System.out.println("accept : " + accept);
-			System.out.println(vo);
-		} else if (accept.equals("2")){
-			System.out.println("accept : " + accept);
-		} else if (accept.equals("3")){
-			System.out.println("accept : " + accept);
+		if(vo.getAccept().equals("1")){			
+			System.out.println("accept : " + vo.getAccept());
+		} else if (vo.getAccept().equals("2")){
+			System.out.println("accept : " + vo.getAccept());
+		} else if (vo.getAccept().equals("3")){
+			System.out.println("accept : " + vo.getAccept());
 		}
 	}
 }

@@ -13,7 +13,6 @@
 		]]>
 	</select>
 	
-	<!-- 기본키에 따른 책 조회, 회원 테이블에서 id 가져옴 -->
 	<select id="getByNo" parameterType="long" resultType="accusationvo">
 		<![CDATA[
 			select a.no, a.reason,to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
@@ -37,13 +36,51 @@
          (seq_accusation.nextval,#{reason},sysdate,0,#{memberNo},1,#{keyNo})
       ]]>
    </insert>
-   
-   <!-- 공지 댓글에서 들어온 신고 -->
-   <insert id="insertComments" parameterType="accusationvo">
-      <![CDATA[
-         insert into accusation values
-         (seq_accusation.nextval,#{reason},sysdate,0,#{memberNo},2,#{keyNo})
-      ]]>
-   </insert>
+
+	<!-- 공지 댓글에서 들어온 신고 -->
+	<insert id="insertComments" parameterType="accusationvo">
+		<![CDATA[
+			insert into accusation values
+			(seq_accusation.nextval,#{reason},sysdate,0,#{memberNo},2,#{keyNo})
+		]]>
+	</insert>
 	
+	<select id="selectIdentity" parameterType="long" resultType="long">
+		select identity from accusation where no=#{no}
+	</select>
+	
+	<!-- 신고 관리 뷰 -->
+	<select id="getAccusationViewFromComments" parameterType="long" resultType="accusationvo">
+		<![CDATA[
+			select a.no, 
+				   a.reason, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.accept, 
+				   a.identity, 
+				   b.content, 
+				   b.accuTarget, 
+				   c.ID
+				from accusation a, (select c.no, c.content, m.ID as accuTarget 
+										from comments c, member m 
+										where c.MEMBER_NO = m.NO) b, member c  
+				where a.KEY_NO = b.no and a.MEMBER_NO = c.NO and a.no=#{no}
+		]]>
+	</select>
+	
+	<select id="getAccusationViewFromReview" parameterType="long" resultType="accusationvo">
+		<![CDATA[
+			select a.no, 
+				   a.reason, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.accept, 
+				   a.identity, 
+				   b.review as content, 
+				   b.accuTarget, 
+				   c.ID 
+				from accusation a, (select r.NO, r.REVIEW, m.ID as accuTarget 
+										from review r, member m 
+										where r.MEMBER_NO = m.NO) b, member c 
+			where a.KEY_NO = b.NO and a.MEMBER_NO = c.NO and a.NO=#{no}
+  		]]>
+	</select>
 </mapper>

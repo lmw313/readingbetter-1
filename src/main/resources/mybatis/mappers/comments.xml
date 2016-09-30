@@ -65,12 +65,4 @@
 			update comments set state=1 where no=#{no}
 		]]>	
 	</update>
-
-	<select id="getAccuView" parameterType="long" resultType="accusationviewvo">
-		<![CDATA[
-			select c.CONTENT, m.ID 
-				from comments c, member m 
-				where c.MEMBER_NO = m.NO and c.no=#{keyNo}
-		]]>
-	</select>
 </mapper>

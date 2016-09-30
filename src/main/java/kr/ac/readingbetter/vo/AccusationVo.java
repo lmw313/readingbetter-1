@@ -10,6 +10,8 @@ public class AccusationVo {
 	private String id;
 	private Long identity;
 	private Long keyNo;
+	private String content;
+	private String accuTarget;
 
 	public Long getNo() {
 		return no;
@@ -75,9 +77,26 @@ public class AccusationVo {
 		this.keyNo = keyNo;
 	}
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getAccuTarget() {
+		return accuTarget;
+	}
+
+	public void setAccuTarget(String accuTarget) {
+		this.accuTarget = accuTarget;
+	}
+
 	@Override
 	public String toString() {
 		return "AccusationVo [no=" + no + ", reason=" + reason + ", regDate=" + regDate + ", accept=" + accept
-				+ ", memberNo=" + memberNo + ", id=" + id + ", identity=" + identity + ", keyNo=" + keyNo + "]";
+				+ ", memberNo=" + memberNo + ", id=" + id + ", identity=" + identity + ", keyNo=" + keyNo + ", content="
+				+ content + ", accuTarget=" + accuTarget + "]";
 	}
 }

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.AdminAccusationService;
-import kr.ac.readingbetter.vo.AccusationViewVo;
 import kr.ac.readingbetter.vo.AccusationVo;
 
 @Controller
@@ -32,23 +31,16 @@ public class AdminAccusationController {
 
 	@RequestMapping(value = "/accusationview/{no}", method = RequestMethod.GET)
 	public String accusationView(@PathVariable("no") Long no, Model model) {
-		AccusationVo vo = adminAccusationService.getByNo(no);
+		AccusationVo vo = adminAccusationService.getAccuView(no);
 		
-		Long identity = vo.getIdentity();
-		Long keyNo = vo.getKeyNo();
-		
-		AccusationViewVo accusationViewVo = 
-				adminAccusationService.getAccuView(identity, keyNo);
-
-		model.addAttribute("viewVo", accusationViewVo);
 		model.addAttribute("vo", vo);
+		
 		return "admin/accusationview";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@ResponseBody
 	public void modify(@RequestBody AccusationVo vo) {
-		System.out.println(vo);
-//		adminAccusationService.updateAccept(vo);
+		adminAccusationService.updateAccept(vo);
 	}
 }

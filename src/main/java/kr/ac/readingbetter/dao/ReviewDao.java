@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.ac.readingbetter.vo.AccusationViewVo;
+import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.ReviewVo;
 
 @Repository
@@ -42,8 +42,8 @@ public class ReviewDao {
 		return count;
 	}
 	
-	public AccusationViewVo getAccuView(Long keyNo){
-		AccusationViewVo vo = sqlSession.selectOne("review.getAccuView", keyNo);
+	public AccusationVo getAccuView(Long no){
+		AccusationVo vo = sqlSession.selectOne("review.getAccuView", no);
 		return vo;
 	}
 }

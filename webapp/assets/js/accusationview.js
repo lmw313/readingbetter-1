@@ -2,13 +2,16 @@ $(function() {
 	$("#btn-accept").on("click", function() {
 		var accept = $(":input[name=accept]:radio:checked").val();
 		var no = $("input[name=no]").val();
+		var id = $("input[name=id]").val();
 		
 		console.log(accept);
 		console.log(no);
+		console.log(id);
 		
 		var vo = {
 				"no" : no,
-				"accept" : accept
+				"accept" : accept,
+				"id" : id
 		}
 		
 		$.ajax({

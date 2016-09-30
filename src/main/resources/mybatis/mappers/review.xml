@@ -64,12 +64,4 @@
 			update review set state=1 where no=#{no}
 		]]>
 	</update>
-
-	<select id="getAccuView" parameterType="long" resultType="accusationviewvo">
-		<![CDATA[
-			select a.review as content, b.id 
-				from review a, member b 
-				where b.no = a.member_no and a.no=#{keyNo}
-		]]>
-	</select>
 </mapper>
