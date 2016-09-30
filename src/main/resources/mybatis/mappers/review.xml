@@ -64,4 +64,10 @@
 			update review set state=1 where no=#{no}
 		]]>
 	</update>
+	
+	<update id="updateStateToZero" parameterType="accusationvo">
+		<![CDATA[
+			update review set state=0 where no=#{keyNo}
+		]]>
+	</update>
 </mapper>

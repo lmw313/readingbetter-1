@@ -1,13 +1,13 @@
 select * from accusation order by no asc;
 select * from comments order by no asc;
 select * from review order by no asc;
+select * from member order by no asc;
 
 -- delete
 delete from accusation where no=41;
 
 -- select
-select c.no, c.content, m.ID as accuTarget from comments c, member m where c.MEMBER_NO = m.NO;
-select a.no, a.reason, to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.accept, a.identity, b.content, b.accuTarget, c.ID
+select a.key_no as keyNo, a.no, a.reason, to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.accept, a.identity, b.content, b.accuTarget, c.ID
   from accusation a, (select c.no, c.content, m.ID as accuTarget 
                         from comments c, member m 
                         where c.MEMBER_NO = m.NO) b, member c  
@@ -22,3 +22,6 @@ select a.no, a.reason, to_char(a.reg_date, 'yyyy-mm-dd') as regDate, a.accept, a
 -- update
 update accusation set accept = 1 where no=2;
 update member set penalty=penalty+1 where id='yury07';
+update review set state=0 where no=1;
+update comments set state=0 where no=1;
+rollback;

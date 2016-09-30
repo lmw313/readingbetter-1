@@ -62,7 +62,13 @@
 	<!-- 댓글 상태 변경 -->
 	<update id="updateState" parameterType="commentsvo">
 		<![CDATA[
-			update comments set state=1 where no=#{no}
+			update comments set state=1 where no=#{keyNo}
 		]]>	
+	</update>
+	
+	<update id="updateStateToZero" parameterType="accusationvo">
+		<![CDATA[
+			update comments set state=0 where no=#{keyNo}
+		]]>
 	</update>
 </mapper>

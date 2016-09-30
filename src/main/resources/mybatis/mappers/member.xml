@@ -111,4 +111,10 @@
 			select no, pw, email from member where id=#{id} and name=#{name} and email=#{email}
 		]]>
 	</select>
+	
+	<update id="updatePenalty" parameterType="accusationvo">
+		<![CDATA[
+			update member set penalty=penalty+1 where id=#{accuTarget}
+		]]>
+	</update>
 </mapper>

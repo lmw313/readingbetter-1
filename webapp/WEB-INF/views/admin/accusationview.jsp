@@ -16,13 +16,17 @@
 <script type="text/javascript" src="/readingbetter/assets/js/accusationview.js"></script>
 </head>
 <body>
+<input type="hidden" name="no" value="${vo.no }">
+<input type="hidden" name="accuTarget" value="${vo.accuTarget }">
+<input type="hidden" name="id" value="${vo.id }">
+<input type="hidden" name="keyNo" value="${vo.keyNo }">
+<input type="hidden" name="identity" value="${vo.identity }">
 	<c:import url='/WEB-INF/views/admin/header.jsp' />
 	<br>
 	<br>
 	<h4>신고 글 내용</h4>
 	<br>
 	<div>
-		<input type="hidden" name="no" value="${vo.no }">
 		<table id="board" class="table table-bordered">
 			<tr>
 				<th class="active">신고자</th>

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.MemberVo;
 
 @Repository
@@ -67,5 +68,9 @@ public class MemberDao {
 	
 	public void updateTempPw(MemberVo vo) {
 		sqlSession.update("member.updateTempPw", vo);
+	}
+	
+	public void updatePenalty(AccusationVo vo){
+		sqlSession.update("member.updatePenalty", vo);
 	}
 }

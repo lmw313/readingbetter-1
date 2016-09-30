@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.CommentsVo;
 
 @Repository
@@ -44,5 +45,9 @@ public class CommentsDao {
 	
 	public void updateState(Long no) {
 		sqlSession.update("comments.updateState", no);
+	}
+	
+	public void updateStateToZero(AccusationVo vo){
+		sqlSession.update("comments.updateStateToZero", vo);
 	}
 }

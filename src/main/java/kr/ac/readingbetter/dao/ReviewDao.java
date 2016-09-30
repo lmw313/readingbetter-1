@@ -46,4 +46,8 @@ public class ReviewDao {
 		AccusationVo vo = sqlSession.selectOne("review.getAccuView", no);
 		return vo;
 	}
+	
+	public void updateStateToZero(AccusationVo vo){
+		sqlSession.update("review.updateStateToZero", vo);
+	}
 }

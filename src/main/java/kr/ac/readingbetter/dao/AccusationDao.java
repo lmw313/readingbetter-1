@@ -50,4 +50,8 @@ public class AccusationDao {
 		AccusationVo vo = sqlSession.selectOne("accusation.getAccusationViewFromComments", no);
 		return vo;
 	}
+	
+	public void updateAccept(AccusationVo vo){
+		sqlSession.update("accusation.updateAccept", vo);
+	}
 }
