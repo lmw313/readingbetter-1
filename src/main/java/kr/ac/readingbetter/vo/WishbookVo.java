@@ -11,6 +11,8 @@ public class WishbookVo {
 	private Long memberNo;
 	private String name;
 	private String publisher;
+	private String wKwd;
+	private Integer pageNo;
 	
 	public Long getNo() {
 		return no;
@@ -66,11 +68,23 @@ public class WishbookVo {
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
+	public String getwKwd() {
+		return wKwd;
+	}
+	public void setwKwd(String wKwd) {
+		this.wKwd = wKwd;
+	}
+	public Integer getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
+	}
 	
 	@Override
 	public String toString() {
 		return "WishbookVo [no=" + no + ", title=" + title + ", reason=" + reason + ", regDate=" + regDate
 				+ ", recommend=" + recommend + ", accept=" + accept + ", memberNo=" + memberNo + ", name=" + name
-				+ ", publisher=" + publisher + "]";
+				+ ", publisher=" + publisher + ", wKwd=" + wKwd + ", pageNo=" + pageNo + "]";
 	}
 }
