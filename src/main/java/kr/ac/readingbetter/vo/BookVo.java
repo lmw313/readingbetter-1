@@ -12,6 +12,7 @@ public class BookVo {
 	private String publisherTitle;
 	private String bkwd;
 	private Integer pageNo;
+	private String publisher;
 
 	public Long getNo() {
 		return no;
@@ -93,10 +94,19 @@ public class BookVo {
 		this.pageNo = pageNo;
 	}
 
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
 	@Override
 	public String toString() {
 		return "BookVo [no=" + no + ", title=" + title + ", recommend=" + recommend + ", cover=" + cover
 				+ ", publisherNo=" + publisherNo + ", authorNo=" + authorNo + ", authorName=" + authorName
-				+ ", publisherTitle=" + publisherTitle + ", bkwd=" + bkwd + ", pageNo=" + pageNo + "]";
+				+ ", publisherTitle=" + publisherTitle + ", bkwd=" + bkwd + ", pageNo=" + pageNo + ", publisher="
+				+ publisher + "]";
 	}
 }
