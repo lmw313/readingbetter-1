@@ -101,4 +101,8 @@ public class BookService {
 		vo.setAccept("0");
 		quizDao.quizAdd(vo);
 	}
+	
+	public void insert(BookVo vo) {
+		bookDao.insert(vo);
+	}
 }

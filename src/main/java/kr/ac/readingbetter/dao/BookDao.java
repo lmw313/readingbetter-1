@@ -49,4 +49,8 @@ public class BookDao {
 		List<BookVo> bookList = sqlSession.selectList("book.findBookReplace", title);
 		return bookList;
 	}
+	
+	public void insert(BookVo vo) {
+		sqlSession.insert("book.insert", vo);
+	}
 }
