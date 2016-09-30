@@ -35,44 +35,59 @@
 					<td class="active" colspan="6">문제</td>
 				</tr>
 				<tr>
-					<td colspan="6">${vo.quiz }</td>
+					<td colspan="6"><input type="text" class="form-control" name="quiz" value="${vo.quiz }"></td>
 				</tr>
 				<tr>
 					<td class="active" colspan="6">보기</td>
 				</tr>
 				<tr>
 					<td class="active">1</td>
-					<td colspan="5">${vo.ex1 }</td>
+					<td colspan="5"><input type="text" class="form-control" name="ex1" value="${vo.ex1 }"></td>
 				</tr>
 				<tr>
 					<td class="active">2</td>
-					<td colspan="5">${vo.ex2 }</td>
+					<td colspan="5"><input type="text" class="form-control" name="ex2" value="${vo.ex2 }"></td>
 				</tr>
 				<tr>
 					<td class="active">3</td>
-					<td colspan="5">${vo.ex3 }</td>
+					<td colspan="5"><input type="text" class="form-control" name="ex3" value="${vo.ex3 }"></td>
 				</tr>
 				<tr>
 					<td class="active">4</td>
-					<td colspan="5">${vo.ex4 }</td>
+					<td colspan="5"><input type="text" class="form-control" name="ex4" value="${vo.ex4 }"></td>
 				</tr>
 				<tr>
 					<td class="active">정답</td>
-					<td colspan="5">${vo.answer }</td>
+					<td colspan="5">
+						<select class="form-control" name="answer">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+						</select>
+					</td>
 				</tr>
-				<c:if test="${vo.accept == 0 }">
-					<tr>
-						<td class="active">승인여부</td>
-						<td colspan="5">
-							<label class="radio-inline">
-							  	<input type="radio" name="accept" value=1>승인
-							</label>
-							<label class="radio-inline">
-							  	<input type="radio" name="accept" value=2>반려
-							</label>
-						</td>
-					</tr>
-				</c:if>	
+				<c:choose>
+					<c:when test="${vo.accept == 0 }">
+						<tr>
+							<td class="active">승인여부</td>
+							<td colspan="5">
+								<label class="radio-inline">
+								  	<input type="radio" name="accept" value=0 checked>대기
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="accept" value=1>승인
+								</label>
+								<label class="radio-inline">
+								  	<input type="radio" name="accept" value=2>반려
+								</label>
+							</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<input type="hidden" name="accept" value="${vo.accept }">
+					</c:otherwise>
+				</c:choose>
 			</table>
 	
 			<a class="btn btn-default" href="/readingbetter/admin/quizlist" role="button">목록</a> 

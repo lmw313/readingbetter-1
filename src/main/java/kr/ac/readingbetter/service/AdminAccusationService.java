@@ -55,9 +55,7 @@ public class AdminAccusationService {
 		return vo;
 	}
 	
-	public void updateAccept(AccusationVo vo){
-		System.out.println(vo);
-		
+	public void updateAccept(AccusationVo vo){		
 		if(vo.getAccept().equals("1")){
 			accusationDao.updateAccept(vo);
 			memberDao.updatePenalty(vo);

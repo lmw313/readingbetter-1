@@ -43,27 +43,27 @@
 		]]>
 	</select>
 
-	<!-- 퀴즈 승인여부 업데이트 -->
+	<!-- 퀴즈 업데이트 -->
 	<update id="update" parameterType="quizvo">
 		<![CDATA[
-			update quiz set accept=#{accept} where no=#{no}
+			update quiz set quiz=#{quiz}, 
+							ex1=#{ex1}, 
+							ex2=#{ex2}, 
+							ex3=#{ex3}, 
+							ex4=#{ex4}, 
+							answer=#{answer}, 
+							accept=#{accept} 
+				where no=#{no}
 		]]>
 	</update>
 
-	<!-- 관리자용 퀴즈 추가 -->
-	<insert id="insertForAdmin" parameterType="quizvo">
+	<!-- 퀴즈 추가 -->
+	<insert id="insert" parameterType="quizvo">
 		<![CDATA[
 			insert into quiz 
-			values(seq_quiz.nextval, #{quiz}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{answer}, 1, #{bookNo})
+				values(seq_quiz.nextval, #{quiz}, #{ex1}, #{ex2}, #{ex3}, 
+					   #{ex4}, #{answer}, #{accept}, #{bookNo})
 		]]>
-	</insert>
-
-	<!-- 사용자용 퀴즈 추가 -->
-	<insert id="insertForUser" parameterType="quizvo">
- 		<![CDATA[
- 			insert into quiz 
- 			values(seq_quiz.nextval, #{quiz}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{answer}, 0, #{bookNo})
- 		]]>
 	</insert>
 
 </mapper>

@@ -58,7 +58,14 @@
 				</tr>
 				<tr>
 					<td class="active">정답</td>
-					<td colspan="5"><input type="text" class="form-control" name="answer" placeholder="정답"></td>
+					<td colspan="5">
+						<select class="form-control" name="answer">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+						</select>
+					</td>
 				</tr>
 			</table>
 				

@@ -20,7 +20,6 @@ import kr.ac.readingbetter.service.BookService;
 import kr.ac.readingbetter.service.CardService;
 import kr.ac.readingbetter.service.CertificationService;
 import kr.ac.readingbetter.service.HistoryService;
-import kr.ac.readingbetter.service.QuizService;
 import kr.ac.readingbetter.service.ReviewService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.AccusationVo;
@@ -39,9 +38,6 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
-
-	@Autowired
-	private QuizService quizService;
 
 	@Autowired
 	private ReviewService reviewService;
@@ -117,7 +113,7 @@ public class BookController {
 	// 퀴즈 내기
 	@RequestMapping(value = "/makequizinsert", method = RequestMethod.POST)
 	public String makequizInsert(@ModelAttribute QuizVo vo) {
-		quizService.quizAddUser(vo);
+		bookService.quizAdd(vo);
 		return "redirect:/book/booklist";
 	}
 	///////////////////////////////////////////////////////////////////////////
@@ -129,7 +125,7 @@ public class BookController {
 		final Integer COUNT = 0;
 		final Integer MAXCOUNT = 4;
 
-		List<QuizVo> list = quizService.selectQuiz(no);
+		List<QuizVo> list = bookService.selectQuiz(no);
 		BookVo vo = bookService.getByNo(no);
 
 		model.addAttribute("list", list);

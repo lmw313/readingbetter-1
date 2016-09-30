@@ -63,7 +63,12 @@
 								<h6>보기4</h6>
 								<input id="ex4" name="ex4" type="text" class="form-control" placeholder="Text input"><br>
 								<h6>정답</h6>
-								<input id="answer" name="answer" type="text" class="form-control" placeholder="Text input"><br>
+								<select class="form-control" name="answer">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+								</select><br>
 							</div>
 							<button type="submit" class="btn btn-default">제출</button>
 						</form>	

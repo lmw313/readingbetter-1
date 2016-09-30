@@ -9,6 +9,7 @@ import kr.ac.readingbetter.dao.BookDao;
 import kr.ac.readingbetter.dao.QuizDao;
 import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
+import kr.ac.readingbetter.vo.QuizVo;
 
 @Service
 public class BookService {
@@ -67,5 +68,37 @@ public class BookService {
 		}
 		
 		return count;
+	}
+	
+	public List<QuizVo> selectQuiz(Long no) {
+		List<QuizVo> list = quizDao.selectQuiz(no);
+		return list;
+	}
+	/////////////////////////////////////////////////////////////////////////////
+
+	// 퀴즈내기
+
+	// 퀴즈 추가 - 사용자는 무조건 대기상태여야 한다
+	public void quizAdd(QuizVo vo) {
+		// 퀴즈의 답에 따른 저장
+		String answer = vo.getAnswer();
+
+		switch (answer) {
+		case "1":
+			vo.setAnswer(vo.getEx1());
+			break;
+		case "2":
+			vo.setAnswer(vo.getEx2());
+			break;
+		case "3":
+			vo.setAnswer(vo.getEx3());
+			break;
+		case "4":
+			vo.setAnswer(vo.getEx4());
+			break;
+		}
+
+		vo.setAccept("0");
+		quizDao.quizAdd(vo);
 	}
 }

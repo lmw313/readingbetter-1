@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.ac.readingbetter.service.AdminQuizService;
 import kr.ac.readingbetter.service.BookService;
-import kr.ac.readingbetter.service.QuizService;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.QuizVo;
 
@@ -20,32 +20,35 @@ import kr.ac.readingbetter.vo.QuizVo;
 public class AdminQuizController {
 	
 	@Autowired
-	private QuizService quizService;
+	private AdminQuizService adminQuizService;
 	
 	@Autowired
 	private BookService BookService;
 	
-	// 퀴즈 관리
+	// 퀴즈 리스트
 	@RequestMapping(value = "/quizlist", method = RequestMethod.GET)
 	public String quizList(Model model) {
-		List<QuizVo> list = quizService.getList();
+		List<QuizVo> list = adminQuizService.getList();
 		model.addAttribute("list", list);
 		return "admin/quizlist";
 	}
 	
+	// 퀴즈 상세보기
 	@RequestMapping(value = "/quizview/{no}", method = RequestMethod.GET)
 	public String quizView(@PathVariable("no") Long no, Model model) {
-		QuizVo vo = quizService.quizView(no);
+		QuizVo vo = adminQuizService.quizView(no);
 		model.addAttribute("vo", vo);
 		return "admin/quizview";
 	}
 	
+	// 퀴즈 업데이트
 	@RequestMapping(value = "/quizUpdate", method = RequestMethod.POST)
 	public String quizUpdate(@ModelAttribute QuizVo vo) {
-		quizService.quizUpdate(vo);
+		adminQuizService.quizUpdate(vo);
 		return "redirect:/admin/quizlist";
 	}
 	
+	// 퀴즈에 책 추가
 	@RequestMapping(value = "/quizaddbook", method = RequestMethod.GET)
 	public String quizAddBook(Model model) {
 		List<BookVo> bookList = BookService.getList();
@@ -53,6 +56,7 @@ public class AdminQuizController {
 		return "admin/quizaddbook";
 	}
 
+	// 퀴즈 폼 불러오기
 	@RequestMapping(value = "/quizaddform/{no}", method = RequestMethod.GET)
 	public String quizAddForm(@PathVariable("no") Long no, Model model) {
 		BookVo bookVo = BookService.getByNo(no);
@@ -60,9 +64,10 @@ public class AdminQuizController {
 		return "admin/quizaddform";
 	}
 	
+	// 퀴즈 추가
 	@RequestMapping(value = "/quizadd", method = RequestMethod.POST)
 	public String quizAddAdmin(@ModelAttribute QuizVo vo) {
-		quizService.quizAddAdmin(vo);
+		adminQuizService.quizAdd(vo);
 		return "redirect:/admin/quizlist";
 	}
 }
