@@ -32,19 +32,24 @@
 						<table id="board" class="table table-bordered">
 							<tr>
 								<th class="active">제목</th>
-								<td>아이디랑 비밀번호를 잊어버렸어요</td>
+								<td>${contents.title }</td>
 							</tr>
 							<tr>
 								<th class="active" colspan=2>내용</th>
 							</tr>
 							<tr>
-								<td id="content" colspan=2>
-									비밀번호를 잊어버렸는데 이메일을 잊어버려서 임시 비밀번호를 받을 수가 없습니다.<br>도와줘요 헬프 미
-								</td>
+								<td id="content" colspan=2>${contents.content }</td>
 							</tr>
 						</table>
 						<div id="buttonalign">
-							<a href="/readingbetter/service/questionlist" class="btn btn-default">목록</a><br><br>
+							<a href="/readingbetter/service/questionlist" class="btn btn-default">목록</a>
+							<c:if test="${not empty sessionScope.authUser}">
+								<c:if test="${authUser.position eq 0 }">
+									<a href="/readingbetter/service/questionwrite?group=${contents.groupNo }"  class="btn btn-default">답글 작성</a>
+									<br>
+									<br>
+								</c:if>
+							</c:if>
 						</div>
 					</div>
 				</div>

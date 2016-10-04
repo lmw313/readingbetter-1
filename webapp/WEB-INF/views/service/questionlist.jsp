@@ -23,12 +23,13 @@
 				<div id="question">
 					<div class="small-menu">
 						<a href="/readingbetter/main">홈</a> > 
-						<a href="/readingbetter/service/noticelist">고객센터</a> > 문의 게시판
+						<a href="/readingbetter/service/noticelist">고객센터</a> > 
+						문의 게시판
 					</div>
 					<p class="menu-title">문의 게시판</p>
 					
 					<form id="search_form" action="/mysite/board" method="post">
-						<input type="text" id="kwd" name="kwd" value="${kwd }">
+						<input type="text" id="kwd" name="kwd" value="${kwd }"> 
 						<input type="submit" value="찾기">
 					</form>
 
@@ -42,33 +43,32 @@
 								<th>작성일</th>
 								<th>답변</th>
 							</tr>
-							<tr>
-								<td>3</td>
-								<td><a href="/readingbetter/service/questionview">제목</a></td>
-								<td>작성자</td>
-								<td>3</td>
-								<td>2016-09-07</td>
-								<td>안 돼 돌아가</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td><a href="">제목</a></td>
-								<td>작성자</td>
-								<td>3</td>
-								<td>2016-09-07</td>
-								<td>승인</td>
-							</tr>
-							<tr>
-								<td>1</td>
-								<td><a href="">제목</a></td>
-								<td>작성자</td>
-								<td>3</td>
-								<td>2016-09-07</td>
-								<td>대기</td>
-							</tr>
+							<c:forEach items="${list }" var="boardvo">
+								<tr>
+									<td>${boardvo.no }</td>
+									<td>
+										<a href="/readingbetter/service/questionview?no=${boardvo.no }">${boardvo.title }</a>
+									</td>
+									<td>${boardvo.id }</td>
+									<td>${boardvo.viewCount }</td>
+									<td>${boardvo.regDate }</td>
+									<c:choose>
+										<c:when test="${boardvo.accept eq 1}">
+											<td>대기</td>
+										</c:when>
+										<c:when test="${boardvo.accept eq 2}">
+											<td>완료</td>
+										</c:when>
+									</c:choose>
+								</tr>
+							</c:forEach>
 						</table>
 						<div id="button-set">
-							<a class="btn btn-default" href="/readingbetter/service/questionwrite" role="button">글쓰기</a>
+							<c:choose>
+								<c:when test="${not empty sessionScope.authUser}">
+									<a class="btn btn-default" href="/readingbetter/service/questionwrite" role="button">글쓰기</a>
+								</c:when>
+							</c:choose>
 						</div>
 
 						<!-- begin:paging -->

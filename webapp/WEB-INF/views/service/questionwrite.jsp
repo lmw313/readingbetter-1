@@ -27,32 +27,33 @@
 						<a href="/readingbetter/service/questionlist">문의 게시판 </a> > 글보기
 					</div>
 					<p class="menu-title">문의 게시판</p>
-
-					<div id="board">
-						<table id="board" class="table table-bordered">
-							<tr>
-								<th id="celltitle" class="active">제목</th>
-								<td>
-									<input type="text" class="form-control" name="title" placeholder="필수 입력">
-								</td>
-							</tr>
-							<tr>
-								<th class="active" colspan=2>내용</th>
-							</tr>
-							<tr>
-								<td id="content" colspan=2>
-									<textarea id="sub" class="form-control" placeholder="내용을 입력하세요."></textarea>
-								</td>
-							</tr>
-						</table>
-						<div id="buttonalign">
-							<a type="submit" class="btn btn-default">작성</a><br><br>
+					<form action="/readingbetter/service/questionwrite/write" method="post">
+						<div id="board">
+							<table id="board" class="table table-bordered">
+								<tr>
+									<th id="celltitle" class="active">제목</th>
+									<td><input type="text" class="form-control" name="title"
+										placeholder="필수 입력"></td>
+								</tr>
+								<tr>
+									<th class="active" colspan=2>내용</th>
+								</tr>
+								<tr>
+									<td id="content" colspan=2><textarea id="sub"
+											class="form-control" name="content" placeholder="내용을 입력하세요."></textarea>
+									</td>
+								</tr>
+							</table>
 						</div>
-					</div>
+
+						<div id="buttonalign">
+							<button type="submit" class="btn btn-default">제출</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-		<c:import url='/WEB-INF/views/include/footer.jsp'/>
+		<c:import url='/WEB-INF/views/include/footer.jsp' />
 	</div>
 </body>
 </html>

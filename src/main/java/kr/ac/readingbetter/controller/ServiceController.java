@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.AccusationService;
+import kr.ac.readingbetter.service.BoardService;
 import kr.ac.readingbetter.service.CommentsService;
 import kr.ac.readingbetter.service.NoticeService;
 import kr.ac.readingbetter.service.WishbookService;
 import kr.ac.readingbetter.vo.AccusationVo;
+import kr.ac.readingbetter.vo.BoardVo;
 import kr.ac.readingbetter.vo.CommentsVo;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.NoticeVo;
@@ -40,6 +42,9 @@ public class ServiceController {
 	@Autowired
 	private WishbookService wishbookService;
 
+	@Autowired
+	private BoardService boardService;
+	
 	// 공지
 	// 공지 리스트 띄우기
 	@RequestMapping(value = "/noticelist", method = RequestMethod.GET)
@@ -192,20 +197,46 @@ public class ServiceController {
 	// 문의
 	// 문의 리스트
 	@RequestMapping("/questionlist")
-	public String questionList() {
+	public String questionList(Model model) {
+		List<BoardVo> list = boardService.getList();
+		model.addAttribute("list", list);
 		return "service/questionlist";
 	}
 
 	// 문의 상세 보기
 	@RequestMapping("/questionview")
-	public String questionView() {
+	public String questionView(@RequestParam(value = "no") Long no, Model model) {
+		BoardVo content = boardService.getContent(no);
+		model.addAttribute("contents", content);
+		 
 		return "service/questionview";
 	}
 	
-	// 문의 쓰기
+	// 문의 등록 폼
 	@RequestMapping("/questionwrite")
 	public String questionWrite() {
 		return "service/questionwrite";
+	}
+	
+	// 문의 등록
+	@RequestMapping("/questionwrite/write")
+	public String writeQuestion(
+			@RequestParam(value = "group") Integer groupNo, 
+			HttpSession session, 
+			BoardVo vo) {
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		Long no = authUser.getNo();
+		vo.setMemberNo(no);
+		if (groupNo != null) {
+			vo.setGroupNo(groupNo);
+			vo.setPosition("2");
+			System.out.println(groupNo);
+			System.out.println(vo);
+			boardService.insertComment(vo);
+		} else {
+			boardService.insertQuestion(vo);
+		}
+		return "redirect:/service/questionlist";
 	}
 	///////////////////////////////////////////////////////////////////////////
 
