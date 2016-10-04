@@ -7,15 +7,14 @@
 <head>
 <title>ReadingBetter</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/main.css" rel="stylesheet"
-	type="text/css">
-<script type="text/javascript"
-	src="/readingbetter/assets/js/jquery/jquery-1.9.0.js"></script>
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="/readingbetter/assets/js/main.js"></script>
 </head>
 <body>
+<input type="hidden" name="check-attend" value="${checkAttend }">
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/include/header.jsp' />
 		<div class="row asideWrap">
@@ -157,3 +156,39 @@
 	</div>
 </body>
 </html>
+
+<!-- 출석체크 모달 -->
+<div id="attendModal" class="modal fade attend-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">출석체크</h4>
+			</div>
+			<div class="modal-body">
+				<c:if test="${checkAttend == 0 }">
+					<p>출석 확인 되었습니다.</p>
+					<p>누적 출석일 : ${attCount }</p>
+					<c:choose>
+						<c:when test="${attCount%7 == 0 }">
+							<p>출석 보너스를 받았습니다. 히스토리에서 확인하세요.</p>
+						</c:when>
+						<c:otherwise>
+							<p>7일 출석할 때마다 캔디를 드려요 ~</p>
+						</c:otherwise>
+					</c:choose>
+				</c:if>
+				<c:if test="${checkAttend == 1 }">
+					<p>이미 오늘 출석하셨습니다.</p>
+					<p>누적 출석일 : ${attCount }</p>
+					<p>7일 출석할 때마다 캔디를 드려요 ~</p>
+				</c:if>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="remove-attend">다시 보지 않기</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

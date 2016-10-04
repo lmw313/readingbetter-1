@@ -24,6 +24,32 @@ $(function() {
 		}
 	});
 	
+	$("#btn-login").on("click", function(){
+		var id = $("input[name=id]").val();
+		var pw = $("input[name=pw]").val();
+		
+		var vo = {
+				"id" : id,
+				"pw" : pw
+		}
+		
+		$.ajax({
+			url : "main/login",
+			type : "POST",
+			data : JSON.stringify(vo),
+			contentType: "application/json", 
+//			dataType : "json",
+			success : function(url) {
+				var url = url;
+				
+				location.replace(url);
+			},
+			error : function(jqXHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+	
 	/*$(function() {
 	   setInterval(function() {
 	      var $li = $(this);
@@ -50,4 +76,23 @@ $(function() {
 	 * setTimeout(first(), 3000); } first();
 	    
 	});*/
+	
+	var a = $("input[name=check-attend]").val();
+	
+	if(a != ""){
+		$("div.modal").modal();
+	}
+	
+	// 출석 체크 창 다시 보지 않기
+	$("#remove-attend").on("click", function(){
+		$.ajax({
+			url : "main/removeattend",
+			type : "POST",
+			success : function() {
+			},
+			error : function(jqXHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
 });

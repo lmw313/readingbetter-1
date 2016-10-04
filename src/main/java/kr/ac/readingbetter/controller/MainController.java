@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.MemberService;
 import kr.ac.readingbetter.service.ScoresService;
@@ -47,22 +49,28 @@ public class MainController {
 			String id = authUser.getId();
 			List<ScoresVo> mainGrade = scoresService.mainGrade(id);
 			model.addAttribute("mainGrade", mainGrade);
-			}
+		}
+		
+		if(authUser != null){
+			int attCount = memberService.selectAttCount(authUser.getNo());
+			model.addAttribute("attCount", attCount);
+		}
+		
 		return "main/main";
-	
 	}
 	////////////////////////////////////////////////////////////////////////////
 	
 	// 네비
 	// 네비의 로그인
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(MemberVo vo, HttpSession session) {
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	@ResponseBody
+	public String login(@RequestBody MemberVo vo, HttpSession session) {
 		
 		// login
 		MemberVo authUser = memberService.selectAuthUser(vo);
 
 		if (authUser == null) {
-			return "redirect:/member/loginform?error=true";
+			return "member/loginform?error=true";
 		}
 
 		// 인증 성공
@@ -75,9 +83,14 @@ public class MainController {
 			scoresService.insertScores(authUser.getNo());
 		}
 		
-//		memberService.insertAttend(authUser.getNo());
-
-		return "redirect:/main";
+		// 출석체크
+		int check = memberService.attendAction(authUser.getNo());
+		
+		// 출석 체크 모달 보기 세션 추가
+		// 0이면 새로 출석, 1이면 이미 출석
+		session.setAttribute("checkAttend", check);
+		
+		return "main";
 	}
 	////////////////////////////////////////////////////////////////////////////
 	
@@ -86,6 +99,7 @@ public class MainController {
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("authUser");
+		session.removeAttribute("checkAttend");
 		session.invalidate();
 
 		return "redirect:/main";
@@ -109,5 +123,11 @@ public class MainController {
 	@RequestMapping("/sitemap")
 	public String SiteMap() {
 		return "main/sitemap";
+	}
+	
+	@RequestMapping(value="/removeattend", method=RequestMethod.POST)
+	@ResponseBody
+	public void removeAttend(HttpSession session){
+		session.removeAttribute("checkAttend");
 	}
 }

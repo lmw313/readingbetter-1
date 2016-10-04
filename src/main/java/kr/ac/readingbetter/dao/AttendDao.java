@@ -12,4 +12,9 @@ public class AttendDao {
 	public void insertAttend(Long no){
 		sqlSession.insert("attend.insert", no);
 	}
+	
+	public Long checkAttend(Long no){
+		Long checkAttend = sqlSession.selectOne("attend.checkAttend", no);
+		return checkAttend;
+	}
 }

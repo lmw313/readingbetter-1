@@ -10,7 +10,7 @@
 				<h4>
 					로그인<a href="/readingbetter/member/joinform">가입하기</a>
 				</h4>
-				<form action="/readingbetter/main/login" method="post">
+				<!-- <form action="/readingbetter/main/login" method="post"> -->
 					<div class="form-group">
 						<label for="id">아이디:</label>
 						<input type="text" class="form-control input-sm" id="id" name="id">
@@ -22,7 +22,7 @@
 					<!--<div class="checkbox">
 					<label><input type="checkbox"> Remember me</label></div> -->
 					<button type="submit" class="btn btn-default" id="btn-login">로그인</button>
-				</form>
+				<!-- </form> --><br><br>
 				<a href="/readingbetter/member/findform">아이디/비밀번호 찾기</a>
 			</div>
 		</c:when>

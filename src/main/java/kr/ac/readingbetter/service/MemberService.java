@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.AttendDao;
 import kr.ac.readingbetter.dao.MemberDao;
+import kr.ac.readingbetter.dao.ScoresDao;
+import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.MemberVo;
 
 @Service
@@ -23,6 +25,9 @@ public class MemberService {
 	
 	@Autowired
 	private AttendDao attendDao;
+	
+	@Autowired
+	private ScoresDao scoresDao;
 
 	public List<MemberVo> getList(MemberVo vo) {
 		List<MemberVo> list = memberDao.getList(vo);
@@ -108,7 +113,41 @@ public class MemberService {
 		return vo;
 	}
 	
-	public void insertAttend(Long no){
-		attendDao.insertAttend(no);
+	public int attendAction(Long no){
+		Integer bonus = 10;
+		
+		// 출석체크 확인
+		Long checkAttend = attendDao.checkAttend(no);
+		
+		// 오늘 출석 기록이 없는 경우
+		if(checkAttend == null){
+			// 누적 출석 +1
+			memberDao.updateAttCount(no);
+			
+			// 누적 출석일이 7의 배수면 보상
+			Integer attCount = memberDao.selectAttCount(no);
+			
+			if((attCount % 7) == 0){
+				HistoryVo historyVo = new HistoryVo();
+				
+				historyVo.setPoint(bonus);
+				historyVo.setMemberNo(no);
+				
+				scoresDao.updateAttendBonus(historyVo);
+			}
+			
+			// attend insert
+			attendDao.insertAttend(no);
+			
+			return 0;
+		}
+		
+		// 오늘 출석 기록이 있는 경우
+		return 1;
+	}
+	
+	public int selectAttCount(Long no){
+		int attCount = memberDao.selectAttCount(no);
+		return attCount;
 	}
 }

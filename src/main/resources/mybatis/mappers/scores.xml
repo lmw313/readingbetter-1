@@ -207,4 +207,9 @@
  		]]>
 	</update>
 
+	<update id="updateAttendBonus" parameterType="historyvo">
+		<![CDATA[
+			update scores set point=point+#{point} where member_no=#{memberNo}
+		]]>
+	</update>
 </mapper>

@@ -73,4 +73,13 @@ public class MemberDao {
 	public void updatePenalty(AccusationVo vo){
 		sqlSession.update("member.updatePenalty", vo);
 	}
+	
+	public void updateAttCount(Long no){
+		sqlSession.update("member.updateAttCount", no);
+	}
+	
+	public Integer selectAttCount(Long no){
+		Integer attCount = sqlSession.selectOne("member.selectAttCount", no);
+		return attCount;
+	}
 }

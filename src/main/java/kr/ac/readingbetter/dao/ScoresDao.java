@@ -94,4 +94,9 @@ public class ScoresDao {
 	public List<ScoresVo> mainGrade(String id) {
 		return sqlSession.selectList("scores.mainGrade", id);
 	}
+	
+	// 출석체크
+	public void updateAttendBonus(HistoryVo vo){
+		sqlSession.update("scores.updateAttendBonus", vo);
+	}
 }
