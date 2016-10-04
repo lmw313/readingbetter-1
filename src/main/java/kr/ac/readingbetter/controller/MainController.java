@@ -57,7 +57,7 @@ public class MainController {
 	// 네비의 로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(MemberVo vo, HttpSession session) {
-
+		
 		// login
 		MemberVo authUser = memberService.selectAuthUser(vo);
 
@@ -67,13 +67,15 @@ public class MainController {
 
 		// 인증 성공
 		session.setAttribute("authUser", authUser);
-
+		
 		// scores insert
 		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
 
 		if (scoresVo == null) {
 			scoresService.insertScores(authUser.getNo());
 		}
+		
+//		memberService.insertAttend(authUser.getNo());
 
 		return "redirect:/main";
 	}

@@ -8,6 +8,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
+import kr.ac.readingbetter.dao.AttendDao;
 import kr.ac.readingbetter.dao.MemberDao;
 import kr.ac.readingbetter.vo.MemberVo;
 
@@ -19,6 +20,9 @@ public class MemberService {
 
 	@Autowired
 	private MailSender mailSender; // 메일 전송
+	
+	@Autowired
+	private AttendDao attendDao;
 
 	public List<MemberVo> getList(MemberVo vo) {
 		List<MemberVo> list = memberDao.getList(vo);
@@ -102,5 +106,9 @@ public class MemberService {
 																									// 내용
 		mailSender.send(message);
 		return vo;
+	}
+	
+	public void insertAttend(Long no){
+		attendDao.insertAttend(no);
 	}
 }
