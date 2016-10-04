@@ -66,15 +66,15 @@
 									<c:when test="${not empty sessionScope.authUser}">
 										<td>
 											<a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
-											<a class="btn btn-default" href="/readingbetter/book/solvequizform?no=${vo.no }" role="button">문제풀기</a>
+											<a class="btn btn-default btn-solve" data-no="${vo.no }" role="button">문제풀기</a>
 											<a class="btn btn-default" href="/readingbetter/book/makequizform/${vo.no}" role="button">문제내기</a>
 										</td>
 									</c:when>
 									<c:otherwise>
 										<td>
 											<a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
-											<a class="btn btn-default disabled" href="/readingbetter/book/solvequizform?no=${vo.no }" role="button">문제풀기</a>
-											<a class="btn btn-default disabled" href="/readingbetter/book/makequizform/${vo.no}" role="button">문제내기</a>
+											<a class="btn btn-default disabled" role="button">문제풀기</a>
+											<a class="btn btn-default disabled" role="button">문제내기</a>
 										</td>									
 									</c:otherwise>
 								</c:choose>

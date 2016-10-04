@@ -117,6 +117,16 @@ public class BookController {
 	///////////////////////////////////////////////////////////////////////////
 
 	// 퀴즈 풀기
+	// 퀴즈 존재 여부 확인
+	@RequestMapping(value = "/existquiz", method = RequestMethod.POST)
+	@ResponseBody
+	public Integer existQuiz(@RequestParam("no") Long no) {
+		List<QuizVo> list = bookService.selectQuiz(no);
+		int count = list.size();
+		
+		return count;
+	}
+
 	// 퀴즈 풀기 화면 열기
 	@RequestMapping("/solvequizform")
 	public String solveQuizForm(Model model, @RequestParam(value = "no", required = false, defaultValue = "") Long no) {
