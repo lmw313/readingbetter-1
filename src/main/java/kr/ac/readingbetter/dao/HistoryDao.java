@@ -27,4 +27,8 @@ public class HistoryDao {
 		List<HistoryVo> list = sqlSession.selectList("history.listpage", vo);
 		return list;
 	}
+	
+	public void insertAttBonus(HistoryVo vo){
+		sqlSession.insert("history.insertAttBonus", vo);
+	}
 }

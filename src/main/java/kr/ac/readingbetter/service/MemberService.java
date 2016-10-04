@@ -9,6 +9,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.AttendDao;
+import kr.ac.readingbetter.dao.HistoryDao;
 import kr.ac.readingbetter.dao.MemberDao;
 import kr.ac.readingbetter.dao.ScoresDao;
 import kr.ac.readingbetter.vo.HistoryVo;
@@ -28,6 +29,9 @@ public class MemberService {
 	
 	@Autowired
 	private ScoresDao scoresDao;
+	
+	@Autowired
+	private HistoryDao historyDao;
 
 	public List<MemberVo> getList(MemberVo vo) {
 		List<MemberVo> list = memberDao.getList(vo);
@@ -132,7 +136,8 @@ public class MemberService {
 				
 				historyVo.setPoint(bonus);
 				historyVo.setMemberNo(no);
-				
+
+				historyDao.insertAttBonus(historyVo);
 				scoresDao.updateAttendBonus(historyVo);
 			}
 			

@@ -39,4 +39,10 @@
 		]]>
 	</select>
 
+	<insert id="insertAttBonus" parameterType="historyvo">
+		<![CDATA[
+			insert into history 
+				values(seq_history.nextval, '출석체크', 0, #{point}, sysdate, #{memberNo}, 3, 0)
+		]]>
+	</insert>
 </mapper>

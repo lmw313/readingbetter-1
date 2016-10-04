@@ -19,12 +19,16 @@ select to_char(att_date, 'yyyy-mm-dd') from attend where no=(select max(no) from
 select no from attend where member_no=203 and to_char(att_date, 'yyyy-mm-dd') = to_char(sysdate, 'yyyy-mm-dd');
 
 insert into attend values(seq_attend.nextval, to_date('2016-10-03 12:14:11', 'yyyy-mm-dd hh24:mi:ss'), 1);
-delete from attend where member_no = 203;
+delete from attend where member_no = 21;
 
 update member set att_count=att_count+1 where no=1;
 select att_count as attCount from member where no=1;
 update scores set point=point+1 where member_no=1;
 select * from scores;
+
+select * from history order by no asc;
+insert into history values(seq_history.nextval, '출석체크', 0, 10, sysdate, 1, 3, 0);
+commit;
 
 -- insert
 insert into member values(seq_member.nextval, 'test01', 'aaaa', 'test', 'test01@naver.com', '01000001111', sysdate, 1, 0, '', '', (select no from school where title='성결초등학교'));
