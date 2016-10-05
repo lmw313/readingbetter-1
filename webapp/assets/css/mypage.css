@@ -26,7 +26,7 @@
 
 
 /* login */
-#login #img-login    { width:200px; height:200px; border:1px solid #333 }
+#login #img-login    { width:200px; height:200px; border:1px solid #333; margin: 20px; }
 #login #radio-group	{ 
    text-align:center;
    width:400px;
@@ -34,6 +34,11 @@
    border:1px solid #666;
    border-radius:10px;
    margin:20px auto;
+}
+
+#login #radio-group label {
+	text-align: right;
+	padding-top: 5px;
 }
 
 
