@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.ac.readingbetter.dao.AuthorDao;
 import kr.ac.readingbetter.dao.BookDao;
-import kr.ac.readingbetter.dao.PublisherDao;
 import kr.ac.readingbetter.dao.QuizDao;
 import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
@@ -21,12 +19,6 @@ public class BookService {
 
 	@Autowired
 	private QuizDao quizDao;
-	
-	@Autowired
-	private AuthorDao authorDao;
-	
-	@Autowired
-	private PublisherDao publisherDao;
 	
 	public List<BookVo> getList() {
 		List<BookVo> list = bookDao.getList();
@@ -102,23 +94,6 @@ public class BookService {
 
 		vo.setAccept("0");
 		quizDao.quizAdd(vo);
-	}
-	
-	// 도서 관리 도서 추가
-	public void insert(BookVo vo) {
-		Long authorNo = authorDao.selectAuthor(vo.getAuthorName());
-		
-		if(authorNo == null){
-			authorDao.insertAuthor(vo.getAuthorName());
-		}
-		
-		Long publisherNo = publisherDao.selectPublisherForAddBook(vo.getPublisherTitle());
-
-		if(publisherNo == null){
-			publisherDao.insertPublisher(vo.getPublisherTitle());
-		}
-		
-		bookDao.insert(vo);
 	}
 	
 	// 사용자 페이징 리스트

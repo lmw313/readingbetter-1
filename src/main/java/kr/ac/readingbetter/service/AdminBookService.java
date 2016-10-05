@@ -43,4 +43,37 @@ public class AdminBookService {
 		List<PublisherVo> list = publisherDao.getList(vo);
 		return list;
 	}
+	
+	// 도서 관리 도서 추가
+	public void insert(BookVo vo) {
+		Long authorNo = authorDao.selectAuthor(vo.getAuthorName());
+		
+		if(authorNo == null){
+			authorDao.insertAuthor(vo.getAuthorName());
+		}
+		
+		Long publisherNo = publisherDao.selectPublisherForAddBook(vo.getPublisherTitle());
+
+		if(publisherNo == null){
+			publisherDao.insertPublisher(vo.getPublisherTitle());
+		}
+		
+		bookDao.insert(vo);
+	}
+	
+	public void modify(BookVo vo){
+		Long authorNo = authorDao.selectAuthor(vo.getAuthorName());
+		
+		if(authorNo == null){
+			authorDao.insertAuthor(vo.getAuthorName());
+		}
+		
+		Long publisherNo = publisherDao.selectPublisherForAddBook(vo.getPublisherTitle());
+
+		if(publisherNo == null){
+			publisherDao.insertPublisher(vo.getPublisherTitle());
+		}
+		
+		bookDao.updateBook(vo);
+	}
 }

@@ -27,6 +27,7 @@
 				<th>작가</th>
 				<th>출판사</th>
 				<th>사진</th>
+				<th>수정</th>
 			</tr>
 	  		<c:forEach var='vo' items='${list}' varStatus='s'>
 				<tr>
@@ -35,6 +36,7 @@
 					<td>${vo.authorName }</td>
 					<td>${vo.publisherTitle }</td>
 					<td><img class="img-thumbnail" src="${vo.cover }"></td>
+					<td><a href="/readingbetter/admin/bookmodifyform/${vo.no }?pageNo=${param.pageNo}" class="btn btn-default">수정</a></td>
 				</tr>
 	 		</c:forEach>
 		</table>

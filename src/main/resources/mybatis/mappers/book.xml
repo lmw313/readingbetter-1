@@ -103,4 +103,17 @@
       		where (#{pageNo}-1)*5+1<=rnum and rnum<=#{pageNo}*5  				
 		]]>
 	</select>
+	
+	<!-- 도서 수정 -->
+	<update id="updateBook" parameterType="bookvo">
+		<![CDATA[
+			update book 
+				set title=#{title}, 
+					RECOMMEND=#{recommend}, 
+					cover=#{cover}, 
+					PUBLISHER_NO=(select no from publisher where title=#{publisherTitle}), 
+					AUTHOR_NO=(select no from author where name=#{authorName}) 
+				where no=#{no}
+		]]>
+	</update>
 </mapper>

@@ -53,4 +53,8 @@ public class BookDao {
 		List<BookVo> list = sqlSession.selectList("book.adminlistPage", vo);
 		return list;
 	}
+	
+	public void updateBook(BookVo vo){
+		sqlSession.update("book.updateBook", vo);
+	}
 }
