@@ -44,7 +44,7 @@
 
 <div id="search">
 	<h5>책 검색</h5>
-	<form id="searchform" action="" method="get">
+	<form id="searchform" action="/readingbetter/book/booklist" method="get">
 		<div class="form-group">
  			<input type="text" id="bkwd" class="form-control input-sm" name="bkwd" value="${bkwd }">
  		</div>
