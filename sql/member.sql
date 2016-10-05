@@ -31,10 +31,9 @@ insert into history values(seq_history.nextval, '출석체크', 0, 10, sysdate, 
 commit;
 
 -- insert
-insert into member values(seq_member.nextval, 'test01', 'aaaa', 'test', 'test01@naver.com', '01000001111', sysdate, 1, 0, '', '', (select no from school where title='성결초등학교'));
+insert into member values(seq_member.nextval, 'kg00003', 'aaaa', 'GM숙', 'kg00003@naver.com', '01000001111', sysdate, 1, 0, '', '', (select no from school where title='성결초등학교'));
 insert into member values(seq_member.nextval, 'test7', 'aaaa', '테스트7', 'test07@naver.com', '0100000000', sysdate, 1, 0, null, null, null);
 insert into attend values(seq_attend.nextval, sysdate, 203);
-insert into member values(seq_member.nextval, 'test03', 'aaaa', 'test03', 'test03@naver.com', '0100000000', 1, 0, #{grade}, #{classNo}, 0, (select no from school where title=#{schoolName}));
 select * from member;
 commit;
 
@@ -42,5 +41,6 @@ commit;
 update member set name='GM숙', email='kg00003@hanmail.net', tel='0100001111', school_no=(select no from school where title='성결초등학교'), grade=5, class_no=1 where no=25;
 update member set pw='aaaa', name='GM숙', email='kg00003@hanmail.net', tel='0100001111', school_no=(select no from school where title='성결초등학교'), grade=5, class_no=1 where no=25;
 update member set att_count=6 where no=21;
+update member set position=0 where no=25;
 
 rollback;

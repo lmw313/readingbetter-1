@@ -1,7 +1,5 @@
 $(function(){
 	$("#check-title").on("click", function(){
-		console.log("check");
-		
 		$("#check-title").attr('disabled', true);
 		
 		$("#search-title-result").empty();
@@ -36,8 +34,6 @@ $(function(){
 
 $(function(){
 	$("#btn-writer").on("click", function(){
-		console.log("check");
-		
 		$("#btn-writer").attr('disabled', true);
 		
 		$("#search-author-result").empty();
@@ -56,8 +52,9 @@ $(function(){
 			success : function( authorlist) {
 				for (var i = 0; i <  authorlist.length; i++) {
 					$("#search-author-result").append(
-							"<a class='search-title-result' data-dismiss='modal'>"
-							+authorlist[i].no + "</a>"+authorlist[i].name+"<br>");
+							"<a class='search-title-result' data-dismiss='modal'>" + 
+							authorlist[i].name + 
+							"</a><br>");
 				}
 			},
 			error : function(jqXHR, status, error) {
@@ -76,15 +73,13 @@ $(function(){
 });
 
 $(function(){
-	$("#btn-publisher").on("click", function(){
-		console.log("check");
-		
+	$("#btn-publisher").on("click", function(){		
 		$("#btn-publisher").attr('disabled', true);
 		
 		$("#search-publisher-result").empty();
 		
 
-		var kwd1 = $("#publisher").val();
+		var kwd1 = $("#publisherTitle").val();
 
 		$.ajax({
 			url : "/readingbetter/admin/publishercheck",
@@ -97,8 +92,9 @@ $(function(){
 			success : function( publisherlist) {
 				for (var i = 0; i <  publisherlist.length; i++) {
 					$("#search-publisher-result").append(
-							"<a class='search-title-result' data-dismiss='modal'>"
-							+ publisherlist[i].no + "</a>" +publisherlist[i].title + "<br>");
+							"<a class='search-title-result' data-dismiss='modal'>" + 
+							publisherlist[i].title + 
+							"</a><br>");
 				}
 			},
 			error : function(jqXHR, status, error) {

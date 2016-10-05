@@ -77,6 +77,7 @@ public class AdminBookController {
 	@RequestMapping("/insertbook")
 	public String Insert(@ModelAttribute BookVo vo) {
 		bookService.insert(vo);
+		
 		return "redirect:/admin/booklist";
 	}
 	

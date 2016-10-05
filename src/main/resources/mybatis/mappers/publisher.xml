@@ -17,6 +17,12 @@
 			select no, title from publisher where title=#{publisher}
 		]]>
 	</select>
+	
+	<select id="selectPublisherForAddBook" parameterType="string" resultType="long">
+		<![CDATA[
+			select no from publisher where title=#{title}
+		]]>
+	</select>
 
 	<!-- 출판사 추가 -->
 	<insert id="insert" parameterType="publishervo">
@@ -25,4 +31,9 @@
 		]]>
 	</insert>
 
+	<select id="insertPublisher" parameterType="string">
+		<![CDATA[
+			insert into publisher values(seq_author.nextval, #{title})
+		]]>
+	</select>
 </mapper>

@@ -40,13 +40,13 @@
 					<td class="left-label">작가</td>
 					<td>
 						<label for="author_no"></label>
-						<input type="text" class="form-control" id="authorNo" value="" name="authorNo">
+						<input type="text" class="form-control" id="authorNo" value="" name="authorName">
 						<button id="btn_writerModal" value="" type="button" class="btn btn-primary " data-toggle="modal" data-target=".writer-modal" >찾기</button>
 					</td>
 				<tr>
 					<td class="left-label">출판사</td>
 					<td>
-						<input type="text" class="form-control" id="publisher" value="" name="publisherNo">
+						<input type="text" class="form-control" id="publisher" value="" name="publisherTitle">
 						<button id="btn_publisherModal" type="button" class="btn btn-primary" data-toggle="modal" data-target=".publisher-modal" >찾기</button>
 					</td>
 				</tr>
@@ -116,7 +116,7 @@
 				<h4 class="modal-title">출판사 검색</h4>
 			</div>
 			<div class="modal-body">
-				<input type="text" name="kwd2" id="publisher" value=""> 
+				<input type="text" name="kwd2" id="publisherTitle" value=""> 
 				<a class="btn btn-default" role="button" id="btn-publisher" >찾기</a>
 				<div id="search-publisher-result">
 					<a>검색결과</a>

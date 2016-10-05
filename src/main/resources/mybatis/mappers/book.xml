@@ -80,7 +80,13 @@
 	<!-- 책 추가 -->
 	<insert id="insert" parameterType="bookvo">
 		<![CDATA[
-			insert into book values(seq_book.nextval,#{title},#{recommend},#{cover},#{publisherNo},#{authorNo})
+			insert into book values(
+				seq_book.nextval, 
+				#{title}, 
+        		#{recommend}, 
+        		#{cover}, 
+				(select no from publisher where title=#{publisherTitle}),
+				(select no from author where name=#{authorName}))
 		]]>
 	</insert>
 	

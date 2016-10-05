@@ -28,4 +28,13 @@ public class PublisherDao {
 		List<PublisherVo> list = sqlSession.selectList("publisher.selectPublisher", vo);
 		return list;
 	}
+	
+	public Long selectPublisherForAddBook(String title){
+		Long publisherNo = sqlSession.selectOne("publisher.selectPublisherForAddBook", title);
+		return publisherNo;
+	}
+	
+	public void insertPublisher(String title){
+		sqlSession.insert("publisher.insertPublisher", title);
+	}
 }

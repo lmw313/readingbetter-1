@@ -22,4 +22,13 @@ public class AuthorDao {
 	public void insert(AuthorVo vo) {
 		sqlSession.insert("author.insert", vo);
 	}
+	
+	public Long selectAuthor(String authorName){
+		Long authorNo = sqlSession.selectOne("author.selectAuthor", authorName);
+		return authorNo;
+	}
+	
+	public void insertAuthor(String authorName){
+		sqlSession.insert("author.insertAuthor", authorName);
+	}
 }

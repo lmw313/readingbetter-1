@@ -75,10 +75,16 @@
 	<!-- 희망도서에서 책추가 -->
 	<insert id="insertBook" parameterType="wishbookvo">
 		<![CDATA[
-			insert into book 
-			values(seq_book.nextval, #{title}, 0, '', 
-			(select no from publisher 
-			where title=(select publisher from wishbook where no=#{no})),0)
+			insert into book values(
+				seq_book.nextval, 
+				#{title}, 
+				0, 
+				' ', 
+				(select no from publisher 
+					where title = (select publisher 
+										from wishbook 
+										where no = #{no})), 
+				0)
 		]]>
 	</insert>
 	

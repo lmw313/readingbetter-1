@@ -18,4 +18,16 @@
 		]]>
 	</insert>
 	
+	<insert id="insertAuthor" parameterType="string">
+		<![CDATA[
+			insert into author values(seq_author.nextval, #{authorName})
+		]]>
+	</insert>
+	
+	<!-- 작가 검색 -->
+	<select id="selectAuthor" parameterType="string" resultType="long">
+		<![CDATA[
+			select no from author where name=#{authorName}
+		]]>
+	</select>
 </mapper>
