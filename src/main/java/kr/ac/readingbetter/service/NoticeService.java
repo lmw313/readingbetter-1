@@ -45,4 +45,9 @@ public class NoticeService {
 		int count = noticeDao.listCount();
 		return count;
 	}
+	
+	public List<NoticeVo> getListRecent(NoticeVo nvo) {
+		List<NoticeVo> list = noticeDao.getListRecent(nvo); 
+		return list;
+	}
 }

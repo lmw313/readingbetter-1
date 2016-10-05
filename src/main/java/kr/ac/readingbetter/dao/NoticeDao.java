@@ -45,4 +45,9 @@ public class NoticeDao {
 		int count = sqlSession.selectOne("notice.listCount");
 		return count;
 	}
+	
+	public List<NoticeVo> getListRecent(NoticeVo nvo) {
+		List<NoticeVo> list = sqlSession.selectList("notice.listrecent", nvo);
+		return list;
+	}
 }

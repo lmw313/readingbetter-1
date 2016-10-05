@@ -40,7 +40,9 @@
 						<div id="notice_box">
 							<h4>공지</h4>
 							<ul id="notice_list">
-								<li><a href="">공지입니다</a></li>
+								<c:forEach items="${listrecent }" var="noticevo">
+									<li><a href="/readingbetter/service/noticeview/${noticevo.no }">${noticevo.title }</a></li>
+								</c:forEach>
 							</ul>
 						</div>
 					</div>

@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.MemberService;
+import kr.ac.readingbetter.service.NoticeService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.MemberVo;
+import kr.ac.readingbetter.vo.NoticeVo;
 import kr.ac.readingbetter.vo.ScoresVo;
 
 @Controller
@@ -27,10 +29,17 @@ public class MainController {
 	@Autowired
 	private ScoresService scoresService;
 	
+	@Autowired
+	private NoticeService noticeService;
+	
 	// 메인
 	// 메인 화면 열기
 	@RequestMapping("")
-	public String Main(ScoresVo vo, Model model, HttpSession session) {
+	public String Main(ScoresVo vo, NoticeVo nvo, Model model, HttpSession session) {
+		// 메인에 최근 5개의 공지 출력
+		List<NoticeVo> listrecent = noticeService.getListRecent(nvo);
+		model.addAttribute("listrecent", listrecent);
+		
 		// 메인에 한 달 랭킹 상위 5명 출력
 		List<ScoresVo> monthlyMainRank = scoresService.monthlyMainRank(vo);
 		model.addAttribute("monthlyMainRank", monthlyMainRank);
