@@ -26,14 +26,50 @@
 					<div class="col-lg-6">
 						<div id="today_book_box">
 							<h4>오늘의 책</h4>
-							<div class="tab-box">
-								<div>컨텐츠</div>
-								<ul>
-									<li></li>
-									<li></li>
-									<li></li>
-									<li></li>
+							<div role="tabpanel">
+
+								<!-- Nav tabs -->
+								<ul class="nav nav-tabs" role="tablist">
+									<c:forEach var='vo' items='${todayBookList }' varStatus='s'>
+										<c:choose>
+											<c:when test="${s.index == 0 }">
+												<li role="presentation" class="active">
+													<a href="#today${s.index+1 }" aria-controls="today${s.index+1 }" role="tab" data-toggle="tab">${s.index+1 }</a>
+												</li>
+											</c:when>
+											<c:otherwise>
+												<li role="presentation">
+													<a href="#today${s.index+1 }" aria-controls="today${s.index+1 }" role="tab" data-toggle="tab">${s.index+1 }</a>
+												</li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
 								</ul>
+
+								<!-- Tab panes -->
+								<div class="tab-content">
+									<c:forEach var='vo' items='${todayBookList }' varStatus='s'>
+										<c:choose>
+											<c:when test="${s.index == 0 }">
+												<div role="tabpanel" class="tab-pane fade in active" id="today${s.index+1 }">
+													<img alt="today${s.index+1 }" src="${vo.cover }">
+													<div>
+														<a href="">${vo.title }</a>
+													</div>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div role="tabpanel" class="tab-pane fade" id="today${s.index+1 }">
+													<img alt="today${s.index+1 }" src="${vo.cover }">
+													<div>
+														<a href="">${vo.title }</a>
+													</div>
+												</div>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</div>
+
 							</div>
 						</div>
 

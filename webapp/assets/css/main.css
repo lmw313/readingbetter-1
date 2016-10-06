@@ -60,7 +60,8 @@
 #main #mtfirst { width:40px; text-align:center; }
 /* 테이블 두번째, 세번째 열 */
 #main #mtsecond, #mtthird { width:80px; text-align:center; }
-
+#main .tab-content img { height: 300px; }
+#main .tab-content a { font-size: 1.25em; }
 
 /*siteinfo*/
 div#radio-group-information   { 

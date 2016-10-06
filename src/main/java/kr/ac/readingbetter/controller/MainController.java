@@ -73,7 +73,7 @@ public class MainController {
 		// 오늘의 책 가져오기
 		List<BookVo> todayBookList = bookService.todayBook();
 		
-		System.out.println(todayBookList);
+		model.addAttribute("todayBookList", todayBookList);
 		
 		return "main/main";
 	}

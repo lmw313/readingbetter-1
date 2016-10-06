@@ -118,7 +118,7 @@ public class BookService {
 		
 		// 날짜가 바뀐 경우
 		if(result == null){
-//			daysDao.insertDays();
+			daysDao.insertDays();
 			Integer count = toBookDao.selectCount();
 			List<Long> todayBookNoList = bookDao.selectBookByRandom();
 			
