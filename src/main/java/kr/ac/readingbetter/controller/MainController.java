@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.ac.readingbetter.service.BookService;
 import kr.ac.readingbetter.service.MemberService;
 import kr.ac.readingbetter.service.NoticeService;
 import kr.ac.readingbetter.service.ScoresService;
+import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.NoticeVo;
 import kr.ac.readingbetter.vo.ScoresVo;
@@ -31,6 +33,9 @@ public class MainController {
 	
 	@Autowired
 	private NoticeService noticeService;
+	
+	@Autowired
+	private BookService bookService;
 	
 	// 메인
 	// 메인 화면 열기
@@ -64,6 +69,11 @@ public class MainController {
 			int attCount = memberService.selectAttCount(authUser.getNo());
 			model.addAttribute("attCount", attCount);
 		}
+		
+		// 오늘의 책 가져오기
+		List<BookVo> todayBookList = bookService.todayBook();
+		
+		System.out.println(todayBookList);
 		
 		return "main/main";
 	}

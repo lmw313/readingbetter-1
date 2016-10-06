@@ -57,4 +57,17 @@ public class BookDao {
 	public void updateBook(BookVo vo){
 		sqlSession.update("book.updateBook", vo);
 	}
+	
+	public List<Long> selectBookByRandom(){
+		List<Long> todayBookList = sqlSession.selectList("book.selectBookByRandom");
+		
+		return todayBookList;
+	}
+	
+	public BookVo selectTodayBook(Integer no){
+		BookVo vo;
+		vo = sqlSession.selectOne("book.selectTodayBook", no);
+		
+		return vo;
+	}
 }

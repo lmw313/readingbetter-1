@@ -1,15 +1,19 @@
 package kr.ac.readingbetter.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.readingbetter.dao.BookDao;
+import kr.ac.readingbetter.dao.DaysDao;
 import kr.ac.readingbetter.dao.QuizDao;
+import kr.ac.readingbetter.dao.ToBookDao;
 import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
 import kr.ac.readingbetter.vo.QuizVo;
+import kr.ac.readingbetter.vo.ToBookVo;
 
 @Service
 public class BookService {
@@ -19,6 +23,12 @@ public class BookService {
 
 	@Autowired
 	private QuizDao quizDao;
+	
+	@Autowired
+	private DaysDao daysDao;
+	
+	@Autowired
+	private ToBookDao toBookDao;
 	
 	public List<BookVo> getList() {
 		List<BookVo> list = bookDao.getList();
@@ -100,5 +110,39 @@ public class BookService {
 	public List<BookVo> getAdminListPage(BookVo vo) {
 		List<BookVo> list = bookDao.getAdminListPage(vo);
 		return list;
+	}
+	
+	// 오늘의 책
+	public List<BookVo> todayBook(){
+		Integer result = daysDao.selectDays();
+		
+		// 날짜가 바뀐 경우
+		if(result == null){
+//			daysDao.insertDays();
+			Integer count = toBookDao.selectCount();
+			List<Long> todayBookNoList = bookDao.selectBookByRandom();
+			
+			for (int i = 0; i < 5; i++) {
+				ToBookVo vo = new ToBookVo();
+				vo.setNo(i + 1);
+				vo.setBookNo(todayBookNoList.get(i));
+
+				if (count == 0) {
+					toBookDao.insertToBook(vo);
+				} else {
+					toBookDao.updateToBook(vo);
+				}
+			}
+		}
+		
+		// 오늘의 책 가져오기
+		List<BookVo> todayBookList = new ArrayList<>();
+		
+		for(int i = 0; i < 5; i++){
+			BookVo vo = bookDao.selectTodayBook(i+1);
+			todayBookList.add(vo);
+		}
+		
+		return todayBookList;
 	}
 }

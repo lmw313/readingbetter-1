@@ -20,6 +20,7 @@
 		<typeAlias type="kr.ac.readingbetter.vo.HistoryVo" alias="historyvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.ScoresVo" alias="scoresvo"/>
 		<typeAlias type="kr.ac.readingbetter.vo.CertificationVo" alias="certificationvo"/>
+		<typeAlias type="kr.ac.readingbetter.vo.ToBookVo" alias="tobookvo"/>
 	</typeAliases>
 	
 	<mappers>
@@ -41,6 +42,8 @@
 		<mapper resource="mybatis/mappers/scores.xml" />
 		<mapper resource="mybatis/mappers/certification.xml" />
 		<mapper resource="mybatis/mappers/attend.xml" />
+		<mapper resource="mybatis/mappers/days.xml" />
+		<mapper resource="mybatis/mappers/tobook.xml" />
 	</mappers>
 	
 </configuration>
