@@ -19,26 +19,29 @@ $(function() {
 			}
 		});
 	});
-	
+
 	$("#btn-buy").on("click", function() {
-		var price= $("#price").text();
-		var no =$("#no").val();
-		var title= $("#title").text();
-		var point =$("#point").val();
-		  		
+		var price = $("#price").text();
+		var no = $("#no").val();
+		var title = $("#title").text();
+		var point = $("#point").val();
+
 		if ($("#point").val() < $("#price").text()) {
-		  	alert("캔디가 부족합니다");
-		  	return false;
+			alert("캔디가 부족합니다");
+			return false;
 		}
-		
+
+		var vo = {
+			"no" : no,
+			"title" : title,
+			"price" : price
+		}
+
 		$.ajax({
 			url : "/readingbetter/shop/buy",
 			type : "POST",
-			data : {
-				"price" : price,
-				"no" : no,
-				"title" : title
-			},
+			data : JSON.stringify(vo),
+			contentType : "application/json",
 			dataType : "json",
 			success : function(scoresVo) {
 				console.log("scores");

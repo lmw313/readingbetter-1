@@ -110,9 +110,8 @@ public class MemberService {
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(vo.getEmail()); // 받는 사람 이메일
 		message.setSubject("ReadingBetter에서 임시 비밀번호를 보냅니다"); // 메일 제목
-		message.setText("당신의 임시 비밀번호는 " + buffer.toString() + "입니다.\n로그인후 반드시 새 비밀번호를 변경해 주세요"); // 메일
-																									// //
-																									// 내용
+		message.setText("당신의 임시 비밀번호는 " + buffer.toString() 
+			+ "입니다.\n로그인후 반드시 새 비밀번호를 변경해 주세요"); // 메일	 내용
 		mailSender.send(message);
 		return vo;
 	}

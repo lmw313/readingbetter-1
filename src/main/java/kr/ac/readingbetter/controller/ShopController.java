@@ -7,9 +7,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.readingbetter.service.HistoryService;
@@ -40,7 +40,7 @@ public class ShopController {
 		if (authUser == null) {
 			return "redirect:/member/loginform";
 		}
-		
+
 		if (vo.getTitle() == null) { // 검색할 상품명이 없으면 빈 문자열로 교체
 			vo.setTitle("");
 		}
@@ -63,28 +63,28 @@ public class ShopController {
 	// 구입 차감 모달
 	@ResponseBody
 	@RequestMapping(value = "/shop/buy", method = RequestMethod.POST)
-	public ScoresVo shopbuy(
-			HttpSession session, 
-			HistoryVo historyVo, 
-			@RequestParam(value = "price") int price,
-			@RequestParam(value = "no") Long no, 
-			@RequestParam(value = "title") String title) {
+	public ScoresVo shopbuy(HttpSession session, HistoryVo historyVo, @RequestBody ShopVo vo) throws Exception {
+		// 로그인 정보로 scores 호출
 		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 		ScoresVo scoresVo = scoresService.selectScores(authUser.getNo());
+
+		// scores update
 		int point = scoresVo.getPoint();
-		point = point - price;
+		point = point - vo.getPrice();
 		scoresVo.setPoint(point);
 		scoresVo.setMemberNo(authUser.getNo());
 		scoresService.scoreUpdate(scoresVo);
 
+		// 이메일로 기프티콘 전송
+		shopService.sendEmail(authUser, vo);
+
 		// history insert
-		historyVo.setTitle(title);
+		historyVo.setTitle(vo.getTitle());
 		historyVo.setScore(0);
-		historyVo.setPoint(price);
+		historyVo.setPoint(vo.getPrice());
 		historyVo.setMemberNo(authUser.getNo());
 		historyVo.setIdentity(1);
-		historyVo.setKeyNo(no);
-
+		historyVo.setKeyNo(vo.getNo());		
 		historyService.insertHistory(historyVo);
 		return scoresVo;
 	}
