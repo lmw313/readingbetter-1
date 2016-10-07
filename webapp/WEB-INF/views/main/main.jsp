@@ -54,7 +54,7 @@
 												<div role="tabpanel" class="tab-pane fade in active" id="today${s.index+1 }">
 													<img alt="today${s.index+1 }" src="${vo.cover }">
 													<div>
-														<a href="">${vo.title }</a>
+														<a href="/readingbetter/book/booklist?bkwd=${vo.title }">${vo.title }</a>
 													</div>
 												</div>
 											</c:when>
@@ -62,7 +62,7 @@
 												<div role="tabpanel" class="tab-pane fade" id="today${s.index+1 }">
 													<img alt="today${s.index+1 }" src="${vo.cover }">
 													<div>
-														<a href="">${vo.title }</a>
+														<a href="/readingbetter/book/booklist?bkwd=${vo.title }">${vo.title }</a>
 													</div>
 												</div>
 											</c:otherwise>

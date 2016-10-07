@@ -5,7 +5,7 @@ insert into days values(seq_days.nextval, to_date('2016-10-03 12:14:11', 'yyyy-m
 
 update days set today=(to_date('2016-10-03 12:14:11', 'yyyy-mm-dd hh24:mi:ss')) where no=1;
 update days set today=sysdate where no=1;
-
+select to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss') from dual;
 select * from days where to_char(today, 'yyyy-mm-dd') = to_char(sysdate, 'yyyy-mm-dd');
 delete days;
 commit;
