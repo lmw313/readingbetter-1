@@ -26,7 +26,7 @@
 					<a href="/readingbetter/main">홈</a> > 상점
 				</div>
 				<p class="menu-title">상점</p>
-				<p>내 캔디수 : ${scoresVo.point }</p>
+				<p id="myPoint">내 캔디수 : ${scoresVo.point }</p>
 				<div class="imggroup">
 					<c:forEach var='vo' items='${getGoodsList}' varStatus='s'> 
 						<div class="col-lg-3">

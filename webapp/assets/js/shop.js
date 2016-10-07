@@ -44,7 +44,7 @@ $(function() {
 			contentType : "application/json",
 			dataType : "json",
 			success : function(scoresVo) {
-				console.log("scores");
+				$("#myPoint").text("내 캔디수 : " + scoresVo.point);
 			},
 			error : function(jqXHR, status, error) {
 				console.error(status + " : " + error);

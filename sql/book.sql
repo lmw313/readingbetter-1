@@ -33,3 +33,6 @@ select * from book;
 select * from quiz;
 delete book where cover is null;
 commit;
+select * from member;
+update scores set point=100 where member_no=21;
+select * from goods;
