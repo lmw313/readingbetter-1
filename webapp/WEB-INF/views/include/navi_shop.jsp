@@ -5,6 +5,6 @@
 <div id="navigation">
 <p id="category">상점</p>
 	<ul>
-		<li><a href="/readingbetter/shop">상점</a></li>
+		<li><a href="/readingbetter/shop" class="selected-navi">상점</a></li>
 	</ul>
 </div>

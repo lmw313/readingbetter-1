@@ -13,6 +13,7 @@
 	type="text/css">
 </head>
 <body>
+<input type="hidden" class="category" value="monthlygrade-grade-${param.grade }">
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/include/header.jsp' />
 		<div class="row asideWrap">

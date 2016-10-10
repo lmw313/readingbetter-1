@@ -14,11 +14,12 @@
 <script type="text/javascript" src="/readingbetter/assets/js/notice_accusation.js"></script>
 </head>
 <body>
+<input type="hidden" class="category" value="notice">
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/include/header.jsp' />
 		<div class="row asideWrap">
 			<div class="col-lg-2" id="navigation">
-				<c:import url='/WEB-INF/views/include/navi_book.jsp' />
+				<c:import url='/WEB-INF/views/include/navi_service.jsp' />
 			</div>
 			<div id="content" class="col-lg-10">
 				<div id="review">

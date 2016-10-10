@@ -3,9 +3,6 @@ $(function(){
 		var id = $("input[name=id]").val();
 		var pw = $("input[name=pw]").val();
 		
-		console.log(id);
-		console.log(pw);
-		
 		var vo = {
 				"id" : id,
 				"pw" : pw

@@ -11,6 +11,7 @@
 <link href="/readingbetter/assets/css/mypage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<input type="hidden" class="category" value="history">
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/include/header.jsp' />
 		<div class="row asideWrap">

@@ -64,6 +64,9 @@ div#navigation p#category {
    margin: 10px 0;
    color: #f55;
 }
+div#navigation a.selected-navi {
+	background-color:#F7FCFD;
+}
 
 /* 검색 */
 #search_form {

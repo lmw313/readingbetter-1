@@ -13,6 +13,7 @@
 <script type="text/javascript" src="/readingbetter/assets/js/wishbook.js"></script>
 </head>
 <body>
+<input type="hidden" class="category" value="wishbook">
 <input type="hidden" id="no" value="${param.no }">
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/include/header.jsp' />
