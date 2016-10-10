@@ -15,10 +15,12 @@
 #main  #loginbox h4 a { float:right; font-size:0.75em; }
 #main  #loginbox form { margin-bottom:10px; }
 #main #myinfo_mini { margin-top:20px; text-align:left; font-size:0.85em; }
+
 /* 검색 박스 */
 #search { border:1px solid #149EF9; margin:10px 0; padding:10px; }
 .searchform { text-align:right; }
 #helpcall { text-align:left; }
+
 /* 컨텐츠 */
 #main #today_book_box,
 #main #notice_box,
@@ -31,6 +33,15 @@
 	background-color:#FBFEFE;
 	border-radius:20px;
 }
+#main .today-book {
+	height: 300px;
+	text-align: center;
+	display: inline;
+}
+#main .today-book-title {
+	font-size: 1.2em;
+}
+
 /* 탭뷰 */
 #main .tab-box,
 #main .tab-box2 { margin:10px; text-align:center; }
@@ -53,11 +64,14 @@
 #main .tab-box div { line-height:200px; }
 #main .tab-box ul li.selected,
 #main .tab-box2 ul li.selected { background-color:#fc6; cursor:default; }
+
 /* 공지 */
 #main #notice_list { list-style:disc; text-align:left; margin-left:20px; }
+
 /* 순위 테이블 */
 /* 테이블 첫번째 열*/
 #main #mtfirst { width:40px; text-align:center; }
+
 /* 테이블 두번째, 세번째 열 */
 #main #mtsecond, #mtthird { width:80px; text-align:center; }
 #main .tab-content img { height: 300px; }
@@ -72,11 +86,9 @@ div#radio-group-information   {
    border-radius: 10px;
 }
 
-
 /* sitemap */
 #sitemap .table	{ text-align:left; }
 #sitemap .quiz	{ padding-left:10px; }
-
 
 /* manual */
 #manual #manual-content	{ 

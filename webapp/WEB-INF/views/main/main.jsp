@@ -26,50 +26,49 @@
 					<div class="col-lg-6">
 						<div id="today_book_box">
 							<h4>오늘의 책</h4>
-							<div role="tabpanel">
-
-								<!-- Nav tabs -->
-								<ul class="nav nav-tabs" role="tablist">
+							<div id="carousel-today-book" class="carousel slide" data-ride="carousel">
+								<!-- Indicators -->
+								<ol class="carousel-indicators">
+									<li data-target="#carousel-today-book" data-slide-to="0" class="active"></li>
+									<li data-target="#carousel-today-book" data-slide-to="1"></li>
+									<li data-target="#carousel-today-book" data-slide-to="2"></li>
+									<li data-target="#carousel-today-book" data-slide-to="3"></li>
+									<li data-target="#carousel-today-book" data-slide-to="4"></li>
+								</ol>
+							
+								<!-- Wrapper for slides -->
+								<div class="carousel-inner" role="listbox">
 									<c:forEach var='vo' items='${todayBookList }' varStatus='s'>
 										<c:choose>
 											<c:when test="${s.index == 0 }">
-												<li role="presentation" class="active">
-													<a href="#today${s.index+1 }" aria-controls="today${s.index+1 }" role="tab" data-toggle="tab">${s.index+1 }</a>
-												</li>
-											</c:when>
-											<c:otherwise>
-												<li role="presentation">
-													<a href="#today${s.index+1 }" aria-controls="today${s.index+1 }" role="tab" data-toggle="tab">${s.index+1 }</a>
-												</li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-								</ul>
-
-								<!-- Tab panes -->
-								<div class="tab-content">
-									<c:forEach var='vo' items='${todayBookList }' varStatus='s'>
-										<c:choose>
-											<c:when test="${s.index == 0 }">
-												<div role="tabpanel" class="tab-pane fade in active" id="today${s.index+1 }">
-													<img alt="today${s.index+1 }" src="${vo.cover }">
-													<div>
-														<a href="/readingbetter/book/booklist?bkwd=${vo.title }">${vo.title }</a>
-													</div>
+												<div class="item active">
+													<a href="/readingbetter/book/booklist?bkwd=${vo.title }">
+														<img class="today-book" src="${vo.cover }" alt="${vo.title }">
+													</a>
+													<div class="carousel-caption today-book-title">${vo.title }</div>
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div role="tabpanel" class="tab-pane fade" id="today${s.index+1 }">
-													<img alt="today${s.index+1 }" src="${vo.cover }">
-													<div>
-														<a href="/readingbetter/book/booklist?bkwd=${vo.title }">${vo.title }</a>
-													</div>
+												<div class="item">
+													<a href="/readingbetter/book/booklist?bkwd=${vo.title }">
+														<img class="today-book" src="${vo.cover }" alt="${vo.title }">
+													</a>
+													<div class="carousel-caption today-book-title">${vo.title }</div>
 												</div>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 								</div>
 
+								<!-- Controls -->
+								<a class="left carousel-control" href="#carousel-today-book" role="button" data-slide="prev"> 
+									<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+									<span class="sr-only">Previous</span>
+								</a>
+								<a class="right carousel-control" href="#carousel-today-book" role="button" data-slide="next"> 
+									<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+									<span class="sr-only">Next</span>
+								</a>
 							</div>
 						</div>
 
