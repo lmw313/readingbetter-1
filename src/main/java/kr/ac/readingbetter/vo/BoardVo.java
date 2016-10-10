@@ -14,6 +14,8 @@ public class BoardVo {
 	private String id;
 	private Integer position; // 글을 등록한 사람의 등급
 	private String name; // 글을 등록한 사람의 이름 (GM 표시용)
+	private String borKwd;
+	private Integer borPage;
 
 	public Long getNo() {
 		return no;
@@ -111,10 +113,27 @@ public class BoardVo {
 		this.name = name;
 	}
 
+	public String getBorKwd() {
+		return borKwd;
+	}
+
+	public void setBorKwd(String borKwd) {
+		this.borKwd = borKwd;
+	}
+
+	public Integer getBorPage() {
+		return borPage;
+	}
+
+	public void setBorPage(Integer borPage) {
+		this.borPage = borPage;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVo [no=" + no + ", title=" + title + ", content=" + content + ", regDate=" + regDate
 				+ ", viewCount=" + viewCount + ", groupNo=" + groupNo + ", boardPosition=" + boardPosition + ", accept="
-				+ accept + ", memberNo=" + memberNo + ", id=" + id + ", position=" + position + ", name=" + name + "]";
+				+ accept + ", memberNo=" + memberNo + ", id=" + id + ", position=" + position + ", name=" + name
+				+ ", borKwd=" + borKwd + ", borPage=" + borPage + "]";
 	}
 }

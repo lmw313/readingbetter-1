@@ -197,8 +197,61 @@ public class ServiceController {
 	// 문의
 	// 문의 리스트
 	@RequestMapping("/questionlist")
-	public String questionList(Model model) {
-		List<BoardVo> list = boardService.getList();
+	public String questionList(Model model, BoardVo vo,
+			@RequestParam(value = "borPage", required = false, defaultValue = "") String borPage,
+			@RequestParam(value = "borKwd", required = false, defaultValue = "") String borKwd) {
+		// noticePage가 null값일때 1로 고정
+		if (borPage == null || "".equals(borPage)) {
+			borPage = "1";
+		}
+
+		int count = 0;
+		List<BoardVo> list = null;
+		
+		vo.setBorPage(Integer.parseInt(borPage));
+		vo.setBorKwd(borKwd);
+
+		if (borKwd == null) { // 검색어가 없을 때
+			count = boardService.listCount();
+			list = boardService.getList(vo);
+		} else { // 검색어가 있을 때
+			count = boardService.listKwdCount(borKwd);
+			list = boardService.getListKwd(vo);
+		}
+
+		// 페이징
+		int totalPage = 1;
+		int currentPage = Integer.parseInt(borPage);
+
+		if (count % 5 != 0) {
+			totalPage = count / 10 + 1;
+		} else {
+			totalPage = count / 10;
+		}
+
+		int pageGroupNum = 1;
+		int pageGroup = 5;
+		int beginPage = 1;
+		int endPage = 1;
+
+		pageGroupNum = (int) Math.ceil((double) currentPage / pageGroup);
+
+		if (pageGroupNum < 1) {
+			pageGroupNum = pageGroupNum + 1;
+		}
+
+		beginPage = (pageGroupNum - 1) * pageGroup + 1;
+		endPage = pageGroupNum * pageGroup;
+
+		if (totalPage < endPage) {
+			endPage = totalPage;
+		}
+
+		model.addAttribute("borKwd", borKwd);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("beginPage", beginPage);
+		model.addAttribute("endPage", endPage);
 		model.addAttribute("list", list);
 		return "service/questionlist";
 	}

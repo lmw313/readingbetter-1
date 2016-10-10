@@ -23,14 +23,13 @@
 				<div id="question">
 					<div class="small-menu">
 						<a href="/readingbetter/main">홈</a> > 
-						<a href="/readingbetter/service/noticelist">고객센터</a> > 
-						문의 게시판
+						<a href="/readingbetter/service/noticelist">고객센터</a> > 문의 게시판
 					</div>
 					<p class="menu-title">문의 게시판</p>
 					
-					<form id="search_form" action="/mysite/board" method="post">
-						<input type="text" id="kwd" name="kwd" value="${kwd }"> 
-						<input type="submit" value="찾기">
+					<form id="search_form" action="" method="get">
+ 						<input type="text" name="borKwd" value="${borKwd }">
+ 						<input type="submit" value="찾기">
 					</form>
 
 					<div id="board">
@@ -94,19 +93,28 @@
 						</div>
 
 						<!-- begin:paging -->
-						<div class="pager">
-							<ul>
-								<li>
-								<li><a href="">◀</a></li>
-								<li><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href="">4</a></li>
-								<li><a href="">5</a></li>
-								<li><a href="">▶</a></li>
-							</ul>
-						</div>
-						<!-- end:paging -->
+		            	<div class="pager">
+		            	<br>
+		               		<ul>
+		               			<c:if test='${beginPage>1}'>
+		               				<li><a href="/readingbetter/service/questionlist?borPage=${beginPage-1}&borKwd=${borKwd}">◀</a></li>
+		               			</c:if>
+		                  		<c:forEach begin='${beginPage}' end='${endPage}' step='1' var='i'>
+		                  			<c:choose>
+		                  				<c:when test='${currentPage == i}'>
+		                  					<li class="selected">${i}</li>
+		                  				</c:when>
+		                  				<c:otherwise>
+		                  					<li><a href="/readingbetter/service/questionlist?borPage=${i}&borKwd=${borKwd}">${i}</a></li>
+		                  				</c:otherwise>
+		                  			</c:choose>
+		                  		</c:forEach>
+		                  		<c:if test='${endPage<totalPage}'>
+		                  			<li><a href="/readingbetter/service/questionlist?borPage=${endPage+1}&borKwd=${borKwd}">▶</a></li>
+		                  		</c:if>               		
+		               		</ul>
+		            	</div>
+		            	<!-- end:paging -->
 					</div>
 				</div>
 			</div>

@@ -37,7 +37,7 @@
 							<c:set var="countList" value="${fn:length(list)}"/>
 							<c:forEach var='vo' items='${list}' varStatus='s'>
 							<tr>
-								<td>${countList-s.index}</td>
+								<td>${vo.no}</td>
 								<td><a href="/readingbetter/service/noticeview/${vo.no }">${vo.title }</a></td>
 								<td>${vo.name }</td>
 								<td>${vo.viewCount }</td>

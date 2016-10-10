@@ -24,7 +24,7 @@ public class BoardService {
 	}
 
 	public void insertQuestion(BoardVo vo) {
-		boardDao.insertQuestion(vo);		
+		boardDao.insertQuestion(vo);
 	}
 
 	public void insertComment(BoardVo vo) {
@@ -37,5 +37,29 @@ public class BoardService {
 
 	public void updateViewCount(Long no) {
 		boardDao.updateViewCount(no);
+	}
+	
+	// 검색어가 없을 때
+	public List<BoardVo> getList(BoardVo vo) {
+		List<BoardVo> list = boardDao.getList(vo);
+		return list;
+	}
+
+	// 검색어가 있을 때
+	public List<BoardVo> getListKwd(BoardVo vo) {
+		List<BoardVo> list = boardDao.getListKwd(vo);
+		return list;
+	}
+
+	// 검색어가 없을 때, 리스트의 수
+	public Integer listCount() {
+		int count = boardDao.listCount();
+		return count;
+	}
+
+	// 검색어가 있을 때, 리스트의 수
+	public Integer listKwdCount(String borKwd) {
+		int count = boardDao.listKwdCount(borKwd);
+		return count;
 	}
 }
