@@ -41,6 +41,19 @@ public class MainController {
 	// 메인 화면 열기
 	@RequestMapping("")
 	public String Main(ScoresVo vo, NoticeVo nvo, Model model, HttpSession session) {
+		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+		
+		// 로그인 후 나의 점수 정보 출력
+		if (authUser != null) { // 로그인을 했을 경우에만 vo에 회원 랭킹 삽입
+			Long no = authUser.getNo();
+			vo = scoresService.myScores(no);
+			model.addAttribute("myScores", vo);
+			vo = scoresService.mymonthlyRank(no);
+			model.addAttribute("myMonthlyRank", vo);
+			vo = scoresService.myTotalRank(no);
+			model.addAttribute("myTotalRank", vo);
+		}
+				
 		// 메인에 최근 5개의 공지 출력
 		List<NoticeVo> listrecent = noticeService.getListRecent(nvo);
 		model.addAttribute("listrecent", listrecent);
@@ -51,14 +64,13 @@ public class MainController {
 
 		// 메인에 명예의 전당 랭킹 상위 5명 출력
 		List<ScoresVo> mainHonor = scoresService.mainHonor(vo);
-		model.addAttribute("mainHonor", mainHonor);	
+		model.addAttribute("mainHonor", mainHonor);
 
 		// 메인에 학교 랭킹 상위 5곳 출력
 		List<ScoresVo> mainSchool = scoresService.mainSchool(vo);
 		model.addAttribute("mainSchool", mainSchool);
 		
 		// 메인에 학년 랭킹 상위 5명 출력
-		MemberVo authUser = (MemberVo) session.getAttribute("authUser");
 		if (authUser != null) { // 로그인을 했을 경우에만 vo에 랭킹 삽입
 			String id = authUser.getId();
 			List<ScoresVo> mainGrade = scoresService.mainGrade(id);

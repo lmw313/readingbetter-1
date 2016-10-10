@@ -99,4 +99,8 @@ public class ScoresDao {
 	public void updateAttendBonus(HistoryVo vo){
 		sqlSession.update("scores.updateAttendBonus", vo);
 	}
+	
+	public ScoresVo myScores(Long no) {
+		return sqlSession.selectOne("myScores", no);
+	}
 }

@@ -31,11 +31,11 @@
 			<div id="login_after">
 				<h5>${authUser.name }님 환영합니다 !</h5>
 				<div id="myinfo_mini">
-					<p>보유 캔디 : 개</p>
-					<p>누적점수 : 점</p>
-					<p>이번 달 점수 : 점</p>
-					<p>이번 달 전체 순위 : 위</p>
-					<p>명예의 전당 순위 : 위</p>
+					<p>보유 캔디 : <a href="/readingbetter/shop">${myScores.point }개</a></p>
+					<p>누적점수 : <a href="/readingbetter/ranking/honor">${myScores.totalScore }점</a></p>
+					<p>이번 달 점수 : <a href="/readingbetter/ranking/monthlytotal">${myScores.monthlyScore }점</a></p>
+					<p>이번 달 전체 순위 : <a href="/readingbetter/ranking/monthlytotal">${myMonthlyRank.rank}위</a></p>
+					<p>명예의 전당 순위 : <a href="/readingbetter/ranking/honor">${myTotalRank.rank }위</a></p>
 				</div>
 			</div>
 		</c:otherwise>

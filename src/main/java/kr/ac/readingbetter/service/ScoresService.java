@@ -99,4 +99,9 @@ public class ScoresService {
 	public List<ScoresVo> mainGrade(String id) {
 		return scoresDao.mainGrade(id);
 	}
+	
+	// 로그인 후 내 점수 정보 출력
+	public ScoresVo myScores(Long no) {
+		return scoresDao.myScores(no);
+	}
 }

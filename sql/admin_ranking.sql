@@ -106,3 +106,10 @@ from (select rank() over(order by score desc) rank,
        where b.no=a.member_no
          and grade = (select grade from member where id='ysi1246'))
 where id = 'ysi1246';
+
+-- 메인 페이지 로그인 후 요약 보기
+SELECT * FROM scores;
+
+-- 로그인 후 내 점수 보기
+select m.no as no, point, TOTAL_SCORE as totalScore, score as monthlyScore
+	from scores s, member m where m.no=s.MEMBER_NO and no='24';
