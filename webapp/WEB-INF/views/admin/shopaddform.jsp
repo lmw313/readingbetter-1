@@ -17,18 +17,13 @@
 	<h4>상점 아이템 추가</h4>
 	<form action="shopadd" method="post">
 		<div id="board">
-			<table class="tbl-ex tbl-addbook">
+			<table class="table table-bordered">
 				<tr>
-					<th></th>
-					<th></th>
+					<th class="active">상품명</th>
+					<td><input type="text" class="form-control" id="title" name="title" placeholder="상품명"></td>
 				</tr>
 				<tr>
-					<td class="left-label">상품명</td>
-					<td><label for=""></label>
-					<input type="text" class="form-control" id="title" name="title" placeholder="상품명"></td>
-				</tr>
-				<tr>
-					<td class="left-label">가격</td>
+					<th class="active">가격</th>
 					<td>
 						<select id="price" name="price" class="form-control">
 							<option value="1">1</option>
@@ -45,7 +40,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="left-label">사진</td>
+					<th class="active">사진</th>
 					<td><input type="text" class="form-control" id="cover" name="cover" placeholder="경로"></td>
 				</tr>
 			</table>

@@ -16,25 +16,25 @@
       <c:import url='/WEB-INF/views/admin/header.jsp'/>
       <br><br><h4>카드 추가</h4><br><br>
       <form action="/readingbetter/admin/cardaddform/cardadd" method="post">
-      <table class="table" id="board">
-          <tr class="info">
-             <td>이름</td>
+       <table class="table table-bordered" id="board">
+          <tr>
+             <th class="active">이름</th>
              <td><input type="text" class="form-control" id="card-name" name="title" placeholder="이름"></td>
           </tr>
           <tr>
-             <td>내용</td>
+             <th class="active">내용</th>
              <td><input type="text" class="form-control" id="card-content" name="content" placeholder="내용"></td>
           </tr>
           <tr>
-             <td>능력</td>
+             <th class="active">능력</th>
              <td><input type="text" class="form-control" id="card-power" name="skill" placeholder="능력"></td>
           </tr>
           <tr>
-             <td>점수</td>
+             <th class="active">점수</th>
              <td><input type="text" class="form-control" id="card-score" name="bonus" placeholder="점수"></td>
           </tr>
           <tr>
-             <td>사진</td>
+              <th class="active">사진</th>
              <td><input type="text" class="form-control" id="card-pic" name="cover" placeholder="사진 경로"></td>
           </tr>
       </table>

@@ -7,12 +7,9 @@
 <head>
 <title>ReadingBetter_Admin</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css"
-	rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/admin.css" rel="stylesheet"
-	type="text/css">
-<link href="/readingbetter/assets/css/board.css" rel="stylesheet"
-	type="text/css">
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div class="container-fluid">
@@ -21,22 +18,22 @@
 		
 		<form action="/readingbetter/admin/wishbooklist/wishbookview/accept" method="post">
 			<input type="hidden" name="no" value="${param.no }">
-			<table class="table" id="board">
+			<table class="table table-bordered" id="board">
 				<tr>
-					<td class="active">책제목</td>
+					<th class="active">책제목</th>
 					<td><input type="text" name="title" value="${vo.title }"></td>
-					<td class="active">출판사</td>
+					<th class="active">출판사</th>
 					<td><input type="text" name="publisher" value="${vo.publisher }"></td>
-					<td class="active">작성자</td>
+					<th class="active">작성자</th>
 					<td>${vo.name }</td>
 				</tr>
 	
 				<tr>
-					<td class="active">작성일</td>
+					<th class="active">작성일</th>
 					<td>${vo.regDate }</td>
-					<td class="active">추천수</td>
+					<th class="active">추천수</th>
 					<td>${vo.recommend }</td>
-					<td class="active">대기</td>
+					<th class="active">상태</th>
 					<td>
 						<c:choose>
 							<c:when test="${vo.accept == 0 }">대기</c:when>

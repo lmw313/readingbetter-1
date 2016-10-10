@@ -21,24 +21,22 @@
 			<input type="text" id="kwd" name="kwd" value="${param.kwd }"> 
 			<input type="submit" class="btn btn-default" value="찾기">
 		</form>
-		
-		<table class="tbl-ex">
-			<tr>
+		<br>
+		<table class="table table-bordered">
+			<tr class="active">
 				<th>번호</th>
 				<th>아이디</th>
 				<th>이름</th>
 				<th>경고</th>
-				<th></th>
+				<th>삭제</th>
 			</tr>
-			<c:set var="countList" value="${fn:length(list)}" />
 			<c:forEach var='vo' items='${list }' varStatus='s'>
 				<tr>
-					<td>${countList-s.index}</td>
+					<td>${vo.no }</td>
 					<td>${vo.id }</td>
 					<td>${vo.name }</td>
 					<td>${vo.penalty }</td>
 					<td><a href="/readingbetter/admin/memberlist/delete/${vo.no }">삭제</a></td>
-					
 				</tr>
 			</c:forEach>
 		</table>

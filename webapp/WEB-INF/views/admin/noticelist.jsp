@@ -9,6 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 <title>ReadingBetter_Admin</title>
 </head>
 <body>
@@ -16,29 +17,28 @@
 	<br>
 	<br>
 	<h4>공지</h4>
-	<div>
-		<table id="board" class="table table-bordered table-hover tbl-notice-list">
+	<div id="board">
+		<div id="button-set">
+			<a href="/readingbetter/admin/noticewriteform" class="btn btn-default">추가</a>
+		</div>
+		<table id="board" class="table table-bordered">
 			<thead>
-				<tr>
+				<tr class="active">
 					<th>번호</th>
 					<th>제목</th>
 					<th>작성일</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:set var="countList" value="${fn:length(list)}"/>
 				<c:forEach var='vo' items='${list}' varStatus='s'>
 				<tr>
-					<td>${countList-s.index}</td>
+					<td>${vo.no}</td>
 					<td id="ntitle"><a href="/readingbetter/admin/noticeview/${vo.no }">${vo.title }</a></td>
 					<td>${vo.regDate }</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<div id="buttons">
-			<a href="/readingbetter/admin/noticewriteform" class="btn btn-default">추가</a>
-		</div>
 	</div>
 </body>
 </html>

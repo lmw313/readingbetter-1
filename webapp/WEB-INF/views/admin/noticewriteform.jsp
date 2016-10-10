@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="/readingbetter/assets/css/admin.css" rel="stylesheet" type="text/css">
+<link href="/readingbetter/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<c:import url='/WEB-INF/views/admin/header.jsp' />
@@ -21,11 +22,11 @@
 		<input type="hidden" name="memberNo" value="${authUser.no }">
 		<table id="board" class="table table-bordered">
 			<tr>
-				<th>제목</th>
+				<th class="active">제목</th>
 				<td><input type="text" class="form-control" name="title"></td>
 			</tr>
 			<tr>
-				<th colspan=2>내용</th>
+				<th class="active" colspan=2>내용</th>
 			</tr>
 			<tr>
 				<td id="content" colspan=2>

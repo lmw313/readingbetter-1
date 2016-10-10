@@ -21,16 +21,15 @@
 	<form id="search_form" action="/readingbetter/admin/shoplist" method="post">
 		<input type="text" id="title" name="title"> <input type="submit" value="찾기">
 	</form>
-
-	<div id="buttons">
-		<a href="shopaddform" class="btn btn-default">추가</a>
-	</div>
 	
-	<div>
-		<br> <br>
-		<table id="shopgoods" class="table table-bordered table-hover">
+	<div id="board">
+		<div id="button-set">
+			<a href="shopaddform" class="btn btn-default">추가</a>
+		</div>
+		<br>
+		<table id="shopgoods" class="table table-bordered">
 			<thead>
-				<tr>
+				<tr class="active">
 					<th>번호</th>
 					<th>사진</th>
 					<th>상품명</th>

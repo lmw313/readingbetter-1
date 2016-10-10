@@ -22,15 +22,10 @@
 		<form id="bookadd-form" method="post" action="../modify">
 			<input type="hidden" name="no" value="${vo.no }">
 			<input type="hidden" name="pageNo" value="${param.pageNo }">
-			<table class="tbl-ex tbl-addbook">
+			<table class="table table-bordered">
 				<tr>
-					<th></th>
-					<th></th>
-				</tr>
-				<tr>
-					<td class="left-label">제목</td>
+					<th class="active">제목</th>
 						<td>
-							<label for="title"></label>
 							<input type="text" class="form-control" id="title" value="${vo.title }" name=title>
 							<button class="btn btn-primary" id="check-title" type="button">검색</button>
 							<div id="search-title-result">
@@ -39,29 +34,27 @@
 						</td>
 					</tr>
 				<tr>
-					<td class="left-label">작가</td>
+					<th class="active">작가</th>
 					<td>
-						<label for="author_no"></label>
 						<input type="text" class="form-control" id="authorNo" value="${ vo.authorName }" name="authorName">
 						<button id="btn_writerModal" value="" type="button" class="btn btn-primary " data-toggle="modal" data-target=".writer-modal" >찾기</button>
 					</td>
 				<tr>
-					<td class="left-label">출판사</td>
+					<th class="active">출판사</th>
 					<td>
 						<input type="text" class="form-control" id="publisher" value="${vo.publisherTitle }" name="publisherTitle">
 						<button id="btn_publisherModal" type="button" class="btn btn-primary" data-toggle="modal" data-target=".publisher-modal" >찾기</button>
 					</td>
 				</tr>
 				<tr>
-					<td class="left-label">추천학년</td>
+					<th class="active">추천학년</th>
 					<td>
 						<input type="text" class="form-control" id="recommend" value="${vo.recommend }" name="recommend">
 					</td>
 				</tr>
 				<tr>
-					<td class="left-label">사진</td>
+					<th class="active">사진</th>
 					<td>
-						<label for=""></label>
 						<input type="text" class="form-control" id="cover" name="cover" value="${vo.cover}">
 					</td>
 				</tr>

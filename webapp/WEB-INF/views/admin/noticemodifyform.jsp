@@ -36,9 +36,6 @@
 				<td>${vo.regDate }</td>
 			</tr>
 			<tr>
-				<td colspan=8 class="active"></td>
-			</tr>
-			<tr>
 				<td id="notice-content" colspan=8 rowspan=5>
 					<div class="form-group">
 						<textarea class="form-control" name="content" >${vo.content }</textarea>

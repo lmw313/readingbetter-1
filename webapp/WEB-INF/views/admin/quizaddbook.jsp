@@ -17,8 +17,8 @@
 <br><br>
 <h4>도서 관리</h4>
 	<div id="board">	
-		<table class="tbl-ex">		
-			<tr>
+		<table class="table table-bordered">		
+			<tr class="active">
 				<th>번호</th>
 				<th>제목</th>
 				<th>작가</th>
@@ -26,10 +26,9 @@
 				<th>사진</th>
 				<th>선택</th>
 			</tr>
-		 	<c:set var="countList" value="${fn:length(bookList)}"/>
 	 	 	<c:forEach var='vo' items='${bookList}' varStatus='s'>
 				<tr>
-					<td>${countList-s.index }</td>
+					<td>${vo.no }</td>
 					<td>${vo.title }</td>
 					<td>${vo.authorName }</td>
 					<td>${vo.publisherTitle }</td>

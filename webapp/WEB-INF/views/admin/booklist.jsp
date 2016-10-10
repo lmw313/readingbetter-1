@@ -19,9 +19,9 @@
 	<div id="board">
  		<div id="button-set">
  			<a href="/readingbetter/admin/bookaddform" class="btn btn-default">추가</a>
- 		</div>
-		<table class="tbl-ex">		
-			<tr>
+ 		</div><br>
+		<table class="table table-bordered">		
+			<tr class="active">
 				<th>번호</th>
 				<th>제목</th>
 				<th>작가</th>

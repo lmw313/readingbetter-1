@@ -31,15 +31,14 @@
 				</form>
 				<br>
 				<h5>출판사 관리</h5>
-				<table class="tbl-ex">		
+				<table class="table table-bordered">
 					<tr>
-						<th>번호</th>
-						<th>이름</th>
-					</tr>				
-					<c:set var="countList" value="${fn:length(publisherlist)}"/>
+						<th class="active">번호</th>
+						<th class="active">이름</th>
+					</tr>
 			  		<c:forEach var='publisherVo' items='${publisherlist}' varStatus='s'>
 						<tr>
-							<td>${countList-s.index}</td>
+							<td>${publisherVo.no}</td>
 							<td>${publisherVo.title }</td>
 						</tr>
 			 		</c:forEach>
@@ -60,15 +59,14 @@
 								
 				<br>
 				<h5>작가 관리</h5>
-				<table class="tbl-ex">		
+				<table class="table table-bordered">		
 					<tr>
-						<th>번호</th>
-						<th>이름</th>
-					</tr>				
-					<c:set var="countList" value="${fn:length(authorlist)}"/>
+						<th class="active">번호</th>
+						<th class="active">이름</th>
+					</tr>
 			  		<c:forEach var='authorVo' items='${authorlist}' varStatus='s'>
 						<tr>
-							<td>${countList-s.index}</td>
+							<td>${authorVo.no}</td>
 							<td>${authorVo.name }</td>
 						</tr>
 			 		</c:forEach>

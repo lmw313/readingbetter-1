@@ -27,10 +27,10 @@
 		</form>
 		
 		<!-- table -->
-		<table class="table table-striped" id="board">
-			<tr class="info">
-				<td>번호</td>
-				<td>이름</td>
+		<table class="table table-bordered" id="board">
+			<tr class="active">
+				<th>번호</th>
+				<th>이름</th>
 			</tr>
 			<c:set var="countList" value="${fn:length(list)}" />
 			<c:forEach var='vo' items='${list }' varStatus='s'>

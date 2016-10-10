@@ -17,8 +17,8 @@
 <br><br>
 <h4>희망도서 관리</h4>
 	<div id="board">
-		<table class="tbl-ex">
-			<tr>
+		<table class="table table-bordered">
+			<tr class="active">
 				<th>번호</th>
 				<th>제목</th>
 				<th>작성자</th>

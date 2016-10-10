@@ -21,8 +21,8 @@
 			<input type="text" id="title" name="title">
 			<input type="submit" value="찾기">
 		</form>
-		<table class="table card-table" id="board">
-			<tr class="info">
+		<table class="table table-bordered" id="board">
+			<tr class="active">
 				<th>번호</th>
 				<th>사진</th>
 				<th>이름</th>

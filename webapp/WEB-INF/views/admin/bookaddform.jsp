@@ -20,38 +20,32 @@
 	<h4>도서 추가</h4>
 	<div id="board">
 		<form id="bookadd-form" method="post" action="insertbook">
-			<table class="tbl-ex tbl-addbook">
+			<table class="table table-bordered">
 				<tr>
-					<th></th>
-					<th></th>
-				</tr>
+					<th class="active">제목</th>
+					<td>
+						<input type="text" class="form-control" id="title" value="" name=title>
+						<button class="btn btn-primary" id="check-title" type="button">검색</button>
+						<div id="search-title-result">
+							<a>검색결과</a>
+						</div>
+					</td>
 				<tr>
-					<td class="left-label">제목</td>
-						<td>
-							<label for="title"></label>
-							<input type="text" class="form-control" id="title" value="" name=title>
-							<button class="btn btn-primary" id="check-title" type="button">검색</button>
-							<div id="search-title-result">
-								<a>검색결과</a>
-							</div>
-						</td>
-					</tr>
-				<tr>
-					<td class="left-label">작가</td>
+					<th class="active">작가</th>
 					<td>
 						<label for="author_no"></label>
 						<input type="text" class="form-control" id="authorNo" value="" name="authorName">
 						<button id="btn_writerModal" value="" type="button" class="btn btn-primary " data-toggle="modal" data-target=".writer-modal" >찾기</button>
 					</td>
 				<tr>
-					<td class="left-label">출판사</td>
+					<th class="active">출판사</th>
 					<td>
 						<input type="text" class="form-control" id="publisher" value="" name="publisherTitle">
 						<button id="btn_publisherModal" type="button" class="btn btn-primary" data-toggle="modal" data-target=".publisher-modal" >찾기</button>
 					</td>
 				</tr>
 				<tr>
-					<td class="left-label">추천학년</td>
+					<th class="active">추천학년</th>
 					<td>
 						<select class="form-control" name=recommend>
 							<option>1</option>
@@ -64,9 +58,8 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="left-label">사진</td>
+					<th class="active">사진</th>
 					<td>
-						<label for=""></label>
 						<input type="text" class="form-control" id="cover" name="cover">
 					</td>
 				</tr>

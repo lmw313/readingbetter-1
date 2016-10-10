@@ -28,10 +28,9 @@
 					<th>신고일</th>
 					<th>승인</th>
 				</tr>
-				<c:set var="countList" value="${fn:length(accusationlist)}" />
 				<c:forEach var='vo' items='${accusationlist}' varStatus='s'>
 					<tr>
-						<td>${countList-s.index}</td>
+						<td>${vo.no}</td>
 						<td>
 							<c:choose>
 		                        <c:when test="${vo.identity == 1}">리뷰</c:when>
