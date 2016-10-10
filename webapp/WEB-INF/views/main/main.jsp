@@ -87,12 +87,6 @@
 							<div id="ranking_box" class="tab-box2">
 								<h4>순위</h4>
 								<div id="carousel-ranking" class="carousel slide" data-ride="carousel">
-									<!-- Indicators -->
-									<ol class="carousel-indicators">
-										<li data-target="#carousel-ranking" data-slide-to="0" class="active"></li>
-										<li data-target="#carousel-ranking" data-slide-to="1"></li>
-									</ol>
-
 									<!-- Wrapper for slides -->
 									<div class="carousel-inner" role="listbox">
 										<div class="item active">
