@@ -1,4 +1,5 @@
 $(function(){
+	// 카테고리 드랍박스
 	$("#dLabel1").mouseover(function(){
 		$("#dLabel1").dropdown('toggle');
 	});
@@ -17,5 +18,40 @@ $(function(){
 	
 	$("#dLabel5").mouseover(function(){
 		$("#dLabel5").dropdown('toggle');
+	});
+	
+	// 로고
+	$("#logo").mouseover(function(){
+		document.getElementById("logo").src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/logo_p.png";
+	});
+	
+	$("#logo").mouseout(function(){
+		document.getElementById("logo").src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/logo.png";
+	});
+	
+	// btn-book
+	$("#btn-book").mouseover(function changeElement(id){
+		var el = document.getElementById("btn-book");
+		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/p_reading.png";
+		el.style.height = "131.5px";
+	});
+	
+	$("#btn-book").mouseout(function(){
+		var el = document.getElementById("btn-book");
+		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_reading.png";
+		el.style.height = "70px";
+	});
+	
+	// btn-rank
+	$("#btn-rank").mouseover(function changeElement(id){
+		var el = document.getElementById("btn-rank");
+		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/p_ranking.png";
+		el.style.height = "115px";
+	});
+	
+	$("#btn-rank").mouseout(function(){
+		var el = document.getElementById("btn-rank");
+		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_ranking.png";
+		el.style.height = "70px";
 	});
 });
