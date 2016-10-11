@@ -2,6 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!-- 해더 -->
+<script type="text/javascript" src="/readingbetter/assets/js/header.js"></script>
+<!-- /해더 -->
+
 <div class="row">
 	<div id="header" class="col-lg-12">
 		<a href="/readingbetter/main">
@@ -23,11 +28,79 @@
 		</ul>
 		<br> <br>
 		<div>
-			<a href="/readingbetter/book/booklist">독서활동</a>
-			<a href="/readingbetter/ranking/summary">순위</a>
-			<a href="/readingbetter/shop">상점</a>
-			<a href="/readingbetter/mypage/info">내정보</a>
-			<a href="/readingbetter/service/noticelist">고객센터</a>
+			<div class="col-lg-1"></div>
+			<div class="col-lg-2">
+				<div class="dropdown">
+					<a id="dLabel1" class="dropdown-toggle" data-target=""
+						href="/readingbetter/book/booklist" data-toggle="dropdown" aria-haspopup="true"
+						role="button" aria-expanded="false"> 독서활동 <span class="caret"></span>
+					</a>
+	
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel1">
+						<li><a href="/readingbetter/book/booklist">책 목록</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="col-lg-2">
+				<div class="dropdown">
+					<a id="dLabel2" class="dropdown-toggle" data-target=""
+						href="/readingbetter/ranking/summary" data-toggle="dropdown" aria-haspopup="true"
+						role="button" aria-expanded="false"> 순위 <span class="caret"></span>
+					</a>
+	
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel2">
+						<li><a href="/readingbetter/ranking/summary">순위 한눈에 보기</a></li>
+						<li><a href="/readingbetter/ranking/monthlytotal">이번달 전체 순위</a></li>
+						<li><a href="/readingbetter/ranking/monthlyschool">이번달 학교별 순위</a></li>
+						<li><a href="/readingbetter/ranking/monthlygrade?grade=1">이번달 학년별 순위</a></li>
+						<li><a href="/readingbetter/ranking/honor">명예의 전당</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-2">
+				<div class="dropdown">
+					<a id="dLabel3" class="dropdown-toggle" data-target=""
+						href="/readingbetter/shop" data-toggle="dropdown" aria-haspopup="true"
+						role="button" aria-expanded="false"> 상점 <span class="caret"></span>
+					</a>
+	
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel3">
+						<li><a href="/readingbetter/shop">상점</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="col-lg-2">
+				<div class="dropdown">
+					<a id="dLabel4" class="dropdown-toggle" data-target=""
+						href="/readingbetter/mypage/info" data-toggle="dropdown" aria-haspopup="true"
+						role="button" aria-expanded="false"> 내정보 <span class="caret"></span>
+					</a>
+	
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel4">
+						<li><a href="/readingbetter/mypage/info">내 정보 보기</a></li>
+						<li><a href="/readingbetter/mypage/history">나의 활동</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="col-lg-2">
+				<div class="dropdown">
+					<a id="dLabel5" class="dropdown-toggle" data-target=""
+						href="/readingbetter/service/noticelist" data-toggle="dropdown" aria-haspopup="true"
+						role="button" aria-expanded="false"> 고객센터 <span class="caret"></span>
+					</a>
+	
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel5">
+						<li><a href="/readingbetter/service/noticelist">공지</a></li>
+						<li><a href="/readingbetter/service/questionlist">문의 게시판</a></li>
+						<li><a href="/readingbetter/service/wishbooklist">희망도서 신청</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-1"></div>
 		</div>
 	</div>
 </div>

@@ -8,11 +8,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ReadingBetter</title>
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
+
+<!-- 공통 -->
 <script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="/readingbetter/assets/dist/js/bootstrap.js"></script>
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!-- /공통 -->
+
+<!-- 개별 -->
+<link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/readingbetter/assets/js/booklist.js"></script>
+<!-- /개별 -->
+
 </head>
 <body>
 	<div class="container-fluid">

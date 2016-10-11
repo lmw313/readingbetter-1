@@ -1,19 +1,33 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page contentType="text/html;charset=UTF-8"%>
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ReadingBetter</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+<!-- 공통 -->
+<script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
+<script type="text/javascript" src="/readingbetter/assets/dist/js/bootstrap.js"></script>
 <link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!-- /공통 -->
+
+
+<!-- 개별 -->
 <link href="/readingbetter/assets/css/ranking.css" rel="stylesheet" type="text/css">
+<!-- /개별 -->
+
+
+
+
 </head>
 <body>
-<input type="hidden" class="category" value="summary">
 	<div class="container-fluid">
 		<c:import url='/WEB-INF/views/include/header.jsp' />
+		<input type="hidden" class="category" value="summary">
 		<div class="row asideWrap">
 			<div id="navigation" class="col-lg-2">
 				<c:import url='/WEB-INF/views/include/navi_ranking.jsp' />

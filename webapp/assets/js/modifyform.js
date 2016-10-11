@@ -18,7 +18,6 @@ $(document).ready(function() {
 	});
 
 	if ($("#element").is(":checked")) {
-		console.log("element checked");
 		$("#school-info").show();
 	}
 

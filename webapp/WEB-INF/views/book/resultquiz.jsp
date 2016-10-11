@@ -7,10 +7,14 @@
 <head>
 <title>ReadingBetter</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
+
+<!-- 공통 -->
 <script type="text/javascript" src="/readingbetter/assets/js/jquery/jquery-3.1.0.js"></script>
 <script type="text/javascript" src="/readingbetter/assets/dist/js/bootstrap.js"></script>
+<link href="/readingbetter/assets/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<!-- /공통 -->
+
+<link href="/readingbetter/assets/css/book.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/readingbetter/assets/js/resultquiz.js"></script>
 </head>
 <body>
