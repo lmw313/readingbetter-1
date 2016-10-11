@@ -98,3 +98,12 @@ div#radio-group-information   {
    	border:1px solid #666;
    	border-radius: 10px;
 }
+
+/* main 페이지 랭킹*/
+#main .rank th { font-size:1.1em; text-align:center; vertical-align: middle;} /* 테이블 첫번쨰 행*/
+#main .rank td { font-size:1em; text-align:center} /* 테이블 첫번째 행을 제외한 나머지 행 */
+#main .rank {
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}

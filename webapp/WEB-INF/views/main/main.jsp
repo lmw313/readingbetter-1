@@ -94,13 +94,13 @@
 									<!-- Wrapper for slides -->
 									<div class="carousel-inner" role="listbox">
 										<div class="item active">
-											<div id="total_rank">
+											<div id="main_totalrank">
 												<label>이 달의 Top 5</label>
-												<table id="ltable" class="table table-striped">
+												<table class="table table-striped rank">
 													<tr>
-														<td id="mtrtext">순위</td>
-														<td id="mtrtext">아이디</td>
-														<td id="mtrtext">점수</td>
+														<th>순위</th>
+														<th>아이디</th>
+														<th>점수</th>
 													</tr>
 													<c:forEach items="${monthlyMainRank }" var="scoresvo">
 														<tr>
@@ -111,9 +111,9 @@
 													</c:forEach>
 												</table>
 											</div>
-											<div id="honor_rank">
+											<div id="main_honorrank">
 												<label>명예의 전당 Top 5</label>
-												<table id="ltable" class="table table-striped">
+												<table class="table table-striped rank">
 													<tr>
 														<td id="mtrtext">순위</td>
 														<td id="mtrtext">아이디</td>
@@ -130,13 +130,14 @@
 											</div>
 										</div>
 										<div class="item">
-											<div id="honor_rank">
+											<div id="main_schoolrank">
 												<label>이 달의 학교 Top 5</label>
-												<table id="ltable" class="table table-striped">
+												<table class="table table-striped rank">
 													<tr>
-														<td id="mtrtext">순위</td>
-														<td id="mtrtext">아이디</td>
-														<td id="mtrtext">점수</td>
+														<tr>
+														<th>순위</th>
+														<th>학교명</th>
+														<th>점수</th>
 													</tr>
 													<c:forEach items="${mainSchool }" var="scoresvo">
 														<tr>
@@ -147,9 +148,16 @@
 													</c:forEach>
 												</table>
 											</div>
-											<div id="honor_rank">
-												<label>이 달의 우리 학년 Top 5</label>
-												<table id="ltable" class="table table-striped">
+											<div id="main_graderank">
+												<c:choose>
+ 													<c:when test="${mainGrade ne null}">
+ 														<label>이 달의 우리 학년 Top 5  - ${monthlyMyGradeRank.grade }학년</label>
+ 													</c:when>
+ 													<c:otherwise>
+ 														<label>이 달의 우리 학년 Top 5</label>
+ 													</c:otherwise>
+ 												</c:choose>
+												<table class="table table-striped rank">
 													<colgroup>
 														<col width="20%" />
 														<col width="40%" />
