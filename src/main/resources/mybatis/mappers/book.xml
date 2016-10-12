@@ -28,7 +28,7 @@
  											  and author_no !=0 
  											  and a.title like '%' || #{bkwd} || '%' 
  										order by a.no) c)
-      			where (#{pageNo}-1)*3+1<=rnum and rnum<=#{pageNo}*3 
+      			where (#{pageNo}-1)*5+1<=rnum and rnum<=#{pageNo}*5 
 		]]>
 	</select>
 

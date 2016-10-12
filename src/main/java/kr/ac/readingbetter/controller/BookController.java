@@ -62,7 +62,7 @@ public class BookController {
 	// 책 리스트 검색, 페이징
 	@RequestMapping(value = "/booklist", method = RequestMethod.GET)
 	public String bookListPage(BookVo bookvo, Model model) {
-		int pageLength = 3;
+		int pageLength =5;
 		int beginPage;
 
 		if (bookvo.getPageNo() == null) {
@@ -83,13 +83,17 @@ public class BookController {
 		int currentBlock = (int) Math.ceil((double) bookvo.getPageNo() / pageLength);
 
 		int currentPage = bookvo.getPageNo();
-		beginPage = (currentBlock - 1) * 3 + 1;
+		beginPage = (currentBlock - 1) * 5 + 1;
 
 		int total = (int) Math.ceil((double) list.size() / pageLength);
-		int endPage = currentBlock * 3;
+		int endPage = currentBlock * 5;
 		if (endPage > total) {
 			endPage = total;
 		}
+		System.out.println("beginPage"+beginPage);
+		System.out.println("endPage"+endPage);
+		System.out.println("total"+total);
+		System.out.println(list.size());
 
 		model.addAttribute("bkwd", bkwd);
 		model.addAttribute("beginPage", beginPage);
