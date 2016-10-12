@@ -90,10 +90,6 @@ public class BookController {
 		if (endPage > total) {
 			endPage = total;
 		}
-		System.out.println("beginPage"+beginPage);
-		System.out.println("endPage"+endPage);
-		System.out.println("total"+total);
-		System.out.println(list.size());
 
 		model.addAttribute("bkwd", bkwd);
 		model.addAttribute("beginPage", beginPage);
