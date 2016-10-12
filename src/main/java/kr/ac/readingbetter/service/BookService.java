@@ -1,8 +1,15 @@
 package kr.ac.readingbetter.service;
 
+import java.io.InputStream;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +17,10 @@ import kr.ac.readingbetter.dao.BookDao;
 import kr.ac.readingbetter.dao.DaysDao;
 import kr.ac.readingbetter.dao.QuizDao;
 import kr.ac.readingbetter.dao.ToBookDao;
+import kr.ac.readingbetter.parser.NaverParser;
 import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
+import kr.ac.readingbetter.vo.BuyBookVo;
 import kr.ac.readingbetter.vo.QuizVo;
 import kr.ac.readingbetter.vo.ToBookVo;
 
@@ -144,5 +153,35 @@ public class BookService {
 		}
 		
 		return todayBookList;
+	}
+	
+	public List<BuyBookVo> buyBook(String title){
+		InputStream content = null;
+		List<BuyBookVo> buyBookList = new ArrayList<>();
+		
+		try {
+			String kwd = URLEncoder.encode(title, "UTF-8");
+			
+			String clientId = "0Eb4z11jHdc4qGUmtn1k";
+			String clientSecret = "bIKEMQ1hla";
+			String url = "https://openapi.naver.com/v1/search/shop.xml?query=" + kwd + "&sort=asc&display=100";
+
+			HttpClient client = HttpClientBuilder.create().build();
+			HttpGet request = new HttpGet(url);
+
+			request.addHeader("X-Naver-Client-Id", clientId);
+			request.addHeader("X-Naver-Client-Secret", clientSecret);
+			HttpResponse response = client.execute(request);
+			
+			HttpEntity entity = response.getEntity();
+			content = entity.getContent();	// InputStream
+
+			NaverParser naverAPI = new NaverParser();
+			buyBookList = naverAPI.parse(content);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return buyBookList;
 	}
 }

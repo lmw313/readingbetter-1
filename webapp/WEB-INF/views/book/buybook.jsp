@@ -32,17 +32,12 @@
 				<div id="list">
 					<div class="small-menu">
 						<a href="/readingbetter/main">홈</a> > 
-						<a href="/readingbetter/book/booklist">독서활동</a> > 책목록
+						<a href="/readingbetter/book/booklist">독서활동</a> > 책 구매
 					</div>
-					<p class="menu-title">책 목록</p>
-					
-					<form id="search_form" action="" method="get">
- 						<input type="text" id="bkwd" name="bkwd" value="${bkwd }">
- 						<input id="btn-s" type="submit" value="찾기">
-					</form>
-					<br>
-					
-					<c:forEach var='vo' items='${listpage}' varStatus='s'>
+					<p class="menu-title">책 구매</p>
+					<p><b>${param.title }</b> 상품 검색 결과입니다</p>
+					<p><b>이미지</b>를 누르면 해당 상품 페이지로 이동합니다</p>
+					<c:forEach begin='${(currentPage-1)*items }' end='${(currentPage-1)*items + items -1 }' step='1' var='i'>
 						<table id="book-table">
 							<colgroup>
 								<col width="30%" />
@@ -52,41 +47,26 @@
 							</colgroup>					 
 							<tr>
 								<td rowspan="4">
-									<img class="img-thumbnail" src="${vo.cover }">
+									<a href="${buyBookList[i].link }">
+										<img class="img-thumbnail" src="${buyBookList[i].image }">
+									</a>
 								</td>
-								<td colspan="3">${vo.title }</td>
+								<td colspan="3">${buyBookList[i].title }</td>
 							</tr>
 							<tr>
-								<td class="table-right">작가</td>
-								<td class="table-left">${vo.authorName }</td>
+								<td class="table-right">가격</td>
+								<td class="table-left">${buyBookList[i].lprice }</td>
 								<td></td>
 							</tr>
 							<tr>
-								<td class="table-right">출판사</td>
-								<td class="table-left">${vo.publisherTitle }</td>
-								<td>
-									<a class="btn btn-default" href="/readingbetter/book/buybook?title=${vo.title }">책 구매</a>
-								</td>
+								<td class="table-right">쇼핑몰</td>
+								<td class="table-left">${buyBookList[i].mallName }</td>
+								<td></td>
 							</tr>
 							<tr>
-								<td class="table-right">추천학년</td>
-								<td class="table-left">${vo.recommend }</td>
-								<c:choose>
-									<c:when test="${not empty sessionScope.authUser}">
-										<td>
-											<a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
-											<a class="btn btn-default btn-solve" data-no="${vo.no }" role="button">문제풀기</a>
-											<a class="btn btn-default" href="/readingbetter/book/makequizform/${vo.no}" role="button">문제내기</a>
-										</td>
-									</c:when>
-									<c:otherwise>
-										<td>
-											<a class="btn btn-default" href="/readingbetter/book/review/${vo.no}" role="button">리뷰보기</a>
-											<a class="btn btn-default disabled" role="button">문제풀기</a>
-											<a class="btn btn-default disabled" role="button">문제내기</a>
-										</td>									
-									</c:otherwise>
-								</c:choose>
+								<td class="table-right"></td>
+								<td class="table-left"></td>
+								<td></td>
 							</tr>					
 						</table>
 						<br>
@@ -98,7 +78,7 @@
 						<ul>
 							<c:if test="${beginPage>1 }">
 								<li>
-									<a href="/readingbetter/book/booklist?pageNo=${beginPage-1 }&bkwd=${bkwd}">◀</a>
+									<a href="/readingbetter/book/buybook?pageNo=${beginPage-1 }&title=${param.title }">◀</a>
 									<input type="hidden" name="pageNo" value="${beginPage-1 }">
 								</li>
 							</c:if>
@@ -109,16 +89,16 @@
 									</c:when>
 								<c:otherwise>
 									<li>
-										<a href="/readingbetter/book/booklist?pageNo=${i }&bkwd=${bkwd}">${i }</a>
+										<a href="/readingbetter/book/buybook?pageNo=${i }&title=${param.title }">${i }</a>
 										<input type="hidden" name="pageNo" value="${i}">
 									</li>
 								</c:otherwise>
 								</c:choose>
 							</c:forEach>
 						
-							<c:if test='${endPage<total }'>
+							<c:if test='${endPage<maxPage }'>
 								<li>
-									<a href="/readingbetter/book/booklist?pageNo=${endPage+1 }&bkwd=${bkwd}">▶</a>
+									<a href="/readingbetter/book/buybook?pageNo=${endPage+1 }&title=${param.title }">▶</a>
 									<input type="hidden" name="pageNo" value="${endPage+1}">
 								</li>
 							</c:if>

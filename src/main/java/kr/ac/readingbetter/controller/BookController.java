@@ -25,6 +25,7 @@ import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.AccusationVo;
 import kr.ac.readingbetter.vo.AnswerVo;
 import kr.ac.readingbetter.vo.BookVo;
+import kr.ac.readingbetter.vo.BuyBookVo;
 import kr.ac.readingbetter.vo.CardVo;
 import kr.ac.readingbetter.vo.CertificationVo;
 import kr.ac.readingbetter.vo.HistoryVo;
@@ -96,6 +97,41 @@ public class BookController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("total", total);
 		return "book/booklist";
+	}
+	
+	// 책 구매
+	@RequestMapping(value = "/buybook", method = RequestMethod.GET)
+	public String buyBook(Model model, @RequestParam("title") String title, 
+			@RequestParam(value = "pageNo", required = false, defaultValue="1") int currentPage){
+		// 책 구매 목록
+		List<BuyBookVo> buyBookList = bookService.buyBook(title);
+		
+		// 페이징
+		int listLength = buyBookList.size();
+		final int pageLength = 5;
+		int beginPage;
+		int endPage;
+		int currentBlock;
+		final int items = 5;
+		
+		int maxPage = ((listLength - 1) / pageLength) + 1; // 5개면 1페이지, 6개면 2페이지
+		
+		currentBlock = ((currentPage - 1) / pageLength); 	// 5페이지면 0, 6페이지면 1
+		beginPage = 1 + pageLength * currentBlock;			// 5페이지면 1, 6페이지면 6
+		endPage = pageLength + pageLength * currentBlock;	// 5페이지면 5, 6페이지면 10
+		
+		if(endPage > maxPage){
+			endPage = maxPage;
+		}
+		
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("buyBookList", buyBookList);
+		model.addAttribute("beginPage", beginPage);
+		model.addAttribute("endPage", endPage);
+		model.addAttribute("maxPage", maxPage);
+		model.addAttribute("items", items);
+		
+		return "book/buybook";
 	}
 	///////////////////////////////////////////////////////////////////////////
 
