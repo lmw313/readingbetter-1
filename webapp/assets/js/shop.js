@@ -25,10 +25,10 @@ $(function() {
 		var no = $("#no").val();
 		var title = $("#title").text();
 		var point = $("#point").val();
-
-		if ($("#point").val() < $("#price").text()) {
+		
+		if (point < price) {
 			alert("캔디가 부족합니다");
-			return false;
+			return;
 		}
 
 		var vo = {
