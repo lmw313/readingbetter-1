@@ -51,7 +51,7 @@
 				</td>
 				<td rowspan="3" valign="bottom">
 					<a href="/readingbetter/service/noticelist">
-						<img id="btn-store" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_center.png">
+						<img id="btn-center" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_center.png">
 					</a>
 				</td>
 			</tr>
@@ -61,7 +61,7 @@
 			<tr>
 				<td>
 					<a href="/readingbetter/shop">
-						<img id="button" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_store.png">
+						<img id="btn-store" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_store.png">
 					</a>
 				</td>
 			</tr>

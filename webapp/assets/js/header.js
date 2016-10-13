@@ -54,4 +54,44 @@ $(function(){
 		el.style.height = "70px";
 		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_ranking.png";
 	});
+	
+	   // btn-info
+	   $("#btn-info").mouseover(function changeElement(id){
+	      var el = document.getElementById("btn-info");
+	      el.style.height = "111px";
+	      el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/p_myinfo.png";
+	   });
+	   
+	   $("#btn-info").mouseout(function(){
+	      var el = document.getElementById("btn-info");
+	      el.style.height = "70px";
+	      el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_myinfo.png";
+	   });
+	   
+	   // btn-center
+	   $("#btn-center").mouseover(function changeElement(id){
+	      var el = document.getElementById("btn-center");
+	      el.style.height = "116px";
+	      el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/p_center.png";
+	   });
+	   
+	   $("#btn-center").mouseout(function(){
+	      var el = document.getElementById("btn-center");
+	      el.style.height = "70px";
+	      el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_center.png";
+	   });
+	   //
+	   
+	   // btn-store
+	   $("#btn-store").mouseover(function changeElement(id){
+	      var el = document.getElementById("btn-store");
+	      el.style.height = "70px";
+	      el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/p_store.png";
+	   });
+	   
+	   $("#btn-store").mouseout(function(){
+	      var el = document.getElementById("btn-store");
+	      el.style.height = "70px";
+	      el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_store.png";
+	   });
 });
