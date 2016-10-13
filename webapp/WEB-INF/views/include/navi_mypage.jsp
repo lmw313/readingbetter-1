@@ -8,5 +8,6 @@
 	<ul>
 		<li><a href="/readingbetter/mypage/info" class="info">내 정보 보기</a></li>
 		<li><a href="/readingbetter/mypage/history" class="history">나의 활동</a></li>
+		<li><a href="/readingbetter/mypage/gifticon" class="gifticon">기프티콘</a></li>
 	</ul>
 </div>

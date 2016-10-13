@@ -12,8 +12,10 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import kr.ac.readingbetter.dao.GifticonDao;
 import kr.ac.readingbetter.dao.MemberDao;
 import kr.ac.readingbetter.dao.ShopDao;
+import kr.ac.readingbetter.vo.GifticonVo;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.ShopVo;
 
@@ -29,10 +31,17 @@ public class ShopService {
 	@Autowired
 	private JavaMailSender mailSender; // 메일 전송
 	
+	@Autowired
+	 private GifticonDao gifticonDao;
+	
 	// 상품 리스트 출력
 	public List<ShopVo> getList(ShopVo vo) {
 		return shopDao.getList(vo);
 	}
+	//기프티콘 추가
+	 		public void gifticonInsert(GifticonVo vo) {
+	 			gifticonDao.gifticonInsert(vo);
+	 		}
 
 	// 상품 추가
 	public void goodsInsert(ShopVo vo) {

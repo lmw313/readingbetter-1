@@ -15,6 +15,7 @@ import kr.ac.readingbetter.service.MemberService;
 import kr.ac.readingbetter.service.MypageService;
 import kr.ac.readingbetter.service.ScoresService;
 import kr.ac.readingbetter.vo.CertificationVo;
+import kr.ac.readingbetter.vo.GifticonVo;
 import kr.ac.readingbetter.vo.HistoryVo;
 import kr.ac.readingbetter.vo.MemberVo;
 import kr.ac.readingbetter.vo.ScoresVo;
@@ -130,4 +131,37 @@ public class MyPageController {
 
 		return "mypage/history";
 	}
+	
+/////////기프티콘 보기
+	
+@RequestMapping("/gifticon")
+public String Gifticon(HttpSession session,GifticonVo vo,Model model) {
+	MemberVo authUser = (MemberVo) session.getAttribute("authUser");
+	vo.setMemberNo(authUser.getNo());
+	List<GifticonVo> list = mypageService.ListId(vo);
+	List<GifticonVo> listpage = mypageService.ListPage(vo);
+	
+	int pageLength = 5;
+	int beginPage;
+	int currentBlock = (int) Math.ceil((double) vo.getPageNo() / pageLength);
+
+	int currentPage = vo.getPageNo();
+	beginPage = (currentBlock - 1) * 5 + 1;
+
+	int total = (int) Math.ceil((double) list.size() / pageLength);
+	int endPage = currentBlock * 5;
+	if (endPage > total) {
+		endPage = total;
+	}
+
+	
+
+	model.addAttribute("beginPage", beginPage);
+	model.addAttribute("currentPage", currentPage);
+	model.addAttribute("endPage", endPage);
+	model.addAttribute("total", total);
+	model.addAttribute("list", listpage);
+	return "mypage/gifticon";
+
+}
 }
