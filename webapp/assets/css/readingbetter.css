@@ -18,13 +18,13 @@ ul, ol			{ list-style-type: none }
 }
 
 #header {
-	height: 180px;
 	position:relative;
 	z-index:20;
 	overflow:hidden;
 	background-image:
 		url("http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/bg_header.png");
 	background-repeat: repeat;
+	
 }
 
 #content {
@@ -60,6 +60,7 @@ div#header	li		{ float:right }
 div#header	a 		{ color:#4F4F4F; font-weight:bold; margin-left:10px; text-decoration:none; }
 div#header #logo {
 	margin: 0 25px;
+	height: 100px;
 }
 
 /* navigation */

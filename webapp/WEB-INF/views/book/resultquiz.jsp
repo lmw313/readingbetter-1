@@ -103,7 +103,7 @@
 
 <!-- 카드모달 -->
 <div id="cardModal" class="modal fade card-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-md">
+	<div class="modal-dialog card-modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -112,8 +112,7 @@
 				<h4 class="modal-title">당신을 도와줄 포켓몬</h4>
 			</div>
 			<div class="modal-body">
-				<img id="img-pokemon" class="img-rounded"
-					src="${cardVo.cover }" width="500px">
+				<img id="img-pokemon" class="img-rounded" src="${cardVo.cover }" >
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>

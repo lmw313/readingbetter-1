@@ -22,13 +22,11 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
+		<a href="/readingbetter/main">
+			<img id="logo" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/logo.png">
+		</a>
 		<table>
 			<tr>
-				<td rowspan="3">
-					<a href="/readingbetter/main">
-						<img id="logo" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/logo.png">
-					</a>
-				</td>
 				<td rowspan="3" valign="bottom">
 					<a href="/readingbetter/book/booklist"> 
 						<img id="btn-book" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_reading.png">
@@ -55,8 +53,7 @@
 					</a>
 				</td>
 			</tr>
-
-			<tr>
+					<tr>
 			</tr>
 			<tr>
 				<td>
@@ -66,7 +63,7 @@
 				</td>
 			</tr>
 		</table>
-		
+
 <%--  		<a href="/readingbetter/main">
 			<img id="img"
 				src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/rb_logo.png">
