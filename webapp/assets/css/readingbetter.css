@@ -55,12 +55,20 @@ ul, ol			{ list-style-type: none }
 }
 
 /* header */
-div#header	img		{ height:70px; line-height:70px; margin:0; color:#79B30B; float: left; }
+div#header	img		{ width: 175px; line-height:70px; margin:0; color:#79B30B; float: left; }
 div#header	li		{ float:right }
 div#header	a 		{ color:#4F4F4F; font-weight:bold; margin-left:10px; text-decoration:none; }
 div#header #logo {
-	margin: 0 25px;
-	height: 100px;
+	width: 150px;
+	float: left top;
+}
+div#header #anim {
+	width: 100px;
+}
+div#header .tbl-category {
+	margin-left: auto;
+	margin-right: auto;
+	
 }
 
 /* navigation */
