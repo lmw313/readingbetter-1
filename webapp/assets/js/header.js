@@ -22,36 +22,36 @@ $(function(){
 	
 	// 로고
 	$("#logo").mouseover(function(){
-		document.getElementById("logo").src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/logo_p.png";
+		document.getElementById("logo").src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/logo_p.png";
 	});
 	
 	$("#logo").mouseout(function(){
-		document.getElementById("logo").src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/logo.png";
+		document.getElementById("logo").src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/logo.png";
 	});
 	
 	// btn-book
 	$("#btn-book").mouseover(function changeElement(id){
 		var el = document.getElementById("btn-book");
-		el.style.height = "131.5px";
-		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/p_reading.png";
+		el.style.height = "126px";
+		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/p_reading.png";
 	});
 	
 	$("#btn-book").mouseout(function(){
 		var el = document.getElementById("btn-book");
 		el.style.height = "70px";
-		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_reading.png";
+		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_reading.png";
 	});
 	
 	// btn-rank
 	$("#btn-rank").mouseover(function changeElement(id){
 		var el = document.getElementById("btn-rank");
 		el.style.height = "115px";
-		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/p_ranking.png";
+		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/p_ranking.png";
 	});
 	
 	$("#btn-rank").mouseout(function(){
 		var el = document.getElementById("btn-rank");
 		el.style.height = "70px";
-		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_ranking.png";
+		el.src = "http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_ranking.png";
 	});
 });

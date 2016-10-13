@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript" src="/readingbetter/assets/js/navi.js"></script>
-<div id="navigation">
+<div>
 	<p id="category">고객센터</p>
 	<ul>
 		<li><a href="/readingbetter/service/noticelist" class="notice">공지</a></li>

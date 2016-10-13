@@ -24,32 +24,34 @@
 		</ul>
 		<table>
 			<tr>
-				<td rowspan="3" width="415px">
-					<img id="logo" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/logo.png">
+				<td rowspan="3">
+					<a href="/readingbetter/main">
+						<img id="logo" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/logo.png">
+					</a>
 				</td>
 				<td rowspan="3" valign="bottom">
 					<a href="/readingbetter/book/booklist"> 
-						<img id="btn-book" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_reading.png">
+						<img id="btn-book" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_reading.png">
 					</a>
 				</td>
 				<td rowspan="3" valign="bottom">
 					<a href="/readingbetter/ranking/summary">
-						<img id="btn-rank" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_ranking.png">
+						<img id="btn-rank" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_ranking.png">
 					</a>
 				</td>
 				<td rowspan="2">
 					<a href="/readingbetter/main">
-						<img id="anim" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/anim.gif">
+						<img id="anim" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/anim.gif">
 					</a>
 				</td>
 				<td rowspan="3" valign="bottom">
 					<a href="/readingbetter/mypage/info">
-						<img id="button" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_myinfo.png">
+						<img id="btn-info" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_myinfo.png">
 					</a>
 				</td>
 				<td rowspan="3" valign="bottom">
 					<a href="/readingbetter/service/noticelist">
-						<img id="button" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_center.png">
+						<img id="btn-store" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_center.png">
 					</a>
 				</td>
 			</tr>
@@ -59,7 +61,7 @@
 			<tr>
 				<td>
 					<a href="/readingbetter/shop">
-						<img id="button" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/b_store.png">
+						<img id="button" align="bottom" src="http://ec2-52-34-170-68.us-west-2.compute.amazonaws.com/images/design/b_store.png">
 					</a>
 				</td>
 			</tr>
