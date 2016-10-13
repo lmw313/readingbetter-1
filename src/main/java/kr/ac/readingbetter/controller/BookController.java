@@ -130,6 +130,7 @@ public class BookController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("maxPage", maxPage);
 		model.addAttribute("items", items);
+		model.addAttribute("listLength", listLength);
 		
 		return "book/buybook";
 	}

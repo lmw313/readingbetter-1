@@ -37,40 +37,80 @@
 					<p class="menu-title">책 구매</p>
 					<p><b>${param.title }</b> 상품 검색 결과입니다</p>
 					<p><b>이미지</b>를 누르면 해당 상품 페이지로 이동합니다</p>
-					<c:forEach begin='${(currentPage-1)*items }' end='${(currentPage-1)*items + items -1 }' step='1' var='i'>
-						<table id="book-table">
-							<colgroup>
-								<col width="30%" />
-								<col width="10%" />
-								<col width="20%" />
-								<col width="40%" />
-							</colgroup>					 
-							<tr>
-								<td rowspan="4">
-									<a href="${buyBookList[i].link }">
-										<img class="img-thumbnail" src="${buyBookList[i].image }">
-									</a>
-								</td>
-								<td colspan="3">${buyBookList[i].title }</td>
-							</tr>
-							<tr>
-								<td class="table-right">가격</td>
-								<td class="table-left">${buyBookList[i].lprice }</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td class="table-right">쇼핑몰</td>
-								<td class="table-left">${buyBookList[i].mallName }</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td class="table-right"></td>
-								<td class="table-left"></td>
-								<td></td>
-							</tr>					
-						</table>
-						<br>
-					</c:forEach>
+					<c:choose>
+						<c:when test="${currentPage == maxPage }">
+							<c:forEach begin='${(currentPage-1)*items }' end='${listLength - 1 }' step='1' var='i'>
+								<table id="book-table">
+									<colgroup>
+										<col width="30%" />
+										<col width="10%" />
+										<col width="20%" />
+										<col width="40%" />
+									</colgroup>
+									<tr>
+										<td rowspan="4">
+											<a href="${buyBookList[i].link }">
+												<img class="img-thumbnail" src="${buyBookList[i].image }">
+											</a>
+										</td>
+										<td colspan="3">${buyBookList[i].title }</td>
+									</tr>
+									<tr>
+										<td class="table-right">가격</td>
+										<td class="table-left">${buyBookList[i].lprice }</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="table-right">쇼핑몰</td>
+										<td class="table-left">${buyBookList[i].mallName }</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="table-right"></td>
+										<td class="table-left"></td>
+										<td></td>
+									</tr>
+								</table>
+								<br>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<c:forEach begin='${(currentPage-1)*items }' end='${(currentPage-1)*items + items -1 }' step='1' var='i'>
+								<table id="book-table">
+									<colgroup>
+										<col width="30%" />
+										<col width="10%" />
+										<col width="20%" />
+										<col width="40%" />
+									</colgroup>
+									<tr>
+										<td rowspan="4">
+											<a href="${buyBookList[i].link }">
+												<img class="img-thumbnail" src="${buyBookList[i].image }">
+											</a>
+										</td>
+										<td colspan="3">${buyBookList[i].title }</td>
+									</tr>
+									<tr>
+										<td class="table-right">가격</td>
+										<td class="table-left">${buyBookList[i].lprice }</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="table-right">쇼핑몰</td>
+										<td class="table-left">${buyBookList[i].mallName }</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="table-right"></td>
+										<td class="table-left"></td>
+										<td></td>
+									</tr>
+								</table>
+								<br>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 					
 					<br>
 					<!-- begin:paging -->
