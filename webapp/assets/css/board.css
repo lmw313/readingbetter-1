@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 @import "readingbetter.css";
 
-#board { margin:20px auto;	width:550px; }
+#board { margin:20px auto;	width:80%; }
 
 .board-form {
 	margin-top:30px
@@ -95,6 +95,25 @@ a#new-book	 {
 
 #button-set {
 	text-align: right;
+}
+
+/* 
+	board 폼
+ */
+td.board-no {
+	text-align: right;
+}
+
+td.board-title {
+	text-align: left;
+}
+
+th.th-board-no {
+	width: 10%;
+}
+
+th.th-board-title {
+	width: 50%;
 }
 
 /*

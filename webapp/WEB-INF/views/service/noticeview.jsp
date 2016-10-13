@@ -24,7 +24,7 @@
 			<div class="col-lg-2" id="navigation">
 				<c:import url='/WEB-INF/views/include/navi_service.jsp' />
 			</div>
-			<div id="" class="col-lg-10">
+			<div class="col-lg-10">
 				<div id="noticeview">
 					<div class="small-menu">
 						<a href="/readingbetter/main">홈</a> > 

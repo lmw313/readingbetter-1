@@ -24,7 +24,7 @@
 			<div class="col-lg-2" id="navigation">
 				<c:import url='/WEB-INF/views/include/navi_service.jsp' />
 			</div>
-			<div id="content" class="col-lg-10">
+			<div class="col-lg-10">
 				<div id="notice">
 					<div class="small-menu">
 						<a href="/readingbetter/main">홈</a> > 
@@ -33,19 +33,19 @@
 					<p class="menu-title">공지</p>
 
 					<div id="board">
-						<table class="tbl-ex">
+						<table class="table table-bordered">
 							<tr>
-								<th>번호</th>
-								<th>제목</th>
-								<th>글쓴이</th>
-								<th>조회수</th>
-								<th>작성일</th>
+								<th class="th-board-no active">번호</th>
+								<th class="th-board-title active">제목</th>
+								<th class="th-board-writer active">글쓴이</th>
+								<th class="active">조회수</th>
+								<th class="active">작성일</th>
 							</tr>
 							<c:set var="countList" value="${fn:length(list)}"/>
 							<c:forEach var='vo' items='${list}' varStatus='s'>
 							<tr>
-								<td>${vo.no}</td>
-								<td><a href="/readingbetter/service/noticeview/${vo.no }">${vo.title }</a></td>
+								<td class="board-no">${vo.no}</td>
+								<td class="board-title"><a href="/readingbetter/service/noticeview/${vo.no }">${vo.title }</a></td>
 								<td>${vo.name }</td>
 								<td>${vo.viewCount }</td>
 								<td>${vo.regDate }</td>

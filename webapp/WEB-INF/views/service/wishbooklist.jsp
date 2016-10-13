@@ -36,19 +36,19 @@
 				</form>
 				
 				<div id="board">
-					<table class="tbl-ex">
+					<table class="table table-bordered">
 						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>글쓴이</th>
-							<th>추천수</th>
-							<th>작성일</th>
-							<th>승인</th>
+							<th class="th-board-no active">번호</th>
+							<th class="th-board-title active">제목</th>
+							<th class="th-board-writer active">글쓴이</th>
+							<th class="active">추천수</th>
+							<th class="active">작성일</th>
+							<th class="active">승인</th>
 						</tr>
 						<c:forEach var='vo' items='${listpage }'>
 							<tr>
-								<td>${vo.no }</td>
-								<td><a href="/readingbetter/service/wishbookview?no=${vo.no }">${vo.title }</a></td>
+								<td class="board-no">${vo.no }</td>
+								<td class="board-title"><a href="/readingbetter/service/wishbookview?no=${vo.no }">${vo.title }</a></td>
 								<td>${vo.name }</td>
 								<td>${vo.recommend }</td>
 								<td>${vo.regDate }</td>

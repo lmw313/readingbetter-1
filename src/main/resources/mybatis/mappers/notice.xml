@@ -6,32 +6,44 @@
 	<!-- 공지 리스트, 회원 테이블에서 회원 이름 가져옴 -->
 	<select id="list" parameterType="noticevo" resultType="noticevo">
 		<![CDATA[
-			select a.no, a.title, a.content, a.reg_date as regDate, 
-			a.view_count as viewCount, a.member_no as memberNo, b.name 
-			from notice a, member b where a.member_no=b.no
+			select a.no, 
+				   a.title, 
+				   a.content, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.view_count as viewCount, 
+				   a.member_no as memberNo, 
+				   b.name 
+				from notice a, member b 
+				where a.member_no=b.no
 		]]>
 	</select>
 	
 	<!-- 페이징 공지 리스트, 회원 테이블에서 회원 이름 가져옴 -->
 	<select id="listPage" parameterType="noticevo" resultType="noticevo">
 		<![CDATA[
-			select no, title, content, reg_date as regDate, 
-			view_count as viewCount, member_no as memberNo, name, rn from
-			(select c.*, rownum as rn from
-			(select a.*, b.name from notice a, member b 
-			where a.member_no=b.no order by a.no desc) c) 
-			where (#{noticePage}-1)*10+1 <= rn and rn <= #{noticePage}*10
+			select no, title, content, to_char(reg_date, 'yyyy-mm-dd') as regDate, 
+				   view_count as viewCount, member_no as memberNo, name, rn 
+				from (select c.*, rownum as rn 
+						from (select a.*, b.name 
+								from notice a, member b 
+								where a.member_no = b.no 
+								order by a.no desc) c) 
+				where (#{noticePage} - 1) * 10 + 1 <= rn and rn <= #{noticePage} * 10
 		]]>
 	</select>
 	
 	<!-- 기본키에 따른 공지 조회, 회원 테이블에서 회원 이름 가져옴 -->
 	<select id="getByNo" parameterType="long" resultType="noticevo">
 		<![CDATA[
-			select a.no, a.title, a.content, 
-			to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
-			a.view_count as viewCount, a.member_no as memberNo, 
-			b.name from notice a, member b 
-			where a.member_no=b.no and a.no=#{no}
+			select a.no, 
+				   a.title, 
+				   a.content, 
+				   to_char(a.reg_date, 'yyyy-mm-dd') as regDate, 
+				   a.view_count as viewCount, 
+				   a.member_no as memberNo, 
+				   b.name 
+				from notice a, member b 
+				where a.member_no = b.no and a.no = #{no}
 		]]>
 	</select>
 	
