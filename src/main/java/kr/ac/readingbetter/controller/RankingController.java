@@ -114,7 +114,7 @@ public class RankingController {
 		List<ScoresVo> honor = scoresService.honor(vo);
 		model.addAttribute("honor", honor);
 
-		// 명예의 전당 Top 3 (좌측)
+		// 명예의 전당 Top 3 (그래프)
 		List<ScoresVo> totalTopRanker = scoresService.totalTopRanker(vo);
 		model.addAttribute("totalTopRanker", totalTopRanker);
 

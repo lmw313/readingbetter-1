@@ -30,3 +30,4 @@
 #honor #top3text { vertical-align: middle; font-size:2em; margin-left:auto; margin-right:auto; }
 #honor #top3text mark { color: #FF8080; text-shadow: 0.025em 0.025em 0.075em #333; }
 #honor #top3text .top3line { color:#FFFFFF; }
+#honor #graph{ width:100%; height:100%; padding:0px; margin-left:auto; margin-right:auto;} 

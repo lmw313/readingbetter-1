@@ -109,7 +109,7 @@
 	<!-- 종합 점수 랭킹 (top 3) -->
 	<select id="totalTopRanker" parameterType="scoresvo" resultType="scoresvo">
 		<![CDATA[
-			select rank, id 
+			select rank, id, totalscore 
 				from (select rank() OVER(order BY scores.total_score desc) as rank, 
 							 id, 
 							 scores.total_score as totalscore 
