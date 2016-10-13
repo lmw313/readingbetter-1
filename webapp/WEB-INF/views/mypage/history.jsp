@@ -79,14 +79,14 @@
 								<c:choose>
                        				 <c:when test="${vo.identity == 0}">문제풀기</c:when>
                        				 <c:when test="${vo.identity == 1}">상점</c:when>
+                       				 <c:when test="${vo.identity == 3}">출석체크</c:when>
               					 </c:choose>
 							</td>
-							<td>
-							${vo.title }</td>
+							<td>${vo.title }</td>
 							<td>${vo.score }</td>
 							<td>
 							<c:choose>
-                       				 <c:when test="${vo.identity == 0}">+${vo.point }</c:when>
+                       				 <c:when test="${vo.identity == 0 || vo.identity == 3 }">+${vo.point }</c:when>
                        				 <c:when test="${vo.identity == 1}">-${vo.point }</c:when>
               				</c:choose>
 							</td>
