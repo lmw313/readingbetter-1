@@ -103,7 +103,7 @@ $(function(){
 		});
 	});
 	
-	$("#publisher").change(function() {
+	$("#publisherTitle").change(function() {
 		$("#btn-publisher").attr('disabled', false);
 	});
 	

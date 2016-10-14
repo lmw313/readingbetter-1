@@ -8,6 +8,7 @@ public class GifticonVo {
 	private Long memberNo;
 	private String getDate;
 	private Integer pageNo;
+	private Integer limit;
 	public Long getNo() {
 		return no;
 	}
@@ -44,11 +45,19 @@ public class GifticonVo {
 	public void setPageNo(Integer pageNo) {
 		this.pageNo = pageNo;
 	}
+	public Integer getLimit() {
+		return limit;
+	}
+	public void setLimit(Integer limit) {
+		this.limit = limit;
+	}
 	@Override
 	public String toString() {
 		return "GifticonVo [no=" + no + ", cover=" + cover + ", title=" + title + ", memberNo=" + memberNo
-				+ ", getDate=" + getDate + ", pageNo=" + pageNo + "]";
+				+ ", getDate=" + getDate + ", pageNo=" + pageNo + ", limit=" + limit + "]";
 	}
+	
+	
 	
 	
 	

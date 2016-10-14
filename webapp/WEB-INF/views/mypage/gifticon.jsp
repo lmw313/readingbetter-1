@@ -47,8 +47,13 @@
 						<tr>
 							<td>${vo.no }</td>
 							<td>${vo.title }</td>
-							<td id=date >${vo.getDate }</td>	
-							<td>30일</td>
+							<td>${vo.getDate }</td>
+							<td>	
+							<c:choose>
+								<c:when test="${vo.limit ==30}">만료되었습니다.</c:when>
+		                        <c:when test="${vo.limit<30}">${30-vo.limit }</c:when>
+							</c:choose>
+							</td>
 						</tr>
 						</c:forEach>
 					</table>
